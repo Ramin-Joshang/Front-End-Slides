@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl"><head>
+<html lang="en" dir="ltr"><head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>افزونه‌های پیشنهادی برای VS Code - جلسه ۰۱</title>
+<title>Recommended VS Code Extensions - Lesson 01</title>
 <script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
 <style>@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
@@ -193,6 +193,78 @@ body {width: 1280px; height: 720px; overflow: hidden; background-color: var(--pp
 html { overflow: hidden; }
 </style>
 <meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize">    <link rel="stylesheet" href="projector-theme.css">
+
+<style id="projector-contrast-tune">
+    /* High contrast projector tuning - English LTR Centered */
+    body, .slide-root-container, [class*="-slide-root"] {
+        background-color: #ffffff !important;
+        color: #0f172a !important;
+        direction: ltr !important;
+        font-family: var(--ppt-font-body) !important;
+    }
+    .title-region-wrapper, [class*="-title-region"], .title-section-wrapper, .title-region, .title-region-container, .title-region-outer-wrapper {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        justify-content: center !important;
+        margin: 22px auto 14px auto !important;
+        width: 100% !important;
+    }
+    .title-breadcrumb-container, [class*="-breadcrumb-container"], [class*="-breadcrumb-wrapper"], .title-breadcrumb-row, .title-breadcrumb-flex-container {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        direction: ltr !important;
+        margin: 0 auto 6px auto !important;
+        padding: 3px 14px !important;
+        background: #f1f5f9 !important;
+        border: 1px solid #cbd5e1 !important;
+        border-radius: 999px !important;
+    }
+    .title-accent-bar, .title-accent-line, .title-accent-pillar-line, [class*="-accent-line"], [class*="-accent-bar"] {
+        width: 6px !important;
+        height: 6px !important;
+        background: var(--ppt-accent) !important;
+        border-radius: 50% !important;
+        display: inline-block !important;
+    }
+    .title-breadcrumb-text, .title-breadcrumb-mono-label, [class*="-breadcrumb-text"], .title-breadcrumb-label {
+        font-family: var(--ppt-font-mono) !important;
+        font-size: 13px !important;
+        color: #475569 !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.06em !important;
+        text-transform: uppercase !important;
+    }
+    h1, .title-main-heading, [class*="-main-heading"], [class*="-main-title"], .page-main-title, .lesson-summary-page-title {
+        font-family: var(--ppt-font-display) !important;
+        color: #0f172a !important;
+        direction: ltr !important;
+        text-align: center !important;
+        margin: 0 auto !important;
+        font-size: 34px !important;
+        font-weight: 800 !important;
+        letter-spacing: -0.02em !important;
+        line-height: 1.25 !important;
+    }
+    h2, h3, [class*="-heading"], [class*="-title"] {
+        font-family: var(--ppt-font-display) !important;
+        color: #0f172a !important;
+        direction: ltr !important;
+    }
+    p, span, div, li {
+        font-family: var(--ppt-font-body);
+        direction: ltr;
+    }
+    .code-font, pre, code, .editor-content-area, .terminal-body-content, [class*="-code-strip"], [class*="-code-column"] {
+        font-family: var(--ppt-font-mono) !important;
+        direction: ltr !important;
+        text-align: left !important;
+    }
+</style>
+
 </head>
 <body>
 <div class="vscode-extensions-page-root" style="overflow: hidden;">
@@ -200,9 +272,9 @@ html { overflow: hidden; }
 <div class="title-region-wrapper">
 <div class="title-breadcrumb-container">
 <div class="title-accent-bar"></div>
-<span class="title-breadcrumb-text">جلسه ۰۱ // اکستنشن‌های ضروری</span>
+<span class="title-breadcrumb-text">Lesson 01 // Introduction</span>
 </div>
-<h1 class="title-main-heading">افزونه‌های پیشنهادی و ضروری برای VS Code</h1>
+<h1 class="title-main-heading">Recommended VS Code Extensions</h1>
 </div>
 <!-- Main Content -->
 <div class="extensions-main-content">
@@ -213,20 +285,20 @@ html { overflow: hidden; }
 <div class="extension-icon-box">
 <i class="fas fa-bolt"></i>
 </div>
-<span class="extension-tag">بهره‌وری بالا</span>
+<span class="extension-tag">Productivity</span>
 <h2 class="extension-name">Live Server</h2>
 </div>
 <p class="extension-description">
-            اجرای سرور محلی با قابلیت رفرش خودکار صفحات هنگام ذخیره فایل‌ها.
+            Launches a local development server with a live reload feature for static pages.
           </p>
 <div class="extension-benefit-list">
 <div class="extension-benefit-row">
 <i class="fa-solid fa-circle-check"></i>
-<span>مشاهده آنی تغییرات بدون نیاز به رفرش دستی</span>
+<span>Instant browser updates</span>
 </div>
 <div class="extension-benefit-row">
 <i class="fa-solid fa-check"></i>
-<span>صرفه‌جویی چشم‌گیر در زمان توسعه</span>
+<span>No manual refreshing</span>
 </div>
 </div>
 </div>
@@ -236,16 +308,16 @@ html { overflow: hidden; }
 <div class="extension-icon-box blue">
 <i class="fa-solid fa-wand-magic"></i>
 </div>
-<span class="extension-tag">زیبایی و نظم کد</span>
+<span class="extension-tag">Code Quality</span>
 <h2 class="extension-name">Prettier</h2>
 </div>
 <p class="extension-description">
-            ابزار استاندارد مرتب‌سازی و زیباسازی خودکار کدها بر اساس الگوهای تمیز.
+            An opinionated code formatter that enforces a consistent style across your files.
           </p>
 <div class="extension-benefit-list">
 <div class="extension-benefit-row">
 <i class="fa-solid fa-heart-circle-check"></i>
-<span>کدهایی بسیار تمیز، منظم و خوانا</span>
+<span>Cleaner, readable code</span>
 </div>
 <div class="extension-benefit-row">
 <i class="fa-solid fa-house-circle-check"></i>

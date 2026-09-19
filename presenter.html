@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="en" dir="ltr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>کنسول مدرس (Presenter View) - آموزش جامع HTML & CSS</title>
+    <title>Presenter Console - Comprehensive HTML & CSS Course</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="projector-theme.css">
@@ -13,7 +13,7 @@
             font-family: var(--ppt-font-body);
             background: #0f172a;
             color: #f8fafc;
-            direction: rtl;
+            direction: ltr;
         }
 
         .slide-thumb {
@@ -88,28 +88,28 @@
         <div class="flex items-center gap-4">
             <span class="text-xl font-bold text-blue-400 flex items-center gap-2">
                 <i class="fas fa-microphone-lines text-cyan-400"></i>
-                <span>کنسول مدرس</span>
+                <span>Presenter Console</span>
             </span>
             <span id="currentSlideInfo" class="text-slate-400 font-mono text-sm bg-slate-800 px-3 py-1 rounded-full border border-slate-700">
-                اسلاید ۱ از ۳۲
+                Slide 1 of 32
             </span>
             <span id="slideTitleDisplay" class="text-white text-base font-semibold bg-blue-900/40 text-blue-200 border border-blue-700/50 px-3 py-1 rounded-full">
-                عنوان اسلاید
+                Slide Title
             </span>
         </div>
 
         <div class="flex items-center gap-3">
-            <a href="audience.html" target="_blank" class="bg-blue-600 hover:bg-blue-500 text-white font-bold px-4 py-2 rounded-full text-sm flex items-center gap-2 transition" title="مشاهده صفحه پروژکتور">
+            <a href="audience.html" target="_blank" class="bg-blue-600 hover:bg-blue-500 text-white font-bold px-4 py-2 rounded-full text-sm flex items-center gap-2 transition" title="Open Audience View">
                 <i class="fas fa-desktop"></i>
-                <span>نمایشگر پروژکتور</span>
+                <span>Audience View</span>
             </a>
-            <button id="btnPrevTop" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 px-3 py-2 rounded-full text-sm" title="اسلاید قبلی (راست)">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-            <button id="btnNextTop" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 px-3 py-2 rounded-full text-sm" title="اسلاید بعدی (چپ)">
+            <button id="btnPrevTop" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 px-3 py-2 rounded-full text-sm" title="Previous Slide (Left Arrow)">
                 <i class="fas fa-chevron-left"></i>
             </button>
-            <button onclick="toggleFullscreen()" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 px-3 py-2 rounded-full text-sm" title="تمام‌صفحه">
+            <button id="btnNextTop" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 px-3 py-2 rounded-full text-sm" title="Next Slide (Right Arrow)">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <button onclick="toggleFullscreen()" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 px-3 py-2 rounded-full text-sm" title="Fullscreen Mode">
                 <i class="fas fa-expand"></i>
             </button>
         </div>
@@ -129,12 +129,12 @@
                 <div class="flex items-center justify-between text-xs text-slate-400 font-semibold px-1">
                     <span class="flex items-center gap-1">
                         <i class="fas fa-clipboard-list text-amber-400"></i>
-                        <span>یادداشت‌ها و راهنمای تدریس این اسلاید:</span>
+                        <span>Speaker Notes & Teaching Guide:</span>
                     </span>
-                    <span class="text-slate-500">برای مشاهده مخاطبان نمایش داده نمی‌شود</span>
+                    <span class="text-slate-500">Private (Not visible to audience)</span>
                 </div>
                 <div class="notes-box flex-1" id="notesText">
-                    در حال بارگذاری یادداشت‌ها...
+                    Loading speaker notes...
                 </div>
             </div>
         </div>
@@ -146,40 +146,40 @@
                 <div class="flex items-center justify-between text-xs text-slate-400 font-semibold">
                     <span class="flex items-center gap-1">
                         <i class="fas fa-forward text-blue-400"></i>
-                        <span>اسلاید بعدی:</span>
+                        <span>Next Slide:</span>
                     </span>
-                    <span id="nextSlideNum" class="font-mono text-cyan-400">اسلاید ۲</span>
+                    <span id="nextSlideNum" class="font-mono text-cyan-400">Slide 2</span>
                 </div>
                 <div class="w-full h-36 bg-slate-950 rounded-lg border border-slate-800 overflow-hidden relative">
                     <iframe id="nextSlideIframe" src="slide-02.html" class="w-[1280px] h-[720px] pointer-events-none origin-top-left" style="transform: scale(0.23); width: 1280px; height: 720px;"></iframe>
                 </div>
-                <span id="nextSlideTitle" class="text-xs text-slate-300 truncate">عنوان اسلاید بعدی</span>
+                <span id="nextSlideTitle" class="text-xs text-slate-300 truncate">Next Slide Title</span>
             </div>
 
             <!-- Presentation Timer -->
             <div class="bg-slate-900 border border-slate-700 rounded-xl p-4 flex flex-col items-center">
                 <span class="text-slate-400 text-xs mb-1 flex items-center gap-1">
                     <i class="fas fa-stopwatch text-cyan-400"></i>
-                    <span>مدت زمان ارائه</span>
+                    <span>Presentation Timer</span>
                 </span>
-                <span class="timer-display" id="timer">۰۰:۰۰</span>
+                <span class="timer-display" id="timer">00:00</span>
                 <div class="flex gap-2 mt-3 w-full">
                     <button id="timerToggle" class="flex-1 bg-blue-600 hover:bg-blue-500 text-white py-1.5 rounded-lg text-sm font-semibold transition">
-                        ▶ شروع
+                        ▶ Start
                     </button>
                     <button id="timerReset" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 text-slate-300 px-3 py-1.5 rounded-lg text-sm transition">
-                        ↺ بازنشانی
+                        ↺ Reset
                     </button>
                 </div>
             </div>
 
             <!-- Quick Jump to Slide -->
             <div class="bg-slate-900 border border-slate-700 rounded-xl p-4">
-                <span class="text-slate-400 text-xs block mb-2 font-semibold">🔢 پرش مستقیم به اسلاید:</span>
+                <span class="text-slate-400 text-xs block mb-2 font-semibold">🔢 Jump directly to slide:</span>
                 <div class="flex gap-2">
                     <input type="number" id="gotoSlideInput" min="1" max="32" value="1" class="w-20 bg-slate-800 border border-slate-600 rounded-lg px-2 py-1.5 text-white text-center font-mono">
                     <button id="gotoSlideBtn" class="flex-1 bg-slate-800 hover:bg-slate-700 border border-slate-600 text-cyan-400 font-bold py-1.5 rounded-lg text-sm transition">
-                        انتقال
+                        Go
                     </button>
                 </div>
             </div>
@@ -187,11 +187,11 @@
             <!-- Autoplay Mode -->
             <div class="bg-slate-900 border border-slate-700 rounded-xl p-4">
                 <div class="flex items-center justify-between mb-2">
-                    <span class="text-slate-300 text-sm font-semibold">🎬 تعویض خودکار اسلاید</span>
+                    <span class="text-slate-300 text-sm font-semibold">🎬 Auto-Advance Slides</span>
                     <input type="checkbox" id="autoplayToggle" class="w-4 h-4 accent-blue-500 cursor-pointer">
                 </div>
                 <div class="flex items-center gap-2">
-                    <label class="text-slate-400 text-xs">فاصله (ثانیه):</label>
+                    <label class="text-slate-400 text-xs">Interval (sec):</label>
                     <input type="number" id="autoplayInterval" value="15" min="3" max="180" class="w-16 bg-slate-800 border border-slate-600 rounded px-2 py-1 text-white text-xs font-mono text-center">
                 </div>
             </div>
@@ -207,75 +207,75 @@
 
         // Slide Titles
         const slideTitles = [
-            'آموزش جامع HTML & CSS - جلد و شروع دوره',
-            'خوش‌آمدید: اولین گام شما در دنیای وب',
-            'آشنایی با مدرس دوره: رامین جوشقانی',
-            'در این دوره چه مهارت‌هایی یاد می‌گیرید؟',
-            'نقشه‌ی راه یادگیری HTML & CSS',
-            'تفاوت فرانت‌اند و بک‌اند (Front-End vs Back-End)',
-            'وب چطور کار می‌کند؟ نمای کلی سیستم',
-            'اینترنت: شبکه‌ای به هم پیوسته از شبکه‌ها',
-            'سه بازیگر اصلی وب: کلاینت، مرورگر و سرور',
-            'وقتی یک آدرس (URL) را تایپ می‌کنید، چه می‌شود؟',
-            'تفاوت HTTP و HTTPS: قوانین مکالمه در وب',
-            'درخواست و پاسخ در HTTP (Request & Response)',
-            'دامنه (Domain)، هاست (Host) و دی‌ان‌اس (DNS)',
-            'زبان HTML: اسکلت و استخوان‌بندی وب',
-            'زبان CSS: پوست، رنگ و زیبایی صفحات وب',
-            'جاوااسکریپت: عضلات، تعامل و منطق وب',
-            'تکنولوژی‌ها و ابزارهای همراه در مسیر یادگیری',
-            'نمونه‌های کاربردی فرانت‌اند در دنیای واقعی',
-            'جعبه‌ابزار ضروری یک توسعه‌دهنده فرانت‌اند',
-            'گوگل کروم: میز کار و آزمایشگاه توسعه‌دهنده',
-            'ویژوال استودیو کد (VS Code): کارگاه حرفه‌ای شما',
-            'راهنمای گام‌به‌گام نصب و راه‌اندازی VS Code',
-            'افزونه‌های پیشنهادی و ضروری برای VS Code',
-            'ساختار استاندارد پوشه‌ها و فایل‌های پروژه',
-            'کارگاه عملی: ایجاد پوشه اولین پروژه وب',
-            'کارگاه عملی: ایجاد فایل index.html',
-            'نوشتن اولین خطوط کد HTML در زندگی شما!',
-            'اجرای صفحه وب و مشاهده نتیجه در مرورگر',
-            'بهترین الگوها و عادات یک برنامه‌نویس حرفه‌ای',
-            'خطاهای رایج مبتدیان و راهکار برطرف کردن آن‌ها',
-            'جمع‌بندی و دستاوردهای جلسه اول',
-            'تمرین خانگی و آمادگی برای جلسه دوم'
-        ];
+          "Comprehensive HTML & CSS Course - Welcome & Overview",
+          "Welcome: Your First Step in the Web Development World",
+          "Meet Your Instructor: Ramin Joshaghani",
+          "Core Skills You Will Master in This Course",
+          "Complete HTML & CSS Learning Roadmap",
+          "Front-End vs Back-End: Understanding the Architecture",
+          "How the Web Works: High-Level System Overview",
+          "The Internet: Global Network of Interconnected Systems",
+          "Three Core Web Roles: Client, Browser, and Server",
+          "When You Type a URL: Anatomy of a Web Request",
+          "HTTP vs HTTPS: Secure Communication Protocols",
+          "HTTP Architecture: Client Request & Server Response",
+          "Core Web Triad: Domain, Hosting, and DNS Resolution",
+          "HTML: The Semantic Skeleton and Structural Bones of the Web",
+          "CSS: The Visual Skin, Layout, and Design of the Web",
+          "JavaScript: Dynamic Behavior, Interactivity, and Logic",
+          "Modern Web Developer Ecosystem & Tooling",
+          "Real-World Production Front-End Case Studies",
+          "Essential Front-End Developer Toolbelt",
+          "Google Chrome & DevTools: The Professional Web Workbench",
+          "Visual Studio Code: The Modern Industry-Standard Editor",
+          "VS Code Installation & Environment Setup Guide",
+          "Essential VS Code Extensions for High Productivity",
+          "Standard Project Directory & File Hierarchy",
+          "Hands-on Lab: Creating Your First Project Folder",
+          "Hands-on Lab: Creating the index.html Entry File",
+          "Writing Your Very First HTML Code: Headings & Paragraphs",
+          "Launching and Previewing Your Webpage in Chrome",
+          "Professional Developer Habits & Clean Code Best Practices",
+          "Common Beginner Pitfalls & Step-by-Step Solutions",
+          "Lesson 01 Summary: Milestones & Key Takeaways",
+          "Homework Assignment & Preparation for Lesson 02"
+];
 
         // Rich Speaker Notes in Persian for All 32 Slides
         const slidesNotes = [
-            'خوش‌آمدگویی گرم به دانشجویان. اعلام هدف دوره: تبدیل دانشجویان از صفر مطلق به توسعه‌دهندگان آماده ورود به بازار کار فرانت‌اند.',
-            'توضیح ۳ گام جلسه اول: درک مفاهیم وب، شناخت ۳ زبان اصلی، و نوشتن اولین کد عملی.',
-            'معرفی سوابق و تجربیات رامین جوشقانی در توسعه وب، پروژه‌های عملی و اهداف انگیزشی دوره.',
-            'مرور ۶ مهارت کلیدی که دانشجویان در پایان دوره کسب می‌کنند: HTML5 معنایی، CSS3 مدرن، فلکس‌باکس و گرید، ریسپانسیو، انیمیشن و کدهای تمیز.',
-            'بررسی مسیر ۱۱ گانه دوره؛ تأکید بر اینکه هر مبحث با تمرین‌های اختصاصی همراه است.',
-            'استعاره سالن رستوران (فرانت‌اند) و آشپزخانه (بک‌اند)؛ توضیح مفهوم رابط کاربری و امنیت داده‌ها.',
-            'توضیح چرخه سه‌مرحله‌ای وب: ۱. ارسال درخواست ۲. دریافت پاسخ ۳. رندر صفحه در مرورگر.',
-            'رفع ابهام از مفهوم اینترنت: کابل‌های فیبر نوری، روترها و دیتاسنترها. تشبیه بسته‌های داده به محموله‌های پستی.',
-            'تعریف دقیق ۳ نقش کلیدی: کلاینت (درخواست‌کننده)، مرورگر (مترجم کد به صفحه)، سرور (ارائه‌دهنده منابع ۲۴ ساعته).',
-            'تشریح ۶ مرحله باز شدن یک آدرس (URL): تایپ آدرس، استعلام DNS، هندشیک TCP، درخواست HTTP، دریافت فایل‌ها و رندر.',
-            'تفاوت پروتکل ناامن HTTP و امن HTTPS؛ تشبیه رمزنگاری SSL به نامه مهروموم شده در برابر کارت‌پستال عمومی.',
-            'معرفی کدهای وضعیت پرکاربرد: ۲۰۰ (موفقیت)، ۴۰۴ (پیدا نشد)، ۵۰۰ (خطای سرور).',
-            'توضیح تشبیهی دامنه (پلاک خانه)، DNS (دفترچه تلفن نام به شماره) و هاست (خودِ خانه فیزیکی).',
-            'تعریف ماهیت HTML به عنوان اسکلت و استخوان‌بندی وب؛ تأکید بر اینکه HTML زبان نشانه‌گذاری است نه زبان برنامه‌نویسی.',
-            'نقش CSS در زیبایی، رنگ‌ها، فونت‌ها و فاصله‌ها؛ نمایش مقایسه کد قبل و بعد از استایل‌دهی.',
-            'معرفی جاوااسکریپت به عنوان عضلات و هوش صفحه: واکنش به کلیک، اعتبارسنجی فرم‌ها و ارتباط زنده با سرور.',
-            'ابزارهای همراه در مسیر یادگیری: گیت و گیت‌هاب برای کنترل نسخه، APIها برای دریافت داده و فریم‌ورک‌های مدرن.',
-            'بررسی نقش فرانت‌اند در نمونه‌های بزرگ دنیا مانند فروشگاه اپل، پیام‌رسان اسلک و پلتفرم نتفلیکس.',
-            'معرفی دو بازوی اصلی توسعه‌دهنده: ادیتور VS Code (کارگاه کدنویسی) و مرورگر کروم (میز کار و تست).',
-            'قابلیت‌های کروم و ابزار DevTools برای بازرسی زنده عناصر و دیباگ لحظه‌ای کدهای CSS و JS.',
-            'چرا VS Code محبوب‌ترین ادیتور دنیاست: سبک، سریع، مجهز به اکستنشن‌ها، ترمینال یکپارچه و گیت.',
-            'آموزش گام‌به‌گام دانلود و نصب VS Code و زدن تیک گزینه مهم Add to PATH در ویندوز.',
-            'معرفی ۴ اکستنشن الزامی: Live Server برای رفرش خودکار، Prettier برای زیبایی کد، Auto Rename Tag و Material Icons.',
-            'قوانین سازمان‌دهی پروژه: یک پوشه ریشه اختصاصی، نام‌گذاری کوچک با خط تیره (kebab-case) و فایل index.html.',
-            'تمرین عملی حضوری: دانشجویان با هم پوشه my-first-project را در VS Code باز کنند.',
-            'تمرین عملی: ساخت فایل index.html و توضیح علت نام‌گذاری index در سرورهای وب.',
-            'کدنویسی اولین خطوط HTML: نوشتن تگ‌های h1 و p؛ آموزش میانبر Tab در Emmet برای سرعت بیشتر.',
-            'اجرای فایل در مرورگر به ۳ روش: درگ اند دراپ، کلیک راست، و دکمه Go Live در Live Server.',
-            'بهترین عادات برنامه‌نویسان: رعایت ایندنت، کامنت‌گذاری، نام‌گذاری استاندارد و پرهیز از کپی-پیست کورکورانه.',
-            'بررسی ۵ خطای پر تکرار مبتدیان: غلط املایی تگ، نبستن تگ، ذخیره نشدن فایل (Ctrl+S)، پسوند txt، و کش مرورگر.',
-            'جمع‌بندی دستاوردهای جلسه اول و تبریک ورود به جامعه برنامه‌نویسان فرانت‌اند.',
-            'تکلیف خانگی: نصب کامل ابزارها، ساخت اولین پروژه شخصی با معرفی خود و اعلام موضوع جلسه بعد (تگ‌های معنایی).'
-        ];
+          "Warm welcome to students. Introduce course vision: taking students from absolute zero to job-ready front-end web developers with modern industry practices.",
+          "Break down the 3 core pillars of Lesson 01: understanding fundamental web concepts, mastering the 3 primary web languages, and writing your first lines of code.",
+          "Instructor background and real-world software engineering experience. Emphasize project-driven learning, practical problem solving, and confidence building.",
+          "Review the 6 fundamental competencies students gain: semantic HTML5, modern CSS3 layouts, Flexbox & Grid, responsive mobile-first design, interactive CSS, and clean architecture.",
+          "Walk through the 11 sequential course milestones; explain that every concept is reinforced with hands-on labs and real portfolio projects.",
+          "The restaurant dining room vs kitchen analogy: Front-End is what users experience visually and interact with, while Back-End handles databases, servers, and business logic securely.",
+          "Explain the 3-stage web cycle: 1. Client initiates request -> 2. Server processes and responds -> 3. Browser parses assets and renders the visual page.",
+          "Demystify the physical internet: submarine fiber optic cables, global data centers, routers, and IP packet transmission via TCP/IP protocols.",
+          "Define the 3 core pillars: Client (requesting device), Browser (client engine interpreting code into pixels), and Server (24/7 cloud host serving assets).",
+          "Walk through the 6 micro-steps of entering a URL: URL entry, DNS lookup, TCP/SSL handshake, HTTP request, file payload delivery, and DOM rendering.",
+          "Security contrast between plaintext HTTP (port 80) and encrypted HTTPS (port 443). Analogy of public postcards versus sealed tamper-evident letters with SSL/TLS.",
+          "HTTP transaction cycle and HTTP status codes: 200 OK (success), 301/302 Redirect, 404 Not Found (missing asset), and 500 Internal Server Error.",
+          "Analogy of Domain (street address / home name), DNS (phonebook translating name to IP), and Web Hosting (the physical house containing files).",
+          "Introduce HTML as the structural skeleton and bones of web documents; reinforce that HTML is a declarative markup language, not a procedural programming language.",
+          "CSS as styling, typography, color theory, and spatial layout; showcase visual before-and-after comparison of raw unstyled HTML vs styled presentation.",
+          "JavaScript as the dynamic brain and muscles: handling user clicks, state changes, asynchronous API communication, and interactive animations.",
+          "Auxiliary tooling in modern engineering: Git & GitHub for version control, REST/GraphQL APIs for data flow, and modern web frameworks.",
+          "Highlighting prominent front-end applications: Apple store showcasing typography and product design, Slack web app, and Netflix streaming UI.",
+          "The developer workspace: Visual Studio Code as the primary coding workshop and Google Chrome DevTools as the inspection and debugging suite.",
+          "Chrome DevTools deep dive: Elements inspector for live DOM/CSS manipulation, Console for runtime errors and logs, and Network tab for asset waterfalls.",
+          "Why VS Code dominates web development: ultra-fast startup, rich extension marketplace, built-in terminal, Git integration, and robust IntelliSense.",
+          "Step-by-step setup for Windows/Mac/Linux: downloading from official site, installer steps, and making sure to enable \"Add to PATH\" and context menu actions.",
+          "Essential extension suite: Live Server for instant auto-reload on file save, Prettier for code formatting, Auto Rename Tag, and Material Icon Theme.",
+          "Project organization guidelines: dedicated project root folder, lowercase kebab-case naming without spaces or special characters, and index.html entry point.",
+          "Hands-on lab: Guided practice where all students create the my-first-project directory and open it directly inside VS Code.",
+          "Hands-on lab: Creating the index.html file in VS Code explorer; explain why web servers automatically look for index.html as the default homepage.",
+          "First code writing session: crafting <h1> heading and <p> paragraph; demonstrating Emmet shortcut expansions and the Tab key for maximum efficiency.",
+          "Three ways to test web files in Chrome: Drag & Drop into browser, Right-click Open With Chrome, and clicking Go Live with the Live Server extension.",
+          "Best programming habits: consistent indentation, meaningful code comments, standard semantic tags, and understanding code before adopting it.",
+          "Troubleshooting beginner mistakes: syntax typos in tags, missing closing tags, unsaved files (Ctrl+S), accidental .txt extension, and browser cache clearing.",
+          "Lesson 01 milestone celebration: congratulating students on building and rendering their very first live web page.",
+          "Homework task: verify development environment setup, build a personal introductory webpage with biographical content, and preview Lesson 02 (semantic tags)."
+];
 
         function toPersianDigits(n) {
             const farsiDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
@@ -356,13 +356,13 @@
         document.getElementById('btnNextTop').addEventListener('click', nextSlide);
         document.getElementById('btnPrevTop').addEventListener('click', prevSlide);
 
-        // Keyboard Navigation (In RTL: Left Arrow = Next, Right Arrow = Prev)
+        // Standard Keyboard Navigation (Right Arrow = Next, Left Arrow = Prev)
         document.addEventListener('keydown', (e) => {
             if (e.target.tagName === 'INPUT') return;
-            if (e.key === 'ArrowLeft' || e.key === ' ' || e.key === 'PageDown') {
+            if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown' || e.key.toLowerCase() === 'n') {
                 e.preventDefault();
                 nextSlide();
-            } else if (e.key === 'ArrowRight' || e.key === 'PageUp') {
+            } else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || e.key.toLowerCase() === 'p') {
                 e.preventDefault();
                 prevSlide();
             }
@@ -381,18 +381,18 @@
         function updateTimerDisplay() {
             const mins = Math.floor(timerSeconds / 60);
             const secs = timerSeconds % 60;
-            timerEl.textContent = `${toPersianDigits(String(mins).padStart(2, '0'))}:${toPersianDigits(String(secs).padStart(2, '0'))}`;
+            timerEl.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
         }
 
         document.getElementById('timerToggle').addEventListener('click', function () {
             if (timerInterval) {
                 clearInterval(timerInterval);
                 timerInterval = null;
-                this.textContent = '▶ شروع';
+                this.textContent = '▶ Start';
                 this.classList.replace('bg-amber-600', 'bg-blue-600');
             } else {
                 timerInterval = setInterval(() => { timerSeconds++; updateTimerDisplay(); }, 1000);
-                this.textContent = '⏸ توقف';
+                this.textContent = '⏸ Pause';
                 this.classList.replace('bg-blue-600', 'bg-amber-600');
             }
         });

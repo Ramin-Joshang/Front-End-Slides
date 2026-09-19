@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl"><head>
+<html lang="en" dir="ltr"><head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>اجرای اولین صفحه وب در مرورگر - جلسه ۰۱</title>
+<title>Running Your First Web Page in Browser - Lesson 01</title>
 <script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
 <style>@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
@@ -220,6 +220,78 @@ body {width: 1280px; height: 720px; overflow: hidden; background-color: var(--pp
 html { overflow: hidden; }
 </style>
 <meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize">    <link rel="stylesheet" href="projector-theme.css">
+
+<style id="projector-contrast-tune">
+    /* High contrast projector tuning - English LTR Centered */
+    body, .slide-root-container, [class*="-slide-root"] {
+        background-color: #ffffff !important;
+        color: #0f172a !important;
+        direction: ltr !important;
+        font-family: var(--ppt-font-body) !important;
+    }
+    .title-region-wrapper, [class*="-title-region"], .title-section-wrapper, .title-region, .title-region-container, .title-region-outer-wrapper {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        justify-content: center !important;
+        margin: 22px auto 14px auto !important;
+        width: 100% !important;
+    }
+    .title-breadcrumb-container, [class*="-breadcrumb-container"], [class*="-breadcrumb-wrapper"], .title-breadcrumb-row, .title-breadcrumb-flex-container {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        direction: ltr !important;
+        margin: 0 auto 6px auto !important;
+        padding: 3px 14px !important;
+        background: #f1f5f9 !important;
+        border: 1px solid #cbd5e1 !important;
+        border-radius: 999px !important;
+    }
+    .title-accent-bar, .title-accent-line, .title-accent-pillar-line, [class*="-accent-line"], [class*="-accent-bar"] {
+        width: 6px !important;
+        height: 6px !important;
+        background: var(--ppt-accent) !important;
+        border-radius: 50% !important;
+        display: inline-block !important;
+    }
+    .title-breadcrumb-text, .title-breadcrumb-mono-label, [class*="-breadcrumb-text"], .title-breadcrumb-label {
+        font-family: var(--ppt-font-mono) !important;
+        font-size: 13px !important;
+        color: #475569 !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.06em !important;
+        text-transform: uppercase !important;
+    }
+    h1, .title-main-heading, [class*="-main-heading"], [class*="-main-title"], .page-main-title, .lesson-summary-page-title {
+        font-family: var(--ppt-font-display) !important;
+        color: #0f172a !important;
+        direction: ltr !important;
+        text-align: center !important;
+        margin: 0 auto !important;
+        font-size: 34px !important;
+        font-weight: 800 !important;
+        letter-spacing: -0.02em !important;
+        line-height: 1.25 !important;
+    }
+    h2, h3, [class*="-heading"], [class*="-title"] {
+        font-family: var(--ppt-font-display) !important;
+        color: #0f172a !important;
+        direction: ltr !important;
+    }
+    p, span, div, li {
+        font-family: var(--ppt-font-body);
+        direction: ltr;
+    }
+    .code-font, pre, code, .editor-content-area, .terminal-body-content, [class*="-code-strip"], [class*="-code-column"] {
+        font-family: var(--ppt-font-mono) !important;
+        direction: ltr !important;
+        text-align: left !important;
+    }
+</style>
+
 </head>
 <body>
 <div class="slide-root-container" style="overflow: hidden;">
@@ -227,9 +299,9 @@ html { overflow: hidden; }
 <div class="title-region-wrapper">
 <div class="title-breadcrumb-container">
 <div class="title-accent-line"></div>
-<span class="title-breadcrumb-text">جلسه ۰۱ // اجرای پروژه</span>
+<span class="title-breadcrumb-text">Lesson 01 // Execution</span>
 </div>
-<h1 class="title-main-heading">اجرای صفحه وب و مشاهده نتیجه در مرورگر</h1>
+<h1 class="title-main-heading">Running Your First Web Page</h1>
 </div>
 <!-- Main Content -->
 <div class="run-page-main-layout">
@@ -241,9 +313,9 @@ html { overflow: hidden; }
 <i class="fa-solid fa-arrow-pointer"></i>
 </div>
 <div class="run-page-method-text-box">
-<span class="run-page-method-badge">روش ساده</span>
-<h3 class="run-page-method-title">کشیدن و رها کردن فایل</h3>
-<p class="run-page-method-desc">فایل index.html را مستقیماً با موس کشیده و در تب مرورگر کروم رها کنید.</p>
+<span class="run-page-method-badge">BASIC</span>
+<h3 class="run-page-method-title">Drag & Drop</h3>
+<p class="run-page-method-desc">Drag your index.html file directly into a Chrome tab.</p>
 </div>
 </div>
 <div class="run-page-method-item">
@@ -251,9 +323,9 @@ html { overflow: hidden; }
 <i class="fas fa-right-from-bracket"></i>
 </div>
 <div class="run-page-method-text-box">
-<span class="run-page-method-badge">روش سیستمی</span>
-<h3 class="run-page-method-title">کلیک راست و انتخاب مرورگر</h3>
-<p class="run-page-method-desc">روی فایل کلیک راست کرده و Open With سپس Google Chrome را انتخاب کنید.</p>
+<span class="run-page-method-badge">System Method</span>
+<h3 class="run-page-method-title">Right-Click & Choose Browser</h3>
+<p class="run-page-method-desc">Right-click the file, select Open With, and choose Google Chrome.</p>
 </div>
 </div>
 <div class="run-page-method-item" style="border-color: var(--ppt-accent);">
@@ -261,9 +333,9 @@ html { overflow: hidden; }
 <i class="fas fa-bolt"></i>
 </div>
 <div class="run-page-method-text-box">
-<span class="run-page-method-badge" style="background: var(--ppt-accent); color: var(--ppt-bg);">روش حرفه‌ای</span>
-<h3 class="run-page-method-title">اجرا با اکستنشن Live Server</h3>
-<p class="run-page-method-desc">روی دکمه Go Live کلیک کنید تا با هر ذخیره فایل، صفحه خودکار آپدیت شود.</p>
+<span class="run-page-method-badge" style="background: var(--ppt-accent); color: var(--ppt-bg);">Professional Method</span>
+<h3 class="run-page-method-title">Launch with Live Server Extension</h3>
+<p class="run-page-method-desc">Click "Go Live" to see changes instantly as you save.</p>
 </div>
 </div>
 </div>
@@ -283,7 +355,7 @@ html { overflow: hidden; }
 </div>
 </div>
 <div class="run-page-browser-content">
-<h1 class="run-page-browser-rendered-text">سلام دنیا!!</h1>
+<h1 class="run-page-browser-rendered-text">Hello World!!</h1>
 <p class="run-page-browser-sub-text">Welcome to my first website.</p>
 <div style="margin-top: auto; border-top: 2px solid #e2e8f0; padding-top: 20px; color: #94a3b8; font-size: 14px;">
               Rendering local file content...

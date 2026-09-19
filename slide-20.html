@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl"><head>
+<html lang="en" dir="ltr"><head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>گوگل کروم: میز کار توسعه‌دهنده - جلسه ۰۱</title>
+<title>Google Chrome: The Workbench - Lesson 01</title>
 <script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
 <style>@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
@@ -245,6 +245,78 @@ body {width: 1280px; height: 720px; overflow: hidden; background-color: var(--pp
 html { overflow: hidden; }
 </style>
 <meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize">    <link rel="stylesheet" href="projector-theme.css">
+
+<style id="projector-contrast-tune">
+    /* High contrast projector tuning - English LTR Centered */
+    body, .slide-root-container, [class*="-slide-root"] {
+        background-color: #ffffff !important;
+        color: #0f172a !important;
+        direction: ltr !important;
+        font-family: var(--ppt-font-body) !important;
+    }
+    .title-region-wrapper, [class*="-title-region"], .title-section-wrapper, .title-region, .title-region-container, .title-region-outer-wrapper {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        justify-content: center !important;
+        margin: 22px auto 14px auto !important;
+        width: 100% !important;
+    }
+    .title-breadcrumb-container, [class*="-breadcrumb-container"], [class*="-breadcrumb-wrapper"], .title-breadcrumb-row, .title-breadcrumb-flex-container {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        direction: ltr !important;
+        margin: 0 auto 6px auto !important;
+        padding: 3px 14px !important;
+        background: #f1f5f9 !important;
+        border: 1px solid #cbd5e1 !important;
+        border-radius: 999px !important;
+    }
+    .title-accent-bar, .title-accent-line, .title-accent-pillar-line, [class*="-accent-line"], [class*="-accent-bar"] {
+        width: 6px !important;
+        height: 6px !important;
+        background: var(--ppt-accent) !important;
+        border-radius: 50% !important;
+        display: inline-block !important;
+    }
+    .title-breadcrumb-text, .title-breadcrumb-mono-label, [class*="-breadcrumb-text"], .title-breadcrumb-label {
+        font-family: var(--ppt-font-mono) !important;
+        font-size: 13px !important;
+        color: #475569 !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.06em !important;
+        text-transform: uppercase !important;
+    }
+    h1, .title-main-heading, [class*="-main-heading"], [class*="-main-title"], .page-main-title, .lesson-summary-page-title {
+        font-family: var(--ppt-font-display) !important;
+        color: #0f172a !important;
+        direction: ltr !important;
+        text-align: center !important;
+        margin: 0 auto !important;
+        font-size: 34px !important;
+        font-weight: 800 !important;
+        letter-spacing: -0.02em !important;
+        line-height: 1.25 !important;
+    }
+    h2, h3, [class*="-heading"], [class*="-title"] {
+        font-family: var(--ppt-font-display) !important;
+        color: #0f172a !important;
+        direction: ltr !important;
+    }
+    p, span, div, li {
+        font-family: var(--ppt-font-body);
+        direction: ltr;
+    }
+    .code-font, pre, code, .editor-content-area, .terminal-body-content, [class*="-code-strip"], [class*="-code-column"] {
+        font-family: var(--ppt-font-mono) !important;
+        direction: ltr !important;
+        text-align: left !important;
+    }
+</style>
+
 </head>
 <body>
 <div class="chrome-slide-root" style="overflow: hidden;">
@@ -252,9 +324,9 @@ html { overflow: hidden; }
 <div class="chrome-title-region-wrapper">
 <div class="chrome-breadcrumb-container">
 <div class="chrome-accent-bar"></div>
-<span class="chrome-breadcrumb-text">جلسه ۰۱ // ابزارهای وب</span>
+<span class="chrome-breadcrumb-text">Lesson 01 // Introduction</span>
 </div>
-<h1 class="chrome-main-title">گوگل کروم: میز کار و آزمایشگاه شما</h1>
+<h1 class="chrome-main-title">Google Chrome: The Workbench</h1>
 </div>
 <!-- Main Content -->
 <div class="chrome-content-layout-wrapper">
@@ -266,8 +338,8 @@ html { overflow: hidden; }
 <i class="fa-solid fa-microchip"></i>
 </div>
 <div class="chrome-feature-text-content">
-<h3 class="chrome-feature-title">استاندارد جهانی صنعت وب</h3>
-<p class="chrome-feature-description">مجهز به موتور قدرتمند V8 و محبوب‌ترین مرورگر مورد استفاده برنامه‌نویسان در دنیا.</p>
+<h3 class="chrome-feature-title">Industry Standard</h3>
+<p class="chrome-feature-description">Powered by the high-performance V8 engine, it is the most used browser by developers and users worldwide.</p>
 </div>
 </div>
 <div class="chrome-feature-card-item">
@@ -275,8 +347,8 @@ html { overflow: hidden; }
 <i class="fa-solid fa-magnifying-glass-chart"></i>
 </div>
 <div class="chrome-feature-text-content">
-<h3 class="chrome-feature-title">مجموعه ابزارهای Chrome DevTools</h3>
-<p class="chrome-feature-description">ابزار تخصصی برای بررسی زنده ساختار HTML، تغییرات لحظه‌ای CSS و خطایابی جاوااسکریپت.</p>
+<h3 class="chrome-feature-title">Built-in DevTools</h3>
+<p class="chrome-feature-description">A professional suite for inspecting HTML structure, styling with CSS, and debugging JavaScript in real-time.</p>
 </div>
 </div>
 <div class="chrome-feature-card-item">
@@ -284,8 +356,8 @@ html { overflow: hidden; }
 <i class="fa-solid fa-puzzle-piece"></i>
 </div>
 <div class="chrome-feature-text-content">
-<h3 class="chrome-feature-title">اکوسیستم غنی اکستنشن‌ها</h3>
-<p class="chrome-feature-description">دسترسی به هزاران ابزار توسعه مانند React DevTools، آنالیز Lighthouse و تست‌های دسترسی‌پذیری.</p>
+<h3 class="chrome-feature-title">Extension Ecosystem</h3>
+<p class="chrome-feature-description">Access to thousands of developer-specific tools like React Developer Tools, Lighthouse, and Accessibility checkers.</p>
 </div>
 </div>
 </div>

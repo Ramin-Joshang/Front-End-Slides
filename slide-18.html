@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl"><head>
+<html lang="en" dir="ltr"><head>
 <meta charset="utf-8">
 <meta content="width=1280, height=720" name="viewport">
-<title>نمونه‌های واقعی فرانت‌اند در جهان - جلسه ۰۱</title>
+<title>Real-World Front-End Examples - Lesson 01</title>
 <script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
 <style>@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
@@ -156,6 +156,78 @@ body {width: 1280px; height: 720px; overflow: hidden; background-color: var(--pp
 html { overflow: hidden; }
 </style>
 <meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize">    <link rel="stylesheet" href="projector-theme.css">
+
+<style id="projector-contrast-tune">
+    /* High contrast projector tuning - English LTR Centered */
+    body, .slide-root-container, [class*="-slide-root"] {
+        background-color: #ffffff !important;
+        color: #0f172a !important;
+        direction: ltr !important;
+        font-family: var(--ppt-font-body) !important;
+    }
+    .title-region-wrapper, [class*="-title-region"], .title-section-wrapper, .title-region, .title-region-container, .title-region-outer-wrapper {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        justify-content: center !important;
+        margin: 22px auto 14px auto !important;
+        width: 100% !important;
+    }
+    .title-breadcrumb-container, [class*="-breadcrumb-container"], [class*="-breadcrumb-wrapper"], .title-breadcrumb-row, .title-breadcrumb-flex-container {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        direction: ltr !important;
+        margin: 0 auto 6px auto !important;
+        padding: 3px 14px !important;
+        background: #f1f5f9 !important;
+        border: 1px solid #cbd5e1 !important;
+        border-radius: 999px !important;
+    }
+    .title-accent-bar, .title-accent-line, .title-accent-pillar-line, [class*="-accent-line"], [class*="-accent-bar"] {
+        width: 6px !important;
+        height: 6px !important;
+        background: var(--ppt-accent) !important;
+        border-radius: 50% !important;
+        display: inline-block !important;
+    }
+    .title-breadcrumb-text, .title-breadcrumb-mono-label, [class*="-breadcrumb-text"], .title-breadcrumb-label {
+        font-family: var(--ppt-font-mono) !important;
+        font-size: 13px !important;
+        color: #475569 !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.06em !important;
+        text-transform: uppercase !important;
+    }
+    h1, .title-main-heading, [class*="-main-heading"], [class*="-main-title"], .page-main-title, .lesson-summary-page-title {
+        font-family: var(--ppt-font-display) !important;
+        color: #0f172a !important;
+        direction: ltr !important;
+        text-align: center !important;
+        margin: 0 auto !important;
+        font-size: 34px !important;
+        font-weight: 800 !important;
+        letter-spacing: -0.02em !important;
+        line-height: 1.25 !important;
+    }
+    h2, h3, [class*="-heading"], [class*="-title"] {
+        font-family: var(--ppt-font-display) !important;
+        color: #0f172a !important;
+        direction: ltr !important;
+    }
+    p, span, div, li {
+        font-family: var(--ppt-font-body);
+        direction: ltr;
+    }
+    .code-font, pre, code, .editor-content-area, .terminal-body-content, [class*="-code-strip"], [class*="-code-column"] {
+        font-family: var(--ppt-font-mono) !important;
+        direction: ltr !important;
+        text-align: left !important;
+    }
+</style>
+
 </head>
 <body>
 <div class="real-world-presentation-slide" style="overflow: hidden;">
@@ -163,31 +235,31 @@ html { overflow: hidden; }
 <div class="title-region-container">
 <div class="title-breadcrumb-wrapper">
 <div class="title-breadcrumb-accent"></div>
-<span class="title-breadcrumb-text">جلسه ۰۱ // نمونه‌های کاربردی</span>
+<span class="title-breadcrumb-text">Lesson 01 // Introduction</span>
 </div>
-<h1 class="title-main-heading">نمونه‌های عملی فرانت‌اند در دنیای واقعی</h1>
+<h1 class="title-main-heading">Real-World Front-End Examples</h1>
 </div>
 <!-- Multi-column Layout -->
 <div class="real-world-content-wrapper" data-animation-id="examples-grid-container">
-<!-- Column 1: فروشگاه آنلاین (E-Commerce) -->
+<!-- Column 1: E-Commerce -->
 <div class="real-world-column-container">
 <div class="real-world-example-card">
 <div class="real-world-card-header">
 <i class="fa-solid fa-bag-shopping real-world-card-icon"></i>
-<h2 class="real-world-card-title">فروشگاه آنلاین (E-Commerce)</h2>
+<h2 class="real-world-card-title">E-Commerce</h2>
 </div>
 <div class="real-world-stack-group">
 <div class="real-world-stack-item">
 <span class="real-world-stack-label">HTML</span>
-<span class="real-world-stack-description">کاتالوگ و لیست مشخصات و قیمت محصولات</span>
+<span class="real-world-stack-description">Product catalog and pricing data</span>
 </div>
 <div class="real-world-stack-item">
 <span class="real-world-stack-label">CSS</span>
-<span class="real-world-stack-description">نمایش خیره‌کننده برند، گالری و تایپوگرافی</span>
+<span class="real-world-stack-description">High-end branding and image galleries</span>
 </div>
 <div class="real-world-stack-item">
 <span class="real-world-stack-label">JavaScript</span>
-<span class="real-world-stack-description">سبد خرید پویا و انیمیشن‌های تعاملی خرید</span>
+<span class="real-world-stack-description">Dynamic cart updates and animations</span>
 </div>
 </div>
 <span class="real-world-card-tag">apple.com</span>
@@ -198,44 +270,44 @@ html { overflow: hidden; }
 <div class="real-world-example-card">
 <div class="real-world-card-header">
 <i class="fas fa-comments real-world-card-icon"></i>
-<h2 class="real-world-card-title">ابزارهای سازمانی و پیام‌رسان</h2>
+<h2 class="real-world-card-title">Productivity</h2>
 </div>
 <div class="real-world-stack-group">
 <div class="real-world-stack-item">
 <span class="real-world-stack-label">HTML</span>
-<span class="real-world-stack-description">ساختار پیام‌ها، کانال‌ها و پروفایل کاربری</span>
+<span class="real-world-stack-description">Message structures and user profiles</span>
 </div>
 <div class="real-world-stack-item">
 <span class="real-world-stack-label">CSS</span>
-<span class="real-world-stack-description">چیدمان چندستونه سایدبار و تم دارک/لایت</span>
+<span class="real-world-stack-description">Complex sidebar layouts and dark mode</span>
 </div>
 <div class="real-world-stack-item">
 <span class="real-world-stack-label">JavaScript</span>
-<span class="real-world-stack-description">تبادل آنی پیام‌ها بدون نیاز به رفرش صفحه</span>
+<span class="real-world-stack-description">Real-time chat sync without refreshing</span>
 </div>
 </div>
 <span class="real-world-card-tag">slack.com</span>
 </div>
 </div>
-<!-- Column 3: Media / پلتفرم پخش آنلاین و ویدیو -->
+<!-- Column 3: Media / Streaming -->
 <div class="real-world-column-container">
 <div class="real-world-example-card">
 <div class="real-world-card-header">
 <i class="fa-solid fa-circle-play real-world-card-icon"></i>
-<h2 class="real-world-card-title">پلتفرم پخش آنلاین و ویدیو</h2>
+<h2 class="real-world-card-title">Streaming</h2>
 </div>
 <div class="real-world-stack-group">
 <div class="real-world-stack-item">
 <span class="real-world-stack-label">HTML</span>
-<span class="real-world-stack-description">اطلاعات فیلم‌ها، دسته‌بندی و پوسترها</span>
+<span class="real-world-stack-description">Movie metadata and category lists</span>
 </div>
 <div class="real-world-stack-item">
 <span class="real-world-stack-label">CSS</span>
-<span class="real-world-stack-description">پوسترهای ریسپانسیو و افکت‌های هاور</span>
+<span class="real-world-stack-description">Responsive posters and hover effects</span>
 </div>
 <div class="real-world-stack-item">
 <span class="real-world-stack-label">JavaScript</span>
-<span class="real-world-stack-description">کنترل پلیر ویدیو و فیلتر جستجوی آنی</span>
+<span class="real-world-stack-description">Video player logic and search filtering</span>
 </div>
 </div>
 <span class="real-world-card-tag">netflix.com</span>
@@ -261,7 +333,7 @@ html { overflow: hidden; }
   - Explain that every professional site is a delicate balance of these three.
   - E-commerce (Apple): HTML holds the 'what' (iPhone 15, $999), CSS handles the 'luxury feel', JS handles the 'scrolling magic'.
   - SaaS (Slack): JavaScript is the hero here, enabling real-time communication without the page ever blinking or reloading.
-  - پلتفرم پخش آنلاین و ویدیو (Netflix): The UI is HTML/CSS, but the complex player and search are driven by JS.
+  - Streaming (Netflix): The UI is HTML/CSS, but the complex player and search are driven by JS.
   - Transition: "To build premium experiences like these, we don't just need code—we need the right professional tools. Let's look at your developer toolbelt."
   - Motion: The grid of cards fades in to reveal the examples.
   -->

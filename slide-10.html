@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl"><head>
+<html lang="en" dir="ltr"><head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>وقتی یک آدرس (URL) را تایپ می‌کنید چه می‌شود؟ - جلسه ۰۱</title>
+<title>What Happens When You Type a URL? - Lesson 01</title>
 <script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
 <style>@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
@@ -186,6 +186,78 @@ body {width: 1280px; height: 720px; overflow: hidden; background-color: var(--pp
 html { overflow: hidden; }
 </style>
 <meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize">    <link rel="stylesheet" href="projector-theme.css">
+
+<style id="projector-contrast-tune">
+    /* High contrast projector tuning - English LTR Centered */
+    body, .slide-root-container, [class*="-slide-root"] {
+        background-color: #ffffff !important;
+        color: #0f172a !important;
+        direction: ltr !important;
+        font-family: var(--ppt-font-body) !important;
+    }
+    .title-region-wrapper, [class*="-title-region"], .title-section-wrapper, .title-region, .title-region-container, .title-region-outer-wrapper {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        justify-content: center !important;
+        margin: 22px auto 14px auto !important;
+        width: 100% !important;
+    }
+    .title-breadcrumb-container, [class*="-breadcrumb-container"], [class*="-breadcrumb-wrapper"], .title-breadcrumb-row, .title-breadcrumb-flex-container {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        direction: ltr !important;
+        margin: 0 auto 6px auto !important;
+        padding: 3px 14px !important;
+        background: #f1f5f9 !important;
+        border: 1px solid #cbd5e1 !important;
+        border-radius: 999px !important;
+    }
+    .title-accent-bar, .title-accent-line, .title-accent-pillar-line, [class*="-accent-line"], [class*="-accent-bar"] {
+        width: 6px !important;
+        height: 6px !important;
+        background: var(--ppt-accent) !important;
+        border-radius: 50% !important;
+        display: inline-block !important;
+    }
+    .title-breadcrumb-text, .title-breadcrumb-mono-label, [class*="-breadcrumb-text"], .title-breadcrumb-label {
+        font-family: var(--ppt-font-mono) !important;
+        font-size: 13px !important;
+        color: #475569 !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.06em !important;
+        text-transform: uppercase !important;
+    }
+    h1, .title-main-heading, [class*="-main-heading"], [class*="-main-title"], .page-main-title, .lesson-summary-page-title {
+        font-family: var(--ppt-font-display) !important;
+        color: #0f172a !important;
+        direction: ltr !important;
+        text-align: center !important;
+        margin: 0 auto !important;
+        font-size: 34px !important;
+        font-weight: 800 !important;
+        letter-spacing: -0.02em !important;
+        line-height: 1.25 !important;
+    }
+    h2, h3, [class*="-heading"], [class*="-title"] {
+        font-family: var(--ppt-font-display) !important;
+        color: #0f172a !important;
+        direction: ltr !important;
+    }
+    p, span, div, li {
+        font-family: var(--ppt-font-body);
+        direction: ltr;
+    }
+    .code-font, pre, code, .editor-content-area, .terminal-body-content, [class*="-code-strip"], [class*="-code-column"] {
+        font-family: var(--ppt-font-mono) !important;
+        direction: ltr !important;
+        text-align: left !important;
+    }
+</style>
+
 </head>
 <body class="">
 <div class="url-journey-slide-root" style="overflow: hidden;">
@@ -193,9 +265,9 @@ html { overflow: hidden; }
 <div class="url-journey-title-region">
 <div class="url-journey-breadcrumb-wrapper">
 <div class="url-journey-accent-line"></div>
-<span class="url-journey-breadcrumb-text">جلسه ۰۱ // معماری وب</span>
+<span class="url-journey-breadcrumb-text">Lesson 01 // Web Architecture</span>
 </div>
-<h1 class="url-journey-main-title">وقتی یک آدرس (URL) را تایپ می‌کنید، چه اتفاقی می‌افتد؟</h1>
+<h1 class="url-journey-main-title">What Happens When You Type a URL?</h1>
 </div>
 <!-- Main Content -->
 <div class="url-journey-main-content">
@@ -232,7 +304,7 @@ html { overflow: hidden; }
 <circle fill="var(--ppt-accent)" id="pulse-dot" r="6" style="display: none;" cx="152.4222869873047" cy="100.77094268798828"></circle>
 </svg>
 <button class="url-journey-replay-button" id="replay-journey">
-<i class="fa-solid fa-bookmark"></i> تکرار شبیه‌سازی مسیر
+<i class="fa-solid fa-play"></i> Replay Journey Simulation
         </button>
 </div>
 <!-- Steps Grid -->
@@ -242,55 +314,55 @@ html { overflow: hidden; }
 <div class="url-journey-step-number">1</div>
 <i class="fas fa-keyboard url-journey-step-icon"></i>
 </div>
-<div class="url-journey-step-title">ورود آدرس</div>
-<p class="url-journey-step-description">تایپ آدرس سایت (مانند google.com) در مرورگر و زدن Enter.</p>
+<div class="url-journey-step-title">Enter Address</div>
+<p class="url-journey-step-description">Type website URL (e.g. google.com) in the browser address bar and press Enter.</p>
 </div>
 <div class="url-journey-step-card" data-animation-id="step-2">
 <div class="url-journey-step-header">
 <div class="url-journey-step-number">2</div>
 <i class="fa-solid fa-circle-info url-journey-step-icon"></i>
 </div>
-<div class="url-journey-step-title">استعلام از DNS</div>
-<p class="url-journey-step-description">مرورگر از دی‌ان‌اس آدرس عددی IP سرور را استعلام می‌کند.</p>
+<div class="url-journey-step-title">DNS Query</div>
+<p class="url-journey-step-description">The browser queries the DNS server to find the numerical IP address.</p>
 </div>
 <div class="url-journey-step-card" data-animation-id="step-3">
 <div class="url-journey-step-header">
 <div class="url-journey-step-number">3</div>
 <i class="fas fa-handshake url-journey-step-icon"></i>
 </div>
-<div class="url-journey-step-title">دست‌تکانی TCP</div>
-<p class="url-journey-step-description">مرورگر اتصالی امن و مطمئن با سرور مقصد برقرار می‌کند.</p>
+<div class="url-journey-step-title">TCP Handshake</div>
+<p class="url-journey-step-description">The browser establishes a reliable, secure connection with the target server.</p>
 </div>
 <div class="url-journey-step-card" data-animation-id="step-4">
 <div class="url-journey-step-header">
 <div class="url-journey-step-number">4</div>
 <i class="fas fa-paper-plane url-journey-step-icon"></i>
 </div>
-<div class="url-journey-step-title">ارسال درخواست</div>
-<p class="url-journey-step-description">مرورگر درخواست فایل صفحه را به سرور ارسال می‌کند.</p>
+<div class="url-journey-step-title">Send Request</div>
+<p class="url-journey-step-description">Browser sends an HTTP request: "Please send me index.html."</p>
 </div>
 <div class="url-journey-step-card" data-animation-id="step-5">
 <div class="url-journey-step-header">
 <div class="url-journey-step-number">5</div>
 <i class="fa-solid fa-file url-journey-step-icon"></i>
 </div>
-<div class="url-journey-step-title">دریافت فایل‌ها</div>
-<p class="url-journey-step-description">سرور فایل‌های HTML، CSS و جاوااسکریپت را می‌فرستد.</p>
+<div class="url-journey-step-title">Receive Files</div>
+<p class="url-journey-step-description">Server sends back the HTML, CSS, and JS files for the page.</p>
 </div>
 <div class="url-journey-step-card" data-animation-id="step-6">
 <div class="url-journey-step-header">
 <div class="url-journey-step-number">6</div>
 <i class="fa-solid fa-paint-roller url-journey-step-icon"></i>
 </div>
-<div class="url-journey-step-title">رندر و نمایش</div>
-<p class="url-journey-step-description">مرورگر کدها را ترجمه کرده و صفحه را به کاربر نشان می‌دهد.</p>
+<div class="url-journey-step-title">Render & Display</div>
+<p class="url-journey-step-description">Browser builds the website visual from the received code.</p>
 </div>
 </div>
 </div>
 <!-- Presenter Notes Area -->
 <div class="url-journey-presenter-notes">
-<p>Narrate the sequence with an example such as https://google.com. Explain that real systems involve more detail, but this is the correct beginner mental model. Step 1 is the user intent. Step 2 is the 'phonebook' lookup. Step 3 is the 'agreement' to talk. Step 4 and 5 are the actual conversation. Step 6 is where the code becomes a visual. Define URL as an address for a web resource.</p>
-<p>Transition: "Now that we see the journey, let's zoom into the actual language used in these requests and responses."</p>
+<p>to talk. Step 4 and 5 are the actual conversation. Step 6 is where the code becomes a visual. Define URL as an address for a web resource.</p>
+<p>s zoom into the actual language used in these requests and responses."</p>
 <p>Motion: Reveal each numbered step card one by one using a fade effect. The SVG animation at the top pulses to show the data movement synchronized with the explanation.</p>
 </div>
 </div>
@@ -308,11 +380,33 @@ html { overflow: hidden; }
       let currentPathIndex = 0;
       let progress = 0;
       let animationId = null;
-      const speed = 0.005; // Adjust for animation speed
+      const speed = 0.007;
+
+      function highlightStep(stepNum) {
+        for (let s = 1; s <= 6; s++) {
+          const el = document.getElementById('step-' + s);
+          if (el) {
+            if (s === stepNum) {
+              el.style.borderColor = '#2563eb';
+              el.style.backgroundColor = '#eff6ff';
+              el.style.transform = 'translateY(-4px)';
+              el.style.boxShadow = '0 8px 20px rgba(37,99,235,0.18)';
+            } else {
+              el.style.borderColor = '#cbd5e1';
+              el.style.backgroundColor = '#ffffff';
+              el.style.transform = 'none';
+              el.style.boxShadow = 'none';
+            }
+          }
+        }
+      }
 
       function animate() {
         if (currentPathIndex >= paths.length) {
           pulseDot.style.display = 'none';
+          highlightStep(6);
+          // Auto replay after 3 seconds
+          setTimeout(startAnimation, 3000);
           return;
         }
 
@@ -323,6 +417,17 @@ html { overflow: hidden; }
 
         pulseDot.setAttribute('cx', point.x);
         pulseDot.setAttribute('cy', point.y);
+
+        // Synchronize step cards with dot movement
+        if (currentPathIndex === 0) {
+          highlightStep(progress < 0.5 ? 1 : 2);
+        } else if (currentPathIndex === 1) {
+          highlightStep(3);
+        } else if (currentPathIndex === 2) {
+          highlightStep(progress < 0.5 ? 4 : 5);
+        } else if (currentPathIndex === 3) {
+          highlightStep(6);
+        }
 
         progress += speed;
 
@@ -341,10 +446,11 @@ html { overflow: hidden; }
         animate();
       }
 
-      replayBtn.addEventListener('click', startAnimation);
+      if (replayBtn) {
+        replayBtn.addEventListener('click', startAnimation);
+      }
       
-      // Auto-start after a short delay
-      setTimeout(startAnimation, 1000);
+      setTimeout(startAnimation, 800);
     })();
   </script>
 <script data-slide-animation="" type="application/json">

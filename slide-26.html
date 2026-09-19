@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl"><head>
+<html lang="en" dir="ltr"><head>
 <meta charset="utf-8">
 <meta content="width=1280, height=720, initial-scale=1.0" name="viewport">
-<title>کارگاه عملی: ساخت فایل index.html - جلسه ۰۱</title>
+<title>Hands-on: Creating index.html - Lesson 01</title>
 <script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
 <style>@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
@@ -225,6 +225,78 @@ body {width: 1280px; height: 720px; overflow: hidden; background-color: var(--pp
 html { overflow: hidden; }
 </style>
 <meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize">    <link rel="stylesheet" href="projector-theme.css">
+
+<style id="projector-contrast-tune">
+    /* High contrast projector tuning - English LTR Centered */
+    body, .slide-root-container, [class*="-slide-root"] {
+        background-color: #ffffff !important;
+        color: #0f172a !important;
+        direction: ltr !important;
+        font-family: var(--ppt-font-body) !important;
+    }
+    .title-region-wrapper, [class*="-title-region"], .title-section-wrapper, .title-region, .title-region-container, .title-region-outer-wrapper {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        justify-content: center !important;
+        margin: 22px auto 14px auto !important;
+        width: 100% !important;
+    }
+    .title-breadcrumb-container, [class*="-breadcrumb-container"], [class*="-breadcrumb-wrapper"], .title-breadcrumb-row, .title-breadcrumb-flex-container {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        direction: ltr !important;
+        margin: 0 auto 6px auto !important;
+        padding: 3px 14px !important;
+        background: #f1f5f9 !important;
+        border: 1px solid #cbd5e1 !important;
+        border-radius: 999px !important;
+    }
+    .title-accent-bar, .title-accent-line, .title-accent-pillar-line, [class*="-accent-line"], [class*="-accent-bar"] {
+        width: 6px !important;
+        height: 6px !important;
+        background: var(--ppt-accent) !important;
+        border-radius: 50% !important;
+        display: inline-block !important;
+    }
+    .title-breadcrumb-text, .title-breadcrumb-mono-label, [class*="-breadcrumb-text"], .title-breadcrumb-label {
+        font-family: var(--ppt-font-mono) !important;
+        font-size: 13px !important;
+        color: #475569 !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.06em !important;
+        text-transform: uppercase !important;
+    }
+    h1, .title-main-heading, [class*="-main-heading"], [class*="-main-title"], .page-main-title, .lesson-summary-page-title {
+        font-family: var(--ppt-font-display) !important;
+        color: #0f172a !important;
+        direction: ltr !important;
+        text-align: center !important;
+        margin: 0 auto !important;
+        font-size: 34px !important;
+        font-weight: 800 !important;
+        letter-spacing: -0.02em !important;
+        line-height: 1.25 !important;
+    }
+    h2, h3, [class*="-heading"], [class*="-title"] {
+        font-family: var(--ppt-font-display) !important;
+        color: #0f172a !important;
+        direction: ltr !important;
+    }
+    p, span, div, li {
+        font-family: var(--ppt-font-body);
+        direction: ltr;
+    }
+    .code-font, pre, code, .editor-content-area, .terminal-body-content, [class*="-code-strip"], [class*="-code-column"] {
+        font-family: var(--ppt-font-mono) !important;
+        direction: ltr !important;
+        text-align: left !important;
+    }
+</style>
+
 </head>
 <body class="">
 <div class="slide-root-container" style="overflow: hidden;">
@@ -232,9 +304,9 @@ html { overflow: hidden; }
 <div class="title-region-wrapper">
 <div class="title-breadcrumb-container">
 <div class="title-accent-bar"></div>
-<span class="title-breadcrumb-text">جلسه ۰۱ // کارگاه عملی</span>
+<span class="title-breadcrumb-text">Lesson 01 // Introduction</span>
 </div>
-<h1 class="title-main-heading">کارگاه عملی: ایجاد فایل index.html</h1>
+<h1 class="title-main-heading">Hands-on: Creating index.html</h1>
 </div>
 <!-- Main Content -->
 <div class="hands-on-content-grid" data-interaction-trigger="true">
@@ -243,22 +315,22 @@ html { overflow: hidden; }
 <div class="hands-on-step-card" data-animation-id="step-1">
 <div class="hands-on-step-number">1</div>
 <div class="hands-on-step-text-group">
-<div class="hands-on-step-title">۱. بررسی فعال بودن پوشه</div>
-<div class="hands-on-step-description">مطمئن شوید پوشه پروژه در پنل سایدبار ادیتور باز است.</div>
+<div class="hands-on-step-title">Open Your Project Folder</div>
+<div class="hands-on-step-description">Make sure your "web-basics" folder is active in the VS Code Sidebar.</div>
 </div>
 </div>
 <div class="hands-on-step-card" data-animation-id="step-2">
 <div class="hands-on-step-number">2</div>
 <div class="hands-on-step-text-group">
-<div class="hands-on-step-title">۲. ایجاد فایل جدید</div>
-<div class="hands-on-step-description">کلیک روی آیکون <i class="fa-regular fa-file-lines"></i> یا فشردن کلید میانبر <span class="extension-badge">Ctrl + N</span>.</div>
+<div class="hands-on-step-title">Trigger "New File"</div>
+<div class="hands-on-step-description">Click the <i class="fa-regular fa-file-lines"></i> icon in the Explorer or press <span class="extension-badge">Ctrl + N</span>.</div>
 </div>
 </div>
 <div class="hands-on-step-card" data-animation-id="step-3">
 <div class="hands-on-step-number">3</div>
 <div class="hands-on-step-text-group">
-<div class="hands-on-step-title">۳. نام‌گذاری دقیق</div>
-<div class="hands-on-step-description">نام index.html را به دقت تایپ کرده و کلید Enter را بزنید.</div>
+<div class="hands-on-step-title">Save and Name</div>
+<div class="hands-on-step-description">Type the filename exactly and press Enter to save it to disk.</div>
 </div>
 </div>
 </div>
@@ -267,14 +339,14 @@ html { overflow: hidden; }
 <div class="naming-convention-card" data-animation-id="naming-card">
 <div class="naming-convention-header">
 <i class="fa-solid fa-circle-info"></i>
-<div class="naming-convention-title">قانون نام‌گذاری index</div>
+<div class="naming-convention-title">The "index" Rule</div>
 </div>
 <div class="filename-highlight-box">
 <span class="filename-text">index.html</span>
 </div>
 <div class="naming-convention-body">
-<p style="margin-bottom: 12px;">سرورهای وب به صورت خودکار فایل index را به عنوان صفحه نخست و اصلی باز می‌کنند.</p>
-<p>پسوند html به سیستم‌عامل و مرورگر اعلام می‌کند که این یک سند استاندارد وب است.</p>
+<p style="margin-bottom: 12px;">Web servers automatically look for a file named <strong>index</strong> to serve as the homepage.</p>
+<p>The <span class="extension-badge">.html</span> extension tells the computer: "This is a web document."</p>
 </div>
 </div>
 <div class="vs-code-explorer-mock">

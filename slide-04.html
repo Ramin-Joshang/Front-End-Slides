@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="en" dir="ltr">
 
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>سرفصل‌های آموزشی دوره HTML & CSS - جلسه ۰۱</title>
+    <title>HTML & CSS Course Curriculum - Lesson 01</title>
     <script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -186,6 +186,78 @@
     <meta content="16:9" name="PageAspectRatio">
     <meta content="1280_720" name="PageSize">
     <link rel="stylesheet" href="projector-theme.css">
+
+<style id="projector-contrast-tune">
+    /* High contrast projector tuning - English LTR Centered */
+    body, .slide-root-container, [class*="-slide-root"] {
+        background-color: #ffffff !important;
+        color: #0f172a !important;
+        direction: ltr !important;
+        font-family: var(--ppt-font-body) !important;
+    }
+    .title-region-wrapper, [class*="-title-region"], .title-section-wrapper, .title-region, .title-region-container, .title-region-outer-wrapper {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        justify-content: center !important;
+        margin: 22px auto 14px auto !important;
+        width: 100% !important;
+    }
+    .title-breadcrumb-container, [class*="-breadcrumb-container"], [class*="-breadcrumb-wrapper"], .title-breadcrumb-row, .title-breadcrumb-flex-container {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        direction: ltr !important;
+        margin: 0 auto 6px auto !important;
+        padding: 3px 14px !important;
+        background: #f1f5f9 !important;
+        border: 1px solid #cbd5e1 !important;
+        border-radius: 999px !important;
+    }
+    .title-accent-bar, .title-accent-line, .title-accent-pillar-line, [class*="-accent-line"], [class*="-accent-bar"] {
+        width: 6px !important;
+        height: 6px !important;
+        background: var(--ppt-accent) !important;
+        border-radius: 50% !important;
+        display: inline-block !important;
+    }
+    .title-breadcrumb-text, .title-breadcrumb-mono-label, [class*="-breadcrumb-text"], .title-breadcrumb-label {
+        font-family: var(--ppt-font-mono) !important;
+        font-size: 13px !important;
+        color: #475569 !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.06em !important;
+        text-transform: uppercase !important;
+    }
+    h1, .title-main-heading, [class*="-main-heading"], [class*="-main-title"], .page-main-title, .lesson-summary-page-title {
+        font-family: var(--ppt-font-display) !important;
+        color: #0f172a !important;
+        direction: ltr !important;
+        text-align: center !important;
+        margin: 0 auto !important;
+        font-size: 34px !important;
+        font-weight: 800 !important;
+        letter-spacing: -0.02em !important;
+        line-height: 1.25 !important;
+    }
+    h2, h3, [class*="-heading"], [class*="-title"] {
+        font-family: var(--ppt-font-display) !important;
+        color: #0f172a !important;
+        direction: ltr !important;
+    }
+    p, span, div, li {
+        font-family: var(--ppt-font-body);
+        direction: ltr;
+    }
+    .code-font, pre, code, .editor-content-area, .terminal-body-content, [class*="-code-strip"], [class*="-code-column"] {
+        font-family: var(--ppt-font-mono) !important;
+        direction: ltr !important;
+        text-align: left !important;
+    }
+</style>
+
 </head>
 
 <body>
@@ -194,9 +266,9 @@
         <div class="title-region-wrapper">
             <div class="title-breadcrumb-container">
                 <div class="title-accent-bar"></div>
-                <span class="title-breadcrumb-text">جلسه ۰۱ // سرفصل‌ها</span>
+                <span class="title-breadcrumb-text">Lesson 01 // Introduction</span>
             </div>
-            <h1 class="title-main-heading">در این دوره چه مهارت‌هایی یاد می‌گیرید؟</h1>
+            <h1 class="title-main-heading">What You Will Learn in This Course</h1>
         </div>
 
         <!-- Curriculum Grid -->
@@ -205,10 +277,9 @@
                 <div class="curriculum-icon-box">
                     <i class="fa-brands fa-html5"></i>
                 </div>
-                <h2 class="curriculum-card-title">اصول و استانداردهای HTML5</h2>
+                <h2 class="curriculum-card-title">HTML5 Fundamentals</h2>
                 <p class="curriculum-card-description">
-                    Learn the building blocks of every website, including semantic elements, forms, tables, lists,
-                    media, and best practices.
+                    Learn the building blocks of every website, including semantic elements, forms, tables, lists,\n                    media, and best practices.
                 </p>
             </div>
 
@@ -216,10 +287,9 @@
                 <div class="curriculum-icon-box">
                     <i class="fa-brands fa-css3-alt"></i>
                 </div>
-                <h2 class="curriculum-card-title">استایل‌دهی مدرن با CSS3</h2>
+                <h2 class="curriculum-card-title">Modern CSS</h2>
                 <p class="curriculum-card-description">
-                    Style beautiful websites using colors, typography, spacing, positioning, gradients, shadows, and
-                    animations.
+                    Style beautiful websites using colors, typography, spacing, positioning, gradients, shadows, and\n                    animations.
                 </p>
             </div>
 
@@ -227,7 +297,7 @@
                 <div class="curriculum-icon-box">
                     <i class="fa-solid fa-table-columns"></i>
                 </div>
-                <h2 class="curriculum-card-title">چیدمان با فلکس‌باکس و گرید</h2>
+                <h2 class="curriculum-card-title">Flexbox &amp; Grid</h2>
                 <p class="curriculum-card-description">
                     Build modern page layouts with Flexbox and CSS Grid for clean, flexible, and responsive designs.
                 </p>
@@ -237,7 +307,7 @@
                 <div class="curriculum-icon-box">
                     <i class="fa-solid fa-mobile-screen"></i>
                 </div>
-                <h2 class="curriculum-card-title">طراحی کاملاً ریسپانسیو</h2>
+                <h2 class="curriculum-card-title">Responsive Design</h2>
                 <p class="curriculum-card-description">
                     Create websites that automatically adapt to desktop, tablet, and mobile devices.
                 </p>
@@ -249,8 +319,7 @@
                 </div>
                 <h2 class="curriculum-card-title">UI Components</h2>
                 <p class="curriculum-card-description">
-                    Build professional navigation bars, buttons, cards, forms, menus, galleries, and other reusable UI
-                    components.
+                    Build professional navigation bars, buttons, cards, forms, menus, galleries, and other reusable UI\n                    components.
                 </p>
             </div>
 
@@ -258,10 +327,9 @@
                 <div class="curriculum-icon-box">
                     <i class="fa-solid fa-laptop-code"></i>
                 </div>
-                <h2 class="curriculum-card-title">Real Projects</h2>
+                <h2 class="curriculum-card-title">Practical Hands-on Projects</h2>
                 <p class="curriculum-card-description">
-                    Apply everything you learn by building complete, responsive websites from scratch with real-world
-                    projects.
+                    Build complete, real-world, and responsive websites from scratch to showcase in your portfolio.
                 </p>
             </div>
         </div>

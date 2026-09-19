@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl"><head>
+<html lang="en" dir="ltr"><head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>خطاهای رایج مبتدیان و عیب‌یابی - جلسه ۰۱</title>
+<title>Troubleshooting Common Issues - Lesson 01</title>
 <script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
 <style>@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
@@ -140,7 +140,7 @@ body {width: 1280px; height: 720px; overflow: hidden; background: #000;
     color: var(--ppt-text-1);
     line-height: 1.2
     }
-/* خطا / اصلاح rows */
+/* Issue / Solution rows */
 .troubleshoot-issue-detail-block {
     display: flex;
     flex-direction: column;
@@ -241,6 +241,78 @@ body {width: 1280px; height: 720px; overflow: hidden; background: #000;
 html { overflow: hidden; }
 </style>
 <meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize">    <link rel="stylesheet" href="projector-theme.css">
+
+<style id="projector-contrast-tune">
+    /* High contrast projector tuning - English LTR Centered */
+    body, .slide-root-container, [class*="-slide-root"] {
+        background-color: #ffffff !important;
+        color: #0f172a !important;
+        direction: ltr !important;
+        font-family: var(--ppt-font-body) !important;
+    }
+    .title-region-wrapper, [class*="-title-region"], .title-section-wrapper, .title-region, .title-region-container, .title-region-outer-wrapper {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        justify-content: center !important;
+        margin: 22px auto 14px auto !important;
+        width: 100% !important;
+    }
+    .title-breadcrumb-container, [class*="-breadcrumb-container"], [class*="-breadcrumb-wrapper"], .title-breadcrumb-row, .title-breadcrumb-flex-container {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        direction: ltr !important;
+        margin: 0 auto 6px auto !important;
+        padding: 3px 14px !important;
+        background: #f1f5f9 !important;
+        border: 1px solid #cbd5e1 !important;
+        border-radius: 999px !important;
+    }
+    .title-accent-bar, .title-accent-line, .title-accent-pillar-line, [class*="-accent-line"], [class*="-accent-bar"] {
+        width: 6px !important;
+        height: 6px !important;
+        background: var(--ppt-accent) !important;
+        border-radius: 50% !important;
+        display: inline-block !important;
+    }
+    .title-breadcrumb-text, .title-breadcrumb-mono-label, [class*="-breadcrumb-text"], .title-breadcrumb-label {
+        font-family: var(--ppt-font-mono) !important;
+        font-size: 13px !important;
+        color: #475569 !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.06em !important;
+        text-transform: uppercase !important;
+    }
+    h1, .title-main-heading, [class*="-main-heading"], [class*="-main-title"], .page-main-title, .lesson-summary-page-title {
+        font-family: var(--ppt-font-display) !important;
+        color: #0f172a !important;
+        direction: ltr !important;
+        text-align: center !important;
+        margin: 0 auto !important;
+        font-size: 34px !important;
+        font-weight: 800 !important;
+        letter-spacing: -0.02em !important;
+        line-height: 1.25 !important;
+    }
+    h2, h3, [class*="-heading"], [class*="-title"] {
+        font-family: var(--ppt-font-display) !important;
+        color: #0f172a !important;
+        direction: ltr !important;
+    }
+    p, span, div, li {
+        font-family: var(--ppt-font-body);
+        direction: ltr;
+    }
+    .code-font, pre, code, .editor-content-area, .terminal-body-content, [class*="-code-strip"], [class*="-code-column"] {
+        font-family: var(--ppt-font-mono) !important;
+        direction: ltr !important;
+        text-align: left !important;
+    }
+</style>
+
 </head>
 <body>
 <div class="troubleshoot-slide-root" style="overflow: hidden;">
@@ -248,9 +320,9 @@ html { overflow: hidden; }
 <div class="troubleshoot-title-region">
 <div class="troubleshoot-title-breadcrumb-row">
 <div class="troubleshoot-title-accent-bar"></div>
-<span class="troubleshoot-title-breadcrumb-text">جلسه ۰۱ // عیب‌یابی</span>
+<span class="troubleshoot-title-breadcrumb-text">Lesson 01 // Introduction</span>
 </div>
-<h1 class="troubleshoot-title-heading">خطاهای رایج مبتدیان و راهکار برطرف کردن آن‌ها</h1>
+<h1 class="troubleshoot-title-heading">Troubleshooting Common Issues</h1>
 </div>
 <!-- Content Area -->
 <div class="troubleshoot-content-area">
@@ -262,11 +334,11 @@ html { overflow: hidden; }
 <div class="troubleshoot-issue-card-icon-wrap troubleshoot-icon-bad">
 <i class="fa-solid fa-code"></i>
 </div>
-<span class="troubleshoot-issue-card-label">غلط املایی در نام تگ‌ها</span>
+<span class="troubleshoot-issue-card-label">Typo in HTML Tag</span>
 </div>
 <div class="troubleshoot-issue-detail-block">
 <div class="troubleshoot-problem-row">
-<span class="troubleshoot-problem-label"><i class="fa-solid fa-xmark"></i> خطا</span>
+<span class="troubleshoot-problem-label"><i class="fa-solid fa-xmark"></i> Issue</span>
 <code class="troubleshoot-code-bad">&lt;titel&gt;My Page&lt;/titel&gt;</code>
 </div>
 <div class="troubleshoot-arrow-divider">
@@ -275,23 +347,23 @@ html { overflow: hidden; }
 <div class="troubleshoot-arrow-divider-line"></div>
 </div>
 <div class="troubleshoot-problem-row">
-<span class="troubleshoot-fix-label"><i class="fa-solid fa-check"></i> اصلاح</span>
+<span class="troubleshoot-fix-label"><i class="fa-solid fa-check"></i> Solution</span>
 <code class="troubleshoot-code-good">&lt;title&gt;My Page&lt;/title&gt;</code>
 </div>
-<p class="troubleshoot-fix-text">نام تگ‌ها باید دقیق تایپ شود. به رنگ تگ در VS Code دقت کنید؛ تگ‌های اشتباه رنگ متفاوتی دارند.</p>
+<p class="troubleshoot-fix-text">HTML tags must be spelled exactly. Check VS Code's syntax highlighting — unknown tags appear unstyled.</p>
 </div>
 </div>
-<!-- Card 2: فراموش کردن بستن تگ -->
+<!-- Card 2: Missing Closing Tag -->
 <div class="troubleshoot-issue-card">
 <div class="troubleshoot-issue-card-header">
 <div class="troubleshoot-issue-card-icon-wrap troubleshoot-icon-warn">
 <i class="fa-solid fa-triangle-exclamation"></i>
 </div>
-<span class="troubleshoot-issue-card-label">فراموش کردن بستن تگ</span>
+<span class="troubleshoot-issue-card-label">Missing Closing Tag</span>
 </div>
 <div class="troubleshoot-issue-detail-block">
 <div class="troubleshoot-problem-row">
-<span class="troubleshoot-problem-label"><i class="fa-solid fa-xmark"></i> خطا</span>
+<span class="troubleshoot-problem-label"><i class="fa-solid fa-xmark"></i> Issue</span>
 <code class="troubleshoot-code-bad">&lt;h1&gt;Hello World</code>
 </div>
 <div class="troubleshoot-arrow-divider">
@@ -300,10 +372,10 @@ html { overflow: hidden; }
 <div class="troubleshoot-arrow-divider-line"></div>
 </div>
 <div class="troubleshoot-problem-row">
-<span class="troubleshoot-fix-label"><i class="fa-solid fa-check"></i> اصلاح</span>
+<span class="troubleshoot-fix-label"><i class="fa-solid fa-check"></i> Solution</span>
 <code class="troubleshoot-code-good">&lt;h1&gt;Hello World&lt;/h1&gt;</code>
 </div>
-<p class="troubleshoot-fix-text">Every opening tag needs a matching closing tag. VS Code's bracket pair colorizer highlights mismatches.</p>
+<p class="troubleshoot-fix-text">s bracket pair colorizer highlights mismatches.</p>
 </div>
 </div>
 <!-- Card 3: Wrong File Path -->
@@ -316,7 +388,7 @@ html { overflow: hidden; }
 </div>
 <div class="troubleshoot-issue-detail-block">
 <div class="troubleshoot-problem-row">
-<span class="troubleshoot-problem-label"><i class="fa-solid fa-xmark"></i> خطا</span>
+<span class="troubleshoot-problem-label"><i class="fa-solid fa-xmark"></i> Issue</span>
 <code class="troubleshoot-code-bad">src="Images/logo.png"</code>
 </div>
 <div class="troubleshoot-arrow-divider">
@@ -325,23 +397,23 @@ html { overflow: hidden; }
 <div class="troubleshoot-arrow-divider-line"></div>
 </div>
 <div class="troubleshoot-problem-row">
-<span class="troubleshoot-fix-label"><i class="fa-solid fa-check"></i> اصلاح</span>
+<span class="troubleshoot-fix-label"><i class="fa-solid fa-check"></i> Solution</span>
 <code class="troubleshoot-code-good">src="images/logo.png"</code>
 </div>
 <p class="troubleshoot-fix-text">Paths are case-sensitive on servers. Keep all folder and file names lowercase to avoid broken links.</p>
 </div>
 </div>
-<!-- Card 4: ذخیره نشدن تغییرات فایل -->
+<!-- Card 4: File Changes Not Saved -->
 <div class="troubleshoot-issue-card">
 <div class="troubleshoot-issue-card-header">
 <div class="troubleshoot-issue-card-icon-wrap troubleshoot-icon-warn">
 <i class="fa-solid fa-floppy-disk"></i>
 </div>
-<span class="troubleshoot-issue-card-label">ذخیره نشدن تغییرات فایل</span>
+<span class="troubleshoot-issue-card-label">File Changes Not Saved</span>
 </div>
 <div class="troubleshoot-issue-detail-block">
 <div class="troubleshoot-problem-row">
-<span class="troubleshoot-problem-label"><i class="fa-solid fa-xmark"></i> نشانه</span>
+<span class="troubleshoot-problem-label"><i class="fa-solid fa-xmark"></i> Symptom</span>
 <code class="troubleshoot-code-bad">Changes not showing in browser</code>
 </div>
 <div class="troubleshoot-arrow-divider">
@@ -350,10 +422,10 @@ html { overflow: hidden; }
 <div class="troubleshoot-arrow-divider-line"></div>
 </div>
 <div class="troubleshoot-problem-row">
-<span class="troubleshoot-fix-label"><i class="fa-solid fa-check"></i> اصلاح</span>
+<span class="troubleshoot-fix-label"><i class="fa-solid fa-check"></i> Solution</span>
 <code class="troubleshoot-code-good">Ctrl + S  /  Cmd + S</code>
 </div>
-<p class="troubleshoot-fix-text">وجود دایره در کنار نام فایل در تب ادیتور نشانه ذخیره نشدن است. کلید Ctrl + S را بزنید یا Auto Save را فعال کنید.</p>
+<p class="troubleshoot-fix-text">A dot circle next to the filename indicates unsaved changes. Press Ctrl + S or turn on Auto Save.</p>
 </div>
 </div>
 <!-- Card 5: Wrong Extension -->
@@ -362,11 +434,11 @@ html { overflow: hidden; }
 <div class="troubleshoot-issue-card-icon-wrap troubleshoot-icon-blue">
 <i class="fa-solid fa-file-code"></i>
 </div>
-<span class="troubleshoot-issue-card-label">پسوند اشتباه در فایل</span>
+<span class="troubleshoot-issue-card-label">Wrong File Extension</span>
 </div>
 <div class="troubleshoot-issue-detail-block">
 <div class="troubleshoot-problem-row">
-<span class="troubleshoot-problem-label"><i class="fa-solid fa-xmark"></i> خطا</span>
+<span class="troubleshoot-problem-label"><i class="fa-solid fa-xmark"></i> Issue</span>
 <code class="troubleshoot-code-bad">index.html.txt</code>
 </div>
 <div class="troubleshoot-arrow-divider">
@@ -375,10 +447,10 @@ html { overflow: hidden; }
 <div class="troubleshoot-arrow-divider-line"></div>
 </div>
 <div class="troubleshoot-problem-row">
-<span class="troubleshoot-fix-label"><i class="fa-solid fa-check"></i> اصلاح</span>
+<span class="troubleshoot-fix-label"><i class="fa-solid fa-check"></i> Solution</span>
 <code class="troubleshoot-code-good">index.html</code>
 </div>
-<p class="troubleshoot-fix-text">سیستم‌عامل ممکن است پسوندها را مخفی کند. در تنظیمات پوشه‌ها گزینه نمایش پسوند را فعال کنید.</p>
+<p class="troubleshoot-fix-text">Operating systems may hide extensions. Enable "File name extensions" in your folder view settings.</p>
 </div>
 </div>
 <!-- Card 6: Page Not Refreshed -->
@@ -387,12 +459,12 @@ html { overflow: hidden; }
 <div class="troubleshoot-issue-card-icon-wrap troubleshoot-icon-blue">
 <i class="fa-solid fa-rotate-right"></i>
 </div>
-<span class="troubleshoot-issue-card-label">کش مرورگر و عدم به‌روزرسانی</span>
+<span class="troubleshoot-issue-card-label">Browser Cache Not Updating</span>
 </div>
 <div class="troubleshoot-issue-detail-block">
 <div class="troubleshoot-problem-row">
-<span class="troubleshoot-problem-label"><i class="fa-solid fa-xmark"></i> نشانه</span>
-<code class="troubleshoot-code-bad">Old content still showing</code>
+<span class="troubleshoot-problem-label"><i class="fa-solid fa-xmark"></i> Symptom</span>
+<code class="troubleshoot-code-bad">Viewing cached old version</code>
 </div>
 <div class="troubleshoot-arrow-divider">
 <div class="troubleshoot-arrow-divider-line"></div>
@@ -400,10 +472,10 @@ html { overflow: hidden; }
 <div class="troubleshoot-arrow-divider-line"></div>
 </div>
 <div class="troubleshoot-problem-row">
-<span class="troubleshoot-fix-label"><i class="fa-solid fa-check"></i> اصلاح</span>
+<span class="troubleshoot-fix-label"><i class="fa-solid fa-check"></i> Solution</span>
 <code class="troubleshoot-code-good">Ctrl+Shift+R  (hard reload)</code>
 </div>
-<p class="troubleshoot-fix-text">رفرش سخت (Ctrl+Shift+R) کش را دور می‌زند. استفاده از Live Server این مشکل را به کلی حل می‌کند.</p>
+<p class="troubleshoot-fix-text">A hard reload (Ctrl+Shift+R) bypasses cache. Using Live Server eliminates this issue entirely.</p>
 </div>
 </div>
 </div><!-- end grid -->
@@ -411,7 +483,7 @@ html { overflow: hidden; }
 <div class="troubleshoot-tip-bar">
 <i class="fa-solid fa-lightbulb troubleshoot-tip-bar-icon"></i>
 <span class="troubleshoot-tip-bar-text">Pro tip:</span>
-<span class="troubleshoot-tip-bar-sub">نکته طلایی: هر جا به بن‌بست رسیدید، کلید F12 را بزنید و تب Console را باز کنید؛ ارورهای قرمز دقیقاً علت را می‌گویند.</span>
+<span class="troubleshoot-tip-bar-sub">When nothing works, open DevTools (F12) → Console tab. Red errors point directly to the problem.</span>
 </div>
 </div><!-- end content area -->
 </div>

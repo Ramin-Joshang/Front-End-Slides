@@ -1,6 +1,6 @@
 {
   "name": "Front-End Slides",
-  "description": "اسلایدهای جامع و تعاملی آموزش فرانت‌اند و HTML & CSS با تم روشن بهینه‌شده برای پروژکتور، طراحی کاملاً فارسی، راست‌چین و واکنش‌گرا",
+  "description": "Comprehensive, high-contrast interactive presentation slides for Web Development and HTML & CSS, optimized for projector display with LTR typography, presenter notes, interactive laser pointer, and keyboard controls.",
   "requestFramePermissions": [],
   "majorCapabilities": [
     "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"

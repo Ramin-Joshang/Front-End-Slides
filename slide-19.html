@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl"><head>
+<html lang="en" dir="ltr"><head>
 <meta charset="utf-8">
 <meta content="width=1280, height=720" name="viewport">
-<title>جعبه‌ابزار توسعه‌دهنده فرانت‌اند - جلسه ۰۱</title>
+<title>Your Developer Toolbelt - Lesson 01</title>
 <script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
 <style>@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
@@ -178,6 +178,78 @@ body {width: 1280px; height: 720px; overflow: hidden; background-color: var(--pp
 html { overflow: hidden; }
 </style>
 <meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize">    <link rel="stylesheet" href="projector-theme.css">
+
+<style id="projector-contrast-tune">
+    /* High contrast projector tuning - English LTR Centered */
+    body, .slide-root-container, [class*="-slide-root"] {
+        background-color: #ffffff !important;
+        color: #0f172a !important;
+        direction: ltr !important;
+        font-family: var(--ppt-font-body) !important;
+    }
+    .title-region-wrapper, [class*="-title-region"], .title-section-wrapper, .title-region, .title-region-container, .title-region-outer-wrapper {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        justify-content: center !important;
+        margin: 22px auto 14px auto !important;
+        width: 100% !important;
+    }
+    .title-breadcrumb-container, [class*="-breadcrumb-container"], [class*="-breadcrumb-wrapper"], .title-breadcrumb-row, .title-breadcrumb-flex-container {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        direction: ltr !important;
+        margin: 0 auto 6px auto !important;
+        padding: 3px 14px !important;
+        background: #f1f5f9 !important;
+        border: 1px solid #cbd5e1 !important;
+        border-radius: 999px !important;
+    }
+    .title-accent-bar, .title-accent-line, .title-accent-pillar-line, [class*="-accent-line"], [class*="-accent-bar"] {
+        width: 6px !important;
+        height: 6px !important;
+        background: var(--ppt-accent) !important;
+        border-radius: 50% !important;
+        display: inline-block !important;
+    }
+    .title-breadcrumb-text, .title-breadcrumb-mono-label, [class*="-breadcrumb-text"], .title-breadcrumb-label {
+        font-family: var(--ppt-font-mono) !important;
+        font-size: 13px !important;
+        color: #475569 !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.06em !important;
+        text-transform: uppercase !important;
+    }
+    h1, .title-main-heading, [class*="-main-heading"], [class*="-main-title"], .page-main-title, .lesson-summary-page-title {
+        font-family: var(--ppt-font-display) !important;
+        color: #0f172a !important;
+        direction: ltr !important;
+        text-align: center !important;
+        margin: 0 auto !important;
+        font-size: 34px !important;
+        font-weight: 800 !important;
+        letter-spacing: -0.02em !important;
+        line-height: 1.25 !important;
+    }
+    h2, h3, [class*="-heading"], [class*="-title"] {
+        font-family: var(--ppt-font-display) !important;
+        color: #0f172a !important;
+        direction: ltr !important;
+    }
+    p, span, div, li {
+        font-family: var(--ppt-font-body);
+        direction: ltr;
+    }
+    .code-font, pre, code, .editor-content-area, .terminal-body-content, [class*="-code-strip"], [class*="-code-column"] {
+        font-family: var(--ppt-font-mono) !important;
+        direction: ltr !important;
+        text-align: left !important;
+    }
+</style>
+
 </head>
 <body>
 <div class="toolbelt-slide-root" style="overflow: hidden;">
@@ -185,9 +257,9 @@ html { overflow: hidden; }
 <div class="title-region-container">
 <div class="title-breadcrumb-wrapper">
 <div class="title-accent-line"></div>
-<span class="title-breadcrumb-text">جلسه ۰۱ // ابزارهای کار</span>
+<span class="title-breadcrumb-text">Lesson 01 // Introduction</span>
 </div>
-<h1 class="title-main-heading">جعبه‌ابزار ضروری یک توسعه‌دهنده فرانت‌اند</h1>
+<h1 class="title-main-heading">Your Developer Toolbelt</h1>
 </div>
 <!-- Main Content -->
 <div class="toolbelt-content-layout">
@@ -199,18 +271,18 @@ html { overflow: hidden; }
 <i class="fa-solid fa-code"></i>
 </div>
 <div class="toolbelt-card-title-group">
-<div class="toolbelt-card-subtitle">کارگاه تخصصی کدنویسی</div>
+<div class="toolbelt-card-subtitle">The Workshop</div>
 <h2 class="toolbelt-card-title">Visual Studio Code</h2>
 </div>
 </div>
 <div class="toolbelt-card-body">
 <p class="toolbelt-description-text">
-              محیط اصلی و پیشرفته شما برای نوشتن، پوشه‌بندی و مدیریت کدهای پروژه.
+              The primary environment where you write, organize, and manage your source code files.
             </p>
 <ul class="toolbelt-feature-list">
-<li class="toolbelt-list-item">تکمیل خودکار و هوشمند کدها (IntelliSense)</li>
-<li class="toolbelt-list-item">هزاران افزونه کاربردی برای تسهیل کدنویسی</li>
-<li class="toolbelt-list-item">دسترسی سریع به ترمینال در داخل برنامه</li>
+<li class="toolbelt-list-item">Intelligent code completion</li>
+<li class="toolbelt-list-item">Extension ecosystem</li>
+<li class="toolbelt-list-item">Built-in terminal access</li>
 </ul>
 </div>
 </div>
@@ -223,18 +295,18 @@ html { overflow: hidden; }
 <i class="fa-solid fa-globe"></i>
 </div>
 <div class="toolbelt-card-title-group">
-<div class="toolbelt-card-subtitle">میز کار و آزمایشگاه توسعه</div>
+<div class="toolbelt-card-subtitle">The Workbench</div>
 <h2 class="toolbelt-card-title">Google Chrome</h2>
 </div>
 </div>
 <div class="toolbelt-card-body">
 <p class="toolbelt-description-text">
-              بستری که خروجی کار خود را در آن می‌بینید و با ابزارهای تخصصی خطاها را رفع می‌کنید.
+              The platform where you preview your creation and use professional tools to debug code.
             </p>
 <ul class="toolbelt-feature-list">
-<li class="toolbelt-list-item">مجموعه تخصصی Chrome DevTools برای عیب‌یابی</li>
-<li class="toolbelt-list-item">موتور پرسرعت V8 برای اجرای بهینه کدها</li>
-<li class="toolbelt-list-item">بازرسی زنده و لحظه‌ای ظاهر و کدهای صفحه</li>
+<li class="toolbelt-list-item">Chrome Developer Tools</li>
+<li class="toolbelt-list-item">V8 JavaScript engine</li>
+<li class="toolbelt-list-item">Live rendering inspection</li>
 </ul>
 </div>
 </div>
@@ -242,7 +314,7 @@ html { overflow: hidden; }
 </div>
 <!-- Footer Meta -->
 <div class="toolbelt-footer-meta">
-<span class="toolbelt-meta-text">دوره جامع آموزش فرانت‌اند</span>
+<span class="toolbelt-meta-text">COMPLETE FRONT-END DEVELOPMENT COURSE</span>
 <span class="toolbelt-meta-text">SLIDE 19</span>
 </div>
 </div>

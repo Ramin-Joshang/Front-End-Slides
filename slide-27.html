@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl"><head>
+<html lang="en" dir="ltr"><head>
 <meta charset="utf-8">
 <meta content="width=1280, height=720" name="viewport">
-<title>نوشتن اولین خط کد HTML - جلسه ۰۱</title>
+<title>Writing Your First Line of HTML Code - Lesson 01</title>
 <script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
 <style>@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
@@ -221,6 +221,78 @@ body {width: 1280px; height: 720px; overflow: hidden; background-color: var(--pp
 html { overflow: hidden; }
 </style>
 <meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize">    <link rel="stylesheet" href="projector-theme.css">
+
+<style id="projector-contrast-tune">
+    /* High contrast projector tuning - English LTR Centered */
+    body, .slide-root-container, [class*="-slide-root"] {
+        background-color: #ffffff !important;
+        color: #0f172a !important;
+        direction: ltr !important;
+        font-family: var(--ppt-font-body) !important;
+    }
+    .title-region-wrapper, [class*="-title-region"], .title-section-wrapper, .title-region, .title-region-container, .title-region-outer-wrapper {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        justify-content: center !important;
+        margin: 22px auto 14px auto !important;
+        width: 100% !important;
+    }
+    .title-breadcrumb-container, [class*="-breadcrumb-container"], [class*="-breadcrumb-wrapper"], .title-breadcrumb-row, .title-breadcrumb-flex-container {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        direction: ltr !important;
+        margin: 0 auto 6px auto !important;
+        padding: 3px 14px !important;
+        background: #f1f5f9 !important;
+        border: 1px solid #cbd5e1 !important;
+        border-radius: 999px !important;
+    }
+    .title-accent-bar, .title-accent-line, .title-accent-pillar-line, [class*="-accent-line"], [class*="-accent-bar"] {
+        width: 6px !important;
+        height: 6px !important;
+        background: var(--ppt-accent) !important;
+        border-radius: 50% !important;
+        display: inline-block !important;
+    }
+    .title-breadcrumb-text, .title-breadcrumb-mono-label, [class*="-breadcrumb-text"], .title-breadcrumb-label {
+        font-family: var(--ppt-font-mono) !important;
+        font-size: 13px !important;
+        color: #475569 !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.06em !important;
+        text-transform: uppercase !important;
+    }
+    h1, .title-main-heading, [class*="-main-heading"], [class*="-main-title"], .page-main-title, .lesson-summary-page-title {
+        font-family: var(--ppt-font-display) !important;
+        color: #0f172a !important;
+        direction: ltr !important;
+        text-align: center !important;
+        margin: 0 auto !important;
+        font-size: 34px !important;
+        font-weight: 800 !important;
+        letter-spacing: -0.02em !important;
+        line-height: 1.25 !important;
+    }
+    h2, h3, [class*="-heading"], [class*="-title"] {
+        font-family: var(--ppt-font-display) !important;
+        color: #0f172a !important;
+        direction: ltr !important;
+    }
+    p, span, div, li {
+        font-family: var(--ppt-font-body);
+        direction: ltr;
+    }
+    .code-font, pre, code, .editor-content-area, .terminal-body-content, [class*="-code-strip"], [class*="-code-column"] {
+        font-family: var(--ppt-font-mono) !important;
+        direction: ltr !important;
+        text-align: left !important;
+    }
+</style>
+
 </head>
 <body class="">
 <div class="slide-root-container" style="overflow: hidden;">
@@ -228,9 +300,9 @@ html { overflow: hidden; }
 <div class="title-region-wrapper">
 <div class="title-breadcrumb-container">
 <div class="title-accent-line"></div>
-<span class="title-breadcrumb-text">جلسه ۰۱ // اولین کدنویسی</span>
+<span class="title-breadcrumb-text">Lesson 01 // Introduction</span>
 </div>
-<h1 class="page-main-title">نوشتن اولین خطوط کد HTML در زندگی شما!</h1>
+<h1 class="page-main-title">Writing Your First Line of Code</h1>
 </div>
 <!-- Main Content -->
 <div class="content-main-layout">
@@ -251,11 +323,11 @@ html { overflow: hidden; }
 <div class="editor-content-area">
 <div style="margin-bottom: 8px;">
 <span class="code-line-number">1</span>
-<span class="html-tag-bracket">&lt;</span><span class="html-tag-name">h1</span><span class="html-tag-bracket">&gt;</span><span class="html-tag-content">سلام دنیا!</span><span class="html-tag-bracket">&lt;/</span><span class="html-tag-name">h1</span><span class="html-tag-bracket">&gt;</span>
+<span class="html-tag-bracket">&lt;</span><span class="html-tag-name">h1</span><span class="html-tag-bracket">&gt;</span><span class="html-tag-content">Hello World!</span><span class="html-tag-bracket">&lt;/</span><span class="html-tag-name">h1</span><span class="html-tag-bracket">&gt;</span>
 </div>
 <div>
 <span class="code-line-number">2</span>
-<span class="html-tag-bracket">&lt;</span><span class="html-tag-name">p</span><span class="html-tag-bracket">&gt;</span><span class="html-tag-content">من در حال یادگیری فرانت‌اند هستم.</span><span class="html-tag-bracket">&lt;/</span><span class="html-tag-name">p</span><span class="html-tag-bracket">&gt;</span>
+<span class="html-tag-bracket">&lt;</span><span class="html-tag-name">p</span><span class="html-tag-bracket">&gt;</span><span class="html-tag-content">I am learning to code Front-End!</span><span class="code-cursor"></span><span class="html-tag-bracket">&lt;/</span><span class="html-tag-name">p</span><span class="html-tag-bracket">&gt;</span>
 </div>
 </div>
 </div>
@@ -265,16 +337,16 @@ html { overflow: hidden; }
 <div class="explanation-card-item" data-animation-id="explanation-h1">
 <div class="explanation-tag-label">
 <i class="fa-solid fa-heading"></i>
-            تگ تیتر اصلی (&lt;h1&gt;)
+            &lt;h1&gt; Tag
           </div>
 <p class="explanation-body-text">
-            نشان‌دهنده تیتر اصلی و مهم‌ترین عنوان در صفحه وب است.
+            Represents the main heading. Use this for the most important title on your page.
           </p>
 </div>
 <div class="explanation-card-item" data-animation-id="explanation-p">
 <div class="explanation-tag-label">
 <i class="fa-solid fa-paragraph"></i>
-            تگ پاراگراف (&lt;p&gt;)
+            &lt;p&gt; Tag
           </div>
 <p class="explanation-body-text">
             Represents a paragraph. Use this for regular text content and descriptions.
@@ -282,8 +354,8 @@ html { overflow: hidden; }
 </div>
 <div class="browser-preview-frame" data-animation-id="browser-result">
 <div class="preview-header-label">Browser Preview</div>
-<h1 class="preview-h1-render">سلام دنیا!</h1>
-<p class="preview-p-render">من در حال یادگیری فرانت‌اند هستم.</p>
+<h1 class="preview-h1-render">Hello World!</h1>
+<p class="preview-p-render">I am learning to code Front-End!</p>
 </div>
 </div>
 </div>
@@ -313,7 +385,7 @@ html { overflow: hidden; }
 <script>
     /* 
     Presenter Notes:
-    - Welcome to your first "سلام دنیا!" moment! HTML uses "tags" to tell the browser what things are.
+    - Welcome to your first "Hello World!" moment! HTML uses "tags" to tell the browser what things are.
     - On line 1, we use <h1>. This stands for Heading 1—the most important title.
     - On line 2, we use <p>. This stands for paragraph, used for normal text.
     - Notice how tags come in pairs: an opening tag <h1> and a closing tag </h1> with a slash.

@@ -1,170 +1,262 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="en" dir="ltr">
 
 <head>
     <meta charset="utf-8">
-    <title>آموزش جامع HTML & CSS - جلسه ۰۱</title>
+    <title>HTML & CSS Masterclass - Lesson 01</title>
     <script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="projector-theme.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
         :root {
-            --ppt-bg: #0f172a;
-            --ppt-bg-soft: #1e293b;
-            --ppt-surface: #1e293b;
-            --ppt-surface-2: #334155;
-            --ppt-border: #334155;
-            --ppt-text-1: #f8fafc;
-            --ppt-text-2: #94a3b8;
-            --ppt-text-3: #64748b;
-            --ppt-accent: #22d3ee;
-            --ppt-accent-2: #3b82f6;
-            --ppt-chart-1: #22d3ee;
-            --ppt-chart-2: #3b82f6;
-            --ppt-chart-3: #818cf8;
-            --ppt-chart-4: #c084fc;
-            --ppt-good: #4ade80;
-            --ppt-warn: #fbbf24;
-            --ppt-bad: #f87171;
-            --ppt-radius-sm: 4px;
-            --ppt-radius-md: 8px;
-            --ppt-radius-lg: 16px;
-            --ppt-shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.3);
-            --ppt-shadow-strong: 0 12px 24px rgba(0, 0, 0, 0.5);
             --ppt-font-display: "Space Grotesk", sans-serif;
-            --ppt-font-body: "Inter", sans-serif;
-            --ppt-font-mono: "JetBrains Mono", monospace
+            --ppt-font-body: "Plus Jakarta Sans", sans-serif;
+            --ppt-font-mono: "JetBrains Mono", monospace;
+            --ppt-accent: #2563eb;
+            --ppt-accent-hover: #1d4ed8;
+            --ppt-surface: #ffffff;
+            --ppt-text-1: #0f172a;
+            --ppt-text-2: #334155;
+            --ppt-text-3: #64748b;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
-            padding: 0
+            padding: 0;
         }
 
         body {
             width: 1280px;
             height: 720px;
             overflow: hidden;
-            background-color: #000;
+            background-color: #ffffff;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: var(--ppt-font-body)
+            font-family: var(--ppt-font-body);
+            direction: ltr;
         }
 
-        .intro-frontend-slide-root {
+        .cover-slide-root {
             width: 1280px;
             height: 720px;
-            background-color: var(--ppt-bg);
             position: relative;
-            display: grid;
-            grid-template-columns: 1fr;
-            grid-template-rows: 1fr
-        }
-
-        .intro-frontend-background-image {
-            grid-area: 1/1;
-            width: 1280px;
-            height: 720px;
-            object-fit: cover;
-            z-index: 0
-        }
-
-        .intro-frontend-overlay-layer {
-            grid-area: 1/1;
-            width: 1280px;
-            height: 720px;
-            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.92) 0%, rgba(15, 23, 42, 0.75) 50%, rgba(15, 23, 42, 0.95) 100%);
-            z-index: 1
-        }
-
-        .intro-frontend-content-layout {
-            grid-area: 1/1;
-            z-index: 2;
             display: flex;
             flex-direction: column;
-            padding: 60px 80px;
-            text-align: center
+            justify-content: space-between;
+            align-items: center;
+            padding: 60px 80px 50px 80px;
+            background: 
+                radial-gradient(circle at 50% 25%, rgba(37, 99, 235, 0.07) 0%, rgba(255, 255, 255, 0) 65%),
+                linear-gradient(180deg, #f8fafc 0%, #ffffff 40%, #f1f5f9 100%);
+            overflow: hidden;
         }
 
-        .intro-frontend-label-wrapper {
-            margin-bottom: 120px
+        /* Subtle Technical Grid Background */
+        .cover-slide-root::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(to right, rgba(203, 213, 225, 0.35) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(203, 213, 225, 0.35) 1px, transparent 1px);
+            background-size: 40px 40px;
+            mask-image: radial-gradient(circle at 50% 40%, black 40%, transparent 80%);
+            -webkit-mask-image: radial-gradient(circle at 50% 40%, black 40%, transparent 80%);
+            pointer-events: none;
+            z-index: 0;
         }
 
-        .intro-frontend-course-tag {
+        /* Top Course Pill */
+        .cover-top-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 20px;
+            border-radius: 999px;
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            box-shadow: 0 2px 6px rgba(37, 99, 235, 0.08);
+            z-index: 2;
+            animation: pptHeaderIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+
+        .cover-pill-icon {
+            color: #2563eb;
+            font-size: 14px;
+        }
+
+        .cover-pill-text {
+            font-family: var(--ppt-font-mono);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            color: #1e40af;
+            text-transform: uppercase;
+        }
+
+        /* Center Hero Block */
+        .cover-hero-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            z-index: 2;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .cover-main-heading {
+            font-family: var(--ppt-font-display);
+            font-size: 76px;
+            font-weight: 900;
+            color: #0f172a;
+            letter-spacing: -0.035em;
+            line-height: 1.05;
+            margin: 0;
+            text-shadow: 0 2px 10px rgba(15, 23, 42, 0.05);
+            animation: pptCardIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+        }
+
+        .cover-main-heading .accent-gradient {
+            background: linear-gradient(135deg, #2563eb 0%, #0284c7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .cover-subtitle {
+            font-family: var(--ppt-font-display);
+            font-size: 30px;
+            font-weight: 700;
+            color: #3b82f6;
+            letter-spacing: -0.015em;
+            margin-top: 12px;
+            margin-bottom: 24px;
+            animation: pptCardIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+        }
+
+        /* Terminal Command Badge */
+        .cover-terminal-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            padding: 8px 24px;
+            border-radius: 10px;
+            box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+            animation: pptCardIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+        }
+
+        .terminal-dot-group {
+            display: flex;
+            gap: 6px;
+        }
+
+        .terminal-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .terminal-dot.red { background: #ef4444; }
+        .terminal-dot.yellow { background: #f59e0b; }
+        .terminal-dot.green { background: #10b981; }
+
+        .terminal-code-text {
             font-family: var(--ppt-font-mono);
             font-size: 14px;
-            color: var(--ppt-accent);
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            padding: 6px 16px;
-            border: 1px solid var(--ppt-border);
-            border-radius: var(--ppt-radius-sm);
-            display: inline-block;
-            background-color: rgba(34, 211, 238, 0.05)
+            font-weight: 600;
+            color: #334155;
+            letter-spacing: 0.02em;
         }
 
-        .title-frontend-heading-group {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-            margin-bottom: 140px
+        .terminal-code-text .cmd-prompt {
+            color: #2563eb;
+            margin-right: 4px;
         }
 
-        .title-frontend-main-text {
-            font-family: var(--ppt-font-display);
-            font-size: 68px;
+        .terminal-code-text .cmd-highlight {
+            color: #0284c7;
             font-weight: 700;
-            color: var(--ppt-text-1);
-            line-height: 1.1;
-            letter-spacing: -0.02em
         }
 
-        .title-frontend-terminal-path {
-            font-family: var(--ppt-font-mono);
-            font-size: 24px;
-            color: var(--ppt-accent);
-            background-color: rgba(0, 0, 0, 0.3);
-            padding: 12px 24px;
-            border-radius: var(--ppt-radius-md);
-            display: inline-block;
-            margin: 0 auto
-        }
-
-        .intro-frontend-metadata-grid {
+        /* Bottom Metadata Cards Grid */
+        .cover-metadata-grid {
             display: grid;
-            grid-template-columns: 1fr 1px 1fr 1px 1fr;
-            align-items: center;
-            gap: 40px;
-            margin-top: auto
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            width: 100%;
+            max-width: 1040px;
+            z-index: 2;
+            animation: pptCardIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
         }
 
-        .intro-frontend-metadata-item {
+        .cover-meta-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px 22px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .cover-meta-card:hover {
+            transform: translateY(-2px);
+            border-color: #bfdbfe;
+            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.08);
+        }
+
+        .cover-meta-icon-box {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            background: #eff6ff;
+            border: 1px solid #dbeafe;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2563eb;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .cover-meta-text-box {
             display: flex;
             flex-direction: column;
-            gap: 4px
+            text-align: left;
         }
 
-        .intro-frontend-metadata-label {
+        .cover-meta-label {
             font-family: var(--ppt-font-mono);
-            font-size: 12px;
-            color: var(--ppt-text-3);
+            font-size: 11px;
+            font-weight: 700;
+            color: #64748b;
             text-transform: uppercase;
-            letter-spacing: 0.1em
+            letter-spacing: 0.08em;
+            margin-bottom: 2px;
         }
 
-        .intro-frontend-metadata-value {
-            font-size: 18px;
+        .cover-meta-value {
+            font-family: var(--ppt-font-display);
+            font-size: 17px;
+            font-weight: 800;
+            color: #0f172a;
+            line-height: 1.2;
+        }
+
+        .cover-meta-sub {
+            font-size: 12px;
+            color: #64748b;
             font-weight: 500;
-            color: var(--ppt-text-2)
-        }
-
-        .intro-frontend-metadata-divider {
-            width: 1px;
-            height: 40px;
-            background-color: var(--ppt-border)
+            margin-top: 2px;
         }
 
         html {
@@ -173,89 +265,98 @@
     </style>
     <meta content="16:9" name="PageAspectRatio">
     <meta content="1280_720" name="PageSize">
-    <link rel="stylesheet" href="projector-theme.css">
 </head>
 
-<body class="">
-    <div class="intro-frontend-slide-root" style="overflow: hidden;">
-        <!-- Background Layer -->
-        <img alt="Hero Background" class="intro-frontend-background-image" data-animation-id="hero-bg"
-            src="https://agents-download.skywork.ai/image/ppt/intro_frontend_development_lesson/f627d43176c3d41841133320973e696e.png">
-        <!-- Scrim Overlay -->
-        <div class="intro-frontend-overlay-layer"></div>
-        <!-- Content Layer -->
-        <div class="intro-frontend-content-layout">
-            <!-- Top Label -->
-            <div class="intro-frontend-label-wrapper">
-                <span class="intro-frontend-course-tag">
-                    دوره جامع برنامه‌نویسی وب
-                </span>
+<body>
+    <div class="cover-slide-root" style="overflow: hidden;">
+        <!-- Top Pill -->
+        <div class="cover-top-pill" data-animation-id="hero-bg">
+            <i class="fa-solid fa-code cover-pill-icon"></i>
+            <span class="cover-pill-text">Front-End Engineering Masterclass</span>
+        </div>
+
+        <!-- Center Hero Heading -->
+        <div class="cover-hero-center">
+            <h1 class="cover-main-heading" data-animation-id="main-title">
+                HTML &amp; <span class="accent-gradient">CSS</span>
+            </h1>
+            <h2 class="cover-subtitle">
+                From Zero to Professional Web Developer
+            </h2>
+            <div class="cover-terminal-badge" data-animation-id="terminal-path">
+                <div class="terminal-dot-group">
+                    <span class="terminal-dot red"></span>
+                    <span class="terminal-dot yellow"></span>
+                    <span class="terminal-dot green"></span>
+                </div>
+                <div class="terminal-code-text">
+                    <span class="cmd-prompt">&gt;</span> path: <span class="cmd-highlight">/courses/html-css/module-01-introduction.html</span>
+                </div>
             </div>
-            <!-- Title Area -->
-            <div class="title-frontend-heading-group">
-                <h1 class="title-frontend-main-text" data-animation-id="main-title">
-                    آموزش جامع HTML & CSS<br>از صفر تا ورود به بازار کار
-                </h1>
-                <!-- <div class="title-frontend-terminal-path" data-animation-id="terminal-path">
-                    > path: /courses/html-css/module-01
-                </div> -->
+        </div>
+
+        <!-- Bottom Metadata Cards Grid -->
+        <div class="cover-metadata-grid" data-animation-id="footer-meta">
+            <!-- Instructor -->
+            <div class="cover-meta-card">
+                <div class="cover-meta-icon-box">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                </div>
+                <div class="cover-meta-text-box">
+                    <span class="cover-meta-label">Instructor</span>
+                    <span class="cover-meta-value">Ramin Joshaghani</span>
+                    <span class="cover-meta-sub">Front-End Engineer</span>
+                </div>
             </div>
-            <!-- Footer Metadata -->
-            <div class="intro-frontend-metadata-grid" data-animation-id="footer-meta">
 
-                <div class="intro-frontend-metadata-item">
-                    <span class="intro-frontend-metadata-label">مدرس دوره</span>
-                    <span class="intro-frontend-metadata-value">
-                        رامین جوشقانی
-                    </span>
+            <!-- Course -->
+            <div class="cover-meta-card">
+                <div class="cover-meta-icon-box">
+                    <i class="fa-solid fa-laptop-code"></i>
                 </div>
-
-                <div class="intro-frontend-metadata-divider"></div>
-
-                <div class="intro-frontend-metadata-item">
-                    <span class="intro-frontend-metadata-label">عنوان دوره</span>
-                    <span class="intro-frontend-metadata-value">
-                        دوره جامع برنامه‌نویسی وب
-                    </span>
+                <div class="cover-meta-text-box">
+                    <span class="cover-meta-label">Course Track</span>
+                    <span class="cover-meta-value">HTML &amp; CSS Foundations</span>
+                    <span class="cover-meta-sub">Module 01 // 2026 Edition</span>
                 </div>
+            </div>
 
-                <div class="intro-frontend-metadata-divider"></div>
-
-                <div class="intro-frontend-metadata-item">
-                    <span class="intro-frontend-metadata-label">جلسه</span>
-                    <span class="intro-frontend-metadata-value">
-                        ۰۱ • مبانی وب و فرانت‌اند
-                    </span>
+            <!-- Lesson -->
+            <div class="cover-meta-card">
+                <div class="cover-meta-icon-box">
+                    <i class="fa-solid fa-layer-group"></i>
                 </div>
-
+                <div class="cover-meta-text-box">
+                    <span class="cover-meta-label">Lesson Scope</span>
+                    <span class="cover-meta-value">01 • Architecture &amp; Setup</span>
+                    <span class="cover-meta-sub">32 Interactive Master Slides</span>
+                </div>
             </div>
         </div>
     </div>
+
     <script data-slide-animation="" type="application/json">
-  {
-    "timeline": [
-      {
-        "animation_id": "hero-bg",
-        "effect": "fade"
-      },
-      {
-        "animation_id": "terminal-path",
-        "effect": "appear"
-      },
-      {
-        "animation_id": "main-title",
-        "effect": "fade"
-      },
-      {
-        "animation_id": "footer-meta",
-        "effect": "appear"
-      }
-    ]
-  }
-  </script>
-
-
-
+    {
+      "timeline": [
+        {
+          "animation_id": "hero-bg",
+          "effect": "fade"
+        },
+        {
+          "animation_id": "main-title",
+          "effect": "fade"
+        },
+        {
+          "animation_id": "terminal-path",
+          "effect": "appear"
+        },
+        {
+          "animation_id": "footer-meta",
+          "effect": "appear"
+        }
+      ]
+    }
+    </script>
 </body>
 
 </html>

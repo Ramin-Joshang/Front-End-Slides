@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="en" dir="ltr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>آموزش جامع HTML & CSS - نمایش اسلایدها (پروژکتور)</title>
-    <meta name="description" content="نمایش تعاملی و تمام‌صفحه اسلایدهای دوره جامع آموزش فرانت‌اند، بهینه‌سازی‌شده برای پروژکتور با تم روشن و کنتراست بالا">
+    <title>Complete HTML & CSS Course - Interactive Presentation</title>
+    <meta name="description" content="Comprehensive interactive Front-End Web Development slides optimized for high-contrast projector display.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="projector-theme.css">
     <style>
@@ -23,14 +23,14 @@
             overflow: hidden;
             background-color: #f1f5f9;
             font-family: var(--ppt-font-body);
-            direction: rtl;
+            direction: ltr;
         }
 
         /* Top Progress Bar */
         #progressBar {
             position: fixed;
             top: 0;
-            right: 0;
+            left: 0;
             height: 4px;
             width: 0%;
             background: linear-gradient(90deg, var(--ppt-accent-2), var(--ppt-accent));
@@ -113,11 +113,11 @@
 
         /* In RTL: Left is NEXT, Right is PREVIOUS */
         .nav-zone.next {
-            left: 0;
+            right: 0;
         }
 
         .nav-zone.prev {
-            right: 0;
+            left: 0;
         }
 
         .nav-zone:hover {
@@ -395,69 +395,69 @@
     </div>
 
     <!-- Clickable Navigation Zones (In RTL: Left = Forward, Right = Back) -->
-    <div class="nav-zone next" id="nextZone" title="اسلاید بعدی (کلید چپ / فاصله)">
+    <div class="nav-zone prev" id="prevZone" title="Previous Slide (Left Arrow / PageUp)">
         <i class="fas fa-chevron-left"></i>
     </div>
-    <div class="nav-zone prev" id="prevZone" title="اسلاید قبلی (کلید راست)">
+    <div class="nav-zone next" id="nextZone" title="Next Slide (Right Arrow / Space / PageDown)">
         <i class="fas fa-chevron-right"></i>
     </div>
 
     <!-- Projector Smart Floating Toolbar -->
     <div id="projectorBar">
-        <button class="bar-btn primary" id="btnNext" title="اسلاید بعدی (کلید چپ یا Space)">
+        <button class="bar-btn" id="btnPrev" title="Previous Slide (Left Arrow / P)">
             <i class="fas fa-arrow-left"></i>
-            <span>بعدی</span>
+            <span>Prev</span>
         </button>
 
-        <button id="slideCounterBtn" title="کلیک برای مشاهده فهرست و پرش سریع (کلید G)">
-            <span id="counterText">اسلاید ۱ از ۳۲</span>
+        <button id="slideCounterBtn" title="Slide Directory & Quick Jump (Key G)">
+            <span id="counterText">Slide 1 of 32</span>
         </button>
 
-        <button class="bar-btn" id="btnPrev" title="اسلاید قبلی (کلید راست)">
-            <span>قبلی</span>
+        <button class="bar-btn primary" id="btnNext" title="Next Slide (Right Arrow / Space / N)">
+            <span>Next</span>
             <i class="fas fa-arrow-right"></i>
         </button>
 
         <div class="bar-divider"></div>
 
         <!-- Laser Pointer Toggle -->
-        <button class="bar-btn" id="btnLaser" title="نشانگر لیزری برای اشاره روی پرژکتور (کلید L)">
+        <button class="bar-btn" id="btnLaser" title="Laser Pointer for Presentation (Key L)">
             <i class="fas fa-wand-magic-sparkles text-red-500"></i>
-            <span>لیزر</span>
+            <span>Laser</span>
         </button>
 
         <!-- Slide Drawer Toggle -->
-        <button class="bar-btn" id="btnDrawer" title="فهرست و انتخاب اسلایدها (کلید G)">
+        <button class="bar-btn" id="btnDrawer" title="Slide Catalog Overview (Key G)">
             <i class="fas fa-th-large"></i>
-            <span>اسلایدها</span>
+            <span>Slides</span>
         </button>
 
         <!-- Timer Button -->
-        <button class="bar-btn" id="btnTimer" title="تایمر ارائه (کلید T)">
+        <button class="bar-btn" id="btnTimer" title="Presentation Stopwatch (Key T)">
             <i class="fas fa-stopwatch"></i>
-            <span id="timerDisplay">۰۰:۰۰</span>
+            <span id="timerDisplay">00:00</span>
         </button>
 
         <div class="bar-divider"></div>
 
         <!-- Fullscreen Button -->
-        <button class="bar-btn" id="btnFullscreen" title="حالت تمام‌صفحه (کلید F)">
+        <button class="bar-btn" id="btnFullscreen" title="Fullscreen Mode (Key F)">
             <i class="fas fa-expand"></i>
         </button>
 
         <!-- Blackout / Pause Button -->
-        <button class="bar-btn" id="btnBlackout" title="پرده سیاه برای پرسش و پاسخ (کلید B)">
+        <button class="bar-btn" id="btnBlackout" title="Black Screen for Q&A (Key B)">
             <i class="fas fa-moon"></i>
         </button>
 
         <!-- Presenter View Button -->
-        <a href="presenter.html" target="_blank" class="bar-btn" title="باز کردن کنسول ارائه‌دهنده">
+        <a href="presenter.html" target="_blank" class="bar-btn" title="Open Presenter Console">
             <i class="fas fa-microphone"></i>
-            <span>کنسول مدرس</span>
+            <span>Presenter</span>
         </a>
 
         <!-- Help Shortcuts Button -->
-        <button class="bar-btn" id="btnHelp" title="راهنمای کلیدهای میانبر (کلید ?)">
+        <button class="bar-btn" id="btnHelp" title="Keyboard Shortcuts Guide (Key ?)">
             <i class="fas fa-keyboard"></i>
         </button>
     </div>
@@ -468,9 +468,9 @@
             <div class="drawer-header">
                 <div style="display: flex; align-items: center; gap: 12px;">
                     <i class="fas fa-layer-group text-blue-600" style="font-size: 20px; color: var(--ppt-accent);"></i>
-                    <h2 style="margin: 0; font-size: 18px; font-weight: 700; color: var(--ppt-text-1);">فهرست کامل اسلایدهای دوره</h2>
+                    <h2 style="margin: 0; font-size: 18px; font-weight: 700; color: var(--ppt-text-1);">Complete Course Slide Directory</h2>
                 </div>
-                <input type="text" id="drawerSearchInput" class="drawer-search" placeholder="جستجوی عنوان یا شماره اسلاید...">
+                <input type="text" id="drawerSearchInput" class="drawer-search" placeholder="Search slide title or number...">
                 <button class="bar-btn" id="closeDrawerBtn" style="font-size: 16px;">
                     <i class="fas fa-times"></i>
                 </button>
@@ -487,42 +487,43 @@
     <div id="helpModal">
         <div class="modal-card">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-                <h3 style="margin: 0; font-size: 18px; font-weight: 700; color: var(--ppt-text-1);">کلیدهای میانبر پرژکتور</h3>
+                <h3 style="margin: 0; font-size: 18px; font-weight: 700; color: var(--ppt-text-1);">Projector Keyboard Shortcuts</h3>
                 <button class="bar-btn" id="closeHelpBtn"><i class="fas fa-times"></i></button>
             </div>
             <div class="shortcut-row">
-                <span style="font-size: 14px; color: var(--ppt-text-2);">اسلاید بعدی</span>
-                <span class="key-badge">کلید چپ ← / Space / Enter / N</span>
+                <span style="font-size: 14px; color: var(--ppt-text-2);">Next Slide</span>
+                <span class="key-badge">Right Arrow → / Space / Enter / N / PageDown</span>
             </div>
             <div class="shortcut-row">
-                <span style="font-size: 14px; color: var(--ppt-text-2);">اسلاید قبلی</span>
-                <span class="key-badge">کلید راست → / PageUp / P</span>
+                <span style="font-size: 14px; color: var(--ppt-text-2);">Previous Slide</span>
+                <span class="key-badge">Left Arrow ← / PageUp / P</span>
             </div>
             <div class="shortcut-row">
-                <span style="font-size: 14px; color: var(--ppt-text-2);">روشن/خاموش کردن لیزر</span>
+                <span style="font-size: 14px; color: var(--ppt-text-2);">Toggle Laser Pointer</span>
                 <span class="key-badge">L</span>
             </div>
             <div class="shortcut-row">
-                <span style="font-size: 14px; color: var(--ppt-text-2);">فهرست و پرش به اسلایدها</span>
+                <span style="font-size: 14px; color: var(--ppt-text-2);">Slide Overview & Jump</span>
                 <span class="key-badge">G</span>
             </div>
             <div class="shortcut-row">
-                <span style="font-size: 14px; color: var(--ppt-text-2);">حالت تمام‌صفحه</span>
+                <span style="font-size: 14px; color: var(--ppt-text-2);">Toggle Fullscreen</span>
                 <span class="key-badge">F</span>
             </div>
             <div class="shortcut-row">
-                <span style="font-size: 14px; color: var(--ppt-text-2);">پرده سیاه (توقف برای صحبت)</span>
+                <span style="font-size: 14px; color: var(--ppt-text-2);">Black Screen (Pause / Discussion)</span>
                 <span class="key-badge">B</span>
             </div>
             <div class="shortcut-row">
-                <span style="font-size: 14px; color: var(--ppt-text-2);">پرده سفید (وایت‌برد)</span>
+                <span style="font-size: 14px; color: var(--ppt-text-2);">White Screen (Whiteboard Mode)</span>
                 <span class="key-badge">W</span>
             </div>
             <div class="shortcut-row">
-                <span style="font-size: 14px; color: var(--ppt-text-2);">شروع / توقف تایمر</span>
+                <span style="font-size: 14px; color: var(--ppt-text-2);">Start / Pause Timer</span>
                 <span class="key-badge">T</span>
             </div>
         </div>
+    </div>
     </div>
 
     <script>
@@ -537,39 +538,39 @@
 
         // Slide Titles in Persian
         const slideTitles = [
-            'آموزش جامع HTML & CSS - جلد و شروع دوره',
-            'خوش‌آمدید: اولین گام شما در دنیای وب',
-            'آشنایی با مدرس دوره: رامین جوشقانی',
-            'در این دوره چه مهارت‌هایی یاد می‌گیرید؟',
-            'نقشه‌ی راه یادگیری HTML & CSS',
-            'تفاوت فرانت‌اند و بک‌اند (Front-End vs Back-End)',
-            'وب چطور کار می‌کند؟ نمای کلی سیستم',
-            'اینترنت: شبکه‌ای به هم پیوسته از شبکه‌ها',
-            'سه بازیگر اصلی وب: کلاینت، مرورگر و سرور',
-            'وقتی یک آدرس (URL) را تایپ می‌کنید، چه می‌شود؟',
-            'تفاوت HTTP و HTTPS: قوانین مکالمه در وب',
-            'درخواست و پاسخ در HTTP (Request & Response)',
-            'دامنه (Domain)، هاست (Host) و دی‌ان‌اس (DNS)',
-            'زبان HTML: اسکلت و استخوان‌بندی وب',
-            'زبان CSS: پوست، رنگ و زیبایی صفحات وب',
-            'جاوااسکریپت: عضلات، تعامل و منطق وب',
-            'تکنولوژی‌ها و ابزارهای همراه در مسیر یادگیری',
-            'نمونه‌های کاربردی فرانت‌اند در دنیای واقعی',
-            'جعبه‌ابزار ضروری یک توسعه‌دهنده فرانت‌اند',
-            'گوگل کروم: میز کار و آزمایشگاه توسعه‌دهنده',
-            'ویژوال استودیو کد (VS Code): کارگاه حرفه‌ای شما',
-            'راهنمای گام‌به‌گام نصب و راه‌اندازی VS Code',
-            'افزونه‌های پیشنهادی و ضروری برای VS Code',
-            'ساختار استاندارد پوشه‌ها و فایل‌های پروژه',
-            'کارگاه عملی: ایجاد پوشه اولین پروژه وب',
-            'کارگاه عملی: ایجاد فایل index.html',
-            'نوشتن اولین خطوط کد HTML در زندگی شما!',
-            'اجرای صفحه وب و مشاهده نتیجه در مرورگر',
-            'بهترین الگوها و عادات یک برنامه‌نویس حرفه‌ای',
-            'خطاهای رایج مبتدیان و راهکار برطرف کردن آن‌ها',
-            'جمع‌بندی و دستاوردهای جلسه اول',
-            'تمرین خانگی و آمادگی برای جلسه دوم'
-        ];
+          "Comprehensive HTML & CSS Course - Welcome & Overview",
+          "Welcome: Your First Step in the Web Development World",
+          "Meet Your Instructor: Ramin Joshaghani",
+          "Core Skills You Will Master in This Course",
+          "Complete HTML & CSS Learning Roadmap",
+          "Front-End vs Back-End: Understanding the Architecture",
+          "How the Web Works: High-Level System Overview",
+          "The Internet: Global Network of Interconnected Systems",
+          "Three Core Web Roles: Client, Browser, and Server",
+          "When You Type a URL: Anatomy of a Web Request",
+          "HTTP vs HTTPS: Secure Communication Protocols",
+          "HTTP Architecture: Client Request & Server Response",
+          "Core Web Triad: Domain, Hosting, and DNS Resolution",
+          "HTML: The Semantic Skeleton and Structural Bones of the Web",
+          "CSS: The Visual Skin, Layout, and Design of the Web",
+          "JavaScript: Dynamic Behavior, Interactivity, and Logic",
+          "Modern Web Developer Ecosystem & Tooling",
+          "Real-World Production Front-End Case Studies",
+          "Essential Front-End Developer Toolbelt",
+          "Google Chrome & DevTools: The Professional Web Workbench",
+          "Visual Studio Code: The Modern Industry-Standard Editor",
+          "VS Code Installation & Environment Setup Guide",
+          "Essential VS Code Extensions for High Productivity",
+          "Standard Project Directory & File Hierarchy",
+          "Hands-on Lab: Creating Your First Project Folder",
+          "Hands-on Lab: Creating the index.html Entry File",
+          "Writing Your Very First HTML Code: Headings & Paragraphs",
+          "Launching and Previewing Your Webpage in Chrome",
+          "Professional Developer Habits & Clean Code Best Practices",
+          "Common Beginner Pitfalls & Step-by-Step Solutions",
+          "Lesson 01 Summary: Milestones & Key Takeaways",
+          "Homework Assignment & Preparation for Lesson 02"
+];
 
         // Persian Numerals Formatter
         function toPersianDigits(n) {
@@ -604,6 +605,7 @@
             newFrame.src = src;
             newFrame.className = 'new';
             newFrame.setAttribute('allow', 'fullscreen');
+            if (isLaserActive) newFrame.style.pointerEvents = 'none';
 
             if (currentIframe) {
                 currentIframe.classList.remove('new');
@@ -624,10 +626,10 @@
             }
 
             // Update UI
-            counterText.textContent = `اسلاید ${toPersianDigits(num)} از ${toPersianDigits(totalSlides)}`;
+            counterText.textContent = `Slide ${num} of ${totalSlides}`;
             const progress = ((num) / totalSlides) * 100;
             progressBar.style.width = `${progress}%`;
-            document.title = `${slideTitles[index]} | آموزش HTML & CSS`;
+            document.title = `${slideTitles[index]} | Front-End Course`;
 
             // Update Drawer selection
             document.querySelectorAll('.drawer-item').forEach((item, idx) => {
@@ -688,6 +690,7 @@
             isLaserActive = !isLaserActive;
             document.getElementById('btnLaser').classList.toggle('active', isLaserActive);
             laserCanvas.classList.toggle('active', isLaserActive);
+            setLaserIframeInteractivity(isLaserActive);
             if (!isLaserActive) {
                 ctx.clearRect(0, 0, laserCanvas.width, laserCanvas.height);
             }
@@ -695,14 +698,27 @@
 
         document.getElementById('btnLaser').addEventListener('click', toggleLaser);
 
-        window.addEventListener('mousemove', (e) => {
+        // Accurate laser pointer calculation matching 16:9 scaled stage coordinates
+        function handleLaserPointerMove(e) {
             if (!isLaserActive) return;
             const rect = container.getBoundingClientRect();
-            const scale = rect.width / 1280;
-            mouseX = (e.clientX - rect.left) / scale;
-            mouseY = (e.clientY - rect.top) / scale;
+            if (rect.width === 0 || rect.height === 0) return;
+            const scaleX = rect.width / 1280;
+            const scaleY = rect.height / 720;
+            mouseX = (e.clientX - rect.left) / scaleX;
+            mouseY = (e.clientY - rect.top) / scaleY;
             drawLaser();
-        });
+        }
+
+        window.addEventListener('mousemove', handleLaserPointerMove);
+
+        // When laser is active, ensure iframe doesn't trap mouse events in center
+        function setLaserIframeInteractivity(laserOn) {
+            const iframes = container.querySelectorAll('iframe');
+            iframes.forEach(f => {
+                f.style.pointerEvents = laserOn ? 'none' : 'auto';
+            });
+        }
 
         function drawLaser() {
             ctx.clearRect(0, 0, laserCanvas.width, laserCanvas.height);
@@ -771,7 +787,7 @@
                 const item = document.createElement('div');
                 item.className = `drawer-item ${idx === currentIndex ? 'active' : ''}`;
                 item.innerHTML = `
-                    <span class="drawer-num">اسلاید ${toPersianDigits(idx + 1)}</span>
+                    <span class="drawer-num">Slide ${idx + 1}</span>
                     <span class="drawer-title">${title}</span>
                 `;
                 item.addEventListener('click', () => {
@@ -817,7 +833,7 @@
         function updateTimer() {
             const mins = Math.floor(timerSeconds / 60);
             const secs = timerSeconds % 60;
-            timerDisplay.textContent = `${toPersianDigits(String(mins).padStart(2, '0'))}:${toPersianDigits(String(secs).padStart(2, '0'))}`;
+            timerDisplay.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
         }
 
         document.getElementById('btnTimer').addEventListener('click', () => {
@@ -838,11 +854,11 @@
         document.addEventListener('keydown', (e) => {
             if (e.target.tagName === 'INPUT') return;
 
-            // In RTL: ArrowLeft = Next, ArrowRight = Previous
-            if (e.key === 'ArrowLeft' || e.key === ' ' || e.key === 'PageDown' || e.key.toLowerCase() === 'n') {
+            // Standard LTR: Right Arrow / Space / PageDown / N = Next slide; Left Arrow / PageUp / P = Prev slide
+            if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown' || e.key.toLowerCase() === 'n') {
                 e.preventDefault();
                 nextSlide();
-            } else if (e.key === 'ArrowRight' || e.key === 'PageUp' || e.key.toLowerCase() === 'p') {
+            } else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || e.key.toLowerCase() === 'p') {
                 e.preventDefault();
                 prevSlide();
             } else if (e.key === 'Home') {
@@ -881,7 +897,7 @@
             const touchEndX = e.changedTouches[0].screenX;
             const diff = touchEndX - touchStartX;
             if (Math.abs(diff) > 50) {
-                // In RTL: Swipe left = Next slide
+                // LTR: Swipe left = Next slide, swipe right = Prev slide
                 if (diff < 0) nextSlide();
                 else prevSlide();
             }

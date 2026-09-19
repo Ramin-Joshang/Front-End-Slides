@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl"><head>
+<html lang="en" dir="ltr"><head>
 <meta charset="utf-8">
 <meta content="width=1280, height=720" name="viewport">
-<title>زبان CSS: پوست و زیبایی وب - جلسه ۰۱</title>
+<title>CSS: The Skin and Style - Lesson 01</title>
 <script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
 <style>@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
@@ -179,6 +179,78 @@ body {width: 1280px; height: 720px; overflow: hidden; background-color: var(--pp
 html { overflow: hidden; }
 </style>
 <meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize">    <link rel="stylesheet" href="projector-theme.css">
+
+<style id="projector-contrast-tune">
+    /* High contrast projector tuning - English LTR Centered */
+    body, .slide-root-container, [class*="-slide-root"] {
+        background-color: #ffffff !important;
+        color: #0f172a !important;
+        direction: ltr !important;
+        font-family: var(--ppt-font-body) !important;
+    }
+    .title-region-wrapper, [class*="-title-region"], .title-section-wrapper, .title-region, .title-region-container, .title-region-outer-wrapper {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        justify-content: center !important;
+        margin: 22px auto 14px auto !important;
+        width: 100% !important;
+    }
+    .title-breadcrumb-container, [class*="-breadcrumb-container"], [class*="-breadcrumb-wrapper"], .title-breadcrumb-row, .title-breadcrumb-flex-container {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        direction: ltr !important;
+        margin: 0 auto 6px auto !important;
+        padding: 3px 14px !important;
+        background: #f1f5f9 !important;
+        border: 1px solid #cbd5e1 !important;
+        border-radius: 999px !important;
+    }
+    .title-accent-bar, .title-accent-line, .title-accent-pillar-line, [class*="-accent-line"], [class*="-accent-bar"] {
+        width: 6px !important;
+        height: 6px !important;
+        background: var(--ppt-accent) !important;
+        border-radius: 50% !important;
+        display: inline-block !important;
+    }
+    .title-breadcrumb-text, .title-breadcrumb-mono-label, [class*="-breadcrumb-text"], .title-breadcrumb-label {
+        font-family: var(--ppt-font-mono) !important;
+        font-size: 13px !important;
+        color: #475569 !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.06em !important;
+        text-transform: uppercase !important;
+    }
+    h1, .title-main-heading, [class*="-main-heading"], [class*="-main-title"], .page-main-title, .lesson-summary-page-title {
+        font-family: var(--ppt-font-display) !important;
+        color: #0f172a !important;
+        direction: ltr !important;
+        text-align: center !important;
+        margin: 0 auto !important;
+        font-size: 34px !important;
+        font-weight: 800 !important;
+        letter-spacing: -0.02em !important;
+        line-height: 1.25 !important;
+    }
+    h2, h3, [class*="-heading"], [class*="-title"] {
+        font-family: var(--ppt-font-display) !important;
+        color: #0f172a !important;
+        direction: ltr !important;
+    }
+    p, span, div, li {
+        font-family: var(--ppt-font-body);
+        direction: ltr;
+    }
+    .code-font, pre, code, .editor-content-area, .terminal-body-content, [class*="-code-strip"], [class*="-code-column"] {
+        font-family: var(--ppt-font-mono) !important;
+        direction: ltr !important;
+        text-align: left !important;
+    }
+</style>
+
 </head>
 <body class="">
 <div class="css-style-slide-root" style="overflow: hidden;">
@@ -186,10 +258,10 @@ html { overflow: hidden; }
 <div class="css-style-title-region">
 <div class="css-style-title-breadcrumb-wrap">
 <div class="css-style-title-accent-bar"></div>
-<span class="css-style-title-breadcrumb-text">جلسه ۰۱ // زبان‌های وب</span>
+<span class="css-style-title-breadcrumb-text">Lesson 01 // Introduction</span>
 </div>
 <h1 class="css-style-title-main-heading">
-        زبان CSS: پوست، رنگ و زیبایی صفحه
+        CSS: The Skin and Style
       </h1>
 </div>
 <!-- Main Content -->
@@ -197,14 +269,14 @@ html { overflow: hidden; }
 <!-- Code Comparison Section -->
 <div class="css-style-code-comparison-row" data-animation-id="css-code-comparison">
 <div class="css-style-code-column-left">
-<div class="css-style-code-label">کد HTML (اسکلت خام)</div>
+<div class="css-style-code-label">HTML (The Skeleton)</div>
 <div class="css-style-code-block">
             &lt;<span class="css-style-code-html-tag">h1</span>&gt;Hello World&lt;/<span class="css-style-code-html-tag">h1</span>&gt;<br>
             &lt;<span class="css-style-code-html-tag">button</span>&gt;Click Me&lt;/<span class="css-style-code-html-tag">button</span>&gt;
           </div>
 </div>
 <div class="css-style-code-column-right">
-<div class="css-style-code-label">کد CSS (استایل و زیبایی)</div>
+<div class="css-style-code-label">CSS (The Style)</div>
 <div class="css-style-code-block">
 <span class="css-style-code-css-selector">h1</span> {<br>
             &nbsp;&nbsp;<span class="css-style-code-css-prop">color</span>: <span class="css-style-code-css-val">#22d3ee</span>;<br>
@@ -220,9 +292,9 @@ html { overflow: hidden; }
 <div class="css-style-feature-icon-box">
 <i class="fas fa-palette"></i>
 </div>
-<h3 class="css-style-feature-title">رنگ‌ها و اتمسفر بصری</h3>
+<h3 class="css-style-feature-title">Colors & Atmosphere</h3>
 <p class="css-style-feature-description">
-            خلق حس و حال سایت با استفاده از رنگ‌های برند، گرادینت‌ها، پس‌زمینه‌ها و سایه‌ها.
+            Sets the mood using brand colors, gradients, backgrounds, and shadows.
           </p>
 <div class="css-style-feature-tag-list">
 <span class="css-style-feature-tag">background</span>
@@ -235,9 +307,9 @@ html { overflow: hidden; }
 <div class="css-style-feature-icon-box">
 <i class="fas fa-font"></i>
 </div>
-<h3 class="css-style-feature-title">تایپوگرافی و خوانایی</h3>
+<h3 class="css-style-feature-title">Typography & Text</h3>
 <p class="css-style-feature-description">
-            افزایش خوانایی با تنظیم دقیق فونت، اندازه متن، وزن کلمات و فاصله بین خطوط.
+            Defines readability through font families, sizing, weight, and spacing.
           </p>
 <div class="css-style-feature-tag-list">
 <span class="css-style-feature-tag">font-family</span>
@@ -250,9 +322,9 @@ html { overflow: hidden; }
 <div class="css-style-feature-icon-box">
 <i class="fas fa-layer-group"></i>
 </div>
-<h3 class="css-style-feature-title">چیدمان و فاصله‌گذاری</h3>
+<h3 class="css-style-feature-title">Layout & Spacing</h3>
 <p class="css-style-feature-description">
-            مدیریت دقیق جایگاه عناصر، فاصله‌های درونی و بیرونی و شبکه‌بندی واکنش‌گرا.
+            Controls the position of elements, whitespace, and responsive grids.
           </p>
 <div class="css-style-feature-tag-list">
 <span class="css-style-feature-tag">display: flex</span>
