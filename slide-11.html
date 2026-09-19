@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" style="--viewport-height: 9.57px;"><head>
+<html lang="fa" dir="rtl"><head>
 <meta charset="utf-8">
 <meta content="width=1280, height=720, initial-scale=1.0" name="viewport">
-<title>HTTP and HTTPS: The Web's Conversation Rules</title>
+<title>تفاوت پروتکل‌های پروتکل استاندارد (HTTP) و پروتکل استاندارد (HTTP)S - جلسه ۰۱</title>
 <script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
-<style>@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+<style>@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
 :root {
     --ppt-bg: #0f172a;
@@ -207,30 +207,31 @@ body {width: 1280px; height: 720px; overflow: hidden; background-color: #000;
     }
 html { overflow: hidden; }
 </style>
-<meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize"></head>
+<meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize">    <link rel="stylesheet" href="projector-theme.css">
+</head>
 <body class="">
 <div class="slide-root-container" style="overflow: hidden;">
 <!-- Title Region -->
 <div class="title-region-wrapper">
 <div class="title-breadcrumb-container">
 <div class="title-accent-line"></div>
-<span class="title-breadcrumb-text">Lesson 01 // Introduction</span>
+<span class="title-breadcrumb-text">جلسه ۰۱ // پروتکل‌های وب</span>
 </div>
-<h1 class="title-main-heading">HTTP &amp; HTTPS: The Web's Conversation Rules</h1>
+<h1 class="title-main-heading">تفاوت پروتکل استاندارد (HTTP) و پروتکل استاندارد (HTTP)S: قوانین مکالمه در وب</h1>
 </div>
 <!-- Main Content Area -->
 <div class="protocol-content-layout">
 <!-- Comparison Cards -->
 <div class="protocol-cards-container">
-<!-- HTTP Card -->
+<!-- پروتکل استاندارد (HTTP) Card -->
 <div class="protocol-info-card" data-animation-id="protocol-card-http">
 <div class="card-header-group">
 <div class="protocol-icon-wrapper">
 <i class="fa-solid fa-comments"></i>
 </div>
 <div style="display: flex; flex-direction: column;">
-<span class="protocol-name-heading">HTTP</span>
-<span class="protocol-badge-label badge-unencrypted">Standard</span>
+<span class="protocol-name-heading">پروتکل استاندارد (HTTP)</span>
+<span class="protocol-badge-label badge-unencrypted">استاندارد وب</span>
 </div>
 </div>
 <p class="protocol-description-text">
@@ -243,27 +244,27 @@ html { overflow: hidden; }
 </li>
 <li class="protocol-feature-item">
 <i class="fa-solid fa-circle-chevron-right feature-check-icon"></i>
-<span>Data is sent in "Plain Text" (visible to anyone).</span>
+<span>داده‌ها به صورت متن ساده (Plain Text) و خوانا برای دیگران ارسال می‌شوند.</span>
 </li>
 <li class="protocol-feature-item">
 <i class="fa-solid fa-circle-chevron-right feature-check-icon"></i>
-<span>No verification of who the server actually is.</span>
+<span>هویت واقعی سرور اعتبارسنجی قطعی نمی‌شود.</span>
 </li>
 </ul>
 </div>
-<!-- HTTPS Card -->
+<!-- پروتکل استاندارد (HTTP)S Card -->
 <div class="protocol-info-card" data-animation-id="protocol-card-https" style="border-color: var(--ppt-accent-2);">
 <div class="card-header-group">
 <div class="protocol-icon-wrapper" style="background: rgba(59, 130, 246, 0.1); color: var(--ppt-accent-2);">
 <i class="fa-solid fa-shield-halved"></i>
 </div>
 <div style="display: flex; flex-direction: column;">
-<span class="protocol-name-heading">HTTPS</span>
-<span class="protocol-badge-label badge-encrypted">Secure</span>
+<span class="protocol-name-heading">پروتکل استاندارد (HTTP)S</span>
+<span class="protocol-badge-label badge-encrypted">رمزنگاری‌شده و امن</span>
 </div>
 </div>
 <p class="protocol-description-text">
-            The "S" stands for Secure. It's HTTP layered with encryption (TLS/SSL).
+            The "S" stands for رمزنگاری‌شده و امن. It's پروتکل استاندارد (HTTP) layered with encryption (TLS/SSL).
           </p>
 <ul class="protocol-feature-list">
 <li class="protocol-feature-item">
@@ -287,14 +288,14 @@ html { overflow: hidden; }
 <div class="code-conversation-block">
 <div class="code-line-item">
 <span class="code-role-tag">Browser (Request)</span>
-<span class="code-text-content">GET /index.html <span style="color: var(--ppt-text-3);">HTTP/1.1</span></span>
+<span class="code-text-content">GET /index.html <span style="color: var(--ppt-text-3);">پروتکل استاندارد (HTTP)/1.1</span></span>
 </div>
 <div style="display: flex; align-items: center; color: var(--ppt-text-3);">
 <i class="fa-solid fa-right-left"></i>
 </div>
 <div class="code-line-item">
 <span class="code-role-tag">Server (Response)</span>
-<span class="code-text-content"><span style="color: var(--ppt-text-3);">HTTP/1.1</span> <span class="code-highlight-success">200 OK</span></span>
+<span class="code-text-content"><span style="color: var(--ppt-text-3);">پروتکل استاندارد (HTTP)/1.1</span> <span class="code-highlight-success">200 OK</span></span>
 </div>
 </div>
 </div>

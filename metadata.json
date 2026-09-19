@@ -1,0 +1,8 @@
+{
+  "name": "Front-End Slides",
+  "description": "اسلایدهای جامع و تعاملی آموزش فرانت‌اند و HTML & CSS با تم روشن بهینه‌شده برای پروژکتور، طراحی کاملاً فارسی، راست‌چین و واکنش‌گرا",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -1,110 +1,583 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 
 <head>
     <meta charset="UTF-8">
-    <title>Audience View</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آموزش جامع HTML & CSS - نمایش اسلایدها (پروژکتور)</title>
+    <meta name="description" content="نمایش تعاملی و تمام‌صفحه اسلایدهای دوره جامع آموزش فرانت‌اند، بهینه‌سازی‌شده برای پروژکتور با تم روشن و کنتراست بالا">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="projector-theme.css">
     <style>
-        body,
-        html {
+        * {
+            box-sizing: border-box;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        body, html {
             margin: 0;
             padding: 0;
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background: #000;
-            font-family: sans-serif;
+            background-color: #f1f5f9;
+            font-family: var(--ppt-font-body);
+            direction: rtl;
         }
 
+        /* Top Progress Bar */
+        #progressBar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 4px;
+            width: 0%;
+            background: linear-gradient(90deg, var(--ppt-accent-2), var(--ppt-accent));
+            box-shadow: 0 1px 6px rgba(37, 99, 235, 0.4);
+            z-index: 100;
+            transition: width 0.3s ease;
+        }
+
+        /* Main Viewport & Stage */
         #viewPort {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             display: flex;
             align-items: center;
             justify-content: center;
+            background: #e2e8f0;
+            transition: background 0.3s ease;
         }
 
-        #slideWrapper {
+        #slideContainer {
             position: relative;
             width: 1280px;
             height: 720px;
-            transform-origin: center;
-            box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+            transform-origin: center center;
+            background: #ffffff;
+            border-radius: 4px;
+            box-shadow: 0 12px 40px rgba(15, 23, 42, 0.12), 0 2px 8px rgba(15, 23, 42, 0.06);
+            overflow: hidden;
         }
 
         iframe {
             position: absolute;
-            top: 0;
-            left: 0;
+            inset: 0;
             width: 100%;
             height: 100%;
             border: none;
-            transition: opacity 0.6s ease;
+            transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .old {
+        iframe.old {
             opacity: 0;
             pointer-events: none;
         }
 
-        .new {
+        iframe.new {
             opacity: 1;
         }
 
-        /* slide counter */
-        #slideCounter {
-            position: fixed;
-            bottom: 20px;
-            right: 30px;
-            color: rgba(255, 255, 255, 0.6);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 16px;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 6px 16px;
-            border-radius: 20px;
-            z-index: 10;
+        /* Laser Pointer Canvas Overlay */
+        #laserCanvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 45;
             pointer-events: none;
+            display: none;
         }
 
-        /* نیمه‌های صفحه برای کلیک */
-        .click-zone {
+        #laserCanvas.active {
+            display: block;
+        }
+
+        /* Click Navigation Zones */
+        .nav-zone {
             position: fixed;
             top: 0;
             bottom: 0;
-            width: 50%;
-            z-index: 5;
+            width: 12%;
+            z-index: 30;
             cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.2s ease, background 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--ppt-accent);
+            font-size: 32px;
         }
 
-        .click-zone.left {
+        /* In RTL: Left is NEXT, Right is PREVIOUS */
+        .nav-zone.next {
             left: 0;
         }
 
-        .click-zone.right {
+        .nav-zone.prev {
             right: 0;
+        }
+
+        .nav-zone:hover {
+            opacity: 0.8;
+            background: rgba(37, 99, 235, 0.04);
+        }
+
+        /* Floating Projector Toolbar */
+        #projectorBar {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(0);
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid #cbd5e1;
+            padding: 8px 18px;
+            border-radius: 50px;
+            box-shadow: 0 12px 36px rgba(15, 23, 42, 0.12), 0 2px 6px rgba(15, 23, 42, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 60;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        #projectorBar.hidden {
+            opacity: 0;
+            transform: translateX(-50%) translateY(20px);
+            pointer-events: none;
+        }
+
+        .bar-btn {
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--ppt-text-1);
+            font-family: var(--ppt-font-body);
+            font-size: 14px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .bar-btn:hover {
+            background: #f1f5f9;
+            border-color: #cbd5e1;
+            color: var(--ppt-accent);
+        }
+
+        .bar-btn.active {
+            background: rgba(37, 99, 235, 0.1);
+            border-color: var(--ppt-accent);
+            color: var(--ppt-accent);
+        }
+
+        .bar-btn.primary {
+            background: var(--ppt-accent);
+            color: #ffffff;
+        }
+
+        .bar-btn.primary:hover {
+            background: #1d4ed8;
+            color: #ffffff;
+        }
+
+        .bar-divider {
+            width: 1px;
+            height: 22px;
+            background: #cbd5e1;
+        }
+
+        #slideCounterBtn {
+            font-family: var(--ppt-font-mono), var(--ppt-font-body);
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--ppt-text-1);
+            padding: 6px 14px;
+            border-radius: 20px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            cursor: pointer;
+        }
+
+        #slideCounterBtn:hover {
+            border-color: var(--ppt-accent);
+            color: var(--ppt-accent);
+        }
+
+        /* Slide Overview Modal / Drawer */
+        #slideDrawer {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: 90;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.25s ease;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        #slideDrawer.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .drawer-content {
+            background: #ffffff;
+            width: 100%;
+            max-width: 1100px;
+            max-height: 85vh;
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid #cbd5e1;
+        }
+
+        .drawer-header {
+            padding: 18px 24px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #f8fafc;
+        }
+
+        .drawer-search {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 24px;
+            padding: 8px 16px;
+            font-family: var(--ppt-font-body);
+            font-size: 14px;
+            width: 320px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .drawer-search:focus {
+            border-color: var(--ppt-accent);
+        }
+
+        .drawer-grid {
+            padding: 24px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 16px;
+            overflow-y: auto;
+        }
+
+        .drawer-item {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 12px 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .drawer-item:hover {
+            border-color: var(--ppt-accent);
+            background: #ffffff;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .drawer-item.active {
+            border-color: var(--ppt-accent);
+            background: rgba(37, 99, 235, 0.06);
+        }
+
+        .drawer-num {
+            font-family: var(--ppt-font-mono);
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--ppt-accent);
+        }
+
+        .drawer-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--ppt-text-1);
+            line-height: 1.4;
+        }
+
+        /* Pause Screen Overlays (Blackout & Whiteout) */
+        #blackoutOverlay, #whiteoutOverlay {
+            position: fixed;
+            inset: 0;
+            z-index: 80;
+            display: none;
+            cursor: pointer;
+        }
+
+        #blackoutOverlay {
+            background: #000000;
+        }
+
+        #whiteoutOverlay {
+            background: #ffffff;
+        }
+
+        /* Keyboard Shortcuts Modal */
+        #helpModal {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 95;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        #helpModal.show {
+            display: flex;
+        }
+
+        .modal-card {
+            background: #ffffff;
+            max-width: 540px;
+            width: 100%;
+            border-radius: 14px;
+            padding: 24px;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+            border: 1px solid #cbd5e1;
+        }
+
+        .shortcut-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .key-badge {
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-family: var(--ppt-font-mono);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--ppt-text-1);
+            direction: ltr;
         }
     </style>
 </head>
 
 <body>
+    <!-- Top Progress Indicator -->
+    <div id="progressBar"></div>
+
+    <!-- Presentation Stage Viewport -->
     <div id="viewPort">
-        <div id="slideWrapper"></div>
+        <div id="slideContainer">
+            <canvas id="laserCanvas"></canvas>
+        </div>
     </div>
-    <div id="slideCounter">1 / 32</div>
-    <div class="click-zone left" id="leftZone"></div>
-    <div class="click-zone right" id="rightZone"></div>
+
+    <!-- Clickable Navigation Zones (In RTL: Left = Forward, Right = Back) -->
+    <div class="nav-zone next" id="nextZone" title="اسلاید بعدی (کلید چپ / فاصله)">
+        <i class="fas fa-chevron-left"></i>
+    </div>
+    <div class="nav-zone prev" id="prevZone" title="اسلاید قبلی (کلید راست)">
+        <i class="fas fa-chevron-right"></i>
+    </div>
+
+    <!-- Projector Smart Floating Toolbar -->
+    <div id="projectorBar">
+        <button class="bar-btn primary" id="btnNext" title="اسلاید بعدی (کلید چپ یا Space)">
+            <i class="fas fa-arrow-left"></i>
+            <span>بعدی</span>
+        </button>
+
+        <button id="slideCounterBtn" title="کلیک برای مشاهده فهرست و پرش سریع (کلید G)">
+            <span id="counterText">اسلاید ۱ از ۳۲</span>
+        </button>
+
+        <button class="bar-btn" id="btnPrev" title="اسلاید قبلی (کلید راست)">
+            <span>قبلی</span>
+            <i class="fas fa-arrow-right"></i>
+        </button>
+
+        <div class="bar-divider"></div>
+
+        <!-- Laser Pointer Toggle -->
+        <button class="bar-btn" id="btnLaser" title="نشانگر لیزری برای اشاره روی پرژکتور (کلید L)">
+            <i class="fas fa-wand-magic-sparkles text-red-500"></i>
+            <span>لیزر</span>
+        </button>
+
+        <!-- Slide Drawer Toggle -->
+        <button class="bar-btn" id="btnDrawer" title="فهرست و انتخاب اسلایدها (کلید G)">
+            <i class="fas fa-th-large"></i>
+            <span>اسلایدها</span>
+        </button>
+
+        <!-- Timer Button -->
+        <button class="bar-btn" id="btnTimer" title="تایمر ارائه (کلید T)">
+            <i class="fas fa-stopwatch"></i>
+            <span id="timerDisplay">۰۰:۰۰</span>
+        </button>
+
+        <div class="bar-divider"></div>
+
+        <!-- Fullscreen Button -->
+        <button class="bar-btn" id="btnFullscreen" title="حالت تمام‌صفحه (کلید F)">
+            <i class="fas fa-expand"></i>
+        </button>
+
+        <!-- Blackout / Pause Button -->
+        <button class="bar-btn" id="btnBlackout" title="پرده سیاه برای پرسش و پاسخ (کلید B)">
+            <i class="fas fa-moon"></i>
+        </button>
+
+        <!-- Presenter View Button -->
+        <a href="presenter.html" target="_blank" class="bar-btn" title="باز کردن کنسول ارائه‌دهنده">
+            <i class="fas fa-microphone"></i>
+            <span>کنسول مدرس</span>
+        </a>
+
+        <!-- Help Shortcuts Button -->
+        <button class="bar-btn" id="btnHelp" title="راهنمای کلیدهای میانبر (کلید ?)">
+            <i class="fas fa-keyboard"></i>
+        </button>
+    </div>
+
+    <!-- Slide Overview & Quick Jump Drawer -->
+    <div id="slideDrawer">
+        <div class="drawer-content">
+            <div class="drawer-header">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <i class="fas fa-layer-group text-blue-600" style="font-size: 20px; color: var(--ppt-accent);"></i>
+                    <h2 style="margin: 0; font-size: 18px; font-weight: 700; color: var(--ppt-text-1);">فهرست کامل اسلایدهای دوره</h2>
+                </div>
+                <input type="text" id="drawerSearchInput" class="drawer-search" placeholder="جستجوی عنوان یا شماره اسلاید...">
+                <button class="bar-btn" id="closeDrawerBtn" style="font-size: 16px;">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="drawer-grid" id="drawerGrid"></div>
+        </div>
+    </div>
+
+    <!-- Blackout & Whiteout Screen Overlays -->
+    <div id="blackoutOverlay" title="کلیک کنید تا به اسلاید برگردید"></div>
+    <div id="whiteoutOverlay" title="کلیک کنید تا به اسلاید برگردید"></div>
+
+    <!-- Help Shortcuts Modal -->
+    <div id="helpModal">
+        <div class="modal-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                <h3 style="margin: 0; font-size: 18px; font-weight: 700; color: var(--ppt-text-1);">کلیدهای میانبر پرژکتور</h3>
+                <button class="bar-btn" id="closeHelpBtn"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="shortcut-row">
+                <span style="font-size: 14px; color: var(--ppt-text-2);">اسلاید بعدی</span>
+                <span class="key-badge">کلید چپ ← / Space / Enter / N</span>
+            </div>
+            <div class="shortcut-row">
+                <span style="font-size: 14px; color: var(--ppt-text-2);">اسلاید قبلی</span>
+                <span class="key-badge">کلید راست → / PageUp / P</span>
+            </div>
+            <div class="shortcut-row">
+                <span style="font-size: 14px; color: var(--ppt-text-2);">روشن/خاموش کردن لیزر</span>
+                <span class="key-badge">L</span>
+            </div>
+            <div class="shortcut-row">
+                <span style="font-size: 14px; color: var(--ppt-text-2);">فهرست و پرش به اسلایدها</span>
+                <span class="key-badge">G</span>
+            </div>
+            <div class="shortcut-row">
+                <span style="font-size: 14px; color: var(--ppt-text-2);">حالت تمام‌صفحه</span>
+                <span class="key-badge">F</span>
+            </div>
+            <div class="shortcut-row">
+                <span style="font-size: 14px; color: var(--ppt-text-2);">پرده سیاه (توقف برای صحبت)</span>
+                <span class="key-badge">B</span>
+            </div>
+            <div class="shortcut-row">
+                <span style="font-size: 14px; color: var(--ppt-text-2);">پرده سفید (وایت‌برد)</span>
+                <span class="key-badge">W</span>
+            </div>
+            <div class="shortcut-row">
+                <span style="font-size: 14px; color: var(--ppt-text-2);">شروع / توقف تایمر</span>
+                <span class="key-badge">T</span>
+            </div>
+        </div>
+    </div>
 
     <script>
         const totalSlides = 32;
-        let currentIndex = 0; // zero-based
-        const wrapper = document.getElementById('slideWrapper');
-        const counter = document.getElementById('slideCounter');
+        let currentIndex = 0;
+        const container = document.getElementById('slideContainer');
+        const counterText = document.getElementById('counterText');
+        const progressBar = document.getElementById('progressBar');
+        const projectorBar = document.getElementById('projectorBar');
         let currentIframe = null;
         let oldIframe = null;
 
+        // Slide Titles in Persian
+        const slideTitles = [
+            'آموزش جامع HTML & CSS - جلد و شروع دوره',
+            'خوش‌آمدید: اولین گام شما در دنیای وب',
+            'آشنایی با مدرس دوره: رامین جوشقانی',
+            'در این دوره چه مهارت‌هایی یاد می‌گیرید؟',
+            'نقشه‌ی راه یادگیری HTML & CSS',
+            'تفاوت فرانت‌اند و بک‌اند (Front-End vs Back-End)',
+            'وب چطور کار می‌کند؟ نمای کلی سیستم',
+            'اینترنت: شبکه‌ای به هم پیوسته از شبکه‌ها',
+            'سه بازیگر اصلی وب: کلاینت، مرورگر و سرور',
+            'وقتی یک آدرس (URL) را تایپ می‌کنید، چه می‌شود؟',
+            'تفاوت HTTP و HTTPS: قوانین مکالمه در وب',
+            'درخواست و پاسخ در HTTP (Request & Response)',
+            'دامنه (Domain)، هاست (Host) و دی‌ان‌اس (DNS)',
+            'زبان HTML: اسکلت و استخوان‌بندی وب',
+            'زبان CSS: پوست، رنگ و زیبایی صفحات وب',
+            'جاوااسکریپت: عضلات، تعامل و منطق وب',
+            'تکنولوژی‌ها و ابزارهای همراه در مسیر یادگیری',
+            'نمونه‌های کاربردی فرانت‌اند در دنیای واقعی',
+            'جعبه‌ابزار ضروری یک توسعه‌دهنده فرانت‌اند',
+            'گوگل کروم: میز کار و آزمایشگاه توسعه‌دهنده',
+            'ویژوال استودیو کد (VS Code): کارگاه حرفه‌ای شما',
+            'راهنمای گام‌به‌گام نصب و راه‌اندازی VS Code',
+            'افزونه‌های پیشنهادی و ضروری برای VS Code',
+            'ساختار استاندارد پوشه‌ها و فایل‌های پروژه',
+            'کارگاه عملی: ایجاد پوشه اولین پروژه وب',
+            'کارگاه عملی: ایجاد فایل index.html',
+            'نوشتن اولین خطوط کد HTML در زندگی شما!',
+            'اجرای صفحه وب و مشاهده نتیجه در مرورگر',
+            'بهترین الگوها و عادات یک برنامه‌نویس حرفه‌ای',
+            'خطاهای رایج مبتدیان و راهکار برطرف کردن آن‌ها',
+            'جمع‌بندی و دستاوردهای جلسه اول',
+            'تمرین خانگی و آمادگی برای جلسه دوم'
+        ];
+
+        // Persian Numerals Formatter
+        function toPersianDigits(n) {
+            const farsiDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+            return n.toString().replace(/\d/g, x => farsiDigits[x]);
+        }
+
+        // Mathematical 16:9 Responsive Scaling
         function resizeSlideWrapper() {
             const viewW = window.innerWidth;
             const viewH = window.innerHeight;
@@ -113,16 +586,14 @@
             const scaleX = viewW / slideW;
             const scaleY = viewH / slideH;
             const scale = Math.min(scaleX, scaleY);
-            wrapper.style.transform = `scale(${scale})`;
+            container.style.transform = `scale(${scale})`;
+            resizeLaserCanvas();
         }
 
         window.addEventListener('resize', resizeSlideWrapper);
         window.addEventListener('load', resizeSlideWrapper);
 
-        function updateCounter() {
-            counter.textContent = `${currentIndex + 1} / ${totalSlides}`;
-        }
-
+        // Load Slide Function
         function loadSlide(index) {
             if (index < 0 || index >= totalSlides) return;
             currentIndex = index;
@@ -132,6 +603,7 @@
             const newFrame = document.createElement('iframe');
             newFrame.src = src;
             newFrame.className = 'new';
+            newFrame.setAttribute('allow', 'fullscreen');
 
             if (currentIframe) {
                 currentIframe.classList.remove('new');
@@ -139,20 +611,34 @@
                 oldIframe = currentIframe;
             }
 
-            wrapper.appendChild(newFrame);
+            container.appendChild(newFrame);
             currentIframe = newFrame;
 
             if (oldIframe) {
                 setTimeout(() => {
-                    if (oldIframe) {
-                        wrapper.removeChild(oldIframe);
+                    if (oldIframe && oldIframe.parentNode) {
+                        oldIframe.parentNode.removeChild(oldIframe);
                         oldIframe = null;
                     }
-                }, 700);
+                }, 400);
             }
-            updateCounter();
+
+            // Update UI
+            counterText.textContent = `اسلاید ${toPersianDigits(num)} از ${toPersianDigits(totalSlides)}`;
+            const progress = ((num) / totalSlides) * 100;
+            progressBar.style.width = `${progress}%`;
+            document.title = `${slideTitles[index]} | آموزش HTML & CSS`;
+
+            // Update Drawer selection
+            document.querySelectorAll('.drawer-item').forEach((item, idx) => {
+                item.classList.toggle('active', idx === index);
+            });
+
+            // Broadcast slide change to Presenter View
+            broadcastChannel.postMessage({ type: 'slide-change', slideIndex: index });
         }
 
+        // Navigation
         function nextSlide() {
             if (currentIndex < totalSlides - 1) {
                 loadSlide(currentIndex + 1);
@@ -165,30 +651,253 @@
             }
         }
 
-        // کیبورد
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight' || e.key === ' ') {
-                e.preventDefault();
-                nextSlide();
-            } else if (e.key === 'ArrowLeft') {
-                e.preventDefault();
-                prevSlide();
+        // Button Listeners
+        document.getElementById('btnNext').addEventListener('click', nextSlide);
+        document.getElementById('btnPrev').addEventListener('click', prevSlide);
+        document.getElementById('nextZone').addEventListener('click', nextSlide);
+        document.getElementById('prevZone').addEventListener('click', prevSlide);
+
+        // Auto-Hide Toolbar on Inactivity
+        let hideTimeout = null;
+        function resetToolbarTimer() {
+            projectorBar.classList.remove('hidden');
+            clearTimeout(hideTimeout);
+            hideTimeout = setTimeout(() => {
+                if (!isDrawerOpen && !isHelpOpen) {
+                    projectorBar.classList.add('hidden');
+                }
+            }, 3000);
+        }
+
+        window.addEventListener('mousemove', resetToolbarTimer);
+        window.addEventListener('keydown', resetToolbarTimer);
+        resetToolbarTimer();
+
+        // Laser Pointer Feature
+        const laserCanvas = document.getElementById('laserCanvas');
+        const ctx = laserCanvas.getContext('2d');
+        let isLaserActive = false;
+        let mouseX = -100, mouseY = -100;
+
+        function resizeLaserCanvas() {
+            laserCanvas.width = 1280;
+            laserCanvas.height = 720;
+        }
+
+        function toggleLaser() {
+            isLaserActive = !isLaserActive;
+            document.getElementById('btnLaser').classList.toggle('active', isLaserActive);
+            laserCanvas.classList.toggle('active', isLaserActive);
+            if (!isLaserActive) {
+                ctx.clearRect(0, 0, laserCanvas.width, laserCanvas.height);
+            }
+        }
+
+        document.getElementById('btnLaser').addEventListener('click', toggleLaser);
+
+        window.addEventListener('mousemove', (e) => {
+            if (!isLaserActive) return;
+            const rect = container.getBoundingClientRect();
+            const scale = rect.width / 1280;
+            mouseX = (e.clientX - rect.left) / scale;
+            mouseY = (e.clientY - rect.top) / scale;
+            drawLaser();
+        });
+
+        function drawLaser() {
+            ctx.clearRect(0, 0, laserCanvas.width, laserCanvas.height);
+            if (!isLaserActive || mouseX < 0 || mouseX > 1280 || mouseY < 0 || mouseY > 720) return;
+
+            // Outer Soft Glow
+            const glowGradient = ctx.createRadialGradient(mouseX, mouseY, 2, mouseX, mouseY, 26);
+            glowGradient.addColorStop(0, 'rgba(239, 68, 68, 0.9)');
+            glowGradient.addColorStop(0.3, 'rgba(239, 68, 68, 0.4)');
+            glowGradient.addColorStop(1, 'rgba(239, 68, 68, 0)');
+            ctx.fillStyle = glowGradient;
+            ctx.beginPath();
+            ctx.arc(mouseX, mouseY, 26, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Core Razor Dot
+            ctx.fillStyle = '#ffffff';
+            ctx.beginPath();
+            ctx.arc(mouseX, mouseY, 4, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        // Fullscreen Toggle
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => console.log(err));
+            } else {
+                document.exitFullscreen();
+            }
+        }
+        document.getElementById('btnFullscreen').addEventListener('click', toggleFullscreen);
+
+        // Blackout & Whiteout
+        const blackoutOverlay = document.getElementById('blackoutOverlay');
+        const whiteoutOverlay = document.getElementById('whiteoutOverlay');
+
+        function toggleBlackout() {
+            const isShown = blackoutOverlay.style.display === 'block';
+            blackoutOverlay.style.display = isShown ? 'none' : 'block';
+            whiteoutOverlay.style.display = 'none';
+        }
+
+        function toggleWhiteout() {
+            const isShown = whiteoutOverlay.style.display === 'block';
+            whiteoutOverlay.style.display = isShown ? 'none' : 'block';
+            blackoutOverlay.style.display = 'none';
+        }
+
+        document.getElementById('btnBlackout').addEventListener('click', toggleBlackout);
+        blackoutOverlay.addEventListener('click', toggleBlackout);
+        whiteoutOverlay.addEventListener('click', toggleWhiteout);
+
+        // Slide Drawer Grid
+        const slideDrawer = document.getElementById('slideDrawer');
+        const drawerGrid = document.getElementById('drawerGrid');
+        const drawerSearchInput = document.getElementById('drawerSearchInput');
+        let isDrawerOpen = false;
+
+        function renderDrawerGrid(filter = '') {
+            drawerGrid.innerHTML = '';
+            slideTitles.forEach((title, idx) => {
+                const numStr = (idx + 1).toString();
+                if (filter && !title.toLowerCase().includes(filter.toLowerCase()) && !numStr.includes(filter)) {
+                    return;
+                }
+                const item = document.createElement('div');
+                item.className = `drawer-item ${idx === currentIndex ? 'active' : ''}`;
+                item.innerHTML = `
+                    <span class="drawer-num">اسلاید ${toPersianDigits(idx + 1)}</span>
+                    <span class="drawer-title">${title}</span>
+                `;
+                item.addEventListener('click', () => {
+                    loadSlide(idx);
+                    toggleDrawer(false);
+                });
+                drawerGrid.appendChild(item);
+            });
+        }
+
+        function toggleDrawer(forceState) {
+            isDrawerOpen = typeof forceState === 'boolean' ? forceState : !isDrawerOpen;
+            if (isDrawerOpen) {
+                renderDrawerGrid();
+                slideDrawer.classList.add('show');
+                drawerSearchInput.value = '';
+                drawerSearchInput.focus();
+            } else {
+                slideDrawer.classList.remove('show');
+            }
+        }
+
+        document.getElementById('btnDrawer').addEventListener('click', () => toggleDrawer());
+        document.getElementById('slideCounterBtn').addEventListener('click', () => toggleDrawer());
+        document.getElementById('closeDrawerBtn').addEventListener('click', () => toggleDrawer(false));
+        drawerSearchInput.addEventListener('input', (e) => renderDrawerGrid(e.target.value));
+
+        // Help Modal
+        const helpModal = document.getElementById('helpModal');
+        let isHelpOpen = false;
+        function toggleHelp(forceState) {
+            isHelpOpen = typeof forceState === 'boolean' ? forceState : !isHelpOpen;
+            helpModal.classList.toggle('show', isHelpOpen);
+        }
+        document.getElementById('btnHelp').addEventListener('click', () => toggleHelp());
+        document.getElementById('closeHelpBtn').addEventListener('click', () => toggleHelp(false));
+
+        // Presentation Stopwatch Timer
+        let timerSeconds = 0;
+        let timerInterval = null;
+        const timerDisplay = document.getElementById('timerDisplay');
+
+        function updateTimer() {
+            const mins = Math.floor(timerSeconds / 60);
+            const secs = timerSeconds % 60;
+            timerDisplay.textContent = `${toPersianDigits(String(mins).padStart(2, '0'))}:${toPersianDigits(String(secs).padStart(2, '0'))}`;
+        }
+
+        document.getElementById('btnTimer').addEventListener('click', () => {
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+                document.getElementById('btnTimer').classList.remove('active');
+            } else {
+                timerInterval = setInterval(() => {
+                    timerSeconds++;
+                    updateTimer();
+                }, 1000);
+                document.getElementById('btnTimer').classList.add('active');
             }
         });
 
-        // کلیک روی نیمه چپ/راست
-        document.getElementById('leftZone').addEventListener('click', prevSlide);
-        document.getElementById('rightZone').addEventListener('click', nextSlide);
+        // Keyboard Controls
+        document.addEventListener('keydown', (e) => {
+            if (e.target.tagName === 'INPUT') return;
 
-        // همگام‌سازی با Presenter از طریق BroadcastChannel
-        const channel = new BroadcastChannel('presentation-channel');
-        channel.onmessage = (event) => {
-            if (event.data.type === 'slide-change') {
-                loadSlide(event.data.slideIndex);
+            // In RTL: ArrowLeft = Next, ArrowRight = Previous
+            if (e.key === 'ArrowLeft' || e.key === ' ' || e.key === 'PageDown' || e.key.toLowerCase() === 'n') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowRight' || e.key === 'PageUp' || e.key.toLowerCase() === 'p') {
+                e.preventDefault();
+                prevSlide();
+            } else if (e.key === 'Home') {
+                e.preventDefault();
+                loadSlide(0);
+            } else if (e.key === 'End') {
+                e.preventDefault();
+                loadSlide(totalSlides - 1);
+            } else if (e.key.toLowerCase() === 'l') {
+                toggleLaser();
+            } else if (e.key.toLowerCase() === 'g') {
+                toggleDrawer();
+            } else if (e.key.toLowerCase() === 'f') {
+                toggleFullscreen();
+            } else if (e.key.toLowerCase() === 'b') {
+                toggleBlackout();
+            } else if (e.key.toLowerCase() === 'w') {
+                toggleWhiteout();
+            } else if (e.key === '?' || (e.shiftKey && e.key === '/')) {
+                toggleHelp();
+            } else if (e.key === 'Escape') {
+                if (isDrawerOpen) toggleDrawer(false);
+                if (isHelpOpen) toggleHelp(false);
+                if (blackoutOverlay.style.display === 'block') toggleBlackout();
+                if (whiteoutOverlay.style.display === 'block') toggleWhiteout();
+            }
+        });
+
+        // Touch Swipe Navigation
+        let touchStartX = 0;
+        window.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        window.addEventListener('touchend', (e) => {
+            const touchEndX = e.changedTouches[0].screenX;
+            const diff = touchEndX - touchStartX;
+            if (Math.abs(diff) > 50) {
+                // In RTL: Swipe left = Next slide
+                if (diff < 0) nextSlide();
+                else prevSlide();
+            }
+        }, { passive: true });
+
+        // BroadcastChannel Sync with Presenter View
+        const broadcastChannel = new BroadcastChannel('presentation-channel');
+        broadcastChannel.onmessage = (event) => {
+            if (event.data && event.data.type === 'slide-change') {
+                if (event.data.slideIndex !== currentIndex) {
+                    loadSlide(event.data.slideIndex);
+                }
             }
         };
 
-        // بارگذاری اولیه
+        // Initial Load
         loadSlide(0);
         resizeSlideWrapper();
     </script>

@@ -3,150 +3,294 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Presenter View</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>کنسول مدرس (Presenter View) - آموزش جامع HTML & CSS</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="projector-theme.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
-
         body {
-            font-family: 'Inter', sans-serif;
-            background: #0b1120;
-            color: #e2e8f0;
+            font-family: var(--ppt-font-body);
+            background: #0f172a;
+            color: #f8fafc;
+            direction: rtl;
         }
 
         .slide-thumb {
-            width: 192px;
-            height: 108px;
+            width: 190px;
+            height: 107px;
             overflow: hidden;
             border: 2px solid #334155;
             border-radius: 8px;
             transition: all 0.2s;
             cursor: pointer;
+            position: relative;
+            background: #ffffff;
+            flex-shrink: 0;
+        }
+
+        .slide-thumb:hover {
+            border-color: #38bdf8;
+            transform: translateY(-2px);
         }
 
         .slide-thumb.active {
-            border-color: #22d3ee;
-            box-shadow: 0 0 15px rgba(34, 211, 238, 0.4);
-            transform: scale(1.05);
+            border-color: #2563eb;
+            box-shadow: 0 0 16px rgba(37, 99, 235, 0.5);
+            transform: scale(1.03);
         }
 
         .slide-thumb iframe {
             width: 1280px;
             height: 720px;
-            transform: scale(0.15);
+            transform: scale(0.148);
             transform-origin: 0 0;
             border: none;
+            pointer-events: none;
+        }
+
+        .slide-thumb-num {
+            position: absolute;
+            bottom: 4px;
+            right: 6px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #ffffff;
+            font-family: var(--ppt-font-mono);
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            z-index: 2;
         }
 
         .notes-box {
             background: #1e293b;
             border: 1px solid #334155;
             border-radius: 12px;
-            padding: 16px;
-            min-height: 80px;
+            padding: 18px;
+            line-height: 1.7;
+            font-size: 15px;
+            color: #cbd5e1;
+            overflow-y: auto;
         }
 
         .timer-display {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 2rem;
-            color: #22d3ee;
-        }
-
-        button {
-            transition: all 0.2s;
-        }
-
-        button:active {
-            transform: scale(0.95);
+            font-family: var(--ppt-font-mono);
+            font-size: 2.2rem;
+            color: #38bdf8;
+            font-weight: 700;
         }
     </style>
 </head>
 
-<body class="p-4 h-screen flex flex-col gap-4">
-    <!-- Header -->
-    <div class="flex items-center justify-between bg-slate-900/80 p-3 rounded-xl border border-slate-700">
+<body class="p-4 h-screen flex flex-col gap-3">
+    <!-- Top Header Bar -->
+    <div class="flex items-center justify-between bg-slate-900/90 p-3 rounded-xl border border-slate-700 shadow-md">
         <div class="flex items-center gap-4">
-            <span class="text-2xl font-bold text-cyan-400 font-['Space_Grotesk']">🎙 Presenter</span>
-            <span id="currentSlideInfo" class="text-slate-400 font-mono text-lg">اسلاید 1 از 32</span>
-            <span id="slideTitleDisplay"
-                class="text-white text-lg font-medium bg-slate-800 px-3 py-1 rounded-full"></span>
+            <span class="text-xl font-bold text-blue-400 flex items-center gap-2">
+                <i class="fas fa-microphone-lines text-cyan-400"></i>
+                <span>کنسول مدرس</span>
+            </span>
+            <span id="currentSlideInfo" class="text-slate-400 font-mono text-sm bg-slate-800 px-3 py-1 rounded-full border border-slate-700">
+                اسلاید ۱ از ۳۲
+            </span>
+            <span id="slideTitleDisplay" class="text-white text-base font-semibold bg-blue-900/40 text-blue-200 border border-blue-700/50 px-3 py-1 rounded-full">
+                عنوان اسلاید
+            </span>
         </div>
+
         <div class="flex items-center gap-3">
-            <button id="openAudienceBtn"
-                class="bg-cyan-500 hover:bg-cyan-600 text-black px-4 py-2 rounded-full font-bold flex items-center gap-2"><i
-                    class="fas fa-desktop"></i> باز کردن پروژکتور</button>
-            <button onclick="toggleFullscreen()" class="bg-slate-700 hover:bg-slate-600 px-3 py-2 rounded-full"><i
-                    class="fas fa-expand"></i></button>
+            <a href="audience.html" target="_blank" class="bg-blue-600 hover:bg-blue-500 text-white font-bold px-4 py-2 rounded-full text-sm flex items-center gap-2 transition" title="مشاهده صفحه پروژکتور">
+                <i class="fas fa-desktop"></i>
+                <span>نمایشگر پروژکتور</span>
+            </a>
+            <button id="btnPrevTop" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 px-3 py-2 rounded-full text-sm" title="اسلاید قبلی (راست)">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <button id="btnNextTop" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 px-3 py-2 rounded-full text-sm" title="اسلاید بعدی (چپ)">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button onclick="toggleFullscreen()" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 px-3 py-2 rounded-full text-sm" title="تمام‌صفحه">
+                <i class="fas fa-expand"></i>
+            </button>
         </div>
     </div>
 
-    <!-- Main content -->
+    <!-- Main Workspace -->
     <div class="flex flex-1 gap-4 min-h-0">
-        <!-- Left: slide preview -->
-        <div class="flex-1 flex flex-col gap-4">
-            <div
-                class="relative bg-slate-900 rounded-xl border border-slate-700 p-2 flex-1 flex items-center justify-center">
-                <iframe id="mainSlideIframe" src="slide-01.html" class="border-0 rounded-lg"
-                    style="width:100%; height:100%; max-width:1280px; max-height:720px;"></iframe>
+        <!-- Center/Left: Current slide preview & Speaker notes -->
+        <div class="flex-1 flex flex-col gap-3 min-w-0">
+            <!-- Current Slide Frame -->
+            <div class="relative bg-slate-900 rounded-xl border border-slate-700 p-2 flex-1 flex items-center justify-center overflow-hidden">
+                <iframe id="mainSlideIframe" src="slide-01.html" class="border-0 rounded-lg w-full h-full shadow-lg" style="max-width:1280px; max-height:720px;"></iframe>
             </div>
-            <!-- Notes -->
-            <div class="notes-box" id="notesText">یادداشت‌های اسلاید 1</div>
+
+            <!-- Speaker Notes Box -->
+            <div class="h-44 flex flex-col gap-2">
+                <div class="flex items-center justify-between text-xs text-slate-400 font-semibold px-1">
+                    <span class="flex items-center gap-1">
+                        <i class="fas fa-clipboard-list text-amber-400"></i>
+                        <span>یادداشت‌ها و راهنمای تدریس این اسلاید:</span>
+                    </span>
+                    <span class="text-slate-500">برای مشاهده مخاطبان نمایش داده نمی‌شود</span>
+                </div>
+                <div class="notes-box flex-1" id="notesText">
+                    در حال بارگذاری یادداشت‌ها...
+                </div>
+            </div>
         </div>
 
-        <!-- Right: timer, controls, go-to -->
-        <div class="w-72 flex flex-col gap-4">
-            <!-- Timer -->
+        <!-- Right Side: Next Slide Preview, Stopwatch, Navigation -->
+        <div class="w-80 flex flex-col gap-3 flex-shrink-0">
+            <!-- Next Slide Preview Card -->
+            <div class="bg-slate-900 border border-slate-700 rounded-xl p-3 flex flex-col gap-2">
+                <div class="flex items-center justify-between text-xs text-slate-400 font-semibold">
+                    <span class="flex items-center gap-1">
+                        <i class="fas fa-forward text-blue-400"></i>
+                        <span>اسلاید بعدی:</span>
+                    </span>
+                    <span id="nextSlideNum" class="font-mono text-cyan-400">اسلاید ۲</span>
+                </div>
+                <div class="w-full h-36 bg-slate-950 rounded-lg border border-slate-800 overflow-hidden relative">
+                    <iframe id="nextSlideIframe" src="slide-02.html" class="w-[1280px] h-[720px] pointer-events-none origin-top-left" style="transform: scale(0.23); width: 1280px; height: 720px;"></iframe>
+                </div>
+                <span id="nextSlideTitle" class="text-xs text-slate-300 truncate">عنوان اسلاید بعدی</span>
+            </div>
+
+            <!-- Presentation Timer -->
             <div class="bg-slate-900 border border-slate-700 rounded-xl p-4 flex flex-col items-center">
-                <span class="text-slate-400 text-sm mb-1">⏱ زمان گذشته</span>
-                <span class="timer-display" id="timer">00:00</span>
-                <div class="flex gap-2 mt-2">
-                    <button id="timerToggle" class="bg-slate-700 px-3 py-1 rounded text-sm">▶ شروع</button>
-                    <button id="timerReset" class="bg-slate-700 px-3 py-1 rounded text-sm">↺ بازنشانی</button>
+                <span class="text-slate-400 text-xs mb-1 flex items-center gap-1">
+                    <i class="fas fa-stopwatch text-cyan-400"></i>
+                    <span>مدت زمان ارائه</span>
+                </span>
+                <span class="timer-display" id="timer">۰۰:۰۰</span>
+                <div class="flex gap-2 mt-3 w-full">
+                    <button id="timerToggle" class="flex-1 bg-blue-600 hover:bg-blue-500 text-white py-1.5 rounded-lg text-sm font-semibold transition">
+                        ▶ شروع
+                    </button>
+                    <button id="timerReset" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 text-slate-300 px-3 py-1.5 rounded-lg text-sm transition">
+                        ↺ بازنشانی
+                    </button>
                 </div>
             </div>
 
-            <!-- Auto Play -->
+            <!-- Quick Jump to Slide -->
+            <div class="bg-slate-900 border border-slate-700 rounded-xl p-4">
+                <span class="text-slate-400 text-xs block mb-2 font-semibold">🔢 پرش مستقیم به اسلاید:</span>
+                <div class="flex gap-2">
+                    <input type="number" id="gotoSlideInput" min="1" max="32" value="1" class="w-20 bg-slate-800 border border-slate-600 rounded-lg px-2 py-1.5 text-white text-center font-mono">
+                    <button id="gotoSlideBtn" class="flex-1 bg-slate-800 hover:bg-slate-700 border border-slate-600 text-cyan-400 font-bold py-1.5 rounded-lg text-sm transition">
+                        انتقال
+                    </button>
+                </div>
+            </div>
+
+            <!-- Autoplay Mode -->
             <div class="bg-slate-900 border border-slate-700 rounded-xl p-4">
                 <div class="flex items-center justify-between mb-2">
-                    <span class="text-slate-400">🎬 پخش خودکار</span>
-                    <input type="checkbox" id="autoplayToggle" class="scale-125 accent-cyan-500">
+                    <span class="text-slate-300 text-sm font-semibold">🎬 تعویض خودکار اسلاید</span>
+                    <input type="checkbox" id="autoplayToggle" class="w-4 h-4 accent-blue-500 cursor-pointer">
                 </div>
-                <label class="text-slate-400 text-sm">فاصله (ثانیه):</label>
-                <input type="number" id="autoplayInterval" value="10" min="2" max="120"
-                    class="w-full mt-1 bg-slate-800 border border-slate-600 rounded px-2 py-1 text-white">
-            </div>
-
-            <!-- Go to slide -->
-            <div class="bg-slate-900 border border-slate-700 rounded-xl p-4">
-                <span class="text-slate-400 text-sm block mb-2">🔢 رفتن به اسلاید</span>
-                <div class="flex gap-2">
-                    <input type="number" id="gotoSlideInput" min="1" max="32" value="1"
-                        class="w-20 bg-slate-800 border border-slate-600 rounded px-2 py-1 text-white text-center">
-                    <button id="gotoSlideBtn" class="bg-cyan-500 text-black px-3 py-1 rounded font-bold">برو</button>
+                <div class="flex items-center gap-2">
+                    <label class="text-slate-400 text-xs">فاصله (ثانیه):</label>
+                    <input type="number" id="autoplayInterval" value="15" min="3" max="180" class="w-16 bg-slate-800 border border-slate-600 rounded px-2 py-1 text-white text-xs font-mono text-center">
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Thumbnails strip -->
-    <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-3 overflow-x-auto flex gap-3"
-        id="thumbnailsContainer"></div>
+    <!-- Bottom Thumbnails Strip -->
+    <div class="bg-slate-900/90 border border-slate-700 rounded-xl p-2.5 overflow-x-auto flex gap-3 shadow-inner" id="thumbnailsContainer"></div>
 
     <script>
         const totalSlides = 32;
-        let currentSlide = 0; // zero-based
-        // Slide titles (customize as needed)
-        const slideTitles = Array.from({ length: totalSlides }, (_, i) => `اسلاید ${i + 1}`);
-        // Speaker notes (fill with your notes per slide, or leave empty)
-        const slidesNotes = Array(totalSlides).fill('یادداشت‌های خود را اینجا وارد کنید.');
+        let currentSlide = 0;
 
-        // Load thumbnails
+        // Slide Titles
+        const slideTitles = [
+            'آموزش جامع HTML & CSS - جلد و شروع دوره',
+            'خوش‌آمدید: اولین گام شما در دنیای وب',
+            'آشنایی با مدرس دوره: رامین جوشقانی',
+            'در این دوره چه مهارت‌هایی یاد می‌گیرید؟',
+            'نقشه‌ی راه یادگیری HTML & CSS',
+            'تفاوت فرانت‌اند و بک‌اند (Front-End vs Back-End)',
+            'وب چطور کار می‌کند؟ نمای کلی سیستم',
+            'اینترنت: شبکه‌ای به هم پیوسته از شبکه‌ها',
+            'سه بازیگر اصلی وب: کلاینت، مرورگر و سرور',
+            'وقتی یک آدرس (URL) را تایپ می‌کنید، چه می‌شود؟',
+            'تفاوت HTTP و HTTPS: قوانین مکالمه در وب',
+            'درخواست و پاسخ در HTTP (Request & Response)',
+            'دامنه (Domain)، هاست (Host) و دی‌ان‌اس (DNS)',
+            'زبان HTML: اسکلت و استخوان‌بندی وب',
+            'زبان CSS: پوست، رنگ و زیبایی صفحات وب',
+            'جاوااسکریپت: عضلات، تعامل و منطق وب',
+            'تکنولوژی‌ها و ابزارهای همراه در مسیر یادگیری',
+            'نمونه‌های کاربردی فرانت‌اند در دنیای واقعی',
+            'جعبه‌ابزار ضروری یک توسعه‌دهنده فرانت‌اند',
+            'گوگل کروم: میز کار و آزمایشگاه توسعه‌دهنده',
+            'ویژوال استودیو کد (VS Code): کارگاه حرفه‌ای شما',
+            'راهنمای گام‌به‌گام نصب و راه‌اندازی VS Code',
+            'افزونه‌های پیشنهادی و ضروری برای VS Code',
+            'ساختار استاندارد پوشه‌ها و فایل‌های پروژه',
+            'کارگاه عملی: ایجاد پوشه اولین پروژه وب',
+            'کارگاه عملی: ایجاد فایل index.html',
+            'نوشتن اولین خطوط کد HTML در زندگی شما!',
+            'اجرای صفحه وب و مشاهده نتیجه در مرورگر',
+            'بهترین الگوها و عادات یک برنامه‌نویس حرفه‌ای',
+            'خطاهای رایج مبتدیان و راهکار برطرف کردن آن‌ها',
+            'جمع‌بندی و دستاوردهای جلسه اول',
+            'تمرین خانگی و آمادگی برای جلسه دوم'
+        ];
+
+        // Rich Speaker Notes in Persian for All 32 Slides
+        const slidesNotes = [
+            'خوش‌آمدگویی گرم به دانشجویان. اعلام هدف دوره: تبدیل دانشجویان از صفر مطلق به توسعه‌دهندگان آماده ورود به بازار کار فرانت‌اند.',
+            'توضیح ۳ گام جلسه اول: درک مفاهیم وب، شناخت ۳ زبان اصلی، و نوشتن اولین کد عملی.',
+            'معرفی سوابق و تجربیات رامین جوشقانی در توسعه وب، پروژه‌های عملی و اهداف انگیزشی دوره.',
+            'مرور ۶ مهارت کلیدی که دانشجویان در پایان دوره کسب می‌کنند: HTML5 معنایی، CSS3 مدرن، فلکس‌باکس و گرید، ریسپانسیو، انیمیشن و کدهای تمیز.',
+            'بررسی مسیر ۱۱ گانه دوره؛ تأکید بر اینکه هر مبحث با تمرین‌های اختصاصی همراه است.',
+            'استعاره سالن رستوران (فرانت‌اند) و آشپزخانه (بک‌اند)؛ توضیح مفهوم رابط کاربری و امنیت داده‌ها.',
+            'توضیح چرخه سه‌مرحله‌ای وب: ۱. ارسال درخواست ۲. دریافت پاسخ ۳. رندر صفحه در مرورگر.',
+            'رفع ابهام از مفهوم اینترنت: کابل‌های فیبر نوری، روترها و دیتاسنترها. تشبیه بسته‌های داده به محموله‌های پستی.',
+            'تعریف دقیق ۳ نقش کلیدی: کلاینت (درخواست‌کننده)، مرورگر (مترجم کد به صفحه)، سرور (ارائه‌دهنده منابع ۲۴ ساعته).',
+            'تشریح ۶ مرحله باز شدن یک آدرس (URL): تایپ آدرس، استعلام DNS، هندشیک TCP، درخواست HTTP، دریافت فایل‌ها و رندر.',
+            'تفاوت پروتکل ناامن HTTP و امن HTTPS؛ تشبیه رمزنگاری SSL به نامه مهروموم شده در برابر کارت‌پستال عمومی.',
+            'معرفی کدهای وضعیت پرکاربرد: ۲۰۰ (موفقیت)، ۴۰۴ (پیدا نشد)، ۵۰۰ (خطای سرور).',
+            'توضیح تشبیهی دامنه (پلاک خانه)، DNS (دفترچه تلفن نام به شماره) و هاست (خودِ خانه فیزیکی).',
+            'تعریف ماهیت HTML به عنوان اسکلت و استخوان‌بندی وب؛ تأکید بر اینکه HTML زبان نشانه‌گذاری است نه زبان برنامه‌نویسی.',
+            'نقش CSS در زیبایی، رنگ‌ها، فونت‌ها و فاصله‌ها؛ نمایش مقایسه کد قبل و بعد از استایل‌دهی.',
+            'معرفی جاوااسکریپت به عنوان عضلات و هوش صفحه: واکنش به کلیک، اعتبارسنجی فرم‌ها و ارتباط زنده با سرور.',
+            'ابزارهای همراه در مسیر یادگیری: گیت و گیت‌هاب برای کنترل نسخه، APIها برای دریافت داده و فریم‌ورک‌های مدرن.',
+            'بررسی نقش فرانت‌اند در نمونه‌های بزرگ دنیا مانند فروشگاه اپل، پیام‌رسان اسلک و پلتفرم نتفلیکس.',
+            'معرفی دو بازوی اصلی توسعه‌دهنده: ادیتور VS Code (کارگاه کدنویسی) و مرورگر کروم (میز کار و تست).',
+            'قابلیت‌های کروم و ابزار DevTools برای بازرسی زنده عناصر و دیباگ لحظه‌ای کدهای CSS و JS.',
+            'چرا VS Code محبوب‌ترین ادیتور دنیاست: سبک، سریع، مجهز به اکستنشن‌ها، ترمینال یکپارچه و گیت.',
+            'آموزش گام‌به‌گام دانلود و نصب VS Code و زدن تیک گزینه مهم Add to PATH در ویندوز.',
+            'معرفی ۴ اکستنشن الزامی: Live Server برای رفرش خودکار، Prettier برای زیبایی کد، Auto Rename Tag و Material Icons.',
+            'قوانین سازمان‌دهی پروژه: یک پوشه ریشه اختصاصی، نام‌گذاری کوچک با خط تیره (kebab-case) و فایل index.html.',
+            'تمرین عملی حضوری: دانشجویان با هم پوشه my-first-project را در VS Code باز کنند.',
+            'تمرین عملی: ساخت فایل index.html و توضیح علت نام‌گذاری index در سرورهای وب.',
+            'کدنویسی اولین خطوط HTML: نوشتن تگ‌های h1 و p؛ آموزش میانبر Tab در Emmet برای سرعت بیشتر.',
+            'اجرای فایل در مرورگر به ۳ روش: درگ اند دراپ، کلیک راست، و دکمه Go Live در Live Server.',
+            'بهترین عادات برنامه‌نویسان: رعایت ایندنت، کامنت‌گذاری، نام‌گذاری استاندارد و پرهیز از کپی-پیست کورکورانه.',
+            'بررسی ۵ خطای پر تکرار مبتدیان: غلط املایی تگ، نبستن تگ، ذخیره نشدن فایل (Ctrl+S)، پسوند txt، و کش مرورگر.',
+            'جمع‌بندی دستاوردهای جلسه اول و تبریک ورود به جامعه برنامه‌نویسان فرانت‌اند.',
+            'تکلیف خانگی: نصب کامل ابزارها، ساخت اولین پروژه شخصی با معرفی خود و اعلام موضوع جلسه بعد (تگ‌های معنایی).'
+        ];
+
+        function toPersianDigits(n) {
+            const farsiDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+            return n.toString().replace(/\d/g, x => farsiDigits[x]);
+        }
+
+        // Build Thumbnails
         const thumbContainer = document.getElementById('thumbnailsContainer');
         for (let i = 0; i < totalSlides; i++) {
             const thumb = document.createElement('div');
             thumb.className = `slide-thumb ${i === 0 ? 'active' : ''}`;
-            thumb.innerHTML = `<iframe src="slide-${String(i + 1).padStart(2, '0')}.html" sandbox="allow-scripts allow-same-origin"></iframe>`;
+            thumb.innerHTML = `
+                <iframe src="slide-${String(i + 1).padStart(2, '0')}.html" sandbox="allow-scripts allow-same-origin"></iframe>
+                <span class="slide-thumb-num">${toPersianDigits(i + 1)}</span>
+            `;
             thumb.addEventListener('click', () => goToSlide(i));
             thumb.dataset.index = i;
             thumbContainer.appendChild(thumb);
@@ -155,41 +299,73 @@
         function updateThumbs() {
             document.querySelectorAll('.slide-thumb').forEach((thumb, idx) => {
                 thumb.classList.toggle('active', idx === currentSlide);
+                if (idx === currentSlide) {
+                    thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                }
             });
         }
 
-        function updateMainIframe() {
+        function updateMainView() {
             const num = currentSlide + 1;
             const src = `slide-${String(num).padStart(2, '0')}.html`;
             document.getElementById('mainSlideIframe').src = src;
-            document.getElementById('currentSlideInfo').textContent = `اسلاید ${num} از ${totalSlides}`;
+
+            // Update Next Slide Preview
+            if (currentSlide < totalSlides - 1) {
+                const nextNum = currentSlide + 2;
+                document.getElementById('nextSlideIframe').src = `slide-${String(nextNum).padStart(2, '0')}.html`;
+                document.getElementById('nextSlideNum').textContent = `اسلاید ${toPersianDigits(nextNum)}`;
+                document.getElementById('nextSlideTitle').textContent = slideTitles[currentSlide + 1];
+            } else {
+                document.getElementById('nextSlideNum').textContent = 'پایان اسلایدها';
+                document.getElementById('nextSlideTitle').textContent = 'پایان جلسه اول';
+            }
+
+            document.getElementById('currentSlideInfo').textContent = `اسلاید ${toPersianDigits(num)} از ${toPersianDigits(totalSlides)}`;
             document.getElementById('slideTitleDisplay').textContent = slideTitles[currentSlide] || `اسلاید ${num}`;
-            document.getElementById('notesText').textContent = slidesNotes[currentSlide] || 'بدون یادداشت';
+            document.getElementById('notesText').innerHTML = `<p>${slidesNotes[currentSlide] || 'یادداشت خاصی برای این اسلاید ثبت نشده است.'}</p>`;
+            document.getElementById('gotoSlideInput').value = num;
             updateThumbs();
         }
+
+        // BroadcastChannel to sync with audience.html
+        const channel = new BroadcastChannel('presentation-channel');
+        function broadcastSlideChange() {
+            channel.postMessage({ type: 'slide-change', slideIndex: currentSlide });
+        }
+
+        channel.onmessage = (event) => {
+            if (event.data && event.data.type === 'slide-change') {
+                if (event.data.slideIndex !== currentSlide) {
+                    currentSlide = event.data.slideIndex;
+                    updateMainView();
+                }
+            }
+        };
 
         function goToSlide(index) {
             if (index < 0 || index >= totalSlides) return;
             currentSlide = index;
-            updateMainIframe();
+            updateMainView();
             broadcastSlideChange();
         }
 
-        // Navigation
         function nextSlide() { goToSlide(currentSlide + 1); }
         function prevSlide() { goToSlide(currentSlide - 1); }
 
-        // Mouse wheel
-        window.addEventListener('wheel', (e) => {
-            e.preventDefault();
-            if (e.deltaY > 0) nextSlide();
-            else prevSlide();
-        }, { passive: false });
+        document.getElementById('btnNextTop').addEventListener('click', nextSlide);
+        document.getElementById('btnPrevTop').addEventListener('click', prevSlide);
 
-        // Keyboard arrows
+        // Keyboard Navigation (In RTL: Left Arrow = Next, Right Arrow = Prev)
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextSlide(); }
-            if (e.key === 'ArrowLeft') { e.preventDefault(); prevSlide(); }
+            if (e.target.tagName === 'INPUT') return;
+            if (e.key === 'ArrowLeft' || e.key === ' ' || e.key === 'PageDown') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowRight' || e.key === 'PageUp') {
+                e.preventDefault();
+                prevSlide();
+            }
         });
 
         // Go to slide input
@@ -198,94 +374,66 @@
             if (!isNaN(val)) goToSlide(val);
         });
 
-        // Timer
+        // Presentation Timer
         let timerSeconds = 0;
         let timerInterval = null;
         const timerEl = document.getElementById('timer');
         function updateTimerDisplay() {
-            const mins = Math.floor(timerSeconds / 60).toString().padStart(2, '0');
-            const secs = (timerSeconds % 60).toString().padStart(2, '0');
-            timerEl.textContent = `${mins}:${secs}`;
+            const mins = Math.floor(timerSeconds / 60);
+            const secs = timerSeconds % 60;
+            timerEl.textContent = `${toPersianDigits(String(mins).padStart(2, '0'))}:${toPersianDigits(String(secs).padStart(2, '0'))}`;
         }
+
         document.getElementById('timerToggle').addEventListener('click', function () {
             if (timerInterval) {
                 clearInterval(timerInterval);
                 timerInterval = null;
                 this.textContent = '▶ شروع';
+                this.classList.replace('bg-amber-600', 'bg-blue-600');
             } else {
                 timerInterval = setInterval(() => { timerSeconds++; updateTimerDisplay(); }, 1000);
                 this.textContent = '⏸ توقف';
+                this.classList.replace('bg-blue-600', 'bg-amber-600');
             }
         });
+
         document.getElementById('timerReset').addEventListener('click', () => {
-            clearInterval(timerInterval);
-            timerInterval = null;
             timerSeconds = 0;
             updateTimerDisplay();
-            document.getElementById('timerToggle').textContent = '▶ شروع';
         });
 
-        // Auto play
-        let autoplayActive = false;
+        // Autoplay Feature
         let autoplayTimer = null;
-        const autoplayCheckbox = document.getElementById('autoplayToggle');
-        const intervalInput = document.getElementById('autoplayInterval');
-        function startAutoplay() {
-            if (autoplayActive) return;
-            autoplayActive = true;
-            autoplayTimer = setInterval(() => {
-                if (currentSlide < totalSlides - 1) nextSlide();
-                else {
-                    clearInterval(autoplayTimer);
-                    autoplayActive = false;
-                    autoplayCheckbox.checked = false;
-                }
-            }, intervalInput.value * 1000);
-        }
-        function stopAutoplay() {
-            clearInterval(autoplayTimer);
-            autoplayActive = false;
-        }
-        autoplayCheckbox.addEventListener('change', (e) => {
-            if (e.target.checked) startAutoplay();
-            else stopAutoplay();
-        });
-        intervalInput.addEventListener('change', () => {
-            if (autoplayActive) {
-                stopAutoplay();
-                startAutoplay();
-            }
-        });
+        const autoplayToggle = document.getElementById('autoplayToggle');
+        const autoplayInterval = document.getElementById('autoplayInterval');
 
-        // Fullscreen toggle
+        function setupAutoplay() {
+            if (autoplayTimer) clearInterval(autoplayTimer);
+            if (autoplayToggle.checked) {
+                const ms = (parseInt(autoplayInterval.value) || 10) * 1000;
+                autoplayTimer = setInterval(() => {
+                    if (currentSlide < totalSlides - 1) {
+                        nextSlide();
+                    } else {
+                        goToSlide(0);
+                    }
+                }, ms);
+            }
+        }
+
+        autoplayToggle.addEventListener('change', setupAutoplay);
+        autoplayInterval.addEventListener('change', setupAutoplay);
+
         function toggleFullscreen() {
-            if (!document.fullscreenElement) document.documentElement.requestFullscreen();
-            else document.exitFullscreen();
-        }
-
-        // Dual screen via BroadcastChannel
-        const channel = new BroadcastChannel('presentation-channel');
-        let audienceWindow = null;
-
-        function broadcastSlideChange() {
-            channel.postMessage({ type: 'slide-change', slideIndex: currentSlide });
-        }
-
-        document.getElementById('openAudienceBtn').addEventListener('click', () => {
-            if (audienceWindow && !audienceWindow.closed) {
-                audienceWindow.focus();
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => console.log(err));
             } else {
-                audienceWindow = window.open('audience.html', '_blank', 'width=1280,height=720');
-                // After opening, send current slide after a short delay
-                setTimeout(() => {
-                    broadcastSlideChange();
-                }, 500);
+                document.exitFullscreen();
             }
-        });
+        }
 
-        // Initial load
-        updateMainIframe();
-        broadcastSlideChange();
+        // Initial Load
+        updateMainView();
     </script>
 </body>
 

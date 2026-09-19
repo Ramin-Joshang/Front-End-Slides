@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" style="--viewport-height: 9.57px;">
+<html lang="fa" dir="rtl">
 
 <head>
     <meta charset="utf-8">
-    <title>Front-End vs Back-End</title>
+    <title>مقایسه فرانت‌اند و بک‌اند - جلسه ۰۱</title>
     <script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
         :root {
             --ppt-bg: #0f172a;
@@ -232,6 +232,7 @@
     </style>
     <meta content="16:9" name="PageAspectRatio">
     <meta content="1280_720" name="PageSize">
+    <link rel="stylesheet" href="projector-theme.css">
 </head>
 
 <body class="">
@@ -240,24 +241,24 @@
         <div class="title-region-wrapper">
             <div class="title-breadcrumb-container">
                 <div class="title-accent-line"></div>
-                <span class="title-breadcrumb-text">Lesson 01 // Introduction</span>
+                <span class="title-breadcrumb-text">جلسه ۰۱ // مفاهیم پایه</span>
             </div>
-            <h1 class="title-main-heading">Front-End vs Back-End</h1>
+            <h1 class="title-main-heading">تفاوت فرانت‌اند و بک‌اند (فرانت‌اند (رابط کاربر) vs بک‌اند (سرور و پایگاه داده))</h1>
         </div>
         <!-- Comparison Diptych Layout -->
         <div class="fe-be-comparison-main-container">
-            <!-- Left: Front-End -->
+            <!-- Left: فرانت‌اند (رابط کاربر) -->
             <div class="fe-be-column-wrapper">
                 <div class="fe-be-column-inner left-column-content" data-animation-id="fe-column">
                     <div class="fe-be-icon-box">
                         <i class="fa-solid fa-laptop-code"></i>
                     </div>
-                    <div class="fe-be-role-label">THE DINING ROOM</div>
-                    <h2 class="fe-be-side-title">Front-End</h2>
+                    <div class="fe-be-role-label">سالن رستوران (جلوی صحنه)</div>
+                    <h2 class="fe-be-side-title">فرانت‌اند (رابط کاربر)</h2>
                     <ul class="fe-be-feature-list">
-                        <li class="fe-be-feature-item">The visual user interface</li>
-                        <li class="fe-be-feature-item">Animations &amp; interactions</li>
-                        <li class="fe-be-feature-item">Browser-based execution</li>
+                        <li class="fe-be-feature-item">رابط کاربری و ظاهر بصری</li>
+                        <li class="fe-be-feature-item">انیمیشن‌ها و تعامل با کاربر</li>
+                        <li class="fe-be-feature-item">اجرای کامل درون مرورگر</li>
                     </ul>
                     <div class="fe-be-tech-stack">HTML • CSS • JAVASCRIPT</div>
                 </div>
@@ -265,21 +266,21 @@
             <!-- Divider with Bridge Badge -->
             <div class="fe-be-vertical-divider-line">
                 <div class="fe-be-interaction-bridge-tag" data-animation-id="center-bridge">
-                    REQUEST <i class="fa-solid fa-right-left"></i> RESPONSE
+                    درخواست (Request) <i class="fa-solid fa-right-left"></i> پاسخ (Response)
                 </div>
             </div>
-            <!-- Right: Back-End -->
+            <!-- Right: بک‌اند (سرور و پایگاه داده) -->
             <div class="fe-be-column-wrapper">
                 <div class="fe-be-column-inner right-column-content" data-animation-id="be-column">
                     <div class="fe-be-icon-box">
                         <i class="fa-solid fa-server"></i>
                     </div>
-                    <div class="fe-be-role-label">THE KITCHEN</div>
-                    <h2 class="fe-be-side-title">Back-End</h2>
+                    <div class="fe-be-role-label">آشپزخانه (پشت صحنه)</div>
+                    <h2 class="fe-be-side-title">بک‌اند (سرور و پایگاه داده)</h2>
                     <ul class="fe-be-feature-list">
-                        <li class="fe-be-feature-item">Data storage &amp; security</li>
-                        <li class="fe-be-feature-item">Business logic &amp; rules</li>
-                        <li class="fe-be-feature-item">Server-side processing</li>
+                        <li class="fe-be-feature-item">ذخیره‌سازی داده‌ها و امنیت</li>
+                        <li class="fe-be-feature-item">منطق تجاری و قوانین سیستم</li>
+                        <li class="fe-be-feature-item">پردازش و محاسبات سمت سرور</li>
                     </ul>
                     <div class="fe-be-tech-stack">PYTHON • NODE.JS • SQL</div>
                 </div>

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="fa" dir="rtl"><head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Troubleshooting Common Issues</title>
+<title>خطاهای رایج مبتدیان و عیب‌یابی - جلسه ۰۱</title>
 <script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
-<style>@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+<style>@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 :root {
     --ppt-bg: #0f172a;
     --ppt-bg-soft: #1e293b;
@@ -140,7 +140,7 @@ body {width: 1280px; height: 720px; overflow: hidden; background: #000;
     color: var(--ppt-text-1);
     line-height: 1.2
     }
-/* Problem / Fix rows */
+/* خطا / اصلاح rows */
 .troubleshoot-issue-detail-block {
     display: flex;
     flex-direction: column;
@@ -240,16 +240,17 @@ body {width: 1280px; height: 720px; overflow: hidden; background: #000;
     }
 html { overflow: hidden; }
 </style>
-<meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize"></head>
+<meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize">    <link rel="stylesheet" href="projector-theme.css">
+</head>
 <body>
 <div class="troubleshoot-slide-root" style="overflow: hidden;">
 <!-- Title Region -->
 <div class="troubleshoot-title-region">
 <div class="troubleshoot-title-breadcrumb-row">
 <div class="troubleshoot-title-accent-bar"></div>
-<span class="troubleshoot-title-breadcrumb-text">Lesson 01 // Introduction</span>
+<span class="troubleshoot-title-breadcrumb-text">جلسه ۰۱ // عیب‌یابی</span>
 </div>
-<h1 class="troubleshoot-title-heading">Troubleshooting Common Issues</h1>
+<h1 class="troubleshoot-title-heading">خطاهای رایج مبتدیان و راهکار برطرف کردن آن‌ها</h1>
 </div>
 <!-- Content Area -->
 <div class="troubleshoot-content-area">
@@ -261,11 +262,11 @@ html { overflow: hidden; }
 <div class="troubleshoot-issue-card-icon-wrap troubleshoot-icon-bad">
 <i class="fa-solid fa-code"></i>
 </div>
-<span class="troubleshoot-issue-card-label">Typo in HTML Tag</span>
+<span class="troubleshoot-issue-card-label">غلط املایی در نام تگ‌ها</span>
 </div>
 <div class="troubleshoot-issue-detail-block">
 <div class="troubleshoot-problem-row">
-<span class="troubleshoot-problem-label"><i class="fa-solid fa-xmark"></i> Problem</span>
+<span class="troubleshoot-problem-label"><i class="fa-solid fa-xmark"></i> خطا</span>
 <code class="troubleshoot-code-bad">&lt;titel&gt;My Page&lt;/titel&gt;</code>
 </div>
 <div class="troubleshoot-arrow-divider">
@@ -274,23 +275,23 @@ html { overflow: hidden; }
 <div class="troubleshoot-arrow-divider-line"></div>
 </div>
 <div class="troubleshoot-problem-row">
-<span class="troubleshoot-fix-label"><i class="fa-solid fa-check"></i> Fix</span>
+<span class="troubleshoot-fix-label"><i class="fa-solid fa-check"></i> اصلاح</span>
 <code class="troubleshoot-code-good">&lt;title&gt;My Page&lt;/title&gt;</code>
 </div>
-<p class="troubleshoot-fix-text">HTML tags must be spelled exactly. Check VS Code's syntax highlighting — unknown tags appear unstyled.</p>
+<p class="troubleshoot-fix-text">نام تگ‌ها باید دقیق تایپ شود. به رنگ تگ در VS Code دقت کنید؛ تگ‌های اشتباه رنگ متفاوتی دارند.</p>
 </div>
 </div>
-<!-- Card 2: Missing Closing Tag -->
+<!-- Card 2: فراموش کردن بستن تگ -->
 <div class="troubleshoot-issue-card">
 <div class="troubleshoot-issue-card-header">
 <div class="troubleshoot-issue-card-icon-wrap troubleshoot-icon-warn">
 <i class="fa-solid fa-triangle-exclamation"></i>
 </div>
-<span class="troubleshoot-issue-card-label">Missing Closing Tag</span>
+<span class="troubleshoot-issue-card-label">فراموش کردن بستن تگ</span>
 </div>
 <div class="troubleshoot-issue-detail-block">
 <div class="troubleshoot-problem-row">
-<span class="troubleshoot-problem-label"><i class="fa-solid fa-xmark"></i> Problem</span>
+<span class="troubleshoot-problem-label"><i class="fa-solid fa-xmark"></i> خطا</span>
 <code class="troubleshoot-code-bad">&lt;h1&gt;Hello World</code>
 </div>
 <div class="troubleshoot-arrow-divider">
@@ -299,7 +300,7 @@ html { overflow: hidden; }
 <div class="troubleshoot-arrow-divider-line"></div>
 </div>
 <div class="troubleshoot-problem-row">
-<span class="troubleshoot-fix-label"><i class="fa-solid fa-check"></i> Fix</span>
+<span class="troubleshoot-fix-label"><i class="fa-solid fa-check"></i> اصلاح</span>
 <code class="troubleshoot-code-good">&lt;h1&gt;Hello World&lt;/h1&gt;</code>
 </div>
 <p class="troubleshoot-fix-text">Every opening tag needs a matching closing tag. VS Code's bracket pair colorizer highlights mismatches.</p>
@@ -315,7 +316,7 @@ html { overflow: hidden; }
 </div>
 <div class="troubleshoot-issue-detail-block">
 <div class="troubleshoot-problem-row">
-<span class="troubleshoot-problem-label"><i class="fa-solid fa-xmark"></i> Problem</span>
+<span class="troubleshoot-problem-label"><i class="fa-solid fa-xmark"></i> خطا</span>
 <code class="troubleshoot-code-bad">src="Images/logo.png"</code>
 </div>
 <div class="troubleshoot-arrow-divider">
@@ -324,23 +325,23 @@ html { overflow: hidden; }
 <div class="troubleshoot-arrow-divider-line"></div>
 </div>
 <div class="troubleshoot-problem-row">
-<span class="troubleshoot-fix-label"><i class="fa-solid fa-check"></i> Fix</span>
+<span class="troubleshoot-fix-label"><i class="fa-solid fa-check"></i> اصلاح</span>
 <code class="troubleshoot-code-good">src="images/logo.png"</code>
 </div>
 <p class="troubleshoot-fix-text">Paths are case-sensitive on servers. Keep all folder and file names lowercase to avoid broken links.</p>
 </div>
 </div>
-<!-- Card 4: File Not Saved -->
+<!-- Card 4: ذخیره نشدن تغییرات فایل -->
 <div class="troubleshoot-issue-card">
 <div class="troubleshoot-issue-card-header">
 <div class="troubleshoot-issue-card-icon-wrap troubleshoot-icon-warn">
 <i class="fa-solid fa-floppy-disk"></i>
 </div>
-<span class="troubleshoot-issue-card-label">File Not Saved</span>
+<span class="troubleshoot-issue-card-label">ذخیره نشدن تغییرات فایل</span>
 </div>
 <div class="troubleshoot-issue-detail-block">
 <div class="troubleshoot-problem-row">
-<span class="troubleshoot-problem-label"><i class="fa-solid fa-xmark"></i> Symptom</span>
+<span class="troubleshoot-problem-label"><i class="fa-solid fa-xmark"></i> نشانه</span>
 <code class="troubleshoot-code-bad">Changes not showing in browser</code>
 </div>
 <div class="troubleshoot-arrow-divider">
@@ -349,10 +350,10 @@ html { overflow: hidden; }
 <div class="troubleshoot-arrow-divider-line"></div>
 </div>
 <div class="troubleshoot-problem-row">
-<span class="troubleshoot-fix-label"><i class="fa-solid fa-check"></i> Fix</span>
+<span class="troubleshoot-fix-label"><i class="fa-solid fa-check"></i> اصلاح</span>
 <code class="troubleshoot-code-good">Ctrl + S  /  Cmd + S</code>
 </div>
-<p class="troubleshoot-fix-text">A dot on the VS Code tab means unsaved changes. Enable Auto Save under File → Auto Save.</p>
+<p class="troubleshoot-fix-text">وجود دایره در کنار نام فایل در تب ادیتور نشانه ذخیره نشدن است. کلید Ctrl + S را بزنید یا Auto Save را فعال کنید.</p>
 </div>
 </div>
 <!-- Card 5: Wrong Extension -->
@@ -361,11 +362,11 @@ html { overflow: hidden; }
 <div class="troubleshoot-issue-card-icon-wrap troubleshoot-icon-blue">
 <i class="fa-solid fa-file-code"></i>
 </div>
-<span class="troubleshoot-issue-card-label">Wrong File Extension</span>
+<span class="troubleshoot-issue-card-label">پسوند اشتباه در فایل</span>
 </div>
 <div class="troubleshoot-issue-detail-block">
 <div class="troubleshoot-problem-row">
-<span class="troubleshoot-problem-label"><i class="fa-solid fa-xmark"></i> Problem</span>
+<span class="troubleshoot-problem-label"><i class="fa-solid fa-xmark"></i> خطا</span>
 <code class="troubleshoot-code-bad">index.html.txt</code>
 </div>
 <div class="troubleshoot-arrow-divider">
@@ -374,10 +375,10 @@ html { overflow: hidden; }
 <div class="troubleshoot-arrow-divider-line"></div>
 </div>
 <div class="troubleshoot-problem-row">
-<span class="troubleshoot-fix-label"><i class="fa-solid fa-check"></i> Fix</span>
+<span class="troubleshoot-fix-label"><i class="fa-solid fa-check"></i> اصلاح</span>
 <code class="troubleshoot-code-good">index.html</code>
 </div>
-<p class="troubleshoot-fix-text">OS may hide extensions. Check "Show file extensions" in Explorer settings to confirm the real name.</p>
+<p class="troubleshoot-fix-text">سیستم‌عامل ممکن است پسوندها را مخفی کند. در تنظیمات پوشه‌ها گزینه نمایش پسوند را فعال کنید.</p>
 </div>
 </div>
 <!-- Card 6: Page Not Refreshed -->
@@ -386,11 +387,11 @@ html { overflow: hidden; }
 <div class="troubleshoot-issue-card-icon-wrap troubleshoot-icon-blue">
 <i class="fa-solid fa-rotate-right"></i>
 </div>
-<span class="troubleshoot-issue-card-label">Browser Cache / No Refresh</span>
+<span class="troubleshoot-issue-card-label">کش مرورگر و عدم به‌روزرسانی</span>
 </div>
 <div class="troubleshoot-issue-detail-block">
 <div class="troubleshoot-problem-row">
-<span class="troubleshoot-problem-label"><i class="fa-solid fa-xmark"></i> Symptom</span>
+<span class="troubleshoot-problem-label"><i class="fa-solid fa-xmark"></i> نشانه</span>
 <code class="troubleshoot-code-bad">Old content still showing</code>
 </div>
 <div class="troubleshoot-arrow-divider">
@@ -399,10 +400,10 @@ html { overflow: hidden; }
 <div class="troubleshoot-arrow-divider-line"></div>
 </div>
 <div class="troubleshoot-problem-row">
-<span class="troubleshoot-fix-label"><i class="fa-solid fa-check"></i> Fix</span>
+<span class="troubleshoot-fix-label"><i class="fa-solid fa-check"></i> اصلاح</span>
 <code class="troubleshoot-code-good">Ctrl+Shift+R  (hard reload)</code>
 </div>
-<p class="troubleshoot-fix-text">Hard reload bypasses the cache. Live Server refreshes automatically — install it to avoid this issue.</p>
+<p class="troubleshoot-fix-text">رفرش سخت (Ctrl+Shift+R) کش را دور می‌زند. استفاده از Live Server این مشکل را به کلی حل می‌کند.</p>
 </div>
 </div>
 </div><!-- end grid -->
@@ -410,7 +411,7 @@ html { overflow: hidden; }
 <div class="troubleshoot-tip-bar">
 <i class="fa-solid fa-lightbulb troubleshoot-tip-bar-icon"></i>
 <span class="troubleshoot-tip-bar-text">Pro tip:</span>
-<span class="troubleshoot-tip-bar-sub">When nothing works, open DevTools (F12) → Console tab. Red errors point directly to the problem.</span>
+<span class="troubleshoot-tip-bar-sub">نکته طلایی: هر جا به بن‌بست رسیدید، کلید F12 را بزنید و تب Console را باز کنید؛ ارورهای قرمز دقیقاً علت را می‌گویند.</span>
 </div>
 </div><!-- end content area -->
 </div>

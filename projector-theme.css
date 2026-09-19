@@ -1,0 +1,469 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+    /* Projector-Optimized Ultra-High-Contrast Light Theme Variables */
+    --ppt-bg: #ffffff;
+    --ppt-bg-soft: #f8fafc;
+    --ppt-surface: #ffffff;
+    --ppt-surface-2: #f1f5f9;
+    --ppt-surface-3: #e2e8f0;
+    --ppt-border: #cbd5e1;
+    --ppt-border-subtle: #e2e8f0;
+    --ppt-text-1: #0f172a; /* Razor sharp slate-900 */
+    --ppt-text-2: #334155; /* Slate-700 */
+    --ppt-text-3: #64748b; /* Slate-500 */
+    --ppt-accent: #2563eb; /* Royal Blue */
+    --ppt-accent-2: #0284c7; /* Sky Blue */
+    --ppt-accent-3: #7c3aed; /* Violet */
+    --ppt-accent-soft: rgba(37, 99, 235, 0.08);
+    --ppt-chart-1: #2563eb;
+    --ppt-chart-2: #0284c7;
+    --ppt-chart-3: #4f46e5;
+    --ppt-chart-4: #7c3aed;
+    --ppt-good: #16a34a;
+    --ppt-warn: #d97706;
+    --ppt-bad: #dc2626;
+    --ppt-radius-sm: 8px;
+    --ppt-radius-md: 12px;
+    --ppt-radius-lg: 16px;
+    --ppt-shadow-soft: 0 4px 16px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.04);
+    --ppt-shadow-strong: 0 10px 28px rgba(15, 23, 42, 0.09), 0 2px 6px rgba(15, 23, 42, 0.04);
+    --ppt-font-display: 'Vazirmatn', system-ui, -apple-system, sans-serif;
+    --ppt-font-body: 'Vazirmatn', system-ui, -apple-system, sans-serif;
+    --ppt-font-mono: 'JetBrains Mono', monospace;
+}
+
+/* Base Body & Layout */
+html, body {
+    direction: rtl;
+    text-align: right;
+    font-family: var(--ppt-font-body);
+    background-color: #ffffff !important;
+    color: var(--ppt-text-1) !important;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: normal;
+}
+
+/* Latin Code & Technical terms stay LTR */
+.ltr, code, pre, kbd, samp, .code-font, [data-ltr="true"] {
+    direction: ltr !important;
+    text-align: left !important;
+    font-family: var(--ppt-font-mono) !important;
+}
+
+/* Generic Slide Root Overrides */
+[class*="-slide-root"], [class*="-slide-container"], .slide-root-container, .slide-root {
+    background-color: #ffffff !important;
+    color: var(--ppt-text-1) !important;
+    border: 1px solid #e2e8f0;
+}
+
+/* Cover Slide (Slide 01) */
+.intro-frontend-overlay-layer {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.95) 50%, rgba(241, 245, 249, 0.98) 100%) !important;
+}
+.title-frontend-main-text {
+    color: var(--ppt-text-1) !important;
+}
+.title-frontend-terminal-path {
+    background-color: #f1f5f9 !important;
+    color: var(--ppt-accent) !important;
+    border: 1px solid #cbd5e1 !important;
+}
+.intro-frontend-metadata-divider {
+    background-color: #cbd5e1 !important;
+}
+.intro-frontend-metadata-label {
+    color: var(--ppt-text-3) !important;
+}
+.intro-frontend-metadata-value {
+    color: var(--ppt-text-1) !important;
+}
+
+/* Title Region RTL Polish */
+.title-region-wrapper, [class*="-title-region"], .title-section-wrapper, .title-region {
+    direction: rtl;
+    text-align: right;
+}
+
+.title-breadcrumb-container, [class*="-breadcrumb-container"], [class*="-breadcrumb-wrapper"], .title-breadcrumb-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    direction: rtl;
+}
+
+.title-accent-bar, .title-accent-line, [class*="-accent-line"], [class*="-accent-bar"] {
+    width: 5px !important;
+    height: 32px !important;
+    background: var(--ppt-accent) !important;
+    border-radius: 3px !important;
+}
+
+.title-breadcrumb-text, [class*="-breadcrumb-text"], .title-breadcrumb-label {
+    font-family: var(--ppt-font-body);
+    font-size: 15px;
+    color: var(--ppt-accent) !important;
+    font-weight: 700;
+}
+
+.title-main-heading, [class*="-main-heading"], [class*="-main-title"], .title-heading, .lesson-summary-page-title {
+    font-family: var(--ppt-font-display) !important;
+    color: var(--ppt-text-1) !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.02em;
+}
+
+/* Card Elements Across All Slides */
+[class*="-card"], [class*="-module"], [class*="-box"], [class*="-item-wrapper"], .curriculum-card-item, .actor-card-item-wrapper, .dns-step-card, .chrome-feature-card-item, .toolbelt-component-card, .hands-on-step-card, .naming-convention-card, .troubleshoot-issue-card, .infrastructure-info-card, .network-node-group {
+    background-color: #ffffff !important;
+    border-color: #cbd5e1 !important;
+    color: var(--ppt-text-1) !important;
+    box-shadow: var(--ppt-shadow-soft) !important;
+}
+
+/* Subtle Card Hover */
+[class*="-card"]:hover, .curriculum-card-item:hover {
+    border-color: var(--ppt-accent) !important;
+    box-shadow: var(--ppt-shadow-strong) !important;
+}
+
+/* Card Headings & Text */
+h2, h3, [class*="-card-title"], [class*="-step-title"], [class*="-feature-title"], .actor-name-heading {
+    color: var(--ppt-text-1) !important;
+}
+
+p, [class*="-description"], [class*="-desc"], [class*="-role-description"], .info-card-desc {
+    color: var(--ppt-text-2) !important;
+}
+
+/* Slide 03 Instructor Profile */
+.instructor-left-profile-side {
+    background: #ffffff !important;
+    border-color: #cbd5e1 !important;
+}
+.instructor-left-profile-side::before {
+    background: radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.06) 0%, transparent 70%) !important;
+}
+.instructor-avatar-placeholder-box {
+    background: #ffffff !important;
+    border-color: var(--ppt-accent) !important;
+    box-shadow: 0 0 24px rgba(37, 99, 235, 0.15) !important;
+}
+.instructor-replace-tag {
+    background: rgba(37, 99, 235, 0.08) !important;
+    border-color: var(--ppt-accent) !important;
+    color: var(--ppt-accent) !important;
+    font-weight: 600;
+}
+.instructor-experience-card {
+    background: #ffffff !important;
+    border-color: #cbd5e1 !important;
+}
+.instructor-contact-chip-link {
+    background: #ffffff !important;
+    border-color: #cbd5e1 !important;
+    color: var(--ppt-text-2) !important;
+}
+.instructor-contact-chip-link:hover {
+    background: #f8fafc !important;
+    border-color: var(--ppt-accent) !important;
+    color: var(--ppt-accent) !important;
+}
+
+/* Slide 06 Front-End vs Back-End */
+.fe-be-column-wrapper {
+    background: #ffffff !important;
+}
+.fe-be-icon-box {
+    background: rgba(37, 99, 235, 0.08) !important;
+    border-color: var(--ppt-accent) !important;
+    color: var(--ppt-accent) !important;
+    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.1) !important;
+}
+.fe-be-bridge-column-wrapper {
+    background: #f8fafc !important;
+    border: 1px dashed #cbd5e1;
+    border-radius: var(--ppt-radius-md);
+}
+.fe-be-bridge-badge {
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    color: var(--ppt-text-1) !important;
+}
+
+/* Slide 07 & 08 & 10 Web Flows & Diagrams */
+.web-flow-main-visual-container, .url-journey-visual-container, .network-infrastructure-visualization {
+    background: #f8fafc !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: var(--ppt-radius-lg);
+}
+.web-flow-summary-card, .url-journey-step-card {
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+}
+.web-flow-step-number, .url-journey-step-number, .step-number-badge, .hands-on-step-number, .homework-step-number {
+    background: var(--ppt-accent) !important;
+    color: #ffffff !important;
+    font-family: var(--ppt-font-mono), var(--ppt-font-body) !important;
+    font-weight: 700 !important;
+}
+.web-flow-divider {
+    background-color: #cbd5e1 !important;
+}
+
+/* Slide 10 URL Journey SVG Nodes */
+.url-journey-svg-canvas circle, .url-journey-svg-canvas rect {
+    stroke-width: 2px !important;
+}
+.url-journey-node-label {
+    fill: var(--ppt-text-1) !important;
+    font-family: var(--ppt-font-body) !important;
+    font-weight: 700;
+}
+.url-journey-replay-button {
+    background: #ffffff !important;
+    border: 1px solid var(--ppt-accent) !important;
+    color: var(--ppt-accent) !important;
+    font-family: var(--ppt-font-body) !important;
+    font-weight: 600;
+}
+.url-journey-replay-button:hover {
+    background: var(--ppt-accent) !important;
+    color: #ffffff !important;
+}
+
+/* Slide 11 HTTP vs HTTPS */
+.http-card-standard {
+    border-color: #cbd5e1 !important;
+    background: #ffffff !important;
+}
+.http-card-secure {
+    border-color: #059669 !important;
+    background: #ffffff !important;
+}
+.http-badge-secure {
+    background: rgba(5, 150, 105, 0.1) !important;
+    color: #059669 !important;
+}
+.http-badge-standard {
+    background: rgba(217, 119, 6, 0.1) !important;
+    color: #d97706 !important;
+}
+
+/* Slide 12 HTTP Request & Response */
+.status-code-card {
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+}
+.status-code-pill.success {
+    background: rgba(22, 163, 74, 0.1) !important;
+    color: #16a34a !important;
+}
+.status-code-pill.warning {
+    background: rgba(217, 119, 6, 0.1) !important;
+    color: #d97706 !important;
+}
+.status-code-pill.error {
+    background: rgba(220, 38, 38, 0.1) !important;
+    color: #dc2626 !important;
+}
+
+/* Slide 13 DNS Flow */
+.dns-code-badge {
+    background: #f1f5f9 !important;
+    border: 1px solid #cbd5e1 !important;
+    color: var(--ppt-accent) !important;
+    direction: ltr !important;
+}
+.dns-analogy-footer {
+    border-top: 1px solid #e2e8f0 !important;
+    color: var(--ppt-text-2) !important;
+}
+
+/* Slide 14, 15, 16 Code & Responsibility blocks */
+.html-acronym-block {
+    background: #f8fafc !important;
+    border: 1px solid #cbd5e1 !important;
+}
+.html-code-strip, .css-style-code-column-left, .css-style-code-column-right, .code-editor-container {
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    border-radius: var(--ppt-radius-md);
+    border: 1px solid #334155;
+    direction: ltr !important;
+    text-align: left !important;
+}
+.css-style-code-label {
+    background: #1e293b !important;
+    color: #94a3b8 !important;
+}
+
+/* Slide 20 Chrome DevTools Mockup */
+.chrome-browser-mockup-frame {
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    box-shadow: var(--ppt-shadow-strong) !important;
+}
+.chrome-browser-header {
+    background: #f1f5f9 !important;
+    border-bottom: 1px solid #cbd5e1 !important;
+}
+.chrome-address-bar {
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    color: var(--ppt-text-2) !important;
+    direction: ltr;
+}
+.chrome-devtools-panel {
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    border-top: 2px solid #334155 !important;
+}
+.chrome-devtools-tabs {
+    background: #1e293b !important;
+    border-bottom: 1px solid #334155 !important;
+    color: #94a3b8 !important;
+}
+.chrome-tab-active {
+    background: #0f172a !important;
+    color: #38bdf8 !important;
+    border-bottom: 2px solid #38bdf8 !important;
+}
+
+/* Slide 21 VS Code Mockup */
+.vscode-editor-mock {
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    border: 1px solid #334155 !important;
+    box-shadow: var(--ppt-shadow-strong) !important;
+    direction: ltr !important;
+    text-align: left !important;
+}
+
+/* Slide 24 Folder Structure */
+.folder-structure-tree-container {
+    background: #f8fafc !important;
+    border: 1px solid #cbd5e1 !important;
+    direction: ltr !important;
+}
+.folder-structure-rule-item {
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+}
+.folder-structure-footer-note {
+    background: rgba(37, 99, 235, 0.08) !important;
+    border: 1px solid rgba(37, 99, 235, 0.2) !important;
+    color: var(--ppt-accent) !important;
+    font-weight: 600;
+}
+
+/* Slide 25 Terminal */
+.terminal-panel-block {
+    background: #0f172a !important;
+    border: 1px solid #334155 !important;
+    border-radius: var(--ppt-radius-md);
+    direction: ltr !important;
+    text-align: left !important;
+}
+.terminal-panel-titlebar {
+    background: #1e293b !important;
+    border-bottom: 1px solid #334155 !important;
+}
+.folder-result-block {
+    background: #f8fafc !important;
+    border: 1px solid #cbd5e1 !important;
+    direction: ltr !important;
+    text-align: left !important;
+}
+
+/* Slide 26 Hands-on index.html */
+.naming-convention-card {
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+}
+.filename-highlight-box {
+    background: #f1f5f9 !important;
+    border: 1px dashed var(--ppt-accent) !important;
+    color: var(--ppt-accent) !important;
+}
+.vs-code-explorer-mock {
+    background: #f8fafc !important;
+    border: 1px solid #cbd5e1 !important;
+    direction: ltr !important;
+    text-align: left !important;
+}
+
+/* Slide 30 Troubleshooting */
+.troubleshoot-code-bad {
+    background: #fee2e2 !important;
+    color: #b91c1c !important;
+    border: 1px solid #fca5a5 !important;
+    direction: ltr !important;
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+.troubleshoot-code-good {
+    background: #dcfce7 !important;
+    color: #15803d !important;
+    border: 1px solid #86efac !important;
+    direction: ltr !important;
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+.troubleshoot-problem-label {
+    color: #b91c1c !important;
+}
+.troubleshoot-fix-label {
+    color: #15803d !important;
+}
+.troubleshoot-tip-bar, .slide-tip-bar {
+    background: #f8fafc !important;
+    border: 1px solid #cbd5e1 !important;
+    color: var(--ppt-text-1) !important;
+}
+
+/* Slide 31 Summary */
+.lesson-summary-focus-statement-wrapper {
+    background: rgba(37, 99, 235, 0.05) !important;
+    border: 1px solid rgba(37, 99, 235, 0.2) !important;
+}
+.lesson-summary-focus-statement-text {
+    color: var(--ppt-text-1) !important;
+}
+.lesson-summary-takeaway-item {
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+}
+
+/* Slide 32 Homework */
+.homework-code-badge {
+    background: #f1f5f9 !important;
+    border: 1px solid #cbd5e1 !important;
+    color: var(--ppt-accent) !important;
+    direction: ltr !important;
+    display: inline-block;
+}
+.homework-footer-note {
+    background: rgba(22, 163, 74, 0.08) !important;
+    border: 1px solid rgba(22, 163, 74, 0.25) !important;
+    color: #16a34a !important;
+}
+
+/* Persian Badges & Utilities */
+.extension-badge {
+    background: #f1f5f9 !important;
+    border: 1px solid #cbd5e1 !important;
+    color: var(--ppt-accent) !important;
+    direction: ltr;
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+/* High contrast icons */
+i[class*="fa-"] {
+    display: inline-block;
+}

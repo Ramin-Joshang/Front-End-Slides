@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" style="--viewport-height: 9.57px;"><head>
+<html lang="fa" dir="rtl"><head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Introduction to Front-End Development - Page 9</title>
+<title>کلاینت، مرورگر و سرور - جلسه ۰۱</title>
 <script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
-<style>@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+<style>@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 :root {
     --ppt-bg: #0f172a;
     --ppt-bg-soft: #1e293b;
@@ -128,7 +128,7 @@ body {width: 1280px; height: 720px; overflow: hidden; background-color: var(--pp
     line-height: 1.5;
     margin-bottom: 19px
     }
-/* Browser Specific Badges */
+/* مرورگر (Browser) Specific Badges */
 .browser-badge-list-container {
     display: flex;
     flex-direction: column;
@@ -167,55 +167,56 @@ body {width: 1280px; height: 720px; overflow: hidden; background-color: var(--pp
     }
 html { overflow: hidden; }
 </style>
-<meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize"></head>
+<meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize">    <link rel="stylesheet" href="projector-theme.css">
+</head>
 <body class="">
 <div class="slide-root-container">
 <!-- Title Region -->
 <div class="title-region-wrapper">
 <div class="title-breadcrumb-container">
 <div class="title-accent-line"></div>
-<span class="title-breadcrumb-text">Lesson 01 // Introduction</span>
+<span class="title-breadcrumb-text">جلسه ۰۱ // ارکان وب</span>
 </div>
-<h1 class="title-main-heading">Client, Browser, and Server</h1>
+<h1 class="title-main-heading">سه بازیگر اصلی وب: کلاینت، مرورگر و سرور</h1>
 </div>
 <!-- Main Actors Content -->
 <div class="actors-grid-layout-container" data-interaction-trigger="true">
-<!-- Card 1: Client -->
+<!-- Card 1: کلاینت (Client) -->
 <div class="actor-card-item-wrapper" data-animation-id="client-card">
 <div class="actor-icon-box">
 <i class="fas fa-laptop-code"></i>
 </div>
-<h2 class="actor-name-heading">Client</h2>
+<h2 class="actor-name-heading">کلاینت (Client)</h2>
 <p class="actor-role-description">
-          The requester. This is your physical device (laptop, phone, or tablet) and the application you are using.
+          درخواست‌کننده؛ دستگاه فیزیکی شما (لپ‌تاپ، موبایل یا تبلت) که با آن به وب متصل می‌شوید.
         </p>
-<div class="actor-status-footer">End-User Device</div>
+<div class="actor-status-footer">دستگاه کاربر نهایی</div>
 </div>
-<!-- Card 2: Browser -->
+<!-- Card 2: مرورگر (Browser) -->
 <div class="actor-card-item-wrapper" data-animation-id="browser-card" style="border-color: var(--ppt-accent-2);">
 <div class="actor-icon-box" style="background: rgba(59, 130, 246, 0.1);color: var(--ppt-accent-2);">
 <i class="fas fa-globe"></i>
 </div>
-<h2 class="actor-name-heading">Browser</h2>
+<h2 class="actor-name-heading">مرورگر (Browser)</h2>
 <p class="actor-role-description">
-          The specialized software client that handles the "handshake" and turns code into a visual page.
+          نرم‌افزار متخصصی که کدها را دریافت کرده و به یک صفحه گرافیکی و زیبا تبدیل می‌کند.
         </p>
 <div class="browser-badge-list-container">
-<div class="browser-task-badge-item"><i class="fas fa-chevron-right"></i> Parse HTML Structure</div>
-<div class="browser-task-badge-item"><i class="fas fa-chevron-right"></i> Apply CSS Styling</div>
-<div class="browser-task-badge-item"><i class="fas fa-chevron-right"></i> Run JavaScript Logic</div>
+<div class="browser-task-badge-item"><i class="fas fa-chevron-right"></i> تحلیل و ساخت درخت تگ‌های HTML</div>
+<div class="browser-task-badge-item"><i class="fas fa-chevron-right"></i> اعمال استایل و زیبایی‌های CSS</div>
+<div class="browser-task-badge-item"><i class="fas fa-chevron-right"></i> اجرای دستورات و منطق جاوااسکریپت</div>
 </div>
 </div>
-<!-- Card 3: Server -->
+<!-- Card 3: سرور (Server) -->
 <div class="actor-card-item-wrapper" data-animation-id="server-card">
 <div class="actor-icon-box">
 <i class="fas fa-server"></i>
 </div>
-<h2 class="actor-name-heading">Server</h2>
+<h2 class="actor-name-heading">سرور (Server)</h2>
 <p class="actor-role-description">
-          The powerhouse computer that stores, creates, and provides resources when asked.
+          کامپیوتر قدرتمند و همیشه بیداری که فایل‌ها را ذخیره کرده و به درخواست‌ها پاسخ می‌دهد.
         </p>
-<div class="actor-status-footer">Resource Provider</div>
+<div class="actor-status-footer">ارائه‌دهنده منابع و داده‌ها</div>
 </div>
 </div>
 </div>
@@ -243,11 +244,11 @@ html { overflow: hidden; }
 <p>
       In web development, we constantly talk about three primary actors. Let's define them clearly to build our mental model.
       
-      First, the **Client**. This is the starting point. It's the device in your hand—your laptop, your iPhone, or even a smart TV. In our context, the client is the one "asking" for something.
+      First, the **کلاینت (Client)**. This is the starting point. It's the device in your hand—your laptop, your iPhone, or even a smart TV. In our context, the client is the one "asking" for something.
       
-      Second, the **Browser**. This is a specific type of client software, like Google Chrome or Safari. Think of it as the specialized interpreter. Its job is to take the raw files from the internet and do three key things: parse the HTML structure, apply the CSS styles, and execute the JavaScript logic.
+      Second, the **مرورگر (Browser)**. This is a specific type of client software, like Google Chrome or Safari. Think of it as the specialized interpreter. Its job is to take the raw files from the internet and do three key things: parse the HTML structure, apply the CSS styles, and execute the JavaScript logic.
       
-      Finally, the **Server**. This is a powerful computer, usually located in a data center, that stays on 24/7. It "serves" the files. When you ask for 'google.com', a server somewhere finds those files and sends them back to your browser.
+      Finally, the **سرور (Server)**. This is a powerful computer, usually located in a data center, that stays on 24/7. It "serves" the files. When you ask for 'google.com', a server somewhere finds those files and sends them back to your browser.
       
       Transition: "Now that we know the three actors, let's see the sequence of events that happens when they actually start talking to each other."
       
