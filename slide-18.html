@@ -159,11 +159,32 @@ html { overflow: hidden; }
 
 <style id="projector-contrast-tune">
     /* High contrast projector tuning - English LTR Centered */
-    body, .slide-root-container, [class*="-slide-root"] {
+    :root {
+        --ppt-bg: #ffffff !important;
+        --ppt-bg-soft: #f8fafc !important;
+        --ppt-surface: #ffffff !important;
+        --ppt-surface-2: #f1f5f9 !important;
+        --ppt-border: #cbd5e1 !important;
+        --ppt-text-1: #0f172a !important;
+        --ppt-text-2: #334155 !important;
+        --ppt-text-3: #64748b !important;
+        --ppt-accent: #2563eb !important;
+        --ppt-accent-2: #3b82f6 !important;
+    }
+    body, .slide-root-container, [class*="-slide-root"], .intro-frontend-slide-root, .cover-slide-root {
         background-color: #ffffff !important;
         color: #0f172a !important;
         direction: ltr !important;
         font-family: var(--ppt-font-body) !important;
+    }
+    [class*="-card"], [class*="-module"], [class*="-box"], [class*="-item-wrapper"],
+    .curriculum-card-item, .actor-card-item-wrapper, .dns-step-card, .chrome-feature-card-item,
+    .toolbelt-component-card, .hands-on-step-card, .naming-convention-card, .troubleshoot-issue-card,
+    .infrastructure-info-card, .network-node-group, .learning-step-card-wrapper, .explanation-card-item,
+    .welcome-step-card-module, .fe-be-column-wrapper, .protocol-info-card, .summary-card-item {
+        background-color: #ffffff !important;
+        border-color: #cbd5e1 !important;
+        color: #0f172a !important;
     }
     .title-region-wrapper, [class*="-title-region"], .title-section-wrapper, .title-region, .title-region-container, .title-region-outer-wrapper {
         display: flex !important;
