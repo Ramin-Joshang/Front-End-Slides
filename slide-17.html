@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
+<style>@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+:root {
+    --ppt-bg: #0f172a;
+    --ppt-bg-soft: #1e293b;
+    --ppt-surface: #1e293b;
+    --ppt-surface-2: #334155;
+    --ppt-border: #334155;
+    --ppt-text-1: #f8fafc;
+    --ppt-text-2: #94a3b8;
+    --ppt-text-3: #64748b;
+    --ppt-accent: #22d3ee;
+    --ppt-accent-2: #3b82f6;
+    --ppt-chart-1: #22d3ee;
+    --ppt-chart-2: #3b82f6;
+    --ppt-chart-3: #818cf8;
+    --ppt-chart-4: #c084fc;
+    --ppt-good: #4ade80;
+    --ppt-warn: #fbbf24;
+    --ppt-bad: #f87171;
+    --ppt-radius-sm: 4px;
+    --ppt-radius-md: 8px;
+    --ppt-radius-lg: 16px;
+    --ppt-shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --ppt-shadow-strong: 0 12px 24px rgba(0, 0, 0, 0.5);
+    --ppt-font-display: "Space Grotesk", sans-serif;
+    --ppt-font-body: "Inter", sans-serif;
+    --ppt-font-mono: "JetBrains Mono", monospace
+    }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+    }
+body {width: 1280px; height: 720px; overflow: hidden; background-color: var(--ppt-bg);
+    font-family: var(--ppt-font-body);
+    color: var(--ppt-text-1)}
+.roadmap-slide-root {
+    width: 1280px;
+    height: 720px;
+    display: flex;
+    flex-direction: column;
+    position: relative
+    }
+.title-region-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 40px 60px 20px 60px
+    }
+.title-breadcrumb-container {
+    display: flex;
+    align-items: center;
+    gap: 12px
+    }
+.title-accent-bar {
+    width: 4px;
+    height: 32px;
+    background: var(--ppt-accent);
+    border-radius: 2px
+    }
+.title-breadcrumb-text {
+    font-family: var(--ppt-font-mono);
+    font-size: 14px;
+    color: var(--ppt-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em
+    }
+.title-heading-text {
+    margin: 0;
+    font-family: var(--ppt-font-display);
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--ppt-text-1);
+    line-height: 1.2
+    }
+.roadmap-tech-grid-wrapper {
+    display: flex;
+    gap: 32px;
+    margin: 40px 60px 60px 60px;
+    align-items: stretch;
+    justify-content: center
+    }
+.roadmap-tech-card-item {
+    flex: 1;
+    background: var(--ppt-surface);
+    border: 1px solid var(--ppt-border);
+    border-radius: var(--ppt-radius-lg);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    box-shadow: var(--ppt-shadow-soft);
+    transition: transform 0.3s ease
+    }
+.roadmap-tech-icon-box {
+    width: 64px;
+    height: 64px;
+    background: rgba(34, 211, 238, 0.1);
+    border-radius: var(--ppt-radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center
+    }
+.roadmap-tech-icon-box i {
+    font-size: 32px;
+    color: var(--ppt-accent)
+    }
+.roadmap-tech-content-box {
+    display: flex;
+    flex-direction: column;
+    gap: 12px
+    }
+.roadmap-tech-card-title {
+    font-family: var(--ppt-font-display);
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--ppt-text-1);
+    margin: 0
+    }
+.roadmap-tech-card-desc {
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--ppt-text-2);
+    margin: 0
+    }
+.roadmap-tech-tag-list {
+    margin-top: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    list-style: none
+    }
+.roadmap-tech-tag-item {
+    font-family: var(--ppt-font-mono);
+    font-size: 12px;
+    padding: 4px 10px;
+    background: var(--ppt-surface-2);
+    color: var(--ppt-accent);
+    border-radius: var(--ppt-radius-sm);
+    text-transform: uppercase
+    }
+.roadmap-footer-note {
+    margin: 0 60px 40px 60px;
+    font-size: 16px;
+    color: var(--ppt-text-3);
+    font-family: var(--ppt-font-mono)
+    }
+html { overflow: hidden; }
+</style>
+<meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize"></head>
+<body>
+<div class="roadmap-slide-root" style="overflow: hidden;">
+<!-- Title Region -->
+<div class="title-region-wrapper">
+<div class="title-breadcrumb-container">
+<div class="title-accent-bar"></div>
+<span class="title-breadcrumb-text">Lesson 01 // Ecosystem</span>
+</div>
+<h1 class="title-heading-text">
+        Technologies Throughout the Roadmap
+      </h1>
+</div>
+<!-- Main Content -->
+<div class="roadmap-tech-grid-wrapper" data-animation-id="tech-grid" data-interaction-trigger="true">
+<!-- Git Card -->
+<div class="roadmap-tech-card-item">
+<div class="roadmap-tech-icon-box">
+<i class="fa-solid fa-code-branch"></i>
+</div>
+<div class="roadmap-tech-content-box">
+<h2 class="roadmap-tech-card-title">Version Control</h2>
+<p class="roadmap-tech-card-desc">
+            Save progress and collaborate with others using Git and GitHub.
+          </p>
+</div>
+<div class="roadmap-tech-tag-list">
+<div class="roadmap-tech-tag-item">Git</div>
+<div class="roadmap-tech-tag-item">GitHub</div>
+<div class="roadmap-tech-tag-item">History</div>
+</div>
+</div>
+<!-- API Card -->
+<div class="roadmap-tech-card-item">
+<div class="roadmap-tech-icon-box">
+<i class="fa-solid fa-cloud-arrow-down"></i>
+</div>
+<div class="roadmap-tech-content-box">
+<h2 class="roadmap-tech-card-title">APIs &amp; Data</h2>
+<h3 class="roadmap-tech-card-desc">
+            Connect your interface to real-world services and live data.
+          </h3>
+</div>
+<div class="roadmap-tech-tag-list">
+<div class="roadmap-tech-tag-item">JSON</div>
+<div class="roadmap-tech-tag-item">Fetch</div>
+<div class="roadmap-tech-tag-item">REST</div>
+</div>
+</div>
+<!-- Frameworks Card -->
+<div class="roadmap-tech-card-item">
+<div class="roadmap-tech-icon-box">
+<i class="fa-solid fa-atom"></i>
+</div>
+<div class="roadmap-tech-content-box">
+<h2 class="roadmap-tech-card-title">Modern Frameworks</h2>
+<p class="roadmap-tech-card-desc">
+            Build complex, scalable applications using engines like React.
+          </p>
+</div>
+<div class="roadmap-tech-tag-list">
+<div class="roadmap-tech-tag-item">React</div>
+<div class="roadmap-tech-tag-item">Components</div>
+<div class="roadmap-tech-tag-item">NPM</div>
+</div>
+</div>
+</div>
+<!-- Footnote -->
+<div class="roadmap-footer-note">
+      &gt; The ecosystem evolves, but the fundamentals remain the same.
+    </div>
+<!-- Animation Metadata -->
+<script data-slide-animation="" type="application/json">
+    {
+      "timeline": [
+        {
+          "animation_id": "tech-grid",
+          "effect": "fade"
+        }
+      ]
+    }
+    </script>
+</div>
+
+</body></html>

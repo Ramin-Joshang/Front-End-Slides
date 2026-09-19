@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Presenter View</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0b1120;
+            color: #e2e8f0;
+        }
+
+        .slide-thumb {
+            width: 192px;
+            height: 108px;
+            overflow: hidden;
+            border: 2px solid #334155;
+            border-radius: 8px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .slide-thumb.active {
+            border-color: #22d3ee;
+            box-shadow: 0 0 15px rgba(34, 211, 238, 0.4);
+            transform: scale(1.05);
+        }
+
+        .slide-thumb iframe {
+            width: 1280px;
+            height: 720px;
+            transform: scale(0.15);
+            transform-origin: 0 0;
+            border: none;
+        }
+
+        .notes-box {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 16px;
+            min-height: 80px;
+        }
+
+        .timer-display {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2rem;
+            color: #22d3ee;
+        }
+
+        button {
+            transition: all 0.2s;
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+
+<body class="p-4 h-screen flex flex-col gap-4">
+    <!-- Header -->
+    <div class="flex items-center justify-between bg-slate-900/80 p-3 rounded-xl border border-slate-700">
+        <div class="flex items-center gap-4">
+            <span class="text-2xl font-bold text-cyan-400 font-['Space_Grotesk']">🎙 Presenter</span>
+            <span id="currentSlideInfo" class="text-slate-400 font-mono text-lg">اسلاید 1 از 32</span>
+            <span id="slideTitleDisplay"
+                class="text-white text-lg font-medium bg-slate-800 px-3 py-1 rounded-full"></span>
+        </div>
+        <div class="flex items-center gap-3">
+            <button id="openAudienceBtn"
+                class="bg-cyan-500 hover:bg-cyan-600 text-black px-4 py-2 rounded-full font-bold flex items-center gap-2"><i
+                    class="fas fa-desktop"></i> باز کردن پروژکتور</button>
+            <button onclick="toggleFullscreen()" class="bg-slate-700 hover:bg-slate-600 px-3 py-2 rounded-full"><i
+                    class="fas fa-expand"></i></button>
+        </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="flex flex-1 gap-4 min-h-0">
+        <!-- Left: slide preview -->
+        <div class="flex-1 flex flex-col gap-4">
+            <div
+                class="relative bg-slate-900 rounded-xl border border-slate-700 p-2 flex-1 flex items-center justify-center">
+                <iframe id="mainSlideIframe" src="slide-01.html" class="border-0 rounded-lg"
+                    style="width:100%; height:100%; max-width:1280px; max-height:720px;"></iframe>
+            </div>
+            <!-- Notes -->
+            <div class="notes-box" id="notesText">یادداشت‌های اسلاید 1</div>
+        </div>
+
+        <!-- Right: timer, controls, go-to -->
+        <div class="w-72 flex flex-col gap-4">
+            <!-- Timer -->
+            <div class="bg-slate-900 border border-slate-700 rounded-xl p-4 flex flex-col items-center">
+                <span class="text-slate-400 text-sm mb-1">⏱ زمان گذشته</span>
+                <span class="timer-display" id="timer">00:00</span>
+                <div class="flex gap-2 mt-2">
+                    <button id="timerToggle" class="bg-slate-700 px-3 py-1 rounded text-sm">▶ شروع</button>
+                    <button id="timerReset" class="bg-slate-700 px-3 py-1 rounded text-sm">↺ بازنشانی</button>
+                </div>
+            </div>
+
+            <!-- Auto Play -->
+            <div class="bg-slate-900 border border-slate-700 rounded-xl p-4">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-slate-400">🎬 پخش خودکار</span>
+                    <input type="checkbox" id="autoplayToggle" class="scale-125 accent-cyan-500">
+                </div>
+                <label class="text-slate-400 text-sm">فاصله (ثانیه):</label>
+                <input type="number" id="autoplayInterval" value="10" min="2" max="120"
+                    class="w-full mt-1 bg-slate-800 border border-slate-600 rounded px-2 py-1 text-white">
+            </div>
+
+            <!-- Go to slide -->
+            <div class="bg-slate-900 border border-slate-700 rounded-xl p-4">
+                <span class="text-slate-400 text-sm block mb-2">🔢 رفتن به اسلاید</span>
+                <div class="flex gap-2">
+                    <input type="number" id="gotoSlideInput" min="1" max="32" value="1"
+                        class="w-20 bg-slate-800 border border-slate-600 rounded px-2 py-1 text-white text-center">
+                    <button id="gotoSlideBtn" class="bg-cyan-500 text-black px-3 py-1 rounded font-bold">برو</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Thumbnails strip -->
+    <div class="bg-slate-900/80 border border-slate-700 rounded-xl p-3 overflow-x-auto flex gap-3"
+        id="thumbnailsContainer"></div>
+
+    <script>
+        const totalSlides = 32;
+        let currentSlide = 0; // zero-based
+        // Slide titles (customize as needed)
+        const slideTitles = Array.from({ length: totalSlides }, (_, i) => `اسلاید ${i + 1}`);
+        // Speaker notes (fill with your notes per slide, or leave empty)
+        const slidesNotes = Array(totalSlides).fill('یادداشت‌های خود را اینجا وارد کنید.');
+
+        // Load thumbnails
+        const thumbContainer = document.getElementById('thumbnailsContainer');
+        for (let i = 0; i < totalSlides; i++) {
+            const thumb = document.createElement('div');
+            thumb.className = `slide-thumb ${i === 0 ? 'active' : ''}`;
+            thumb.innerHTML = `<iframe src="slide-${String(i + 1).padStart(2, '0')}.html" sandbox="allow-scripts allow-same-origin"></iframe>`;
+            thumb.addEventListener('click', () => goToSlide(i));
+            thumb.dataset.index = i;
+            thumbContainer.appendChild(thumb);
+        }
+
+        function updateThumbs() {
+            document.querySelectorAll('.slide-thumb').forEach((thumb, idx) => {
+                thumb.classList.toggle('active', idx === currentSlide);
+            });
+        }
+
+        function updateMainIframe() {
+            const num = currentSlide + 1;
+            const src = `slide-${String(num).padStart(2, '0')}.html`;
+            document.getElementById('mainSlideIframe').src = src;
+            document.getElementById('currentSlideInfo').textContent = `اسلاید ${num} از ${totalSlides}`;
+            document.getElementById('slideTitleDisplay').textContent = slideTitles[currentSlide] || `اسلاید ${num}`;
+            document.getElementById('notesText').textContent = slidesNotes[currentSlide] || 'بدون یادداشت';
+            updateThumbs();
+        }
+
+        function goToSlide(index) {
+            if (index < 0 || index >= totalSlides) return;
+            currentSlide = index;
+            updateMainIframe();
+            broadcastSlideChange();
+        }
+
+        // Navigation
+        function nextSlide() { goToSlide(currentSlide + 1); }
+        function prevSlide() { goToSlide(currentSlide - 1); }
+
+        // Mouse wheel
+        window.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            if (e.deltaY > 0) nextSlide();
+            else prevSlide();
+        }, { passive: false });
+
+        // Keyboard arrows
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextSlide(); }
+            if (e.key === 'ArrowLeft') { e.preventDefault(); prevSlide(); }
+        });
+
+        // Go to slide input
+        document.getElementById('gotoSlideBtn').addEventListener('click', () => {
+            const val = parseInt(document.getElementById('gotoSlideInput').value) - 1;
+            if (!isNaN(val)) goToSlide(val);
+        });
+
+        // Timer
+        let timerSeconds = 0;
+        let timerInterval = null;
+        const timerEl = document.getElementById('timer');
+        function updateTimerDisplay() {
+            const mins = Math.floor(timerSeconds / 60).toString().padStart(2, '0');
+            const secs = (timerSeconds % 60).toString().padStart(2, '0');
+            timerEl.textContent = `${mins}:${secs}`;
+        }
+        document.getElementById('timerToggle').addEventListener('click', function () {
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+                this.textContent = '▶ شروع';
+            } else {
+                timerInterval = setInterval(() => { timerSeconds++; updateTimerDisplay(); }, 1000);
+                this.textContent = '⏸ توقف';
+            }
+        });
+        document.getElementById('timerReset').addEventListener('click', () => {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            timerSeconds = 0;
+            updateTimerDisplay();
+            document.getElementById('timerToggle').textContent = '▶ شروع';
+        });
+
+        // Auto play
+        let autoplayActive = false;
+        let autoplayTimer = null;
+        const autoplayCheckbox = document.getElementById('autoplayToggle');
+        const intervalInput = document.getElementById('autoplayInterval');
+        function startAutoplay() {
+            if (autoplayActive) return;
+            autoplayActive = true;
+            autoplayTimer = setInterval(() => {
+                if (currentSlide < totalSlides - 1) nextSlide();
+                else {
+                    clearInterval(autoplayTimer);
+                    autoplayActive = false;
+                    autoplayCheckbox.checked = false;
+                }
+            }, intervalInput.value * 1000);
+        }
+        function stopAutoplay() {
+            clearInterval(autoplayTimer);
+            autoplayActive = false;
+        }
+        autoplayCheckbox.addEventListener('change', (e) => {
+            if (e.target.checked) startAutoplay();
+            else stopAutoplay();
+        });
+        intervalInput.addEventListener('change', () => {
+            if (autoplayActive) {
+                stopAutoplay();
+                startAutoplay();
+            }
+        });
+
+        // Fullscreen toggle
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+            else document.exitFullscreen();
+        }
+
+        // Dual screen via BroadcastChannel
+        const channel = new BroadcastChannel('presentation-channel');
+        let audienceWindow = null;
+
+        function broadcastSlideChange() {
+            channel.postMessage({ type: 'slide-change', slideIndex: currentSlide });
+        }
+
+        document.getElementById('openAudienceBtn').addEventListener('click', () => {
+            if (audienceWindow && !audienceWindow.closed) {
+                audienceWindow.focus();
+            } else {
+                audienceWindow = window.open('audience.html', '_blank', 'width=1280,height=720');
+                // After opening, send current slide after a short delay
+                setTimeout(() => {
+                    broadcastSlideChange();
+                }, 500);
+            }
+        });
+
+        // Initial load
+        updateMainIframe();
+        broadcastSlideChange();
+    </script>
+</body>
+
+</html>

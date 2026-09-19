@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" style="--viewport-height: 9.57px;"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>HTTP Request and Response</title>
+<script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
+<style>@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+:root {
+    --ppt-bg: #0f172a;
+    --ppt-bg-soft: #1e293b;
+    --ppt-surface: #1e293b;
+    --ppt-surface-2: #334155;
+    --ppt-border: #334155;
+    --ppt-text-1: #f8fafc;
+    --ppt-text-2: #94a3b8;
+    --ppt-text-3: #64748b;
+    --ppt-accent: #22d3ee;
+    --ppt-accent-2: #3b82f6;
+    --ppt-chart-1: #22d3ee;
+    --ppt-chart-2: #3b82f6;
+    --ppt-chart-3: #818cf8;
+    --ppt-chart-4: #c084fc;
+    --ppt-good: #4ade80;
+    --ppt-warn: #fbbf24;
+    --ppt-bad: #f87171;
+    --ppt-radius-sm: 4px;
+    --ppt-radius-md: 8px;
+    --ppt-radius-lg: 16px;
+    --ppt-shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --ppt-shadow-strong: 0 12px 24px rgba(0, 0, 0, 0.5);
+    --ppt-font-display: "Space Grotesk", sans-serif;
+    --ppt-font-body: "Inter", sans-serif;
+    --ppt-font-mono: "JetBrains Mono", monospace
+    }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+    }
+body {width: 1280px; height: 720px; overflow: hidden; background-color: var(--ppt-bg)}
+.slide-root-container {
+    width: 1280px;
+    height: 720px;
+    background-color: var(--ppt-bg);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    color: var(--ppt-text-1);
+    font-family: var(--ppt-font-body)
+    }
+/* Title Region */
+.title-region-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 40px 60px 20px 60px
+    }
+.title-breadcrumb-container {
+    display: flex;
+    align-items: center;
+    gap: 12px
+    }
+.title-accent-line {
+    width: 4px;
+    height: 32px;
+    background: var(--ppt-accent);
+    border-radius: 2px
+    }
+.title-breadcrumb-text {
+    font-family: var(--ppt-font-mono);
+    font-size: 14px;
+    color: var(--ppt-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em
+    }
+.title-main-heading {
+    margin: 0;
+    font-family: var(--ppt-font-display);
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--ppt-text-1);
+    line-height: 1.2
+    }
+/* Handshake Visual */
+.http-handshake-visual-section {
+    flex: 1;
+    margin: 0 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    height: 320px
+    }
+.actor-card-container {
+    background: var(--ppt-surface);
+    border: 1px solid var(--ppt-border);
+    border-radius: var(--ppt-radius-lg);
+    padding: 24px;
+    width: 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    box-shadow: var(--ppt-shadow-soft);
+    z-index: 10
+    }
+.actor-icon-wrapper {
+    width: 64px;
+    height: 64px;
+    background: var(--ppt-bg-soft);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: var(--ppt-accent);
+    border: 1px solid var(--ppt-border)
+    }
+.actor-label-text {
+    font-family: var(--ppt-font-display);
+    font-size: 22px;
+    font-weight: 700
+    }
+.actor-status-pill {
+    font-family: var(--ppt-font-mono);
+    font-size: 12px;
+    background: var(--ppt-surface-2);
+    padding: 4px 12px;
+    border-radius: 100px;
+    color: var(--ppt-text-2)
+    }
+/* Animation Area */
+.animation-path-container {
+    flex: 1;
+    height: 200px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 60px
+    }
+.path-line-element {
+    height: 2px;
+    background: repeating-linear-gradient(to right, var(--ppt-border) 0, var(--ppt-border) 10px, transparent 10px, transparent 20px);
+    width: 100%;
+    position: relative
+    }
+.packet-animated-item {
+    position: absolute;
+    top: -15px;
+    padding: 6px 14px;
+    background: var(--ppt-accent-2);
+    border-radius: var(--ppt-radius-sm);
+    font-family: var(--ppt-font-mono);
+    font-size: 14px;
+    color: white;
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+    white-space: nowrap
+    }
+.request-packet {
+    left: 0;
+    animation: request-flow 4s infinite ease-in-out
+    }
+.response-packet {
+    right: 0;
+    background: var(--ppt-good);
+    box-shadow: 0 0 15px rgba(74, 222, 128, 0.5);
+    animation: response-flow 4s infinite ease-in-out;
+    animation-delay: 2s
+    }
+@keyframes request-flow {
+    0% {
+        left: 0%;
+        opacity: 0;
+        transform: scale(0.8);
+        } 10% {
+        opacity: 1;
+        transform: scale(1);
+        } 40% {
+        left: 100%;
+        opacity: 1;
+        transform: translateX(-100%);
+        } 50% {
+        left: 100%;
+        opacity: 0;
+        } 100% {
+        left: 100%;
+        opacity: 0;
+        }
+    }
+@keyframes response-flow {
+    0% {
+        right: 0%;
+        opacity: 0;
+        transform: scale(0.8);
+        } 10% {
+        opacity: 1;
+        transform: scale(1);
+        } 40% {
+        right: 100%;
+        opacity: 1;
+        transform: translateX(100%);
+        } 50% {
+        right: 100%;
+        opacity: 0;
+        } 100% {
+        right: 100%;
+        opacity: 0;
+        }
+    }
+/* Status Grid */
+.status-code-grid-wrapper {
+    margin: 0 60px 40px 60px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px
+    }
+.status-code-card-item {
+    background: var(--ppt-surface);
+    border-radius: var(--ppt-radius-md);
+    padding: 16px;
+    border-left: 4px solid var(--ppt-border);
+    display: flex;
+    flex-direction: column;
+    gap: 8px
+    }
+.status-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px
+    }
+.status-number-tag {
+    font-family: var(--ppt-font-mono);
+    font-size: 18px;
+    font-weight: 700
+    }
+.status-label-text {
+    font-weight: 600;
+    font-size: 18px
+    }
+.status-description-text {
+    font-size: 15px;
+    color: var(--ppt-text-2);
+    line-height: 1.4
+    }
+.card-success {
+    border-left-color: var(--ppt-good)
+    }
+.card-success .status-number-tag {
+    color: var(--ppt-good)
+    }
+.card-warning {
+    border-left-color: var(--ppt-warn)
+    }
+.card-warning .status-number-tag {
+    color: var(--ppt-warn)
+    }
+.card-error {
+    border-left-color: var(--ppt-bad)
+    }
+.card-error .status-number-tag {
+    color: var(--ppt-bad)
+    }
+.footer-annotation-text {
+    position: absolute;
+    bottom: 20px;
+    right: 60px;
+    font-family: var(--ppt-font-mono);
+    font-size: 12px;
+    color: var(--ppt-text-3)
+    }
+html { overflow: hidden; }
+</style>
+<meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize"></head>
+<body class="">
+<div class="slide-root-container">
+<!-- Title Region -->
+<div class="title-region-wrapper">
+<div class="title-breadcrumb-container">
+<div class="title-accent-line"></div>
+<span class="title-breadcrumb-text">Lesson 01 // Web Architecture</span>
+</div>
+<h1 class="title-main-heading">HTTP Request &amp; Response</h1>
+</div>
+<!-- Handshake Visual Section -->
+<div class="http-handshake-visual-section" data-animation-id="handshake-viz" data-interaction-trigger="true" data-runtime-root="true">
+<!-- Browser Client -->
+<div class="actor-card-container">
+<div class="actor-icon-wrapper">
+<i class="fa-solid fa-laptop-code"></i>
+</div>
+<div class="actor-label-text">Browser</div>
+<div class="actor-status-pill">The Client</div>
+</div>
+<!-- Animation Path -->
+<div class="animation-path-container">
+<div class="path-line-element">
+<div class="packet-animated-item request-packet">
+            GET /index.html
+          </div>
+</div>
+<div class="path-line-element">
+<div class="packet-animated-item response-packet">
+            200 OK + HTML
+          </div>
+</div>
+</div>
+<!-- Server -->
+<div class="actor-card-container">
+<div class="actor-icon-wrapper">
+<i class="fa-solid fa-server"></i>
+</div>
+<div class="actor-label-text">Server</div>
+<div class="actor-status-pill">The Host</div>
+</div>
+</div>
+<!-- Status Code Reference -->
+<div class="status-code-grid-wrapper" data-animation-id="status-grid">
+<!-- 200 OK -->
+<div class="status-code-card-item card-success">
+<div class="status-card-header">
+<span class="status-number-tag">200</span>
+<span class="status-label-text">Success</span>
+</div>
+<p class="status-description-text">Everything worked as expected. The server found the file and sent it back to you.</p>
+</div>
+<!-- 404 Not Found -->
+<div class="status-code-card-item card-warning">
+<div class="status-card-header">
+<span class="status-number-tag">404</span>
+<span class="status-label-text">Not Found</span>
+</div>
+<p class="status-description-text">The server is active, but it couldn't find the specific file or page you requested.</p>
+</div>
+<!-- 500 Server Error -->
+<div class="status-code-card-item card-error">
+<div class="status-card-header">
+<span class="status-number-tag">500</span>
+<span class="status-label-text">Server Error</span>
+</div>
+<p class="status-description-text">The server crashed or encountered an error while trying to process your request.</p>
+</div>
+</div>
+<div class="footer-annotation-text">
+      PROTOCAL: HTTP/1.1 · SECURE: TLS 1.3
+    </div>
+</div>
+<script data-slide-animation="" type="application/json">
+  {
+    "timeline": [
+      {
+        "animation_id": "handshake-viz",
+        "effect": "fade"
+      },
+      {
+        "animation_id": "status-grid",
+        "effect": "appear"
+      }
+    ]
+  }
+  </script>
+<!-- Presenter Notes -->
+<div style="display: none;">
+<h3>Presenter Notes</h3>
+<p>
+      Now, let's look at the actual conversation. This is called the HTTP Request-Response cycle. 
+      Think of it like ordering at a restaurant. Your browser is the customer (the Client). It sends a "Request" saying, "I'd like the index.html file, please."
+      The Server is the waiter. It receives that request, goes into its storage, and sends back a "Response."
+    </p>
+<p>
+      In our animation, you can see the blue 'GET' request moving to the server. The green response then travels back with the content. 
+      But the response isn't just the file; it includes a "Status Code."
+    </p>
+<ul>
+<li><strong>200 OK:</strong> The gold standard. "I found it, here you go."</li>
+<li><strong>404 Not Found:</strong> You've definitely seen this. "I'm here, but I have no idea what file you're talking about." This is usually a typo in the URL.</li>
+<li><strong>500 Server Error:</strong> "Something broke on my end." The server exists but it's having a bad day.</li>
+</ul>
+<p>
+      Transition: "But how does the browser know WHICH server to talk to in the first place? That's where Names and Addresses come in."
+    </p>
+<p>
+      Animation: The handshake visual fades in first to establish the actors, followed by the status code cards appearing to provide the technical reference.
+    </p>
+</div>
+
+
+
+</body></html>

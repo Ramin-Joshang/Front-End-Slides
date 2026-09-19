@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en" style="--viewport-height: 9.57px;"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Domain, Hosting, and DNS</title>
+<script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
+<style>@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+:root {
+    --ppt-bg: #0f172a;
+    --ppt-bg-soft: #1e293b;
+    --ppt-surface: #1e293b;
+    --ppt-surface-2: #334155;
+    --ppt-border: #334155;
+    --ppt-text-1: #f8fafc;
+    --ppt-text-2: #94a3b8;
+    --ppt-text-3: #64748b;
+    --ppt-accent: #22d3ee;
+    --ppt-accent-2: #3b82f6;
+    --ppt-chart-1: #22d3ee;
+    --ppt-chart-2: #3b82f6;
+    --ppt-chart-3: #818cf8;
+    --ppt-chart-4: #c084fc;
+    --ppt-good: #4ade80;
+    --ppt-warn: #fbbf24;
+    --ppt-bad: #f87171;
+    --ppt-radius-sm: 4px;
+    --ppt-radius-md: 8px;
+    --ppt-radius-lg: 16px;
+    --ppt-shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --ppt-shadow-strong: 0 12px 24px rgba(0, 0, 0, 0.5);
+    --ppt-font-display: "Space Grotesk", sans-serif;
+    --ppt-font-body: "Inter", sans-serif;
+    --ppt-font-mono: "JetBrains Mono", monospace
+    }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+    }
+body {width: 1280px; height: 720px; overflow: hidden; background-color: var(--ppt-bg);
+    font-family: var(--ppt-font-body);
+    color: var(--ppt-text-1)}
+.dns-slide-root {
+    width: 1280px;
+    height: 720px;
+    display: flex;
+    flex-direction: column;
+    position: relative
+    }
+/* Title Region Implementation */
+.title-region-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 40px 60px 20px 60px
+    }
+.title-breadcrumb-container {
+    display: flex;
+    align-items: center;
+    gap: 12px
+    }
+.title-accent-bar {
+    width: 4px;
+    height: 32px;
+    background: var(--ppt-accent);
+    border-radius: 2px
+    }
+.title-breadcrumb-text {
+    font-family: var(--ppt-font-mono);
+    font-size: 14px;
+    color: var(--ppt-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em
+    }
+.title-main-heading {
+    margin: 0;
+    font-family: var(--ppt-font-display);
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--ppt-text-1);
+    line-height: 1.2
+    }
+/* Content Layout */
+.dns-content-main-layout {
+    display: flex;
+    flex: 1;
+    padding: 20px 60px 60px 60px;
+    gap: 24px;
+    align-items: center;
+    justify-content: center
+    }
+.dns-flow-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px
+    }
+.dns-step-card {
+    background: var(--ppt-surface);
+    border: 1px solid var(--ppt-border);
+    border-radius: var(--ppt-radius-lg);
+    padding: 32px 24px;
+    width: 100%;
+    text-align: center;
+    box-shadow: var(--ppt-shadow-soft);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center
+    }
+.dns-step-icon-wrapper {
+    width: 80px;
+    height: 80px;
+    background: rgba(34, 211, 238, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(34, 211, 238, 0.2)
+    }
+.dns-step-icon-wrapper i {
+    font-size: 32px;
+    color: var(--ppt-accent)
+    }
+.dns-step-title {
+    font-family: var(--ppt-font-display);
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--ppt-text-1)
+    }
+.dns-step-description {
+    font-size: 18px;
+    color: var(--ppt-text-2);
+    line-height: 1.5
+    }
+.dns-code-badge {
+    font-family: var(--ppt-font-mono);
+    font-size: 16px;
+    background: var(--ppt-bg);
+    color: var(--ppt-accent-2);
+    padding: 8px 16px;
+    border-radius: var(--ppt-radius-sm);
+    border: 1px solid var(--ppt-border);
+    margin-top: 8px
+    }
+.dns-connector-arrow {
+    flex: 0 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ppt-text-3)
+    }
+.dns-connector-arrow i {
+    font-size: 28px
+    }
+.dns-analogy-footer {
+    margin-top: auto;
+    background: rgba(59, 130, 246, 0.05);
+    border: 1px dashed var(--ppt-accent-2);
+    padding: 16px 24px;
+    border-radius: var(--ppt-radius-md);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%
+    }
+.dns-analogy-label {
+    font-family: var(--ppt-font-mono);
+    font-size: 12px;
+    color: var(--ppt-accent-2);
+    text-transform: uppercase;
+    font-weight: 700
+    }
+.dns-analogy-text {
+    font-size: 16px;
+    color: var(--ppt-text-2);
+    font-style: italic
+    }
+html { overflow: hidden; }
+</style>
+<meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize"></head>
+<body class="">
+<div class="dns-slide-root" style="overflow: hidden;">
+<!-- Title Region -->
+<div class="title-region-wrapper">
+<div class="title-breadcrumb-container">
+<div class="title-accent-bar"></div>
+<span class="title-breadcrumb-text">Lesson 01 // Introduction</span>
+</div>
+<h1 class="title-main-heading">Domain, Hosting, and DNS</h1>
+</div>
+<!-- Main Content -->
+<div class="dns-content-main-layout">
+<!-- Step 1: Domain -->
+<div class="dns-flow-column">
+<div class="dns-step-card" data-animation-id="domain-name-card">
+<div class="dns-step-icon-wrapper">
+<i class="fa-solid fa-globe"></i>
+</div>
+<h2 class="dns-step-title">The Domain</h2>
+<p class="dns-step-description">A human-readable address for users to remember.</p>
+<div class="dns-code-badge">mysite.com</div>
+</div>
+<div class="dns-analogy-footer">
+<span class="dns-analogy-label">Analogy</span>
+<span class="dns-analogy-text">Like a home address (123 Maple St)</span>
+</div>
+</div>
+<!-- Arrow 1 -->
+<div class="dns-connector-arrow">
+<i class="fa-solid fa-chevron-right"></i>
+</div>
+<!-- Step 2: DNS -->
+<div class="dns-flow-column">
+<div class="dns-step-card" data-animation-id="dns-resolver-card">
+<div class="dns-step-icon-wrapper">
+<i class="fa-solid fa-book-atlas"></i>
+</div>
+<h2 class="dns-step-title">The DNS</h2>
+<p class="dns-step-description">The "Phonebook" that translates names to numbers.</p>
+<div class="dns-code-badge">Name → IP Lookup</div>
+</div>
+<div class="dns-analogy-footer">
+<span class="dns-analogy-label">Analogy</span>
+<span class="dns-analogy-text">Looking up a name in a phone contact list</span>
+</div>
+</div>
+<!-- Arrow 2 -->
+<div class="dns-connector-arrow">
+<i class="fa-solid fa-chevron-right"></i>
+</div>
+<!-- Step 3: Hosting -->
+<div class="dns-flow-column">
+<div class="dns-step-card" data-animation-id="hosting-server-card">
+<div class="dns-step-icon-wrapper">
+<i class="fa-solid fa-server"></i>
+</div>
+<h2 class="dns-step-title">The Hosting</h2>
+<p class="dns-step-description">The physical computer (IP) where files are stored.</p>
+<div class="dns-code-badge">142.250.190.46</div>
+</div>
+<div class="dns-analogy-footer">
+<span class="dns-analogy-label">Analogy</span>
+<span class="dns-analogy-text">The actual house where you live</span>
+</div>
+</div>
+</div>
+<!-- Presentation Metadata -->
+<script data-slide-animation="" type="application/json">
+    {
+      "timeline": [
+        {
+          "animation_id": "domain-name-card",
+          "effect": "fade"
+        },
+        {
+          "animation_id": "dns-resolver-card",
+          "effect": "fade"
+        },
+        {
+          "animation_id": "hosting-server-card",
+          "effect": "fade"
+        }
+      ]
+    }
+    </script>
+</div>
+
+
+
+</body></html>

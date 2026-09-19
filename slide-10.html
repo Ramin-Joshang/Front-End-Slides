@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en" style="--viewport-height: 9.57px;"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>What Happens When You Type a URL</title>
+<script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
+<style>@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+:root {
+    --ppt-bg: #0f172a;
+    --ppt-bg-soft: #1e293b;
+    --ppt-surface: #1e293b;
+    --ppt-surface-2: #334155;
+    --ppt-border: #334155;
+    --ppt-text-1: #f8fafc;
+    --ppt-text-2: #94a3b8;
+    --ppt-text-3: #64748b;
+    --ppt-accent: #22d3ee;
+    --ppt-accent-2: #3b82f6;
+    --ppt-good: #4ade80;
+    --ppt-warn: #fbbf24;
+    --ppt-bad: #f87171;
+    --ppt-radius-sm: 4px;
+    --ppt-radius-md: 8px;
+    --ppt-radius-lg: 16px;
+    --ppt-font-display: "Space Grotesk", sans-serif;
+    --ppt-font-body: "Inter", sans-serif;
+    --ppt-font-mono: "JetBrains Mono", monospace
+    }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+    }
+body {width: 1280px; height: 720px; overflow: hidden; background-color: var(--ppt-bg);
+    color: var(--ppt-text-1);
+    font-family: var(--ppt-font-body)}
+.url-journey-slide-root {
+    width: 1280px;
+    height: 720px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-bottom: 40px
+    }
+/* Title Region */
+.url-journey-title-region {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 40px 60px 20px 60px
+    }
+.url-journey-breadcrumb-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px
+    }
+.url-journey-accent-line {
+    width: 4px;
+    height: 32px;
+    background: var(--ppt-accent);
+    border-radius: 2px
+    }
+.url-journey-breadcrumb-text {
+    font-family: var(--ppt-font-mono);
+    font-size: 14px;
+    color: var(--ppt-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em
+    }
+.url-journey-main-title {
+    margin: 0;
+    font-family: var(--ppt-font-display);
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--ppt-text-1);
+    line-height: 1.2
+    }
+/* Main Content */
+.url-journey-main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0 60px;
+    gap: 24px;
+    justify-content: center
+    }
+/* Visual Runtime Layer */
+.url-journey-visual-container {
+    height: 280px;
+    background: rgba(30, 41, 59, 0.5);
+    border: 1px solid var(--ppt-border);
+    border-radius: var(--ppt-radius-lg);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center
+    }
+.url-journey-svg-canvas {
+    width: 100%;
+    height: 100%
+    }
+.url-journey-node-label {
+    font-family: var(--ppt-font-mono);
+    font-size: 12px;
+    fill: var(--ppt-text-2);
+    text-transform: uppercase
+    }
+.url-journey-replay-button {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    background: var(--ppt-surface-2);
+    border: 1px solid var(--ppt-border);
+    color: var(--ppt-text-1);
+    padding: 6px 12px;
+    border-radius: var(--ppt-radius-sm);
+    font-family: var(--ppt-font-mono);
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.2s;
+    z-index: 10
+    }
+.url-journey-replay-button:hover {
+    background: var(--ppt-accent-2)
+    }
+/* Steps Grid */
+.url-journey-steps-row {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px
+    }
+.url-journey-step-card {
+    background: var(--ppt-surface);
+    border: 1px solid var(--ppt-border);
+    border-radius: var(--ppt-radius-md);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: border-color 0.3s
+    }
+.url-journey-step-card:hover {
+    border-color: var(--ppt-accent)
+    }
+.url-journey-step-header {
+    display: flex;
+    align-items: center;
+    gap: 10px
+    }
+.url-journey-step-number {
+    width: 28px;
+    height: 28px;
+    background: var(--ppt-accent-2);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--ppt-font-display);
+    font-weight: 700;
+    font-size: 16px
+    }
+.url-journey-step-icon {
+    font-size: 18px;
+    color: var(--ppt-accent)
+    }
+.url-journey-step-title {
+    font-family: var(--ppt-font-display);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ppt-text-1)
+    }
+.url-journey-step-description {
+    font-size: 14px;
+    color: var(--ppt-text-2);
+    line-height: 1.4
+    }
+/* Presenter Notes (Hidden for slide display) */
+.url-journey-presenter-notes {
+    display: none
+    }
+html { overflow: hidden; }
+</style>
+<meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize"></head>
+<body class="">
+<div class="url-journey-slide-root" style="overflow: hidden;">
+<!-- Title Region -->
+<div class="url-journey-title-region">
+<div class="url-journey-breadcrumb-wrapper">
+<div class="url-journey-accent-line"></div>
+<span class="url-journey-breadcrumb-text">Lesson 01 // Web Architecture</span>
+</div>
+<h1 class="url-journey-main-title">What Happens When You Type a URL?</h1>
+</div>
+<!-- Main Content -->
+<div class="url-journey-main-content">
+<!-- Advanced Visual: SVG Journey -->
+<div class="url-journey-visual-container" data-interaction-trigger="true" data-runtime-root="true">
+<svg class="url-journey-svg-canvas" preserveAspectRatio="xMidYMid meet" viewBox="0 0 800 200">
+<!-- Connection Paths -->
+<path d="M 150 100 Q 275 50 400 100" fill="none" id="path-browser-dns" stroke="rgba(51, 65, 85, 0.4)" stroke-dasharray="4 4" stroke-width="2"></path>
+<path d="M 400 100 Q 275 150 150 100" fill="none" id="path-dns-browser" stroke="rgba(51, 65, 85, 0.4)" stroke-dasharray="4 4" stroke-width="2"></path>
+<path d="M 150 100 Q 400 20 650 100" fill="none" id="path-browser-server" stroke="rgba(51, 65, 85, 0.4)" stroke-dasharray="4 4" stroke-width="2"></path>
+<path d="M 650 100 Q 400 180 150 100" fill="none" id="path-server-browser" stroke="rgba(51, 65, 85, 0.4)" stroke-dasharray="4 4" stroke-width="2"></path>
+<!-- Nodes -->
+<!-- Browser -->
+<g transform="translate(150, 100)">
+<circle fill="var(--ppt-surface)" r="35" stroke="var(--ppt-accent-2)" stroke-width="2"></circle>
+<text class="url-journey-node-label" text-anchor="middle" y="55">Browser</text>
+<path d="M -12 -12 H 12 V 12 H -12 Z M -12 -6 H 12" fill="none" stroke="var(--ppt-accent)" stroke-width="2"></path>
+</g>
+<!-- DNS -->
+<g transform="translate(400, 100)">
+<circle fill="var(--ppt-surface)" r="30" stroke="var(--ppt-border)" stroke-width="2"></circle>
+<text class="url-journey-node-label" text-anchor="middle" y="50">DNS Server</text>
+<text dominant-baseline="middle" fill="var(--ppt-text-3)" font-family="var(--ppt-font-mono)" font-size="16" text-anchor="middle">.COM</text>
+</g>
+<!-- Web Server -->
+<g transform="translate(650, 100)">
+<rect fill="var(--ppt-surface)" height="60" rx="4" stroke="var(--ppt-accent)" stroke-width="2" width="60" x="-30" y="-30"></rect>
+<text class="url-journey-node-label" text-anchor="middle" y="55">Web Server</text>
+<rect fill="var(--ppt-text-3)" height="8" rx="1" width="30" x="-15" y="-15"></rect>
+<rect fill="var(--ppt-text-3)" height="8" rx="1" width="30" x="-15" y="0"></rect>
+<rect fill="var(--ppt-text-3)" height="8" rx="1" width="30" x="-15" y="15"></rect>
+</g>
+<!-- Animated Pulse -->
+<circle fill="var(--ppt-accent)" id="pulse-dot" r="6" style="display: none;" cx="152.4222869873047" cy="100.77094268798828"></circle>
+</svg>
+<button class="url-journey-replay-button" id="replay-journey">
+<i class="fa-solid fa-bookmark"></i> Replay Journey
+        </button>
+</div>
+<!-- Steps Grid -->
+<div class="url-journey-steps-row">
+<div class="url-journey-step-card" data-animation-id="step-1">
+<div class="url-journey-step-header">
+<div class="url-journey-step-number">1</div>
+<i class="fas fa-keyboard url-journey-step-icon"></i>
+</div>
+<div class="url-journey-step-title">Enter URL</div>
+<p class="url-journey-step-description">You type "google.com" into the address bar and press Enter.</p>
+</div>
+<div class="url-journey-step-card" data-animation-id="step-2">
+<div class="url-journey-step-header">
+<div class="url-journey-step-number">2</div>
+<i class="fa-solid fa-circle-info url-journey-step-icon"></i>
+</div>
+<div class="url-journey-step-title">DNS Lookup</div>
+<p class="url-journey-step-description">The browser asks the DNS for the server's IP address (142.250...).</p>
+</div>
+<div class="url-journey-step-card" data-animation-id="step-3">
+<div class="url-journey-step-header">
+<div class="url-journey-step-number">3</div>
+<i class="fas fa-handshake url-journey-step-icon"></i>
+</div>
+<div class="url-journey-step-title">TCP Handshake</div>
+<p class="url-journey-step-description">Browser establishes a secure, reliable connection with the server.</p>
+</div>
+<div class="url-journey-step-card" data-animation-id="step-4">
+<div class="url-journey-step-header">
+<div class="url-journey-step-number">4</div>
+<i class="fas fa-paper-plane url-journey-step-icon"></i>
+</div>
+<div class="url-journey-step-title">Send Request</div>
+<p class="url-journey-step-description">Browser sends an HTTP request: "Please send me index.html."</p>
+</div>
+<div class="url-journey-step-card" data-animation-id="step-5">
+<div class="url-journey-step-header">
+<div class="url-journey-step-number">5</div>
+<i class="fa-solid fa-file url-journey-step-icon"></i>
+</div>
+<div class="url-journey-step-title">Receive Files</div>
+<p class="url-journey-step-description">Server sends back the HTML, CSS, and JS files for the page.</p>
+</div>
+<div class="url-journey-step-card" data-animation-id="step-6">
+<div class="url-journey-step-header">
+<div class="url-journey-step-number">6</div>
+<i class="fa-solid fa-paint-roller url-journey-step-icon"></i>
+</div>
+<div class="url-journey-step-title">Render Page</div>
+<p class="url-journey-step-description">Browser builds the website visual from the received code.</p>
+</div>
+</div>
+</div>
+<!-- Presenter Notes Area -->
+<div class="url-journey-presenter-notes">
+<p>Narrate the sequence with an example such as https://google.com. Explain that real systems involve more detail, but this is the correct beginner mental model. Step 1 is the user intent. Step 2 is the 'phonebook' lookup. Step 3 is the 'agreement' to talk. Step 4 and 5 are the actual conversation. Step 6 is where the code becomes a visual. Define URL as an address for a web resource.</p>
+<p>Transition: "Now that we see the journey, let's zoom into the actual language used in these requests and responses."</p>
+<p>Motion: Reveal each numbered step card one by one using a fade effect. The SVG animation at the top pulses to show the data movement synchronized with the explanation.</p>
+</div>
+</div>
+<script>
+    (function() {
+      const pulseDot = document.getElementById('pulse-dot');
+      const paths = [
+        document.getElementById('path-browser-dns'),
+        document.getElementById('path-dns-browser'),
+        document.getElementById('path-browser-server'),
+        document.getElementById('path-server-browser')
+      ];
+      const replayBtn = document.getElementById('replay-journey');
+      
+      let currentPathIndex = 0;
+      let progress = 0;
+      let animationId = null;
+      const speed = 0.005; // Adjust for animation speed
+
+      function animate() {
+        if (currentPathIndex >= paths.length) {
+          pulseDot.style.display = 'none';
+          return;
+        }
+
+        pulseDot.style.display = 'block';
+        const path = paths[currentPathIndex];
+        const length = path.getTotalLength();
+        const point = path.getPointAtLength(progress * length);
+
+        pulseDot.setAttribute('cx', point.x);
+        pulseDot.setAttribute('cy', point.y);
+
+        progress += speed;
+
+        if (progress >= 1) {
+          progress = 0;
+          currentPathIndex++;
+        }
+
+        animationId = requestAnimationFrame(animate);
+      }
+
+      function startAnimation() {
+        cancelAnimationFrame(animationId);
+        currentPathIndex = 0;
+        progress = 0;
+        animate();
+      }
+
+      replayBtn.addEventListener('click', startAnimation);
+      
+      // Auto-start after a short delay
+      setTimeout(startAnimation, 1000);
+    })();
+  </script>
+<script data-slide-animation="" type="application/json">
+  {
+    "timeline": [
+      {
+        "animation_id": "step-1",
+        "effect": "fade"
+      },
+      {
+        "animation_id": "step-2",
+        "effect": "fade"
+      },
+      {
+        "animation_id": "step-3",
+        "effect": "fade"
+      },
+      {
+        "animation_id": "step-4",
+        "effect": "fade"
+      }
+    ]
+  }
+  </script>
+
+
+
+</body></html>

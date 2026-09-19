@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Troubleshooting Common Issues</title>
+<script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
+<style>@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+:root {
+    --ppt-bg: #0f172a;
+    --ppt-bg-soft: #1e293b;
+    --ppt-surface: #1e293b;
+    --ppt-surface-2: #334155;
+    --ppt-border: #334155;
+    --ppt-text-1: #f8fafc;
+    --ppt-text-2: #94a3b8;
+    --ppt-text-3: #64748b;
+    --ppt-accent: #22d3ee;
+    --ppt-accent-2: #3b82f6;
+    --ppt-chart-1: #22d3ee;
+    --ppt-chart-2: #3b82f6;
+    --ppt-chart-3: #818cf8;
+    --ppt-chart-4: #c084fc;
+    --ppt-good: #4ade80;
+    --ppt-warn: #fbbf24;
+    --ppt-bad: #f87171;
+    --ppt-radius-sm: 4px;
+    --ppt-radius-md: 8px;
+    --ppt-radius-lg: 16px;
+    --ppt-shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --ppt-shadow-strong: 0 12px 24px rgba(0, 0, 0, 0.5);
+    --ppt-font-display: "Space Grotesk", sans-serif;
+    --ppt-font-body: "Inter", sans-serif;
+    --ppt-font-mono: "JetBrains Mono", monospace
+    }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+    }
+body {width: 1280px; height: 720px; overflow: hidden; background: #000;
+    display: block}
+.troubleshoot-slide-root {
+    width: 1280px;
+    height: 720px;
+    background: var(--ppt-bg);
+    display: flex;
+    flex-direction: column;
+    font-family: var(--ppt-font-body)
+    }
+/* Title Region */
+.troubleshoot-title-region {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 36px 60px 18px 60px
+    }
+.troubleshoot-title-breadcrumb-row {
+    display: flex;
+    align-items: center;
+    gap: 12px
+    }
+.troubleshoot-title-accent-bar {
+    width: 4px;
+    height: 32px;
+    background: var(--ppt-accent);
+    border-radius: 2px;
+    flex-shrink: 0
+    }
+.troubleshoot-title-breadcrumb-text {
+    font-family: var(--ppt-font-mono);
+    font-size: 14px;
+    color: var(--ppt-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em
+    }
+.troubleshoot-title-heading {
+    font-family: var(--ppt-font-display);
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--ppt-text-1);
+    line-height: 1.2
+    }
+/* Content Area */
+.troubleshoot-content-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin: 0 60px 28px 60px;
+    gap: 14px
+    }
+/* Issue Cards Grid */
+.troubleshoot-issues-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+    flex: 1
+    }
+.troubleshoot-issue-card {
+    background: var(--ppt-surface);
+    border: 1px solid var(--ppt-border);
+    border-radius: var(--ppt-radius-md);
+    padding: 16px 16px 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: var(--ppt-shadow-soft)
+    }
+.troubleshoot-issue-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px
+    }
+.troubleshoot-issue-card-icon-wrap {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--ppt-radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 16px
+    }
+.troubleshoot-icon-bad {
+    background: rgba(248, 113, 113, 0.12);
+    color: var(--ppt-bad)
+    }
+.troubleshoot-icon-warn {
+    background: rgba(251, 191, 36, 0.12);
+    color: var(--ppt-warn)
+    }
+.troubleshoot-icon-blue {
+    background: rgba(59, 130, 246, 0.12);
+    color: var(--ppt-accent-2)
+    }
+.troubleshoot-issue-card-label {
+    font-family: var(--ppt-font-display);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ppt-text-1);
+    line-height: 1.2
+    }
+/* Problem / Fix rows */
+.troubleshoot-issue-detail-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px
+    }
+.troubleshoot-problem-row {
+    display: flex;
+    flex-direction: column;
+    gap: 3px
+    }
+.troubleshoot-problem-label {
+    font-family: var(--ppt-font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--ppt-bad);
+    text-transform: uppercase;
+    letter-spacing: 0.08em
+    }
+.troubleshoot-fix-label {
+    font-family: var(--ppt-font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--ppt-good);
+    text-transform: uppercase;
+    letter-spacing: 0.08em
+    }
+.troubleshoot-code-bad {
+    font-family: var(--ppt-font-mono);
+    font-size: 12px;
+    color: var(--ppt-bad);
+    background: rgba(248, 113, 113, 0.08);
+    border-radius: var(--ppt-radius-sm);
+    padding: 4px 8px;
+    display: block
+    }
+.troubleshoot-code-good {
+    font-family: var(--ppt-font-mono);
+    font-size: 12px;
+    color: var(--ppt-good);
+    background: rgba(74, 222, 128, 0.08);
+    border-radius: var(--ppt-radius-sm);
+    padding: 4px 8px;
+    display: block
+    }
+.troubleshoot-fix-text {
+    font-family: var(--ppt-font-body);
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--ppt-text-2);
+    line-height: 1.4
+    }
+/* Divider between problem and fix */
+.troubleshoot-arrow-divider {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 2px 0
+    }
+.troubleshoot-arrow-divider-line {
+    flex: 1;
+    height: 1px;
+    background: var(--ppt-border)
+    }
+.troubleshoot-arrow-divider-icon {
+    font-size: 12px;
+    color: var(--ppt-good)
+    }
+/* Bottom tip bar */
+.troubleshoot-tip-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(34, 211, 238, 0.06);
+    border: 1px solid rgba(34, 211, 238, 0.18);
+    border-radius: var(--ppt-radius-md);
+    padding: 10px 18px
+    }
+.troubleshoot-tip-bar-icon {
+    font-size: 16px;
+    color: var(--ppt-accent);
+    flex-shrink: 0
+    }
+.troubleshoot-tip-bar-text {
+    font-family: var(--ppt-font-body);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ppt-accent);
+    line-height: 1.3
+    }
+.troubleshoot-tip-bar-sub {
+    font-family: var(--ppt-font-body);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--ppt-text-2);
+    line-height: 1.3;
+    margin-left: 4px
+    }
+html { overflow: hidden; }
+</style>
+<meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize"></head>
+<body>
+<div class="troubleshoot-slide-root" style="overflow: hidden;">
+<!-- Title Region -->
+<div class="troubleshoot-title-region">
+<div class="troubleshoot-title-breadcrumb-row">
+<div class="troubleshoot-title-accent-bar"></div>
+<span class="troubleshoot-title-breadcrumb-text">Lesson 01 // Introduction</span>
+</div>
+<h1 class="troubleshoot-title-heading">Troubleshooting Common Issues</h1>
+</div>
+<!-- Content Area -->
+<div class="troubleshoot-content-area">
+<!-- Issue Cards -->
+<div class="troubleshoot-issues-grid" data-animation-id="issues-grid">
+<!-- Card 1: Typo in Tag -->
+<div class="troubleshoot-issue-card">
+<div class="troubleshoot-issue-card-header">
+<div class="troubleshoot-issue-card-icon-wrap troubleshoot-icon-bad">
+<i class="fa-solid fa-code"></i>
+</div>
+<span class="troubleshoot-issue-card-label">Typo in HTML Tag</span>
+</div>
+<div class="troubleshoot-issue-detail-block">
+<div class="troubleshoot-problem-row">
+<span class="troubleshoot-problem-label"><i class="fa-solid fa-xmark"></i> Problem</span>
+<code class="troubleshoot-code-bad">&lt;titel&gt;My Page&lt;/titel&gt;</code>
+</div>
+<div class="troubleshoot-arrow-divider">
+<div class="troubleshoot-arrow-divider-line"></div>
+<span class="troubleshoot-arrow-divider-icon"><i class="fa-solid fa-arrow-down"></i></span>
+<div class="troubleshoot-arrow-divider-line"></div>
+</div>
+<div class="troubleshoot-problem-row">
+<span class="troubleshoot-fix-label"><i class="fa-solid fa-check"></i> Fix</span>
+<code class="troubleshoot-code-good">&lt;title&gt;My Page&lt;/title&gt;</code>
+</div>
+<p class="troubleshoot-fix-text">HTML tags must be spelled exactly. Check VS Code's syntax highlighting — unknown tags appear unstyled.</p>
+</div>
+</div>
+<!-- Card 2: Missing Closing Tag -->
+<div class="troubleshoot-issue-card">
+<div class="troubleshoot-issue-card-header">
+<div class="troubleshoot-issue-card-icon-wrap troubleshoot-icon-warn">
+<i class="fa-solid fa-triangle-exclamation"></i>
+</div>
+<span class="troubleshoot-issue-card-label">Missing Closing Tag</span>
+</div>
+<div class="troubleshoot-issue-detail-block">
+<div class="troubleshoot-problem-row">
+<span class="troubleshoot-problem-label"><i class="fa-solid fa-xmark"></i> Problem</span>
+<code class="troubleshoot-code-bad">&lt;h1&gt;Hello World</code>
+</div>
+<div class="troubleshoot-arrow-divider">
+<div class="troubleshoot-arrow-divider-line"></div>
+<span class="troubleshoot-arrow-divider-icon"><i class="fa-solid fa-arrow-down"></i></span>
+<div class="troubleshoot-arrow-divider-line"></div>
+</div>
+<div class="troubleshoot-problem-row">
+<span class="troubleshoot-fix-label"><i class="fa-solid fa-check"></i> Fix</span>
+<code class="troubleshoot-code-good">&lt;h1&gt;Hello World&lt;/h1&gt;</code>
+</div>
+<p class="troubleshoot-fix-text">Every opening tag needs a matching closing tag. VS Code's bracket pair colorizer highlights mismatches.</p>
+</div>
+</div>
+<!-- Card 3: Wrong File Path -->
+<div class="troubleshoot-issue-card">
+<div class="troubleshoot-issue-card-header">
+<div class="troubleshoot-issue-card-icon-wrap troubleshoot-icon-bad">
+<i class="fa-solid fa-folder-open"></i>
+</div>
+<span class="troubleshoot-issue-card-label">Incorrect File Path</span>
+</div>
+<div class="troubleshoot-issue-detail-block">
+<div class="troubleshoot-problem-row">
+<span class="troubleshoot-problem-label"><i class="fa-solid fa-xmark"></i> Problem</span>
+<code class="troubleshoot-code-bad">src="Images/logo.png"</code>
+</div>
+<div class="troubleshoot-arrow-divider">
+<div class="troubleshoot-arrow-divider-line"></div>
+<span class="troubleshoot-arrow-divider-icon"><i class="fa-solid fa-arrow-down"></i></span>
+<div class="troubleshoot-arrow-divider-line"></div>
+</div>
+<div class="troubleshoot-problem-row">
+<span class="troubleshoot-fix-label"><i class="fa-solid fa-check"></i> Fix</span>
+<code class="troubleshoot-code-good">src="images/logo.png"</code>
+</div>
+<p class="troubleshoot-fix-text">Paths are case-sensitive on servers. Keep all folder and file names lowercase to avoid broken links.</p>
+</div>
+</div>
+<!-- Card 4: File Not Saved -->
+<div class="troubleshoot-issue-card">
+<div class="troubleshoot-issue-card-header">
+<div class="troubleshoot-issue-card-icon-wrap troubleshoot-icon-warn">
+<i class="fa-solid fa-floppy-disk"></i>
+</div>
+<span class="troubleshoot-issue-card-label">File Not Saved</span>
+</div>
+<div class="troubleshoot-issue-detail-block">
+<div class="troubleshoot-problem-row">
+<span class="troubleshoot-problem-label"><i class="fa-solid fa-xmark"></i> Symptom</span>
+<code class="troubleshoot-code-bad">Changes not showing in browser</code>
+</div>
+<div class="troubleshoot-arrow-divider">
+<div class="troubleshoot-arrow-divider-line"></div>
+<span class="troubleshoot-arrow-divider-icon"><i class="fa-solid fa-arrow-down"></i></span>
+<div class="troubleshoot-arrow-divider-line"></div>
+</div>
+<div class="troubleshoot-problem-row">
+<span class="troubleshoot-fix-label"><i class="fa-solid fa-check"></i> Fix</span>
+<code class="troubleshoot-code-good">Ctrl + S  /  Cmd + S</code>
+</div>
+<p class="troubleshoot-fix-text">A dot on the VS Code tab means unsaved changes. Enable Auto Save under File → Auto Save.</p>
+</div>
+</div>
+<!-- Card 5: Wrong Extension -->
+<div class="troubleshoot-issue-card">
+<div class="troubleshoot-issue-card-header">
+<div class="troubleshoot-issue-card-icon-wrap troubleshoot-icon-blue">
+<i class="fa-solid fa-file-code"></i>
+</div>
+<span class="troubleshoot-issue-card-label">Wrong File Extension</span>
+</div>
+<div class="troubleshoot-issue-detail-block">
+<div class="troubleshoot-problem-row">
+<span class="troubleshoot-problem-label"><i class="fa-solid fa-xmark"></i> Problem</span>
+<code class="troubleshoot-code-bad">index.html.txt</code>
+</div>
+<div class="troubleshoot-arrow-divider">
+<div class="troubleshoot-arrow-divider-line"></div>
+<span class="troubleshoot-arrow-divider-icon"><i class="fa-solid fa-arrow-down"></i></span>
+<div class="troubleshoot-arrow-divider-line"></div>
+</div>
+<div class="troubleshoot-problem-row">
+<span class="troubleshoot-fix-label"><i class="fa-solid fa-check"></i> Fix</span>
+<code class="troubleshoot-code-good">index.html</code>
+</div>
+<p class="troubleshoot-fix-text">OS may hide extensions. Check "Show file extensions" in Explorer settings to confirm the real name.</p>
+</div>
+</div>
+<!-- Card 6: Page Not Refreshed -->
+<div class="troubleshoot-issue-card">
+<div class="troubleshoot-issue-card-header">
+<div class="troubleshoot-issue-card-icon-wrap troubleshoot-icon-blue">
+<i class="fa-solid fa-rotate-right"></i>
+</div>
+<span class="troubleshoot-issue-card-label">Browser Cache / No Refresh</span>
+</div>
+<div class="troubleshoot-issue-detail-block">
+<div class="troubleshoot-problem-row">
+<span class="troubleshoot-problem-label"><i class="fa-solid fa-xmark"></i> Symptom</span>
+<code class="troubleshoot-code-bad">Old content still showing</code>
+</div>
+<div class="troubleshoot-arrow-divider">
+<div class="troubleshoot-arrow-divider-line"></div>
+<span class="troubleshoot-arrow-divider-icon"><i class="fa-solid fa-arrow-down"></i></span>
+<div class="troubleshoot-arrow-divider-line"></div>
+</div>
+<div class="troubleshoot-problem-row">
+<span class="troubleshoot-fix-label"><i class="fa-solid fa-check"></i> Fix</span>
+<code class="troubleshoot-code-good">Ctrl+Shift+R  (hard reload)</code>
+</div>
+<p class="troubleshoot-fix-text">Hard reload bypasses the cache. Live Server refreshes automatically — install it to avoid this issue.</p>
+</div>
+</div>
+</div><!-- end grid -->
+<!-- Tip Bar -->
+<div class="troubleshoot-tip-bar">
+<i class="fa-solid fa-lightbulb troubleshoot-tip-bar-icon"></i>
+<span class="troubleshoot-tip-bar-text">Pro tip:</span>
+<span class="troubleshoot-tip-bar-sub">When nothing works, open DevTools (F12) → Console tab. Red errors point directly to the problem.</span>
+</div>
+</div><!-- end content area -->
+</div>
+<script data-slide-animation="" type="application/json">
+{
+  "timeline": [
+    {
+      "animation_id": "issues-grid",
+      "effect": "fade"
+    }
+  ]
+}
+</script>
+
+</body></html>

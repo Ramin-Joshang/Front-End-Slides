@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=1280, height=720, initial-scale=1.0" name="viewport">
+    <title>Meet Your Instructor - Lesson 01</title>
+    <script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+
+        :root {
+            --ppt-bg: #0f172a;
+            --ppt-bg-soft: #1e293b;
+            --ppt-surface: #1e293b;
+            --ppt-surface-2: #334155;
+            --ppt-border: #334155;
+            --ppt-text-1: #f8fafc;
+            --ppt-text-2: #94a3b8;
+            --ppt-text-3: #64748b;
+            --ppt-accent: #22d3ee;
+            --ppt-accent-2: #3b82f6;
+            --ppt-chart-1: #22d3ee;
+            --ppt-chart-2: #3b82f6;
+            --ppt-chart-3: #818cf8;
+            --ppt-chart-4: #c084fc;
+            --ppt-good: #4ade80;
+            --ppt-warn: #fbbf24;
+            --ppt-bad: #f87171;
+            --ppt-radius-sm: 4px;
+            --ppt-radius-md: 8px;
+            --ppt-radius-lg: 16px;
+            --ppt-shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.3);
+            --ppt-shadow-strong: 0 12px 24px rgba(0, 0, 0, 0.5);
+            --ppt-font-display: "Space Grotesk", sans-serif;
+            --ppt-font-body: "Inter", sans-serif;
+            --ppt-font-mono: "JetBrains Mono", monospace
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        body {
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+            background-color: var(--ppt-bg);
+            color: var(--ppt-text-1);
+            font-family: var(--ppt-font-body)
+        }
+
+        .instructor-slide-root-container {
+            width: 1280px;
+            height: 720px;
+            display: flex;
+            flex-direction: column;
+            position: relative
+        }
+
+        .title-region-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin: 40px 60px 20px 60px
+        }
+
+        .title-breadcrumb-container {
+            display: flex;
+            align-items: center;
+            gap: 12px
+        }
+
+        .title-accent-line {
+            width: 4px;
+            height: 32px;
+            background: var(--ppt-accent);
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(34, 211, 238, 0.6);
+        }
+
+        .title-breadcrumb-text {
+            font-family: var(--ppt-font-mono);
+            font-size: 14px;
+            color: var(--ppt-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em
+        }
+
+        .title-main-heading {
+            margin: 0;
+            font-family: var(--ppt-font-display);
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ppt-text-1);
+            line-height: 1.2
+        }
+
+        .instructor-main-layout-wrapper {
+            flex: 1;
+            display: flex;
+            align-items: stretch;
+            gap: 48px;
+            margin: 20px 60px 60px 60px
+        }
+
+        .instructor-left-profile-side {
+            flex: 0 0 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: var(--ppt-surface);
+            border: 1px solid var(--ppt-border);
+            border-radius: var(--ppt-radius-lg);
+            padding: 40px;
+            box-shadow: var(--ppt-shadow-strong);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .instructor-left-profile-side::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 50% 50%, rgba(34, 211, 238, 0.05) 0%, transparent 70%);
+            animation: rotateGlow 12s linear infinite;
+        }
+
+        @keyframes rotateGlow {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .instructor-avatar-placeholder-box {
+            width: 220px;
+            height: 220px;
+            background: var(--ppt-bg);
+            border-radius: 50%;
+            border: 4px solid var(--ppt-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            box-shadow: 0 0 30px rgba(34, 211, 238, 0.25);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .instructor-avatar-placeholder-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .instructor-replace-tag {
+            font-family: var(--ppt-font-mono);
+            font-size: 12px;
+            color: var(--ppt-accent);
+            padding: 6px 16px;
+            border: 1px solid var(--ppt-accent);
+            border-radius: 20px;
+            text-transform: uppercase;
+            background: rgba(34, 211, 238, 0.05);
+            position: relative;
+            z-index: 1;
+            letter-spacing: 0.08em;
+        }
+
+        .instructor-right-details-side {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 32px
+        }
+
+        .instructor-info-header-block {
+            display: flex;
+            flex-direction: column;
+            gap: 8px
+        }
+
+        .instructor-name-display {
+            font-family: var(--ppt-font-display);
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--ppt-text-1);
+            background: linear-gradient(135deg, #f8fafc 0%, #22d3ee 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .instructor-role-label {
+            font-family: var(--ppt-font-mono);
+            font-size: 20px;
+            color: var(--ppt-accent);
+            letter-spacing: 0.05em
+        }
+
+        .instructor-experience-grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px
+        }
+
+        .instructor-experience-card-item {
+            background: var(--ppt-surface-2);
+            border: 1px solid var(--ppt-border);
+            border-radius: var(--ppt-radius-md);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            transition: border-color 0.3s, transform 0.3s;
+            position: relative;
+        }
+
+        .instructor-experience-card-item:hover {
+            border-color: var(--ppt-accent);
+            transform: translateY(-4px);
+        }
+
+        .instructor-experience-card-title {
+            font-family: var(--ppt-font-mono);
+            font-size: 13px;
+            color: var(--ppt-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .instructor-experience-card-title i {
+            font-size: 18px;
+        }
+
+        .instructor-experience-card-value {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--ppt-text-1);
+            line-height: 1.4;
+        }
+
+        .instructor-social-contact-footer {
+            display: flex;
+            gap: 16px;
+            margin-top: 8px
+        }
+
+        .instructor-contact-chip-link {
+            background: var(--ppt-bg);
+            border: 1px solid var(--ppt-border);
+            padding: 10px 20px;
+            border-radius: var(--ppt-radius-sm);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            color: var(--ppt-text-2);
+            text-decoration: none;
+            transition: all 0.2s;
+            font-family: var(--ppt-font-mono);
+        }
+
+        .instructor-contact-chip-link:hover {
+            border-color: var(--ppt-accent);
+            color: var(--ppt-accent);
+            box-shadow: 0 0 12px rgba(34, 211, 238, 0.15);
+        }
+
+        .instructor-contact-chip-link i {
+            color: var(--ppt-accent);
+            font-size: 18px;
+            width: 20px;
+            text-align: center;
+        }
+
+        html {
+            overflow: hidden;
+        }
+    </style>
+    <meta content="16:9" name="PageAspectRatio">
+    <meta content="1280_720" name="PageSize">
+</head>
+
+<body>
+    <div class="instructor-slide-root-container" style="overflow: hidden;">
+        <div class="title-region-wrapper">
+            <div class="title-breadcrumb-container">
+                <div class="title-accent-line"></div>
+                <span class="title-breadcrumb-text">Lesson 01 // Meet Your Instructor</span>
+            </div>
+            <h1 class="title-main-heading">Meet Your Instructor</h1>
+        </div>
+        <div class="instructor-main-layout-wrapper">
+            <div class="instructor-left-profile-side" data-animation-id="instructor-profile-card">
+                <div class="instructor-avatar-placeholder-box">
+                    <img src="images/1.png" alt="Ramin Joshang">
+                </div>
+                <div class="instructor-replace-tag">Course Instructor</div>
+            </div>
+            <div class="instructor-right-details-side">
+                <div class="instructor-info-header-block" data-animation-id="instructor-info-header">
+                    <div class="instructor-role-label">FRONT-END ENGINEER • INSTRUCTOR</div>
+                    <div class="instructor-name-display">Ramin Joshang</div>
+                </div>
+                <div class="instructor-experience-grid-container" data-animation-id="instructor-experience-grid">
+
+                    <div class="instructor-experience-card-item">
+                        <span class="instructor-experience-card-title">
+                            <i class="fas fa-laptop-code"></i> Expertise
+                        </span>
+                        <span class="instructor-experience-card-value">
+                            Full-Stack Web Development
+                        </span>
+                    </div>
+
+                    <div class="instructor-experience-card-item">
+                        <span class="instructor-experience-card-title">
+                            <i class="fas fa-diagram-project"></i> Experience
+                        </span>
+                        <span class="instructor-experience-card-value">
+                            Front-End, Back-End & Real-World Projects
+                        </span>
+                    </div>
+
+                    <div class="instructor-experience-card-item">
+                        <span class="instructor-experience-card-title">
+                            <i class="fas fa-graduation-cap"></i> Teaching Method
+                        </span>
+                        <span class="instructor-experience-card-value">
+                            Step-by-Step Learning with Practical Projects
+                        </span>
+                    </div>
+
+                    <div class="instructor-experience-card-item">
+                        <span class="instructor-experience-card-title">
+                            <i class="fas fa-rocket"></i> Course Goal
+                        </span>
+                        <span class="instructor-experience-card-value">
+                            Build a Strong HTML & CSS Foundation
+                        </span>
+                    </div>
+
+                </div>
+                <div class="instructor-social-contact-footer" data-animation-id="instructor-contact-footer">
+                    <a href="https://github.com/Ramin-Joshang/" target="_blank" class="instructor-contact-chip-link">
+                        <i class="fa-brands fa-github"></i>
+                        <span>github.com/Ramin-Joshang</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/ramin-joshang/" target="_blank"
+                        class="instructor-contact-chip-link">
+                        <i class="fa-brands fa-linkedin"></i>
+                        <span>linkedin.com/in/Ramin-Joshang</span>
+                    </a>
+                    <a href="https://joshang.ir" target="_blank" class="instructor-contact-chip-link">
+                        <i class="fa-solid fa-globe"></i>
+                        <span>joshang.ir</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script data-slide-animation="" type="application/json">
+  {
+    "timeline": [
+      {
+        "animation_id": "instructor-profile-card",
+        "effect": "fade"
+      },
+      {
+        "animation_id": "instructor-info-header",
+        "effect": "fade"
+      },
+      {
+        "animation_id": "instructor-experience-grid",
+        "effect": "appear"
+      },
+      {
+        "animation_id": "instructor-contact-footer",
+        "effect": "fade"
+      }
+    ]
+  }
+  </script>
+</body>
+
+</html>

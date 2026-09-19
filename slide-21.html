@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en" style="--viewport-height: 7.42px;"><head>
+<meta charset="utf-8">
+<meta content="width=1280, height=720, initial-scale=1.0" name="viewport">
+<title>Visual Studio Code: The Workshop</title>
+<script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
+<style>@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+:root {
+    --ppt-bg: #0f172a;
+    --ppt-bg-soft: #1e293b;
+    --ppt-surface: #1e293b;
+    --ppt-surface-2: #334155;
+    --ppt-border: #334155;
+    --ppt-text-1: #f8fafc;
+    --ppt-text-2: #94a3b8;
+    --ppt-text-3: #64748b;
+    --ppt-accent: #22d3ee;
+    --ppt-accent-2: #3b82f6;
+    --ppt-good: #4ade80;
+    --ppt-warn: #fbbf24;
+    --ppt-bad: #f87171;
+    --ppt-radius-sm: 4px;
+    --ppt-radius-md: 8px;
+    --ppt-radius-lg: 16px;
+    --ppt-font-display: "Space Grotesk", sans-serif;
+    --ppt-font-body: "Inter", sans-serif;
+    --ppt-font-mono: "JetBrains Mono", monospace
+    }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+    }
+body {width: 1280px; height: 720px; overflow: hidden; background-color: var(--ppt-bg);
+    color: var(--ppt-text-1);
+    font-family: var(--ppt-font-body)}
+.slide-root-container {
+    width: 1280px;
+    height: 720px;
+    position: relative;
+    display: flex;
+    flex-direction: column
+    }
+/* Title Region */
+.title-region-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 40px 60px 20px 60px
+    }
+.title-breadcrumb-container {
+    display: flex;
+    align-items: center;
+    gap: 12px
+    }
+.title-accent-bar {
+    width: 4px;
+    height: 32px;
+    background: var(--ppt-accent);
+    border-radius: 2px
+    }
+.title-breadcrumb-text {
+    font-family: var(--ppt-font-mono);
+    font-size: 14px;
+    color: var(--ppt-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em
+    }
+.title-main-heading {
+    margin: 0;
+    font-family: var(--ppt-font-display);
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--ppt-text-1);
+    line-height: 1.2
+    }
+/* Main Content Layout */
+.vscode-content-grid-wrapper {
+    display: flex;
+    align-items: stretch;
+    gap: 40px;
+    margin: 0 60px 40px 60px;
+    flex: 1
+    }
+/* Left Side: Mock UI */
+.vscode-mockup-column-left {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+    }
+.vscode-interface-frame-container {
+    background: #1e1e1e;
+    /* VS Code dark mode typical color */
+    border: 1px solid var(--ppt-border);
+    border-radius: var(--ppt-radius-md);
+    box-shadow: var(--ppt-shadow-strong);
+    display: flex;
+    flex-direction: column;
+    height: 420px;
+    flex: 1
+    }
+.vscode-title-bar-row {
+    height: 30px;
+    background: #323233;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    gap: 8px
+    }
+.vscode-dot-red {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ff5f56
+    }
+.vscode-dot-yellow {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ffbd2e
+    }
+.vscode-dot-green {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #27c93f
+    }
+.vscode-main-layout-body {
+    display: flex;
+    flex: 1
+    }
+.vscode-sidebar-icon-strip {
+    width: 50px;
+    background: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    gap: 24px;
+    color: var(--ppt-text-3)
+    }
+.vscode-sidebar-icon-active {
+    color: var(--ppt-text-1)
+    }
+.vscode-editor-pane-area {
+    flex: 1;
+    background: #1e1e1e;
+    padding: 20px;
+    font-family: var(--ppt-font-mono);
+    font-size: 16px;
+    line-height: 1.6
+    }
+.vscode-code-line-item {
+    display: flex;
+    gap: 12px
+    }
+.vscode-line-num-text {
+    color: #858585;
+    width: 20px;
+    text-align: right
+    }
+.vscode-code-keyword-blue {
+    color: #569cd6
+    }
+.vscode-code-tag-orange {
+    color: #ce9178
+    }
+.vscode-code-string-green {
+    color: #b5cea8
+    }
+/* Right Side: Features */
+.vscode-features-column-right {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px
+    }
+.vscode-feature-card-item {
+    background: var(--ppt-surface);
+    border: 1px solid var(--ppt-border);
+    border-radius: var(--ppt-radius-md);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+    transition: transform 0.2s ease
+    }
+.vscode-feature-card-item:hover {
+    transform: translatey(-4px);
+    border-color: var(--ppt-accent)
+    }
+.vscode-feature-header-group {
+    display: flex;
+    align-items: center;
+    gap: 16px
+    }
+.vscode-feature-icon-box {
+    width: 40px;
+    height: 40px;
+    background: rgba(34, 211, 238, 0.1);
+    border-radius: var(--ppt-radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ppt-accent);
+    font-size: 20px
+    }
+.vscode-feature-title-text {
+    font-family: var(--ppt-font-display);
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--ppt-text-1)
+    }
+.vscode-feature-body-text {
+    font-size: 18px;
+    color: var(--ppt-text-2);
+    line-height: 1.4
+    }
+.vscode-footer-note-text {
+    margin: 0 60px 40px 60px;
+    font-family: var(--ppt-font-mono);
+    font-size: 14px;
+    color: var(--ppt-text-3);
+    text-align: right
+    }
+html { overflow: hidden; }
+</style>
+<meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize"></head>
+<body class="">
+<div class="slide-root-container" style="overflow: hidden;">
+<!-- Title Region -->
+<div class="title-region-wrapper">
+<div class="title-breadcrumb-container">
+<div class="title-accent-bar"></div>
+<span class="title-breadcrumb-text">Lesson 01 // Introduction</span>
+</div>
+<h1 class="title-main-heading">Visual Studio Code: The Workshop</h1>
+</div>
+<!-- Main Content -->
+<div class="vscode-content-grid-wrapper">
+<!-- Mockup Column -->
+<div class="vscode-mockup-column-left" data-animation-id="vscode-mockup">
+<div class="vscode-interface-frame-container">
+<div class="vscode-title-bar-row">
+<div class="vscode-dot-red"></div>
+<div class="vscode-dot-yellow"></div>
+<div class="vscode-dot-green"></div>
+</div>
+<div class="vscode-main-layout-body">
+<div class="vscode-sidebar-icon-strip">
+<i class="fa-solid fa-copy vscode-sidebar-icon-active"></i>
+<i class="fa-solid fa-magnifying-glass"></i>
+<i class="fa-solid fa-code-branch"></i>
+<i class="fa-solid fa-bug"></i>
+<i class="fa-solid fa-puzzle-piece"></i>
+</div>
+<div class="vscode-editor-pane-area">
+<div class="vscode-code-line-item">
+<span class="vscode-line-num-text">1</span>
+<span><span class="vscode-code-keyword-blue">&lt;!DOCTYPE</span> <span class="vscode-code-tag-orange">html</span>&gt;</span>
+</div>
+<div class="vscode-code-line-item">
+<span class="vscode-line-num-text">2</span>
+<span><span class="vscode-code-keyword-blue">&lt;html</span> <span class="vscode-code-tag-orange">lang</span>=<span class="vscode-code-string-green">"en"</span>&gt;</span>
+</div>
+<div class="vscode-code-line-item">
+<span class="vscode-line-num-text">3</span>
+<span>&nbsp;&nbsp;<span class="vscode-code-keyword-blue">&lt;body</span>&gt;</span>
+</div>
+<div class="vscode-code-line-item">
+<span class="vscode-line-num-text">4</span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="vscode-code-keyword-blue">&lt;h1</span>&gt;Hello World<span class="vscode-code-keyword-blue">&lt;/h1</span>&gt;</span>
+</div>
+<div class="vscode-code-line-item">
+<span class="vscode-line-num-text">5</span>
+<span>&nbsp;&nbsp;<span class="vscode-code-keyword-blue">&lt;/body</span>&gt;</span>
+</div>
+<div class="vscode-code-line-item">
+<span class="vscode-line-num-text">6</span>
+<span><span class="vscode-code-keyword-blue">&lt;/html</span>&gt;</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Features Column -->
+<div class="vscode-features-column-right" data-animation-id="feature-cards-grid" data-interaction-trigger="true">
+<div class="vscode-feature-card-item">
+<div class="vscode-feature-header-group">
+<div class="vscode-feature-icon-box"><i class="fa-solid fa-award"></i></div>
+<h3 class="vscode-feature-title-text">Industry Standard</h3>
+</div>
+<p class="vscode-feature-body-text">The #1 choice for developers at Google, Microsoft, and Meta.</p>
+</div>
+<div class="vscode-feature-card-item">
+<div class="vscode-feature-header-group">
+<div class="vscode-feature-icon-box"><i class="fa-solid fa-puzzle-piece"></i></div>
+<h3 class="vscode-feature-title-text">Extension Hub</h3>
+</div>
+<p class="vscode-feature-body-text">Thousands of powerful plugins to supercharge your workflow.</p>
+</div>
+<div class="vscode-feature-card-item">
+<div class="vscode-feature-header-group">
+<div class="vscode-feature-icon-box"><i class="fa-solid fa-terminal"></i></div>
+<h3 class="vscode-feature-title-text">Integrated Tools</h3>
+</div>
+<p class="vscode-feature-body-text">Built-in terminal, Git support, and intelligent code completion.</p>
+</div>
+</div>
+</div>
+<div class="vscode-footer-note-text">
+      FREE · OPEN SOURCE · CROSS-PLATFORM
+    </div>
+</div>
+<script data-slide-animation="" type="application/json">
+  {
+    "timeline": [
+      {
+        "animation_id": "vscode-mockup",
+        "effect": "fade"
+      },
+      {
+        "animation_id": "feature-cards-grid",
+        "effect": "appear"
+      }
+    ]
+  }
+  </script>
+
+
+
+</body></html>

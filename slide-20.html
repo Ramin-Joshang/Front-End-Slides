@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Google Chrome: The Workbench</title>
+<script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
+<style>@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+:root {
+    --ppt-bg: #0f172a;
+    --ppt-bg-soft: #1e293b;
+    --ppt-surface: #1e293b;
+    --ppt-surface-2: #334155;
+    --ppt-border: #334155;
+    --ppt-text-1: #f8fafc;
+    --ppt-text-2: #94a3b8;
+    --ppt-text-3: #64748b;
+    --ppt-accent: #22d3ee;
+    --ppt-accent-2: #3b82f6;
+    --ppt-chart-1: #22d3ee;
+    --ppt-chart-2: #3b82f6;
+    --ppt-chart-3: #818cf8;
+    --ppt-chart-4: #c084fc;
+    --ppt-good: #4ade80;
+    --ppt-warn: #fbbf24;
+    --ppt-bad: #f87171;
+    --ppt-radius-sm: 4px;
+    --ppt-radius-md: 8px;
+    --ppt-radius-lg: 16px;
+    --ppt-shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --ppt-shadow-strong: 0 12px 24px rgba(0, 0, 0, 0.5);
+    --ppt-font-display: "Space Grotesk", sans-serif;
+    --ppt-font-body: "Inter", sans-serif;
+    --ppt-font-mono: "JetBrains Mono", monospace
+    }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+    }
+body {width: 1280px; height: 720px; overflow: hidden; background-color: var(--ppt-bg);
+    color: var(--ppt-text-1);
+    font-family: var(--ppt-font-body)}
+.chrome-slide-root {
+    width: 1280px;
+    height: 720px;
+    display: flex;
+    flex-direction: column;
+    background: radial-gradient(circle at 90% 10%, #1e293b 0%, #0f172a 70%);
+    position: relative
+    }
+/* --- Title Region --- */
+.chrome-title-region-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 40px 60px 20px 60px
+    }
+.chrome-breadcrumb-container {
+    display: flex;
+    align-items: center;
+    gap: 12px
+    }
+.chrome-accent-bar {
+    width: 4px;
+    height: 32px;
+    background: var(--ppt-accent);
+    border-radius: 2px
+    }
+.chrome-breadcrumb-text {
+    font-family: var(--ppt-font-mono);
+    font-size: 14px;
+    color: var(--ppt-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em
+    }
+.chrome-main-title {
+    margin: 0;
+    font-family: var(--ppt-font-display);
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--ppt-text-1);
+    line-height: 1.2
+    }
+/* --- Content Layout --- */
+.chrome-content-layout-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 40px;
+    margin: 20px 60px 40px 60px;
+    flex: 1
+    }
+.chrome-left-column-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px
+    }
+.chrome-right-column-visual {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+    }
+/* --- Feature Cards --- */
+.chrome-feature-card-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    list-style: none
+    }
+.chrome-feature-card-item {
+    background: var(--ppt-surface);
+    border: 1px solid var(--ppt-border);
+    border-radius: var(--ppt-radius-md);
+    padding: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    transition: border-color 0.3s ease
+    }
+.chrome-feature-card-item:hover {
+    border-color: var(--ppt-accent-2)
+    }
+.chrome-feature-icon-box {
+    width: 48px;
+    height: 48px;
+    background: rgba(34, 211, 238, 0.1);
+    border-radius: var(--ppt-radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ppt-accent);
+    font-size: 24px;
+    flex-shrink: 0
+    }
+.chrome-feature-text-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px
+    }
+.chrome-feature-title {
+    font-family: var(--ppt-font-display);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--ppt-text-1)
+    }
+.chrome-feature-description {
+    font-size: 16px;
+    color: var(--ppt-text-2);
+    line-height: 1.4
+    }
+/* --- Browser Mockup --- */
+.chrome-browser-mockup-frame {
+    background: #161b22;
+    border: 1px solid var(--ppt-border);
+    border-radius: var(--ppt-radius-lg);
+    box-shadow: var(--ppt-shadow-strong);
+    display: flex;
+    flex-direction: column;
+    flex: 1
+    }
+.chrome-browser-header {
+    background: #21262d;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    gap: 12px;
+    border-bottom: 1px solid var(--ppt-border)
+    }
+.chrome-dot-group {
+    display: flex;
+    gap: 6px
+    }
+.chrome-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%
+    }
+.chrome-address-bar {
+    flex: 1;
+    background: #0d1117;
+    height: 24px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    font-family: var(--ppt-font-mono);
+    font-size: 12px;
+    color: var(--ppt-text-3)
+    }
+.chrome-browser-viewport {
+    flex: 1.5;
+    background: #fff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px
+    }
+.chrome-mock-content-line {
+    height: 12px;
+    background: #e2e8f0;
+    border-radius: 6px
+    }
+.chrome-devtools-panel {
+    flex: 2;
+    background: #0d1117;
+    border-top: 2px solid var(--ppt-accent-2);
+    padding: 16px;
+    font-family: var(--ppt-font-mono);
+    font-size: 13px
+    }
+.chrome-devtools-tabs {
+    display: flex;
+    gap: 16px;
+    border-bottom: 1px solid var(--ppt-border);
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+    color: var(--ppt-text-3)
+    }
+.chrome-tab-active {
+    color: var(--ppt-accent);
+    border-bottom: 2px solid var(--ppt-accent)
+    }
+.chrome-code-line {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 4px
+    }
+.chrome-code-tag {
+    color: #7dd3fc
+    }
+.chrome-code-attr {
+    color: #fbbf24
+    }
+.chrome-code-val {
+    color: #4ade80
+    }
+.chrome-code-indent {
+    padding-left: 20px
+    }
+html { overflow: hidden; }
+</style>
+<meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize"></head>
+<body>
+<div class="chrome-slide-root" style="overflow: hidden;">
+<!-- Title Region -->
+<div class="chrome-title-region-wrapper">
+<div class="chrome-breadcrumb-container">
+<div class="chrome-accent-bar"></div>
+<span class="chrome-breadcrumb-text">Lesson 01 // Introduction</span>
+</div>
+<h1 class="chrome-main-title">Google Chrome: The Workbench</h1>
+</div>
+<!-- Main Content -->
+<div class="chrome-content-layout-wrapper">
+<!-- Left Column: Why Chrome? -->
+<div class="chrome-left-column-info">
+<div class="chrome-feature-card-list" data-animation-id="feature-cards-group">
+<div class="chrome-feature-card-item">
+<div class="chrome-feature-icon-box">
+<i class="fa-solid fa-microchip"></i>
+</div>
+<div class="chrome-feature-text-content">
+<h3 class="chrome-feature-title">Industry Standard</h3>
+<p class="chrome-feature-description">Powered by the high-performance V8 engine, it is the most used browser by developers and users worldwide.</p>
+</div>
+</div>
+<div class="chrome-feature-card-item">
+<div class="chrome-feature-icon-box">
+<i class="fa-solid fa-magnifying-glass-chart"></i>
+</div>
+<div class="chrome-feature-text-content">
+<h3 class="chrome-feature-title">Built-in DevTools</h3>
+<p class="chrome-feature-description">A professional suite for inspecting HTML structure, styling with CSS, and debugging JavaScript in real-time.</p>
+</div>
+</div>
+<div class="chrome-feature-card-item">
+<div class="chrome-feature-icon-box">
+<i class="fa-solid fa-puzzle-piece"></i>
+</div>
+<div class="chrome-feature-text-content">
+<h3 class="chrome-feature-title">Extension Ecosystem</h3>
+<p class="chrome-feature-description">Access to thousands of developer-specific tools like React Developer Tools, Lighthouse, and Accessibility checkers.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Visual Mockup -->
+<div class="chrome-right-column-visual">
+<div class="chrome-browser-mockup-frame" data-animation-id="devtools-mockup">
+<!-- Browser Top -->
+<div class="chrome-browser-header">
+<div class="chrome-dot-group">
+<div class="chrome-dot" style="background: #ff5f56;"></div>
+<div class="chrome-dot" style="background: #ffbd2e;"></div>
+<div class="chrome-dot" style="background: #27c93f;"></div>
+</div>
+<div class="chrome-address-bar">https://localhost:3000</div>
+</div>
+<!-- Viewport (White Area) -->
+<div class="chrome-browser-viewport">
+<div style="width: 40%; height: 24px; background: var(--ppt-accent-2); border-radius: 4px; margin-bottom: 8px;"></div>
+<div class="chrome-mock-content-line" style="width: 90%;"></div>
+<div class="chrome-mock-content-line" style="width: 85%;"></div>
+<div class="chrome-mock-content-line" style="width: 60%;"></div>
+</div>
+<!-- DevTools Area -->
+<div class="chrome-devtools-panel">
+<div class="chrome-devtools-tabs">
+<span class="chrome-tab-active">Elements</span>
+<span>Console</span>
+<span>Sources</span>
+<span>Network</span>
+</div>
+<div class="chrome-code-line">
+<span class="chrome-code-tag">&lt;div</span> <span class="chrome-code-attr">class=</span><span class="chrome-code-val">"hero"</span><span class="chrome-code-tag">&gt;</span>
+</div>
+<div class="chrome-code-line chrome-code-indent">
+<span class="chrome-code-tag">&lt;h1&gt;</span>Hello World<span class="chrome-code-tag">&lt;/h1&gt;</span>
+</div>
+<div class="chrome-code-line chrome-code-indent">
+<span class="chrome-code-tag">&lt;p&gt;</span>Welcome to the web...<span class="chrome-code-tag">&lt;/p&gt;</span>
+</div>
+<div class="chrome-code-line">
+<span class="chrome-code-tag">&lt;/div&gt;</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script data-slide-animation="" type="application/json">
+  {
+    "timeline": [
+      {
+        "animation_id": "feature-cards-group",
+        "effect": "fade"
+      },
+      {
+        "animation_id": "devtools-mockup",
+        "effect": "appear"
+      }
+    ]
+  }
+  </script>
+
+</body></html>

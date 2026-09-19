@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en" style="--viewport-height: 9.57px;"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Organizing Your Work: Folder Structure</title>
+<script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
+<style>@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+:root {
+    --ppt-bg: #0f172a;
+    --ppt-bg-soft: #1e293b;
+    --ppt-surface: #1e293b;
+    --ppt-surface-2: #334155;
+    --ppt-border: #334155;
+    --ppt-text-1: #f8fafc;
+    --ppt-text-2: #94a3b8;
+    --ppt-text-3: #64748b;
+    --ppt-accent: #22d3ee;
+    --ppt-accent-2: #3b82f6;
+    --ppt-radius-sm: 4px;
+    --ppt-radius-md: 8px;
+    --ppt-radius-lg: 16px;
+    --ppt-font-display: "Space Grotesk", sans-serif;
+    --ppt-font-body: "Inter", sans-serif;
+    --ppt-font-mono: "JetBrains Mono", monospace
+    }
+* {
+    box-sizing: border-box;
+    margin: 0 0;
+    padding: 0 0
+    }
+body {width: 1280px; height: 720px; overflow: hidden; background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--ppt-font-body)}
+.folder-structure-slide-root {
+    width: 1280px;
+    height: 720px;
+    background-color: var(--ppt-bg);
+    color: var(--ppt-text-1);
+    position: relative;
+    display: flex;
+    flex-direction: column
+    }
+/* --- Non-Cover-Page Title Region --- */
+.folder-structure-title-region {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 40px 60px 20px 60px
+    }
+.folder-structure-title-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 12px
+    }
+.folder-structure-title-accent-bar {
+    width: 4px;
+    height: 32px;
+    background: var(--ppt-accent);
+    border-radius: 2px
+    }
+.folder-structure-breadcrumb-text {
+    font-family: var(--ppt-font-mono);
+    font-size: 14px;
+    color: var(--ppt-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em
+    }
+.folder-structure-main-heading {
+    margin: 0;
+    font-family: var(--ppt-font-display);
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--ppt-text-1);
+    line-height: 1.2
+    }
+/* --- Content Layout --- */
+.folder-structure-content-wrapper {
+    flex: 1;
+    display: flex;
+    padding: 16px 60px 48px 60px;
+    gap: 32px 40px;
+    align-items: stretch
+    }
+/* --- Left Column: Visual Tree --- */
+.folder-structure-left-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+    }
+.folder-structure-tree-card {
+    background: var(--ppt-surface);
+    border: 1px solid var(--ppt-border);
+    border-radius: var(--ppt-radius-lg);
+    padding: 32px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4)
+    }
+.folder-structure-tree-header {
+    font-family: var(--ppt-font-mono);
+    font-size: 16px;
+    color: var(--ppt-text-3);
+    border-bottom: 1px solid var(--ppt-border);
+    padding-bottom: 12px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px
+    }
+.folder-structure-tree-node {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--ppt-font-mono);
+    font-size: 18px;
+    padding: 6px 0
+    }
+.folder-structure-tree-indent-1 {
+    margin-left: 24px
+    }
+.folder-structure-tree-indent-2 {
+    margin-left: 48px
+    }
+.folder-structure-icon-folder {
+    color: var(--ppt-accent-2)
+    }
+.folder-structure-icon-html {overflow: hidden; color: #e44d26}
+.folder-structure-icon-css {
+    color: #264de4
+    }
+.folder-structure-icon-js {
+    color: #f7df1e
+    }
+.folder-structure-icon-image {
+    color: var(--ppt-accent)
+    }
+.folder-structure-node-label {
+    color: var(--ppt-text-1)
+    }
+.folder-structure-node-comment {
+    color: var(--ppt-text-3);
+    font-size: 14px;
+    margin-left: auto
+    }
+/* --- Right Column: Guidelines --- */
+.folder-structure-right-column {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 19px 24px
+    }
+.folder-structure-rule-item {
+    display: flex;
+    gap: 16px 20px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 16px 20px;
+    border-radius: var(--ppt-radius-md);
+    border-left: 4px solid var(--ppt-accent)
+    }
+.folder-structure-rule-icon {
+    font-size: 24px;
+    color: var(--ppt-accent);
+    margin-top: 3px
+    }
+.folder-structure-rule-content {
+    display: flex;
+    flex-direction: column;
+    gap: 5px 6px
+    }
+.folder-structure-rule-title {
+    font-family: var(--ppt-font-display);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--ppt-text-1)
+    }
+.folder-structure-rule-desc {
+    font-size: 17px;
+    color: var(--ppt-text-2);
+    line-height: 1.4
+    }
+.folder-structure-footer-note {
+    margin-top: auto;
+    padding: 10px 0;
+    font-family: var(--ppt-font-mono);
+    font-size: 14px;
+    color: var(--ppt-text-3);
+    text-align: right
+    }</style>
+<meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize"></head>
+<body class="">
+<div class="folder-structure-slide-root" style="overflow: hidden;">
+<!-- Title Region -->
+<div class="folder-structure-title-region">
+<div class="folder-structure-title-breadcrumb">
+<div class="folder-structure-title-accent-bar"></div>
+<span class="folder-structure-breadcrumb-text">Lesson 01 // Introduction</span>
+</div>
+<h1 class="folder-structure-main-heading">Organizing Your Work: Folder Structure</h1>
+</div>
+<!-- Main Content -->
+<div class="folder-structure-content-wrapper">
+<!-- Left: File Tree Visualization -->
+<div class="folder-structure-left-column" data-animation-id="folder-tree-visual">
+<div class="folder-structure-tree-card">
+<div class="folder-structure-tree-header">
+<i class="fa-solid fa-folder-tree"></i> EXPLORER: MY-FIRST-PROJECT
+          </div>
+<div class="folder-structure-tree-node">
+<i class="fa-solid fa-folder-open folder-structure-icon-folder"></i>
+<span class="folder-structure-node-label">my-website</span>
+</div>
+<div class="folder-structure-tree-node folder-structure-tree-indent-1">
+<i class="fa-brands fa-html5 folder-structure-icon-html"></i>
+<span class="folder-structure-node-label">index.html</span>
+<span class="folder-structure-node-comment">// Entry point</span>
+</div>
+<div class="folder-structure-tree-node folder-structure-tree-indent-1">
+<i class="fa-solid fa-folder folder-structure-icon-folder"></i>
+<span class="folder-structure-node-label">css</span>
+</div>
+<div class="folder-structure-tree-node folder-structure-tree-indent-2">
+<i class="fa-brands fa-css3-alt folder-structure-icon-css"></i>
+<span class="folder-structure-node-label">style.css</span>
+</div>
+<div class="folder-structure-tree-node folder-structure-tree-indent-1">
+<i class="fa-solid fa-folder folder-structure-icon-folder"></i>
+<span class="folder-structure-node-label">assets</span>
+</div>
+<div class="folder-structure-tree-node folder-structure-tree-indent-2">
+<i class="fa-solid fa-image folder-structure-icon-image"></i>
+<span class="folder-structure-node-label">logo.png</span>
+</div>
+<div class="folder-structure-tree-node folder-structure-tree-indent-1">
+<i class="fa-brands fa-js folder-structure-icon-js"></i>
+<span class="folder-structure-node-label">script.js</span>
+</div>
+</div>
+</div>
+<!-- Right: Guidelines -->
+<div class="folder-structure-right-column" data-animation-id="guidelines-group">
+<div class="folder-structure-rule-item">
+<i class="fa-solid fa-house-laptop folder-structure-rule-icon"></i>
+<div class="folder-structure-rule-content">
+<div class="folder-structure-rule-title">One Root Folder</div>
+<div class="folder-structure-rule-desc">Keep every project in its own self-contained directory. Never build directly on your desktop.</div>
+</div>
+</div>
+<div class="folder-structure-rule-item">
+<i class="fa-solid fa-font folder-structure-rule-icon"></i>
+<div class="folder-structure-rule-content">
+<div class="folder-structure-rule-title">Lowercase Naming</div>
+<div class="folder-structure-rule-desc">Use lowercase letters and hyphens. Avoid spaces and special characters to prevent broken links.</div>
+</div>
+</div>
+<div class="folder-structure-rule-item">
+<i class="fa-solid fa-layer-group folder-structure-rule-icon"></i>
+<div class="folder-structure-rule-content">
+<div class="folder-structure-rule-title">Logical Subfolders</div>
+<div class="folder-structure-rule-desc">Group files by type (CSS, JS, Images) to keep the project scalable as it grows.</div>
+</div>
+</div>
+<div class="folder-structure-footer-note">
+          Tip: Your main page must always be named index.html
+        </div>
+</div>
+</div>
+</div>
+<script data-slide-animation="" type="application/json">
+  {
+    "timeline": [
+      {
+        "animation_id": "folder-tree-visual",
+        "effect": "fade"
+      },
+      {
+        "animation_id": "guidelines-group",
+        "effect": "appear"
+      }
+    ]
+  }
+  </script>
+
+
+
+</body></html>

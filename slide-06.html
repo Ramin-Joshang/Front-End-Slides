@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en" style="--viewport-height: 9.57px;">
+
+<head>
+    <meta charset="utf-8">
+    <title>Front-End vs Back-End</title>
+    <script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+
+        :root {
+            --ppt-bg: #0f172a;
+            --ppt-bg-soft: #1e293b;
+            --ppt-surface: #1e293b;
+            --ppt-surface-2: #334155;
+            --ppt-border: #334155;
+            --ppt-text-1: #f8fafc;
+            --ppt-text-2: #94a3b8;
+            --ppt-text-3: #64748b;
+            --ppt-accent: #22d3ee;
+            --ppt-accent-2: #3b82f6;
+            --ppt-chart-1: #22d3ee;
+            --ppt-chart-2: #3b82f6;
+            --ppt-chart-3: #818cf8;
+            --ppt-chart-4: #c084fc;
+            --ppt-good: #4ade80;
+            --ppt-warn: #fbbf24;
+            --ppt-bad: #f87171;
+            --ppt-radius-sm: 4px;
+            --ppt-radius-md: 8px;
+            --ppt-radius-lg: 16px;
+            --ppt-shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.3);
+            --ppt-shadow-strong: 0 12px 24px rgba(0, 0, 0, 0.5);
+            --ppt-font-display: "Space Grotesk", sans-serif;
+            --ppt-font-body: "Inter", sans-serif;
+            --ppt-font-mono: "JetBrains Mono", monospace
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        body {
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+            background-color: var(--ppt-bg);
+            font-family: var(--ppt-font-body);
+            color: var(--ppt-text-1)
+        }
+
+        .slide-root-container {
+            width: 1280px;
+            height: 720px;
+            display: flex;
+            flex-direction: column
+        }
+
+        /* Title Region */
+        .title-region-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin: 40px 60px 20px 60px
+        }
+
+        .title-breadcrumb-container {
+            display: flex;
+            align-items: center;
+            gap: 12px
+        }
+
+        .title-accent-line {
+            width: 4px;
+            height: 32px;
+            background: var(--ppt-accent);
+            border-radius: 2px
+        }
+
+        .title-breadcrumb-text {
+            font-family: var(--ppt-font-mono);
+            font-size: 14px;
+            color: var(--ppt-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em
+        }
+
+        .title-main-heading {
+            margin: 0;
+            font-family: var(--ppt-font-display);
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ppt-text-1);
+            line-height: 1.2
+        }
+
+        /* Comparison Layout */
+        .fe-be-comparison-main-container {
+            flex: 1;
+            display: flex;
+            align-items: stretch;
+            margin: 20px 60px 60px 60px;
+            gap: 0
+        }
+
+        .fe-be-column-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 20px
+        }
+
+        .fe-be-column-inner {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            gap: 24px
+        }
+
+        .fe-be-icon-box {
+            width: 100px;
+            height: 100px;
+            background: rgba(34, 211, 238, 0.1);
+            border: 1px solid var(--ppt-accent);
+            border-radius: var(--ppt-radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: var(--ppt-accent);
+            box-shadow: 0 0 20px rgba(34, 211, 238, 0.15)
+        }
+
+        .fe-be-role-label {
+            font-family: var(--ppt-font-mono);
+            font-size: 16px;
+            color: var(--ppt-accent);
+            background: rgba(34, 211, 238, 0.05);
+            padding: 6px 16px;
+            border-radius: 20px;
+            border: 1px solid rgba(34, 211, 238, 0.2)
+        }
+
+        .fe-be-side-title {
+            font-family: var(--ppt-font-display);
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--ppt-text-1)
+        }
+
+        .fe-be-feature-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 10px
+        }
+
+        .fe-be-feature-item {
+            display: block;
+            font-size: 20px;
+            color: var(--ppt-text-2);
+            line-height: 1.4
+        }
+
+        .fe-be-tech-stack {
+            font-family: var(--ppt-font-mono);
+            font-size: 14px;
+            color: var(--ppt-accent-2);
+            letter-spacing: 1px
+        }
+
+        /* Vertical Divider */
+        .fe-be-vertical-divider-line {
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, var(--ppt-border), transparent);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        .fe-be-interaction-bridge-tag {
+            width: 180px;
+            background: var(--ppt-bg);
+            border: 1px solid var(--ppt-border);
+            color: var(--ppt-text-1);
+            padding: 10px;
+            border-radius: 30px;
+            font-family: var(--ppt-font-mono);
+            font-size: 13px;
+            text-align: center;
+            white-space: nowrap;
+            z-index: 10;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5)
+        }
+
+        .fe-be-interaction-bridge-tag i {
+            color: var(--ppt-accent);
+            margin: 0 8px
+        }
+
+        /* Alignments */
+        .left-column-content {
+            align-items: flex-end;
+            text-align: right
+        }
+
+        .right-column-content {
+            align-items: flex-start;
+            text-align: left
+        }
+
+        .left-column-content .fe-be-feature-list {
+            align-items: flex-end
+        }
+
+        .right-column-content .fe-be-feature-list {
+            align-items: flex-start
+        }
+
+        html {
+            overflow: hidden;
+        }
+    </style>
+    <meta content="16:9" name="PageAspectRatio">
+    <meta content="1280_720" name="PageSize">
+</head>
+
+<body class="">
+    <div class="slide-root-container" style="overflow: hidden;">
+        <!-- Title Region -->
+        <div class="title-region-wrapper">
+            <div class="title-breadcrumb-container">
+                <div class="title-accent-line"></div>
+                <span class="title-breadcrumb-text">Lesson 01 // Introduction</span>
+            </div>
+            <h1 class="title-main-heading">Front-End vs Back-End</h1>
+        </div>
+        <!-- Comparison Diptych Layout -->
+        <div class="fe-be-comparison-main-container">
+            <!-- Left: Front-End -->
+            <div class="fe-be-column-wrapper">
+                <div class="fe-be-column-inner left-column-content" data-animation-id="fe-column">
+                    <div class="fe-be-icon-box">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <div class="fe-be-role-label">THE DINING ROOM</div>
+                    <h2 class="fe-be-side-title">Front-End</h2>
+                    <ul class="fe-be-feature-list">
+                        <li class="fe-be-feature-item">The visual user interface</li>
+                        <li class="fe-be-feature-item">Animations &amp; interactions</li>
+                        <li class="fe-be-feature-item">Browser-based execution</li>
+                    </ul>
+                    <div class="fe-be-tech-stack">HTML • CSS • JAVASCRIPT</div>
+                </div>
+            </div>
+            <!-- Divider with Bridge Badge -->
+            <div class="fe-be-vertical-divider-line">
+                <div class="fe-be-interaction-bridge-tag" data-animation-id="center-bridge">
+                    REQUEST <i class="fa-solid fa-right-left"></i> RESPONSE
+                </div>
+            </div>
+            <!-- Right: Back-End -->
+            <div class="fe-be-column-wrapper">
+                <div class="fe-be-column-inner right-column-content" data-animation-id="be-column">
+                    <div class="fe-be-icon-box">
+                        <i class="fa-solid fa-server"></i>
+                    </div>
+                    <div class="fe-be-role-label">THE KITCHEN</div>
+                    <h2 class="fe-be-side-title">Back-End</h2>
+                    <ul class="fe-be-feature-list">
+                        <li class="fe-be-feature-item">Data storage &amp; security</li>
+                        <li class="fe-be-feature-item">Business logic &amp; rules</li>
+                        <li class="fe-be-feature-item">Server-side processing</li>
+                    </ul>
+                    <div class="fe-be-tech-stack">PYTHON • NODE.JS • SQL</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script data-slide-animation="" type="application/json">
+  {
+    "timeline": [
+      {
+        "animation_id": "fe-column",
+        "effect": "fade"
+      },
+      {
+        "animation_id": "be-column",
+        "effect": "fade"
+      },
+      {
+        "animation_id": "center-bridge",
+        "effect": "appear"
+      }
+    ]
+  }
+  </script>
+
+
+
+</body>
+
+</html>

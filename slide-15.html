@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en" style="--viewport-height: 9.57px;"><head>
+<meta charset="utf-8">
+<meta content="width=1280, height=720" name="viewport">
+<title>CSS: The Skin and Style</title>
+<script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
+<style>@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+:root {
+    --ppt-bg: #0f172a;
+    --ppt-bg-soft: #1e293b;
+    --ppt-surface: #1e293b;
+    --ppt-surface-2: #334155;
+    --ppt-border: #334155;
+    --ppt-text-1: #f8fafc;
+    --ppt-text-2: #94a3b8;
+    --ppt-text-3: #64748b;
+    --ppt-accent: #22d3ee;
+    --ppt-accent-2: #3b82f6;
+    --ppt-chart-1: #22d3ee;
+    --ppt-chart-2: #3b82f6;
+    --ppt-chart-3: #818cf8;
+    --ppt-chart-4: #c084fc;
+    --ppt-good: #4ade80;
+    --ppt-warn: #fbbf24;
+    --ppt-bad: #f87171;
+    --ppt-radius-sm: 4px;
+    --ppt-radius-md: 8px;
+    --ppt-radius-lg: 16px;
+    --ppt-shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --ppt-shadow-strong: 0 12px 24px rgba(0, 0, 0, 0.5);
+    --ppt-font-display: "Space Grotesk", sans-serif;
+    --ppt-font-body: "Inter", sans-serif;
+    --ppt-font-mono: "JetBrains Mono", monospace
+    }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+    }
+body {width: 1280px; height: 720px; overflow: hidden; background-color: var(--ppt-bg);
+    color: var(--ppt-text-1);
+    font-family: var(--ppt-font-body)}
+.css-style-slide-root {
+    width: 1280px;
+    height: 720px;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 40px
+    }
+/* Title Region */
+.css-style-title-region {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 40px 60px 20px 60px
+    }
+.css-style-title-breadcrumb-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px
+    }
+.css-style-title-accent-bar {
+    width: 4px;
+    height: 32px;
+    background: var(--ppt-accent);
+    border-radius: 2px
+    }
+.css-style-title-breadcrumb-text {
+    font-family: var(--ppt-font-mono);
+    font-size: 14px;
+    color: var(--ppt-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em
+    }
+.css-style-title-main-heading {
+    margin: 0;
+    font-family: var(--ppt-font-display);
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--ppt-text-1);
+    line-height: 1.2
+    }
+/* Content Wrapper */
+.css-style-content-wrapper {
+    padding: 0 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px
+    }
+/* Code Comparison Section */
+.css-style-code-comparison-row {
+    display: flex;
+    gap: 24px;
+    align-items: stretch
+    }
+.css-style-code-column-left, .css-style-code-column-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: var(--ppt-surface);
+    border: 1px solid var(--ppt-border);
+    border-radius: var(--ppt-radius-md);
+    padding: 16px;
+    box-shadow: var(--ppt-shadow-soft)
+    }
+.css-style-code-label {
+    font-family: var(--ppt-font-mono);
+    font-size: 12px;
+    color: var(--ppt-text-3);
+    margin-bottom: 12px;
+    text-transform: uppercase
+    }
+.css-style-code-block {
+    font-family: var(--ppt-font-mono);
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--ppt-text-1)
+    }
+.css-style-code-html-tag {
+    color: #f87171
+    }
+.css-style-code-css-selector {
+    color: #4ade80
+    }
+.css-style-code-css-prop {
+    color: #22d3ee
+    }
+.css-style-code-css-val {
+    color: #fbbf24
+    }
+/* Features Grid */
+.css-style-features-grid {
+    display: flex;
+    gap: 24px;
+    align-items: stretch
+    }
+.css-style-feature-card-item {
+    flex: 1;
+    background: var(--ppt-surface-2);
+    border-radius: var(--ppt-radius-lg);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border-top: 4px solid var(--ppt-accent)
+    }
+.css-style-feature-icon-box {
+    font-size: 32px;
+    color: var(--ppt-accent);
+    margin-bottom: 8px
+    }
+.css-style-feature-title {
+    font-family: var(--ppt-font-display);
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--ppt-text-1)
+    }
+.css-style-feature-description {
+    font-size: 16px;
+    color: var(--ppt-text-2);
+    line-height: 1.5
+    }
+.css-style-feature-tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px
+    }
+.css-style-feature-tag {
+    background: rgba(34, 211, 238, 0.1);
+    color: var(--ppt-accent);
+    padding: 4px 10px;
+    border-radius: var(--ppt-radius-sm);
+    font-family: var(--ppt-font-mono);
+    font-size: 12px;
+    border: 1px solid rgba(34, 211, 238, 0.2)
+    }
+html { overflow: hidden; }
+</style>
+<meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize"></head>
+<body class="">
+<div class="css-style-slide-root" style="overflow: hidden;">
+<!-- Title Region -->
+<div class="css-style-title-region">
+<div class="css-style-title-breadcrumb-wrap">
+<div class="css-style-title-accent-bar"></div>
+<span class="css-style-title-breadcrumb-text">Lesson 01 // Introduction</span>
+</div>
+<h1 class="css-style-title-main-heading">
+        CSS: The Skin and Style
+      </h1>
+</div>
+<!-- Main Content -->
+<div class="css-style-content-wrapper">
+<!-- Code Comparison Section -->
+<div class="css-style-code-comparison-row" data-animation-id="css-code-comparison">
+<div class="css-style-code-column-left">
+<div class="css-style-code-label">HTML (The Skeleton)</div>
+<div class="css-style-code-block">
+            &lt;<span class="css-style-code-html-tag">h1</span>&gt;Hello World&lt;/<span class="css-style-code-html-tag">h1</span>&gt;<br>
+            &lt;<span class="css-style-code-html-tag">button</span>&gt;Click Me&lt;/<span class="css-style-code-html-tag">button</span>&gt;
+          </div>
+</div>
+<div class="css-style-code-column-right">
+<div class="css-style-code-label">CSS (The Style)</div>
+<div class="css-style-code-block">
+<span class="css-style-code-css-selector">h1</span> {<br>
+            &nbsp;&nbsp;<span class="css-style-code-css-prop">color</span>: <span class="css-style-code-css-val">#22d3ee</span>;<br>
+            &nbsp;&nbsp;<span class="css-style-code-css-prop">font-size</span>: <span class="css-style-code-css-val">48px</span>;<br>
+            }
+          </div>
+</div>
+</div>
+<!-- Features Grid -->
+<div class="css-style-features-grid" data-animation-id="css-features-group">
+<!-- Card 1: Visual Design -->
+<div class="css-style-feature-card-item">
+<div class="css-style-feature-icon-box">
+<i class="fas fa-palette"></i>
+</div>
+<h3 class="css-style-feature-title">Colors &amp; Atmosphere</h3>
+<p class="css-style-feature-description">
+            Sets the mood using brand colors, gradients, backgrounds, and shadows.
+          </p>
+<div class="css-style-feature-tag-list">
+<span class="css-style-feature-tag">background</span>
+<span class="css-style-feature-tag">opacity</span>
+<span class="css-style-feature-tag">box-shadow</span>
+</div>
+</div>
+<!-- Card 2: Typography -->
+<div class="css-style-feature-card-item">
+<div class="css-style-feature-icon-box">
+<i class="fas fa-font"></i>
+</div>
+<h3 class="css-style-feature-title">Typography &amp; Text</h3>
+<p class="css-style-feature-description">
+            Defines readability through font families, sizing, weight, and spacing.
+          </p>
+<div class="css-style-feature-tag-list">
+<span class="css-style-feature-tag">font-family</span>
+<span class="css-style-feature-tag">line-height</span>
+<span class="css-style-feature-tag">letter-spacing</span>
+</div>
+</div>
+<!-- Card 3: Layout -->
+<div class="css-style-feature-card-item">
+<div class="css-style-feature-icon-box">
+<i class="fas fa-layer-group"></i>
+</div>
+<h3 class="css-style-feature-title">Layout &amp; Spacing</h3>
+<p class="css-style-feature-description">
+            Controls the position of elements, whitespace, and responsive grids.
+          </p>
+<div class="css-style-feature-tag-list">
+<span class="css-style-feature-tag">display: flex</span>
+<span class="css-style-feature-tag">padding</span>
+<span class="css-style-feature-tag">margin</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script data-slide-animation="" type="application/json">
+  {
+    "timeline": [
+      {
+        "animation_id": "css-code-comparison",
+        "effect": "fade"
+      },
+      {
+        "animation_id": "css-features-group",
+        "effect": "appear"
+      }
+    ]
+  }
+  </script>
+
+
+
+</body></html>

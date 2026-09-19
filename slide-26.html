@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en" style="--viewport-height: 7.42px;"><head>
+<meta charset="utf-8">
+<meta content="width=1280, height=720, initial-scale=1.0" name="viewport">
+<title>Introduction to Front-End Development - Lesson 01</title>
+<script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
+<style>@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+:root {
+    --ppt-bg: #0f172a;
+    --ppt-bg-soft: #1e293b;
+    --ppt-surface: #1e293b;
+    --ppt-surface-2: #334155;
+    --ppt-border: #334155;
+    --ppt-text-1: #f8fafc;
+    --ppt-text-2: #94a3b8;
+    --ppt-text-3: #64748b;
+    --ppt-accent: #22d3ee;
+    --ppt-accent-2: #3b82f6;
+    --ppt-chart-1: #22d3ee;
+    --ppt-chart-2: #3b82f6;
+    --ppt-chart-3: #818cf8;
+    --ppt-chart-4: #c084fc;
+    --ppt-good: #4ade80;
+    --ppt-warn: #fbbf24;
+    --ppt-bad: #f87171;
+    --ppt-radius-sm: 4px;
+    --ppt-radius-md: 8px;
+    --ppt-radius-lg: 16px;
+    --ppt-shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --ppt-shadow-strong: 0 12px 24px rgba(0, 0, 0, 0.5);
+    --ppt-font-display: "Space Grotesk", sans-serif;
+    --ppt-font-body: "Inter", sans-serif;
+    --ppt-font-mono: "JetBrains Mono", monospace
+    }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+    }
+body {width: 1280px; height: 720px; overflow: hidden; background-color: var(--ppt-bg);
+    color: var(--ppt-text-1);
+    font-family: var(--ppt-font-body)}
+.slide-root-container {
+    width: 1280px;
+    height: 720px;
+    display: flex;
+    flex-direction: column
+    }
+/* Title Region */
+.title-region-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 40px 60px 20px 60px
+    }
+.title-breadcrumb-container {
+    display: flex;
+    align-items: center;
+    gap: 12px
+    }
+.title-accent-bar {
+    width: 4px;
+    height: 32px;
+    background: var(--ppt-accent);
+    border-radius: 2px
+    }
+.title-breadcrumb-text {
+    font-family: var(--ppt-font-mono);
+    font-size: 14px;
+    color: var(--ppt-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em
+    }
+.title-main-heading {
+    margin: 0;
+    font-family: var(--ppt-font-display);
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--ppt-text-1);
+    line-height: 1.2
+    }
+/* Main Content */
+.hands-on-content-grid {
+    display: flex;
+    gap: 40px;
+    margin: 20px 60px 40px 60px;
+    flex: 1;
+    align-items: stretch
+    }
+/* Left Column: Action Steps */
+.hands-on-steps-column {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px
+    }
+.hands-on-step-card {
+    background: var(--ppt-surface);
+    border: 1px solid var(--ppt-border);
+    border-radius: var(--ppt-radius-md);
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 20px
+    }
+.hands-on-step-number {
+    width: 40px;
+    height: 40px;
+    background: var(--ppt-accent-2);
+    color: var(--ppt-text-1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--ppt-font-display);
+    font-weight: 700;
+    font-size: 20px;
+    flex-shrink: 0
+    }
+.hands-on-step-text-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px
+    }
+.hands-on-step-title {
+    font-family: var(--ppt-font-display);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--ppt-text-1)
+    }
+.hands-on-step-description {
+    font-size: 16px;
+    color: var(--ppt-text-2);
+    line-height: 1.4
+    }
+/* Right Column: Visual & Pro-Tips */
+.hands-on-info-column {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px
+    }
+.naming-convention-card {
+    background: var(--ppt-bg-soft);
+    border: 1px solid var(--ppt-accent);
+    border-radius: var(--ppt-radius-lg);
+    padding: 24px;
+    box-shadow: var(--ppt-shadow-strong)
+    }
+.naming-convention-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px
+    }
+.naming-convention-header i {
+    color: var(--ppt-accent);
+    font-size: 24px
+    }
+.naming-convention-title {
+    font-family: var(--ppt-font-display);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--ppt-accent)
+    }
+.filename-highlight-box {
+    background: var(--ppt-bg);
+    border-radius: var(--ppt-radius-sm);
+    padding: 12px;
+    margin: 12px 0;
+    text-align: center;
+    border: 1px dashed var(--ppt-text-3)
+    }
+.filename-text {
+    font-family: var(--ppt-font-mono);
+    font-size: 24px;
+    color: var(--ppt-text-1)
+    }
+.naming-convention-body {
+    font-size: 16px;
+    color: var(--ppt-text-2);
+    line-height: 1.5
+    }
+.extension-badge {
+    display: inline-block;
+    background: var(--ppt-surface-2);
+    color: var(--ppt-accent);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: var(--ppt-font-mono);
+    font-size: 14px
+    }
+/* Explorer Mockup UI */
+.vs-code-explorer-mock {
+    background: #181818;
+    border: 1px solid var(--ppt-border);
+    border-radius: var(--ppt-radius-md)
+    }
+.explorer-mock-header {
+    padding: 8px 12px;
+    background: #252526;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: var(--ppt-text-2);
+    font-weight: 600;
+    letter-spacing: 0.05em
+    }
+.explorer-mock-file-item {
+    padding: 6px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--ppt-text-1);
+    background: rgba(34, 211, 238, 0.1);
+    border-left: 2px solid var(--ppt-accent)
+    }
+.explorer-mock-file-item i {
+    color: #e34c26;
+    /* HTML5 Orange */
+    }
+html { overflow: hidden; }
+</style>
+<meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize"></head>
+<body class="">
+<div class="slide-root-container" style="overflow: hidden;">
+<!-- Title Region -->
+<div class="title-region-wrapper">
+<div class="title-breadcrumb-container">
+<div class="title-accent-bar"></div>
+<span class="title-breadcrumb-text">Lesson 01 // Introduction</span>
+</div>
+<h1 class="title-main-heading">Hands-on: Creating index.html</h1>
+</div>
+<!-- Main Content -->
+<div class="hands-on-content-grid" data-interaction-trigger="true">
+<!-- Left Column: Step by Step -->
+<div class="hands-on-steps-column">
+<div class="hands-on-step-card" data-animation-id="step-1">
+<div class="hands-on-step-number">1</div>
+<div class="hands-on-step-text-group">
+<div class="hands-on-step-title">Open Your Project Folder</div>
+<div class="hands-on-step-description">Make sure your "web-basics" folder is active in the VS Code Sidebar.</div>
+</div>
+</div>
+<div class="hands-on-step-card" data-animation-id="step-2">
+<div class="hands-on-step-number">2</div>
+<div class="hands-on-step-text-group">
+<div class="hands-on-step-title">Trigger "New File"</div>
+<div class="hands-on-step-description">Click the <i class="fa-regular fa-file-lines"></i> icon in the Explorer or press <span class="extension-badge">Ctrl + N</span>.</div>
+</div>
+</div>
+<div class="hands-on-step-card" data-animation-id="step-3">
+<div class="hands-on-step-number">3</div>
+<div class="hands-on-step-text-group">
+<div class="hands-on-step-title">Save and Name</div>
+<div class="hands-on-step-description">Type the filename exactly and press Enter to save it to disk.</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Context/Rules -->
+<div class="hands-on-info-column">
+<div class="naming-convention-card" data-animation-id="naming-card">
+<div class="naming-convention-header">
+<i class="fa-solid fa-circle-info"></i>
+<div class="naming-convention-title">The "index" Rule</div>
+</div>
+<div class="filename-highlight-box">
+<span class="filename-text">index.html</span>
+</div>
+<div class="naming-convention-body">
+<p style="margin-bottom: 12px;">Web servers automatically look for a file named <strong>index</strong> to serve as the homepage.</p>
+<p>The <span class="extension-badge">.html</span> extension tells the computer: "This is a web document."</p>
+</div>
+</div>
+<div class="vs-code-explorer-mock">
+<div class="explorer-mock-header">Explorer: Web-Basics</div>
+<div class="explorer-mock-file-item">
+<i class="fa-brands fa-html5"></i>
+<span style="font-family: var(--ppt-font-mono);">index.html</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script data-slide-animation="" type="application/json">
+  {
+    "timeline": [
+      {
+        "animation_id": "step-1",
+        "effect": "fade"
+      },
+      {
+        "animation_id": "step-2",
+        "effect": "fade"
+      },
+      {
+        "animation_id": "step-3",
+        "effect": "fade"
+      },
+      {
+        "animation_id": "naming-card",
+        "effect": "zoom"
+      }
+    ]
+  }
+  </script>
+<!-- Presenter Notes -->
+<!-- 
+  Presenter Notes:
+  - This is a milestone moment: creating the actual file where your code lives.
+  - Step 1: Ensure the folder we created earlier is open. If you don't see it, go to File > Open Folder.
+  - Step 2: VS Code has a 'New File' icon right next to the folder name in the sidebar. 
+  - Step 3: Naming is critical. Computers are very literal. 
+  - Why 'index'? Explain that when a browser visits a website (like google.com), the server looks for 'index.html' by default. It's the 'reception desk' of your website.
+  - Mention the extension: Without '.html', the computer won't know to open this file with a browser.
+  - Transition: "Now that we have our empty file, let's put some content inside it."
+  -->
+
+
+
+</body></html>

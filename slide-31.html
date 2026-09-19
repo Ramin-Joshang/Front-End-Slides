@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>Introduction to Front-End Development - Lesson Summary</title>
+<script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
+<style>@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+/* BASE CSS THEME - IMPORTED FROM DESIGN */
+:root {
+    --ppt-bg: #0f172a;
+    --ppt-bg-soft: #1e293b;
+    --ppt-surface: #1e293b;
+    --ppt-surface-2: #334155;
+    --ppt-border: #334155;
+    --ppt-text-1: #f8fafc;
+    --ppt-text-2: #94a3b8;
+    --ppt-text-3: #64748b;
+    --ppt-accent: #22d3ee;
+    --ppt-accent-2: #3b82f6;
+    --ppt-chart-1: #22d3ee;
+    --ppt-chart-2: #3b82f6;
+    --ppt-chart-3: #818cf8;
+    --ppt-chart-4: #c084fc;
+    --ppt-good: #4ade80;
+    --ppt-warn: #fbbf24;
+    --ppt-bad: #f87171;
+    --ppt-radius-sm: 4px;
+    --ppt-radius-md: 8px;
+    --ppt-radius-lg: 16px;
+    --ppt-shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --ppt-shadow-strong: 0 12px 24px rgba(0, 0, 0, 0.5);
+    --ppt-font-display: "Space Grotesk", sans-serif;
+    --ppt-font-body: "Inter", sans-serif;
+    --ppt-font-mono: "JetBrains Mono", monospace
+    }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+    }
+body {width: 1280px; height: 720px; overflow: hidden; background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center}
+/* SLIDE ROOT */
+.lesson-summary-slide-root {
+    width: 1280px;
+    height: 720px;
+    background-color: var(--ppt-bg);
+    color: var(--ppt-text-1);
+    font-family: var(--ppt-font-body);
+    position: relative;
+    display: flex;
+    flex-direction: column
+    }
+/* TITLE REGION - FROM DESIGN */
+.lesson-summary-title-region {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 40px 60px 20px 60px
+    }
+.lesson-summary-breadcrumb-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px
+    }
+.lesson-summary-breadcrumb-accent {
+    width: 4px;
+    height: 32px;
+    background: var(--ppt-accent);
+    border-radius: 2px
+    }
+.lesson-summary-breadcrumb-text {
+    font-family: var(--ppt-font-mono);
+    font-size: 14px;
+    color: var(--ppt-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em
+    }
+.lesson-summary-page-title {
+    margin: 0;
+    font-family: var(--ppt-font-display);
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--ppt-text-1);
+    line-height: 1.2
+    }
+/* SPECIAL OPEN LAYOUT: final-summary-strip */
+.lesson-summary-content-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0 60px 60px 60px
+    }
+/* TOP HALF: FOCUS STATEMENT */
+.lesson-summary-focus-statement-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 40px
+    }
+.lesson-summary-focus-statement-text {
+    font-family: var(--ppt-font-display);
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--ppt-text-1);
+    text-align: center;
+    max-width: 900px
+    }
+.lesson-summary-focus-statement-accent {
+    color: var(--ppt-accent)
+    }
+/* BOTTOM HALF: EVIDENCE STRIP */
+.lesson-summary-takeaway-strip {
+    display: flex;
+    gap: 24px;
+    border-top: 1px solid var(--ppt-border);
+    padding-top: 40px
+    }
+.lesson-summary-takeaway-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px
+    }
+.lesson-summary-takeaway-header {
+    display: flex;
+    align-items: center;
+    gap: 10px
+    }
+.lesson-summary-takeaway-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--ppt-accent);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--ppt-accent)
+    }
+.lesson-summary-takeaway-label {
+    font-family: var(--ppt-font-mono);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ppt-text-1);
+    text-transform: uppercase
+    }
+.lesson-summary-takeaway-body {
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--ppt-text-2)
+    }
+/* FOOTER METADATA */
+.lesson-summary-footer-meta {
+    position: absolute;
+    bottom: 24px;
+    right: 60px;
+    font-family: var(--ppt-font-mono);
+    font-size: 14px;
+    color: var(--ppt-text-3)
+    }
+html { overflow: hidden; }
+</style>
+<meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize"></head>
+<body>
+<div class="lesson-summary-slide-root" style="overflow: hidden;">
+<!-- Title Region -->
+<div class="lesson-summary-title-region">
+<div class="lesson-summary-breadcrumb-wrapper">
+<div class="lesson-summary-breadcrumb-accent"></div>
+<span class="lesson-summary-breadcrumb-text">Lesson 01 // Introduction</span>
+</div>
+<h1 class="lesson-summary-page-title">Lesson Summary</h1>
+</div>
+<!-- Content Body -->
+<div class="lesson-summary-content-body">
+<!-- Focus Statement (Top Half) -->
+<div class="lesson-summary-focus-statement-wrapper" data-animation-id="summary-focus-statement">
+<p class="lesson-summary-focus-statement-text">
+          You have successfully moved from <span class="lesson-summary-focus-statement-accent">consuming</span> the web to <span class="lesson-summary-focus-statement-accent">building</span> it—laying the foundation for your career.
+        </p>
+</div>
+<!-- Key Takeaways Strip (Bottom Half) -->
+<div class="lesson-summary-takeaway-strip" data-animation-id="summary-takeaway-strip">
+<!-- Takeaway 1 -->
+<div class="lesson-summary-takeaway-item">
+<div class="lesson-summary-takeaway-header">
+<div class="lesson-summary-takeaway-dot"></div>
+<span class="lesson-summary-takeaway-label">Architecture</span>
+</div>
+<p class="lesson-summary-takeaway-body">
+            Understood the Client-Server model, DNS lookups, and how HTTP/S protocols facilitate global communication.
+          </p>
+</div>
+<!-- Takeaway 2 -->
+<div class="lesson-summary-takeaway-item">
+<div class="lesson-summary-takeaway-header">
+<div class="lesson-summary-takeaway-dot"></div>
+<span class="lesson-summary-takeaway-label">The Stack</span>
+</div>
+<p class="lesson-summary-takeaway-body">
+            Defined the roles of HTML (Structure), CSS (Style), and JavaScript (Logic) in the modern browser environment.
+          </p>
+</div>
+<!-- Takeaway 3 -->
+<div class="lesson-summary-takeaway-item">
+<div class="lesson-summary-takeaway-header">
+<div class="lesson-summary-takeaway-dot"></div>
+<span class="lesson-summary-takeaway-label">Tooling</span>
+</div>
+<p class="lesson-summary-takeaway-body">
+            Configured a professional developer environment using Google Chrome and Visual Studio Code.
+          </p>
+</div>
+<!-- Takeaway 4 -->
+<div class="lesson-summary-takeaway-item">
+<div class="lesson-summary-takeaway-header">
+<div class="lesson-summary-takeaway-dot"></div>
+<span class="lesson-summary-takeaway-label">Milestone</span>
+</div>
+<p class="lesson-summary-takeaway-body">
+            Created your first project structure and successfully rendered a local HTML file in the browser.
+          </p>
+</div>
+</div>
+</div>
+<!-- Slide Metadata -->
+<div class="lesson-summary-footer-meta">
+      PAGE 31 // 32
+    </div>
+</div>
+<!-- Animation Metadata -->
+<script data-slide-animation="" type="application/json">
+  {
+    "timeline": [
+      {
+        "animation_id": "summary-focus-statement",
+        "effect": "fade"
+      },
+      {
+        "animation_id": "summary-takeaway-strip",
+        "effect": "appear"
+      }
+    ]
+  }
+  </script>
+<!-- Presenter Notes
+  Welcome to the finish line of Lesson 01. Take a moment to appreciate the shift you've made today. You started as a user who types URLs into a bar, and now you understand the complex dance of packets, servers, and code that happens behind the scenes. 
+
+  We covered the core mental model: Clients request, Servers respond. You met the "Big Three"—HTML for the bones, CSS for the beauty, and JavaScript for the brains. Most importantly, you moved your tools off the cloud and onto your local machine, creating a real file that a browser can read.
+
+  This summary reflects the professional workflow you will follow for the rest of the course. With these foundations solid, you are ready to stop talking about the web and start building it.
+
+  Transition: "Now, let's look at your homework to ensure these tools are ready for our next deep dive into HTML."
+  Motion: Focus statement fades in first as the primary takeaway, then the bottom takeaway strip appears together to recap the specific modules.
+  -->
+
+</body></html>

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en" style="--viewport-height: 7.42px;"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Hands-on: Creating Your Project Folder</title>
+<script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
+<style>@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+:root {
+    --ppt-bg: #0f172a;
+    --ppt-bg-soft: #1e293b;
+    --ppt-surface: #1e293b;
+    --ppt-surface-2: #334155;
+    --ppt-border: #334155;
+    --ppt-text-1: #f8fafc;
+    --ppt-text-2: #94a3b8;
+    --ppt-text-3: #64748b;
+    --ppt-accent: #22d3ee;
+    --ppt-accent-2: #3b82f6;
+    --ppt-chart-1: #22d3ee;
+    --ppt-chart-2: #3b82f6;
+    --ppt-chart-3: #818cf8;
+    --ppt-chart-4: #c084fc;
+    --ppt-good: #4ade80;
+    --ppt-warn: #fbbf24;
+    --ppt-bad: #f87171;
+    --ppt-radius-sm: 4px;
+    --ppt-radius-md: 8px;
+    --ppt-radius-lg: 16px;
+    --ppt-shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --ppt-shadow-strong: 0 12px 24px rgba(0, 0, 0, 0.5);
+    --ppt-font-display: "Space Grotesk", sans-serif;
+    --ppt-font-body: "Inter", sans-serif;
+    --ppt-font-mono: "JetBrains Mono", monospace
+    }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+    }
+body {width: 1280px; height: 720px; overflow: hidden; background: #000;
+    display: block}
+.slide-root {
+    width: 1280px;
+    height: 720px;
+    background: var(--ppt-bg);
+    font-family: var(--ppt-font-body);
+    display: flex;
+    flex-direction: column
+    }
+/* Title Region */
+.title-region {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 36px 60px 16px 60px;
+    flex-shrink: 0
+    }
+.title-breadcrumb-row {
+    display: flex;
+    align-items: center;
+    gap: 12px
+    }
+.title-accent-bar {
+    width: 4px;
+    height: 32px;
+    background: var(--ppt-accent);
+    border-radius: 2px;
+    flex-shrink: 0
+    }
+.title-breadcrumb-label {
+    font-family: var(--ppt-font-mono);
+    font-size: 14px;
+    color: var(--ppt-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em
+    }
+.title-main-heading {
+    font-family: var(--ppt-font-display);
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--ppt-text-1);
+    line-height: 1.2
+    }
+/* Main Content Area */
+.slide-content-area {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin: 0 60px 28px 60px;
+    min-height: 0
+    }
+/* Left Column: Steps */
+.steps-left-column {
+    flex: 1.1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    justify-content: center
+    }
+.steps-column-heading {
+    font-family: var(--ppt-font-mono);
+    font-size: 14px;
+    color: var(--ppt-text-3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 4px
+    }
+.step-item-block {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 14px;
+    background: var(--ppt-surface);
+    border: 1px solid var(--ppt-border);
+    border-radius: var(--ppt-radius-md);
+    padding: 12px 16px
+    }
+.step-number-badge {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--ppt-accent-2);
+    color: var(--ppt-text-1);
+    font-family: var(--ppt-font-display);
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px
+    }
+.step-text-block {
+    display: block
+    }
+.step-action-title {
+    font-family: var(--ppt-font-body);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ppt-text-1);
+    line-height: 1.3
+    }
+.step-action-detail {
+    font-family: var(--ppt-font-mono);
+    font-size: 13px;
+    color: var(--ppt-accent);
+    line-height: 1.4;
+    margin-top: 3px
+    }
+/* Right Column: Terminal + Result */
+.terminal-right-column {
+    flex: 0.9;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    justify-content: center
+    }
+.terminal-panel-block {
+    background: #0d1117;
+    border: 1px solid var(--ppt-border);
+    border-radius: var(--ppt-radius-md);
+    flex: 1 1 0
+    }
+.terminal-panel-titlebar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background: var(--ppt-surface-2);
+    border-bottom: 1px solid var(--ppt-border)
+    }
+.terminal-dot-red {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #f87171;
+    flex-shrink: 0
+    }
+.terminal-dot-yellow {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #fbbf24;
+    flex-shrink: 0
+    }
+.terminal-dot-green {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #4ade80;
+    flex-shrink: 0
+    }
+.terminal-panel-label {
+    font-family: var(--ppt-font-mono);
+    font-size: 12px;
+    color: var(--ppt-text-3);
+    margin-left: 4px
+    }
+.terminal-panel-body {
+    padding: 14px 16px
+    }
+.terminal-line-prompt {
+    font-family: var(--ppt-font-mono);
+    font-size: 14px;
+    color: var(--ppt-text-2);
+    line-height: 1.7
+    }
+.terminal-line-prompt .prompt-symbol {
+    color: var(--ppt-good);
+    margin-right: 6px
+    }
+.terminal-line-prompt .prompt-command {
+    color: var(--ppt-text-1)
+    }
+.terminal-line-prompt .prompt-arg {
+    color: var(--ppt-accent)
+    }
+.terminal-line-prompt .prompt-comment {
+    color: var(--ppt-text-3);
+    font-size: 12px
+    }
+/* Folder Result Block */
+.folder-result-block {
+    background: var(--ppt-surface);
+    border: 1px solid var(--ppt-border);
+    border-radius: var(--ppt-radius-md);
+    padding: 14px 16px
+    }
+.folder-result-heading {
+    font-family: var(--ppt-font-mono);
+    font-size: 12px;
+    color: var(--ppt-text-3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px
+    }
+.folder-tree-container {
+    display: block
+    }
+.folder-tree-row {
+    display: block;
+    font-family: var(--ppt-font-mono);
+    font-size: 14px;
+    color: var(--ppt-text-2);
+    line-height: 1.8
+    }
+.folder-tree-row .folder-icon {
+    color: var(--ppt-warn);
+    margin-right: 6px
+    }
+.folder-tree-row .folder-name {
+    color: var(--ppt-text-1);
+    font-weight: 500
+    }
+.folder-tree-row .folder-indent {
+    display: inline-block;
+    width: 20px
+    }
+.folder-tree-row .file-icon {
+    color: var(--ppt-accent);
+    margin-right: 6px
+    }
+.folder-tree-row .file-placeholder-label {
+    color: var(--ppt-text-3);
+    font-size: 12px
+    }
+/* Bottom tip bar */
+.slide-tip-bar {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 60px 20px 60px;
+    background: rgba(34, 211, 238, 0.07);
+    border: 1px solid rgba(34, 211, 238, 0.25);
+    border-radius: var(--ppt-radius-md);
+    padding: 10px 16px
+    }
+.slide-tip-bar-icon {
+    color: var(--ppt-accent);
+    font-size: 16px;
+    flex-shrink: 0
+    }
+.slide-tip-bar-text {
+    font-family: var(--ppt-font-body);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ppt-text-2);
+    line-height: 1.4
+    }
+.slide-tip-bar-text strong {
+    color: var(--ppt-accent);
+    font-weight: 600
+    }
+html { overflow: hidden; }
+</style>
+<meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize"></head>
+<body class="">
+<div class="slide-root" style="overflow: hidden;">
+<!-- Title Region -->
+<div class="title-region">
+<div class="title-breadcrumb-row">
+<div class="title-accent-bar"></div>
+<span class="title-breadcrumb-label">Lesson 01 // Introduction</span>
+</div>
+<h1 class="title-main-heading">Hands-on: Creating Your Project Folder</h1>
+</div>
+<!-- Main Content -->
+<div class="slide-content-area">
+<!-- Left: Steps -->
+<div class="steps-left-column" data-animation-id="steps-left-panel">
+<div class="steps-column-heading">Follow along — 3 steps</div>
+<div class="step-item-block">
+<div class="step-number-badge">1</div>
+<div class="step-text-block">
+<div class="step-action-title">Open VS Code</div>
+<div class="step-action-detail">File → Open Folder…</div>
+</div>
+</div>
+<div class="step-item-block">
+<div class="step-number-badge">2</div>
+<div class="step-text-block">
+<div class="step-action-title">Create a new folder</div>
+<div class="step-action-detail">Name it: <span style="color: #fbbf24;">my-first-project</span></div>
+</div>
+</div>
+<div class="step-item-block">
+<div class="step-number-badge">3</div>
+<div class="step-text-block">
+<div class="step-action-title">Select that folder</div>
+<div class="step-action-detail">VS Code opens it as your workspace</div>
+</div>
+</div>
+<div class="step-item-block">
+<div class="step-number-badge">4</div>
+<div class="step-text-block">
+<div class="step-action-title">Verify in Explorer panel</div>
+<div class="step-action-detail">You should see <span style="color: #f8fafc;">my-first-project</span> at the top</div>
+</div>
+</div>
+</div>
+<!-- Right: Terminal + Folder Tree -->
+<div class="terminal-right-column" data-animation-id="terminal-right-panel">
+<div class="terminal-panel-block">
+<div class="terminal-panel-titlebar">
+<div class="terminal-dot-red"></div>
+<div class="terminal-dot-yellow"></div>
+<div class="terminal-dot-green"></div>
+<span class="terminal-panel-label">Terminal — Alternative: command line</span>
+</div>
+<div class="terminal-panel-body">
+<div class="terminal-line-prompt">
+<span class="prompt-symbol">~$</span>
+<span class="prompt-command">cd </span>
+<span class="prompt-arg">Desktop</span>
+</div>
+<div class="terminal-line-prompt">
+<span class="prompt-symbol">~$</span>
+<span class="prompt-command">mkdir </span>
+<span class="prompt-arg">my-first-project</span>
+</div>
+<div class="terminal-line-prompt">
+<span class="prompt-symbol">~$</span>
+<span class="prompt-command">cd </span>
+<span class="prompt-arg">my-first-project</span>
+</div>
+<div class="terminal-line-prompt">
+<span class="prompt-symbol">~$</span>
+<span class="prompt-command">code .</span>
+<span class="prompt-comment">&nbsp;&nbsp;# opens VS Code here</span>
+</div>
+</div>
+</div>
+<div class="folder-result-block">
+<div class="folder-result-heading"><i class="fa-regular fa-folder-open" style="margin-right: 6px;"></i>Result — Explorer Panel</div>
+<div class="folder-tree-container">
+<div class="folder-tree-row">
+<span class="folder-icon"><i class="fa-solid fa-folder-open"></i></span>
+<span class="folder-name">MY-FIRST-PROJECT</span>
+</div>
+<div class="folder-tree-row">
+<span class="folder-indent"></span>
+<span class="file-icon"><i class="fa-regular fa-file-code"></i></span>
+<span style="color: var(--ppt-text-3); font-size: 13px; font-style: italic;">← index.html lives here next</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Tip Bar -->
+<div class="slide-tip-bar">
+<i class="fa-solid fa-lightbulb slide-tip-bar-icon"></i>
+<div class="slide-tip-bar-text">
+<strong>Pro tip:</strong> Keep all projects inside a single <strong>~/Projects</strong> or <strong>Desktop/dev</strong> parent folder — easy to find, easy to back up.
+      </div>
+</div>
+</div>
+<script data-slide-animation="" type="application/json">
+  {
+    "timeline": [
+      {
+        "animation_id": "steps-left-panel",
+        "effect": "fade"
+      },
+      {
+        "animation_id": "terminal-right-panel",
+        "effect": "fade"
+      }
+    ]
+  }
+  </script>
+
+
+
+</body></html>

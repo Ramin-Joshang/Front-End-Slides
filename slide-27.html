@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en" style="--viewport-height: 7.42px;"><head>
+<meta charset="utf-8">
+<meta content="width=1280, height=720" name="viewport">
+<title>Writing Your First Line of Code</title>
+<script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
+<style>@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+:root {
+    --ppt-bg: #0f172a;
+    --ppt-bg-soft: #1e293b;
+    --ppt-surface: #1e293b;
+    --ppt-surface-2: #334155;
+    --ppt-border: #334155;
+    --ppt-text-1: #f8fafc;
+    --ppt-text-2: #94a3b8;
+    --ppt-text-3: #64748b;
+    --ppt-accent: #22d3ee;
+    --ppt-accent-2: #3b82f6;
+    --ppt-chart-1: #22d3ee;
+    --ppt-chart-2: #3b82f6;
+    --ppt-chart-3: #818cf8;
+    --ppt-chart-4: #c084fc;
+    --ppt-good: #4ade80;
+    --ppt-warn: #fbbf24;
+    --ppt-bad: #f87171;
+    --ppt-radius-sm: 4px;
+    --ppt-radius-md: 8px;
+    --ppt-radius-lg: 16px;
+    --ppt-shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --ppt-shadow-strong: 0 12px 24px rgba(0, 0, 0, 0.5);
+    --ppt-font-display: "Space Grotesk", sans-serif;
+    --ppt-font-body: "Inter", sans-serif;
+    --ppt-font-mono: "JetBrains Mono", monospace
+    }
+* {
+    box-sizing: border-box
+    }
+body {width: 1280px; height: 720px; overflow: hidden; background-color: var(--ppt-bg);
+    color: var(--ppt-text-1);
+    font-family: var(--ppt-font-body)}
+.slide-root-container {
+    width: 1280px;
+    height: 720px;
+    display: flex;
+    flex-direction: column
+    }
+/* Title Region Implementation */
+.title-region-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 40px 60px 20px 60px
+    }
+.title-breadcrumb-container {
+    display: flex;
+    align-items: center;
+    gap: 12px
+    }
+.title-accent-line {
+    width: 4px;
+    height: 32px;
+    background: var(--ppt-accent);
+    border-radius: 2px
+    }
+.title-breadcrumb-text {
+    font-family: var(--ppt-font-mono);
+    font-size: 14px;
+    color: var(--ppt-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em
+    }
+.page-main-title {
+    margin: 0;
+    font-family: var(--ppt-font-display);
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--ppt-text-1);
+    line-height: 1.2
+    }
+/* Content Layout */
+.content-main-layout {
+    flex: 1;
+    display: flex;
+    gap: 40px;
+    padding: 0 60px 40px 60px;
+    align-items: stretch
+    }
+.left-code-column {
+    flex: 1.4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+    }
+.right-explanation-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    justify-content: center
+    }
+/* VS Code Window Frame */
+.code-editor-window-frame {
+    background: #1e1e1e;
+    border: 1px solid var(--ppt-border);
+    border-radius: var(--ppt-radius-lg);
+    box-shadow: var(--ppt-shadow-strong);
+    display: flex;
+    flex-direction: column;
+    flex: 1
+    }
+.editor-title-bar {
+    height: 40px;
+    background: #2d2d2d;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    gap: 12px
+    }
+.editor-control-dots {
+    display: flex;
+    gap: 8px
+    }
+.editor-control-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%
+    }
+.editor-tab-indicator {
+    background: #1e1e1e;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    font-family: var(--ppt-font-mono);
+    font-size: 13px;
+    color: var(--ppt-text-1);
+    border-right: 1px solid #2d2d2d;
+    gap: 8px
+    }
+.editor-content-area {
+    padding: 30px;
+    font-family: var(--ppt-font-mono);
+    font-size: 24px;
+    line-height: 1.6;
+    color: #d4d4d4
+    }
+/* Syntax Highlighting */
+.html-tag-bracket {
+    color: #808080
+    }
+.html-tag-name {
+    color: #569cd6
+    }
+.html-tag-content {
+    color: #ce9178
+    }
+.html-tag-closing {
+    color: #569cd6
+    }
+/* Explanation Components */
+.explanation-card-item {
+    background: var(--ppt-surface);
+    border: 1px solid var(--ppt-border);
+    border-radius: var(--ppt-radius-md);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px
+    }
+.explanation-tag-label {
+    font-family: var(--ppt-font-mono);
+    font-size: 16px;
+    color: var(--ppt-accent);
+    display: flex;
+    align-items: center;
+    gap: 8px
+    }
+.explanation-body-text {
+    font-size: 18px;
+    color: var(--ppt-text-2);
+    line-height: 1.4;
+    margin: 0
+    }
+/* Browser Preview */
+.browser-preview-frame {
+    background: #fff;
+    border-radius: var(--ppt-radius-md);
+    padding: 24px;
+    color: #000;
+    box-shadow: var(--ppt-shadow-soft);
+    display: flex;
+    flex-direction: column;
+    gap: 12px
+    }
+.preview-header-label {
+    font-size: 12px;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 4px
+    }
+.preview-h1-render {
+    font-family: sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0
+    }
+.preview-p-render {
+    font-family: sans-serif;
+    font-size: 18px;
+    margin: 0
+    }
+.code-line-number {
+    color: #858585;
+    margin-right: 20px;
+    user-select: none
+    }
+html { overflow: hidden; }
+</style>
+<meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize"></head>
+<body class="">
+<div class="slide-root-container" style="overflow: hidden;">
+<!-- Title Region -->
+<div class="title-region-wrapper">
+<div class="title-breadcrumb-container">
+<div class="title-accent-line"></div>
+<span class="title-breadcrumb-text">Lesson 01 // Introduction</span>
+</div>
+<h1 class="page-main-title">Writing Your First Line of Code</h1>
+</div>
+<!-- Main Content -->
+<div class="content-main-layout">
+<!-- Left: Code Editor -->
+<div class="left-code-column">
+<div class="code-editor-window-frame" data-animation-id="code-window">
+<div class="editor-title-bar">
+<div class="editor-control-dots">
+<div class="editor-control-dot" style="background: #ff5f56;"></div>
+<div class="editor-control-dot" style="background: #ffbd2e;"></div>
+<div class="editor-control-dot" style="background: #27c93f;"></div>
+</div>
+<div class="editor-tab-indicator">
+<i class="fa-brands fa-html5" style="color: #e34c26;"></i>
+              index.html
+            </div>
+</div>
+<div class="editor-content-area">
+<div style="margin-bottom: 8px;">
+<span class="code-line-number">1</span>
+<span class="html-tag-bracket">&lt;</span><span class="html-tag-name">h1</span><span class="html-tag-bracket">&gt;</span><span class="html-tag-content">Hello World</span><span class="html-tag-bracket">&lt;/</span><span class="html-tag-name">h1</span><span class="html-tag-bracket">&gt;</span>
+</div>
+<div>
+<span class="code-line-number">2</span>
+<span class="html-tag-bracket">&lt;</span><span class="html-tag-name">p</span><span class="html-tag-bracket">&gt;</span><span class="html-tag-content">I am learning to code!</span><span class="html-tag-bracket">&lt;/</span><span class="html-tag-name">p</span><span class="html-tag-bracket">&gt;</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right: Explanation and Preview -->
+<div class="right-explanation-column">
+<div class="explanation-card-item" data-animation-id="explanation-h1">
+<div class="explanation-tag-label">
+<i class="fa-solid fa-heading"></i>
+            &lt;h1&gt; Tag
+          </div>
+<p class="explanation-body-text">
+            Represents the main heading. Use this for the most important title on your page.
+          </p>
+</div>
+<div class="explanation-card-item" data-animation-id="explanation-p">
+<div class="explanation-tag-label">
+<i class="fa-solid fa-paragraph"></i>
+            &lt;p&gt; Tag
+          </div>
+<p class="explanation-body-text">
+            Represents a paragraph. Use this for regular text content and descriptions.
+          </p>
+</div>
+<div class="browser-preview-frame" data-animation-id="browser-result">
+<div class="preview-header-label">Browser Preview</div>
+<h1 class="preview-h1-render">Hello World</h1>
+<p class="preview-p-render">I am learning to code!</p>
+</div>
+</div>
+</div>
+</div>
+<script data-slide-animation="" type="application/json">
+  {
+    "timeline": [
+      {
+        "animation_id": "code-window",
+        "effect": "fade"
+      },
+      {
+        "animation_id": "explanation-h1",
+        "effect": "appear"
+      },
+      {
+        "animation_id": "explanation-p",
+        "effect": "appear"
+      },
+      {
+        "animation_id": "browser-result",
+        "effect": "zoom"
+      }
+    ]
+  }
+  </script>
+<script>
+    /* 
+    Presenter Notes:
+    - Welcome to your first "Hello World" moment! HTML uses "tags" to tell the browser what things are.
+    - On line 1, we use <h1>. This stands for Heading 1—the most important title.
+    - On line 2, we use <p>. This stands for paragraph, used for normal text.
+    - Notice how tags come in pairs: an opening tag <h1> and a closing tag </h1> with a slash.
+    - Everything between those tags is what the user actually sees.
+    - Transition: "Let's see how we can view this code in a real browser."
+    */
+  </script>
+
+
+
+</body></html>

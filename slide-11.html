@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en" style="--viewport-height: 9.57px;"><head>
+<meta charset="utf-8">
+<meta content="width=1280, height=720, initial-scale=1.0" name="viewport">
+<title>HTTP and HTTPS: The Web's Conversation Rules</title>
+<script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
+<style>@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+:root {
+    --ppt-bg: #0f172a;
+    --ppt-bg-soft: #1e293b;
+    --ppt-surface: #1e293b;
+    --ppt-surface-2: #334155;
+    --ppt-border: #334155;
+    --ppt-text-1: #f8fafc;
+    --ppt-text-2: #94a3b8;
+    --ppt-text-3: #64748b;
+    --ppt-accent: #22d3ee;
+    --ppt-accent-2: #3b82f6;
+    --ppt-good: #4ade80;
+    --ppt-warn: #fbbf24;
+    --ppt-bad: #f87171;
+    --ppt-radius-sm: 4px;
+    --ppt-radius-md: 8px;
+    --ppt-radius-lg: 16px;
+    --ppt-font-display: "Space Grotesk", sans-serif;
+    --ppt-font-body: "Inter", sans-serif;
+    --ppt-font-mono: "JetBrains Mono", monospace
+    }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+    }
+body {width: 1280px; height: 720px; overflow: hidden; background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center}
+.slide-root-container {
+    width: 1280px;
+    height: 720px;
+    background-color: var(--ppt-bg);
+    color: var(--ppt-text-1);
+    font-family: var(--ppt-font-body);
+    position: relative;
+    display: flex;
+    flex-direction: column
+    }
+/* --- Title Region --- */
+.title-region-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 40px 60px 20px 60px
+    }
+.title-breadcrumb-container {
+    display: flex;
+    align-items: center;
+    gap: 12px
+    }
+.title-accent-line {
+    width: 4px;
+    height: 32px;
+    background: var(--ppt-accent);
+    border-radius: 2px
+    }
+.title-breadcrumb-text {
+    font-family: var(--ppt-font-mono);
+    font-size: 14px;
+    color: var(--ppt-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em
+    }
+.title-main-heading {
+    margin: 0;
+    font-family: var(--ppt-font-display);
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--ppt-text-1);
+    line-height: 1.2
+    }
+/* --- Content Layout --- */
+.protocol-content-layout {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0 60px 40px 60px;
+    gap: 24px
+    }
+.protocol-cards-container {
+    display: flex;
+    gap: 24px;
+    flex: 1
+    }
+.protocol-info-card {
+    flex: 1;
+    background: var(--ppt-surface);
+    border: 1px solid var(--ppt-border);
+    border-radius: var(--ppt-radius-lg);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px
+    }
+.card-header-group {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 8px
+    }
+.protocol-icon-wrapper {
+    width: 56px;
+    height: 56px;
+    background: rgba(34, 211, 238, 0.1);
+    border-radius: var(--ppt-radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: var(--ppt-accent)
+    }
+.protocol-name-heading {
+    font-family: var(--ppt-font-display);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--ppt-text-1)
+    }
+.protocol-badge-label {
+    font-family: var(--ppt-font-mono);
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    text-transform: uppercase
+    }
+.badge-unencrypted {
+    background: rgba(248, 113, 113, 0.1);
+    color: var(--ppt-bad);
+    border: 1px solid rgba(248, 113, 113, 0.2)
+    }
+.badge-encrypted {
+    background: rgba(74, 222, 128, 0.1);
+    color: var(--ppt-good);
+    border: 1px solid rgba(74, 222, 128, 0.2)
+    }
+.protocol-description-text {
+    font-size: 18px;
+    color: var(--ppt-text-2);
+    line-height: 1.5
+    }
+.protocol-feature-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 8px
+    }
+.protocol-feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 16px;
+    color: var(--ppt-text-1)
+    }
+.feature-check-icon {
+    color: var(--ppt-accent);
+    margin-top: 4px;
+    font-size: 14px
+    }
+/* --- Conversation Example --- */
+.conversation-example-wrapper {
+    background: #0a0f1d;
+    border: 1px solid var(--ppt-border);
+    border-radius: var(--ppt-radius-md);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px
+    }
+.example-label-mono {
+    font-family: var(--ppt-font-mono);
+    font-size: 14px;
+    color: var(--ppt-text-3);
+    text-transform: uppercase
+    }
+.code-conversation-block {
+    display: flex;
+    gap: 40px
+    }
+.code-line-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px
+    }
+.code-role-tag {
+    font-family: var(--ppt-font-mono);
+    font-size: 12px;
+    color: var(--ppt-accent-2)
+    }
+.code-text-content {
+    font-family: var(--ppt-font-mono);
+    font-size: 18px;
+    color: var(--ppt-text-1)
+    }
+.code-highlight-success {
+    color: var(--ppt-good)
+    }
+html { overflow: hidden; }
+</style>
+<meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize"></head>
+<body class="">
+<div class="slide-root-container" style="overflow: hidden;">
+<!-- Title Region -->
+<div class="title-region-wrapper">
+<div class="title-breadcrumb-container">
+<div class="title-accent-line"></div>
+<span class="title-breadcrumb-text">Lesson 01 // Introduction</span>
+</div>
+<h1 class="title-main-heading">HTTP &amp; HTTPS: The Web's Conversation Rules</h1>
+</div>
+<!-- Main Content Area -->
+<div class="protocol-content-layout">
+<!-- Comparison Cards -->
+<div class="protocol-cards-container">
+<!-- HTTP Card -->
+<div class="protocol-info-card" data-animation-id="protocol-card-http">
+<div class="card-header-group">
+<div class="protocol-icon-wrapper">
+<i class="fa-solid fa-comments"></i>
+</div>
+<div style="display: flex; flex-direction: column;">
+<span class="protocol-name-heading">HTTP</span>
+<span class="protocol-badge-label badge-unencrypted">Standard</span>
+</div>
+</div>
+<p class="protocol-description-text">
+            HyperText Transfer Protocol. The foundation of data exchange on the web.
+          </p>
+<ul class="protocol-feature-list">
+<li class="protocol-feature-item">
+<i class="fa-solid fa-circle-chevron-right feature-check-icon"></i>
+<span>Defines rules for how browsers ask for files.</span>
+</li>
+<li class="protocol-feature-item">
+<i class="fa-solid fa-circle-chevron-right feature-check-icon"></i>
+<span>Data is sent in "Plain Text" (visible to anyone).</span>
+</li>
+<li class="protocol-feature-item">
+<i class="fa-solid fa-circle-chevron-right feature-check-icon"></i>
+<span>No verification of who the server actually is.</span>
+</li>
+</ul>
+</div>
+<!-- HTTPS Card -->
+<div class="protocol-info-card" data-animation-id="protocol-card-https" style="border-color: var(--ppt-accent-2);">
+<div class="card-header-group">
+<div class="protocol-icon-wrapper" style="background: rgba(59, 130, 246, 0.1); color: var(--ppt-accent-2);">
+<i class="fa-solid fa-shield-halved"></i>
+</div>
+<div style="display: flex; flex-direction: column;">
+<span class="protocol-name-heading">HTTPS</span>
+<span class="protocol-badge-label badge-encrypted">Secure</span>
+</div>
+</div>
+<p class="protocol-description-text">
+            The "S" stands for Secure. It's HTTP layered with encryption (TLS/SSL).
+          </p>
+<ul class="protocol-feature-list">
+<li class="protocol-feature-item">
+<i class="fa-solid fa-lock feature-check-icon" style="color: var(--ppt-good);"></i>
+<span>Encryption: Scrambles data so only you can read it.</span>
+</li>
+<li class="protocol-feature-item">
+<i class="fa-solid fa-lock feature-check-icon" style="color: var(--ppt-good);"></i>
+<span>Identity: Proves the website is who they say they are.</span>
+</li>
+<li class="protocol-feature-item">
+<i class="fa-solid fa-lock feature-check-icon" style="color: var(--ppt-good);"></i>
+<span>Privacy: Essential for passwords and credit cards.</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Conversation Example -->
+<div class="conversation-example-wrapper" data-animation-id="conversation-snippet">
+<span class="example-label-mono">A typical network conversation:</span>
+<div class="code-conversation-block">
+<div class="code-line-item">
+<span class="code-role-tag">Browser (Request)</span>
+<span class="code-text-content">GET /index.html <span style="color: var(--ppt-text-3);">HTTP/1.1</span></span>
+</div>
+<div style="display: flex; align-items: center; color: var(--ppt-text-3);">
+<i class="fa-solid fa-right-left"></i>
+</div>
+<div class="code-line-item">
+<span class="code-role-tag">Server (Response)</span>
+<span class="code-text-content"><span style="color: var(--ppt-text-3);">HTTP/1.1</span> <span class="code-highlight-success">200 OK</span></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script data-slide-animation="" type="application/json">
+  {
+    "timeline": [
+      {
+        "animation_id": "protocol-card-http",
+        "effect": "fade"
+      },
+      {
+        "animation_id": "protocol-card-https",
+        "effect": "fade"
+      },
+      {
+        "animation_id": "conversation-snippet",
+        "effect": "appear"
+      }
+    ]
+  }
+  </script>
+
+
+
+</body></html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en" style="--viewport-height: 9.57px;"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Introduction to Front-End Development - Page 9</title>
+<script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
+<style>@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+:root {
+    --ppt-bg: #0f172a;
+    --ppt-bg-soft: #1e293b;
+    --ppt-surface: #1e293b;
+    --ppt-surface-2: #334155;
+    --ppt-border: #334155;
+    --ppt-text-1: #f8fafc;
+    --ppt-text-2: #94a3b8;
+    --ppt-text-3: #64748b;
+    --ppt-accent: #22d3ee;
+    --ppt-accent-2: #3b82f6;
+    --ppt-chart-1: #22d3ee;
+    --ppt-chart-2: #3b82f6;
+    --ppt-chart-3: #818cf8;
+    --ppt-chart-4: #c084fc;
+    --ppt-good: #4ade80;
+    --ppt-warn: #fbbf24;
+    --ppt-bad: #f87171;
+    --ppt-radius-sm: 4px;
+    --ppt-radius-md: 8px;
+    --ppt-radius-lg: 16px;
+    --ppt-shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --ppt-shadow-strong: 0 12px 24px rgba(0, 0, 0, 0.5);
+    --ppt-font-display: "Space Grotesk", sans-serif;
+    --ppt-font-body: "Inter", sans-serif;
+    --ppt-font-mono: "JetBrains Mono", monospace
+    }
+* {
+    box-sizing: border-box;
+    margin: 0 0;
+    padding: 0 0
+    }
+body {width: 1280px; height: 720px; overflow: hidden; background-color: var(--ppt-bg);
+    font-family: var(--ppt-font-body);
+    color: var(--ppt-text-1)}
+.slide-root-container {
+    width: 1280px;
+    height: 720px;
+    position: relative;
+    display: flex;
+    flex-direction: column
+    }
+/* Title Region */
+.title-region-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 40px 60px 20px 60px
+    }
+.title-breadcrumb-container {
+    display: flex;
+    align-items: center;
+    gap: 12px
+    }
+.title-accent-line {
+    width: 4px;
+    height: 32px;
+    background: var(--ppt-accent);
+    border-radius: 2px
+    }
+.title-breadcrumb-text {
+    font-family: var(--ppt-font-mono);
+    font-size: 14px;
+    color: var(--ppt-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em
+    }
+.title-main-heading {
+    margin: 0;
+    font-family: var(--ppt-font-display);
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--ppt-text-1);
+    line-height: 1.2
+    }
+/* Content Layout */
+.actors-grid-layout-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 26px 32px;
+    padding: 32px 60px 64px 60px
+    }
+.actor-card-item-wrapper {
+    flex: 1;
+    background: var(--ppt-surface);
+    border: 1px solid var(--ppt-border);
+    border-radius: var(--ppt-radius-lg);
+    padding: 26px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: var(--ppt-shadow-soft);
+    transition: transform 0.3s ease
+    }
+.actor-icon-box {
+    width: 80px;
+    height: 80px;
+    background: rgba(34, 211, 238, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 19px;
+    color: var(--ppt-accent);
+    font-size: 32px
+    }
+.actor-name-heading {
+    font-family: var(--ppt-font-display);
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--ppt-text-1)
+    }
+.actor-role-description {
+    font-size: 18px;
+    color: var(--ppt-text-2);
+    line-height: 1.5;
+    margin-bottom: 19px
+    }
+/* Browser Specific Badges */
+.browser-badge-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px 10px;
+    width: 100%;
+    margin-top: auto
+    }
+.browser-task-badge-item {
+    font-family: var(--ppt-font-mono);
+    font-size: 13px;
+    padding: 6px 12px;
+    background: var(--ppt-surface-2);
+    border-radius: var(--ppt-radius-md);
+    color: var(--ppt-accent);
+    border: 1px solid rgba(34, 211, 238, 0.2);
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 8px 10px
+    }
+.browser-task-badge-item i {
+    font-size: 10px;
+    opacity: 0.7
+    }
+.actor-status-footer {
+    font-family: var(--ppt-font-mono);
+    font-size: 12px;
+    color: var(--ppt-text-3);
+    text-transform: uppercase;
+    margin-top: 16px;
+    letter-spacing: 0.05em
+    }
+/* Visual Connectors (Invisible semantic placeholders) */
+.connection-indicator-arrow {
+    display: none
+    }
+html { overflow: hidden; }
+</style>
+<meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize"></head>
+<body class="">
+<div class="slide-root-container">
+<!-- Title Region -->
+<div class="title-region-wrapper">
+<div class="title-breadcrumb-container">
+<div class="title-accent-line"></div>
+<span class="title-breadcrumb-text">Lesson 01 // Introduction</span>
+</div>
+<h1 class="title-main-heading">Client, Browser, and Server</h1>
+</div>
+<!-- Main Actors Content -->
+<div class="actors-grid-layout-container" data-interaction-trigger="true">
+<!-- Card 1: Client -->
+<div class="actor-card-item-wrapper" data-animation-id="client-card">
+<div class="actor-icon-box">
+<i class="fas fa-laptop-code"></i>
+</div>
+<h2 class="actor-name-heading">Client</h2>
+<p class="actor-role-description">
+          The requester. This is your physical device (laptop, phone, or tablet) and the application you are using.
+        </p>
+<div class="actor-status-footer">End-User Device</div>
+</div>
+<!-- Card 2: Browser -->
+<div class="actor-card-item-wrapper" data-animation-id="browser-card" style="border-color: var(--ppt-accent-2);">
+<div class="actor-icon-box" style="background: rgba(59, 130, 246, 0.1);color: var(--ppt-accent-2);">
+<i class="fas fa-globe"></i>
+</div>
+<h2 class="actor-name-heading">Browser</h2>
+<p class="actor-role-description">
+          The specialized software client that handles the "handshake" and turns code into a visual page.
+        </p>
+<div class="browser-badge-list-container">
+<div class="browser-task-badge-item"><i class="fas fa-chevron-right"></i> Parse HTML Structure</div>
+<div class="browser-task-badge-item"><i class="fas fa-chevron-right"></i> Apply CSS Styling</div>
+<div class="browser-task-badge-item"><i class="fas fa-chevron-right"></i> Run JavaScript Logic</div>
+</div>
+</div>
+<!-- Card 3: Server -->
+<div class="actor-card-item-wrapper" data-animation-id="server-card">
+<div class="actor-icon-box">
+<i class="fas fa-server"></i>
+</div>
+<h2 class="actor-name-heading">Server</h2>
+<p class="actor-role-description">
+          The powerhouse computer that stores, creates, and provides resources when asked.
+        </p>
+<div class="actor-status-footer">Resource Provider</div>
+</div>
+</div>
+</div>
+<script data-slide-animation="" type="application/json">
+  {
+    "timeline": [
+      {
+        "animation_id": "client-card",
+        "effect": "fade"
+      },
+      {
+        "animation_id": "browser-card",
+        "effect": "fade"
+      },
+      {
+        "animation_id": "server-card",
+        "effect": "fade"
+      }
+    ]
+  }
+  </script>
+<!-- Presenter Notes -->
+<div style="display: none;">
+<h3>Presenter Notes</h3>
+<p>
+      In web development, we constantly talk about three primary actors. Let's define them clearly to build our mental model.
+      
+      First, the **Client**. This is the starting point. It's the device in your hand—your laptop, your iPhone, or even a smart TV. In our context, the client is the one "asking" for something.
+      
+      Second, the **Browser**. This is a specific type of client software, like Google Chrome or Safari. Think of it as the specialized interpreter. Its job is to take the raw files from the internet and do three key things: parse the HTML structure, apply the CSS styles, and execute the JavaScript logic.
+      
+      Finally, the **Server**. This is a powerful computer, usually located in a data center, that stays on 24/7. It "serves" the files. When you ask for 'google.com', a server somewhere finds those files and sends them back to your browser.
+      
+      Transition: "Now that we know the three actors, let's see the sequence of events that happens when they actually start talking to each other."
+      
+      Animation Suggestion: Fade in the three cards from left to right to establish the flow of information.
+    </p>
+</div>
+
+
+
+</body></html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en" style="--viewport-height: 9.57px;">
+
+<head>
+    <meta charset="utf-8">
+    <title>Introduction to Front-End Development - Lesson 01</title>
+    <script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+
+        :root {
+            --ppt-bg: #0f172a;
+            --ppt-bg-soft: #1e293b;
+            --ppt-surface: #1e293b;
+            --ppt-surface-2: #334155;
+            --ppt-border: #334155;
+            --ppt-text-1: #f8fafc;
+            --ppt-text-2: #94a3b8;
+            --ppt-text-3: #64748b;
+            --ppt-accent: #22d3ee;
+            --ppt-accent-2: #3b82f6;
+            --ppt-chart-1: #22d3ee;
+            --ppt-chart-2: #3b82f6;
+            --ppt-chart-3: #818cf8;
+            --ppt-chart-4: #c084fc;
+            --ppt-good: #4ade80;
+            --ppt-warn: #fbbf24;
+            --ppt-bad: #f87171;
+            --ppt-radius-sm: 4px;
+            --ppt-radius-md: 8px;
+            --ppt-radius-lg: 16px;
+            --ppt-shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.3);
+            --ppt-shadow-strong: 0 12px 24px rgba(0, 0, 0, 0.5);
+            --ppt-font-display: "Space Grotesk", sans-serif;
+            --ppt-font-body: "Inter", sans-serif;
+            --ppt-font-mono: "JetBrains Mono", monospace
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        body {
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: var(--ppt-font-body)
+        }
+
+        .intro-frontend-slide-root {
+            width: 1280px;
+            height: 720px;
+            background-color: var(--ppt-bg);
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr
+        }
+
+        .intro-frontend-background-image {
+            grid-area: 1/1;
+            width: 1280px;
+            height: 720px;
+            object-fit: cover;
+            z-index: 0
+        }
+
+        .intro-frontend-overlay-layer {
+            grid-area: 1/1;
+            width: 1280px;
+            height: 720px;
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.92) 0%, rgba(15, 23, 42, 0.75) 50%, rgba(15, 23, 42, 0.95) 100%);
+            z-index: 1
+        }
+
+        .intro-frontend-content-layout {
+            grid-area: 1/1;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            padding: 60px 80px;
+            text-align: center
+        }
+
+        .intro-frontend-label-wrapper {
+            margin-bottom: 120px
+        }
+
+        .intro-frontend-course-tag {
+            font-family: var(--ppt-font-mono);
+            font-size: 14px;
+            color: var(--ppt-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            padding: 6px 16px;
+            border: 1px solid var(--ppt-border);
+            border-radius: var(--ppt-radius-sm);
+            display: inline-block;
+            background-color: rgba(34, 211, 238, 0.05)
+        }
+
+        .title-frontend-heading-group {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin-bottom: 140px
+        }
+
+        .title-frontend-main-text {
+            font-family: var(--ppt-font-display);
+            font-size: 68px;
+            font-weight: 700;
+            color: var(--ppt-text-1);
+            line-height: 1.1;
+            letter-spacing: -0.02em
+        }
+
+        .title-frontend-terminal-path {
+            font-family: var(--ppt-font-mono);
+            font-size: 24px;
+            color: var(--ppt-accent);
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 12px 24px;
+            border-radius: var(--ppt-radius-md);
+            display: inline-block;
+            margin: 0 auto
+        }
+
+        .intro-frontend-metadata-grid {
+            display: grid;
+            grid-template-columns: 1fr 1px 1fr 1px 1fr;
+            align-items: center;
+            gap: 40px;
+            margin-top: auto
+        }
+
+        .intro-frontend-metadata-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px
+        }
+
+        .intro-frontend-metadata-label {
+            font-family: var(--ppt-font-mono);
+            font-size: 12px;
+            color: var(--ppt-text-3);
+            text-transform: uppercase;
+            letter-spacing: 0.1em
+        }
+
+        .intro-frontend-metadata-value {
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--ppt-text-2)
+        }
+
+        .intro-frontend-metadata-divider {
+            width: 1px;
+            height: 40px;
+            background-color: var(--ppt-border)
+        }
+
+        html {
+            overflow: hidden;
+        }
+    </style>
+    <meta content="16:9" name="PageAspectRatio">
+    <meta content="1280_720" name="PageSize">
+</head>
+
+<body class="">
+    <div class="intro-frontend-slide-root" style="overflow: hidden;">
+        <!-- Background Layer -->
+        <img alt="Hero Background" class="intro-frontend-background-image" data-animation-id="hero-bg"
+            src="https://agents-download.skywork.ai/image/ppt/intro_frontend_development_lesson/f627d43176c3d41841133320973e696e.png">
+        <!-- Scrim Overlay -->
+        <div class="intro-frontend-overlay-layer"></div>
+        <!-- Content Layer -->
+        <div class="intro-frontend-content-layout">
+            <!-- Top Label -->
+            <div class="intro-frontend-label-wrapper">
+                <span class="intro-frontend-course-tag">
+                    HTML & CSS Masterclass
+                </span>
+            </div>
+            <!-- Title Area -->
+            <div class="title-frontend-heading-group">
+                <h1 class="title-frontend-main-text" data-animation-id="main-title">
+                    HTML & CSS<br>
+                    From Zero to Professional
+                </h1>
+                <!-- <div class="title-frontend-terminal-path" data-animation-id="terminal-path">
+                    > path: /courses/html-css/module-01
+                </div> -->
+            </div>
+            <!-- Footer Metadata -->
+            <div class="intro-frontend-metadata-grid" data-animation-id="footer-meta">
+
+                <div class="intro-frontend-metadata-item">
+                    <span class="intro-frontend-metadata-label">Instructor</span>
+                    <span class="intro-frontend-metadata-value">
+                        Ramin Joshang
+                    </span>
+                </div>
+
+                <div class="intro-frontend-metadata-divider"></div>
+
+                <div class="intro-frontend-metadata-item">
+                    <span class="intro-frontend-metadata-label">Course</span>
+                    <span class="intro-frontend-metadata-value">
+                        HTML & CSS Masterclass
+                    </span>
+                </div>
+
+                <div class="intro-frontend-metadata-divider"></div>
+
+                <div class="intro-frontend-metadata-item">
+                    <span class="intro-frontend-metadata-label">Lesson</span>
+                    <span class="intro-frontend-metadata-value">
+                        01 • Introduction
+                    </span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script data-slide-animation="" type="application/json">
+  {
+    "timeline": [
+      {
+        "animation_id": "hero-bg",
+        "effect": "fade"
+      },
+      {
+        "animation_id": "terminal-path",
+        "effect": "appear"
+      },
+      {
+        "animation_id": "main-title",
+        "effect": "fade"
+      },
+      {
+        "animation_id": "footer-meta",
+        "effect": "appear"
+      }
+    ]
+  }
+  </script>
+
+
+
+</body>
+
+</html>

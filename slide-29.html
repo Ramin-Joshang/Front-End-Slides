@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Beginner Best Practices - Front-End Development</title>
+<script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
+<style>@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+:root {
+    --ppt-bg: #0f172a;
+    --ppt-bg-soft: #1e293b;
+    --ppt-surface: #1e293b;
+    --ppt-surface-2: #334155;
+    --ppt-border: #334155;
+    --ppt-text-1: #f8fafc;
+    --ppt-text-2: #94a3b8;
+    --ppt-text-3: #64748b;
+    --ppt-accent: #22d3ee;
+    --ppt-accent-2: #3b82f6;
+    --ppt-chart-1: #22d3ee;
+    --ppt-chart-2: #3b82f6;
+    --ppt-chart-3: #818cf8;
+    --ppt-chart-4: #c084fc;
+    --ppt-good: #4ade80;
+    --ppt-warn: #fbbf24;
+    --ppt-bad: #f87171;
+    --ppt-radius-sm: 4px;
+    --ppt-radius-md: 8px;
+    --ppt-radius-lg: 16px;
+    --ppt-shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --ppt-shadow-strong: 0 12px 24px rgba(0, 0, 0, 0.5);
+    --ppt-font-display: "Space Grotesk", sans-serif;
+    --ppt-font-body: "Inter", sans-serif;
+    --ppt-font-mono: "JetBrains Mono", monospace
+    }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+    }
+body {width: 1280px; height: 720px; overflow: hidden; background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--ppt-font-body)}
+.slide-root-container {
+    width: 1280px;
+    height: 720px;
+    background-color: var(--ppt-bg);
+    background-image: radial-gradient(circle at 2px 2px, var(--ppt-border) 1px, transparent 0);
+    background-size: 40px 40px;
+    color: var(--ppt-text-1);
+    position: relative;
+    display: flex;
+    flex-direction: column
+    }
+/* Title Region Implementation */
+.title-region-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 40px 60px 20px 60px
+    }
+.title-breadcrumb-container {
+    display: flex;
+    align-items: center;
+    gap: 12px
+    }
+.title-accent-line {
+    width: 4px;
+    height: 32px;
+    background: var(--ppt-accent);
+    border-radius: 2px
+    }
+.title-breadcrumb-text {
+    font-family: var(--ppt-font-mono);
+    font-size: 14px;
+    color: var(--ppt-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em
+    }
+.title-main-heading {
+    margin: 0;
+    font-family: var(--ppt-font-display);
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--ppt-text-1);
+    line-height: 1.2
+    }
+/* Main Content Layout */
+.practice-content-layout {
+    flex: 1;
+    display: flex;
+    align-items: stretch;
+    gap: 24px;
+    padding: 20px 60px 60px 60px
+    }
+.practice-column-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+    }
+.practice-card-module {
+    flex: 1;
+    background: var(--ppt-surface);
+    border: 1px solid var(--ppt-border);
+    border-radius: var(--ppt-radius-lg);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: var(--ppt-shadow-soft);
+    transition: transform 0.3s ease
+    }
+.practice-icon-wrapper {
+    width: 56px;
+    height: 56px;
+    background: rgba(34, 211, 238, 0.1);
+    border-radius: var(--ppt-radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ppt-accent);
+    font-size: 24px
+    }
+.practice-card-title {
+    font-family: var(--ppt-font-display);
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--ppt-text-1);
+    margin-bottom: 8px
+    }
+.practice-list-items {
+    list-style: none;
+    display: block
+    }
+.practice-list-item {
+    display: block;
+    margin-bottom: 16px;
+    color: var(--ppt-text-2);
+    font-size: 18px;
+    line-height: 1.6;
+    position: relative;
+    padding-left: 24px
+    }
+.practice-list-item::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--ppt-accent);
+    font-weight: bold
+    }
+.practice-code-chip {
+    font-family: var(--ppt-font-mono);
+    background: var(--ppt-surface-2);
+    padding: 2px 8px;
+    border-radius: var(--ppt-radius-sm);
+    color: var(--ppt-accent);
+    font-size: 16px
+    }
+.practice-bad-chip {
+    font-family: var(--ppt-font-mono);
+    background: rgba(248, 113, 113, 0.1);
+    padding: 2px 8px;
+    border-radius: var(--ppt-radius-sm);
+    color: var(--ppt-bad);
+    text-decoration: line-through;
+    font-size: 16px
+    }
+.practice-footer-hint {
+    margin-top: auto;
+    font-size: 14px;
+    color: var(--ppt-text-3);
+    font-style: italic
+    }
+html { overflow: hidden; }
+</style>
+<meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize"></head>
+<body>
+<div class="slide-root-container" style="overflow: hidden;">
+<!-- Title Region -->
+<div class="title-region-wrapper">
+<div class="title-breadcrumb-container">
+<div class="title-accent-line"></div>
+<span class="title-breadcrumb-text">Lesson 01 // Introduction</span>
+</div>
+<h1 class="title-main-heading">Beginner Best Practices</h1>
+</div>
+<!-- Content Columns -->
+<div class="practice-content-layout">
+<!-- Column 1: Clean Code -->
+<div class="practice-column-container">
+<div class="practice-card-module" data-animation-id="clean-code-card">
+<div class="practice-icon-wrapper">
+<i class="fas fa-code"></i>
+</div>
+<h2 class="practice-card-title">Clean Structure</h2>
+<ul class="practice-list-items">
+<li class="practice-list-item">Use consistent indentation for readability.</li>
+<li class="practice-list-item">Add comments to explain complex logic.</li>
+<li class="practice-list-item">Keep code simple and avoid over-engineering.</li>
+</ul>
+<p class="practice-footer-hint">"Write code for humans first."</p>
+</div>
+</div>
+<!-- Column 2: Naming Conventions -->
+<div class="practice-column-container">
+<div class="practice-card-module" data-animation-id="naming-card">
+<div class="practice-icon-wrapper">
+<i class="fas fa-signature"></i>
+</div>
+<h2 class="practice-card-title">Naming Habits</h2>
+<ul class="practice-list-items">
+<li class="practice-list-item">Use <span class="practice-code-chip">kebab-case</span> for files.</li>
+<li class="practice-list-item">Avoid spaces: <span class="practice-bad-chip">my page.html</span></li>
+<li class="practice-list-item">Be descriptive: <span class="practice-code-chip">about-us.html</span></li>
+</ul>
+<p class="practice-footer-hint">Meaningful names save time later.</p>
+</div>
+</div>
+<!-- Column 3: Learning Habits -->
+<div class="practice-column-container">
+<div class="practice-card-module" data-animation-id="habits-card">
+<div class="practice-icon-wrapper">
+<i class="fas fa-lightbulb"></i>
+</div>
+<h2 class="practice-card-title">Growth Mindset</h2>
+<ul class="practice-list-items">
+<li class="practice-list-item">Practice coding every single day.</li>
+<li class="practice-list-item">Embrace errors as learning opportunities.</li>
+<li class="practice-list-item">Focus on concepts, not just syntax.</li>
+</ul>
+<p class="practice-footer-hint">Consistency beats intensity.</p>
+</div>
+</div>
+</div>
+</div>
+<script data-slide-animation="" type="application/json">
+  {
+    "timeline": [
+      {
+        "animation_id": "clean-code-card",
+        "effect": "fade"
+      },
+      {
+        "animation_id": "naming-card",
+        "effect": "fade"
+      },
+      {
+        "animation_id": "habits-card",
+        "effect": "fade"
+      }
+    ]
+  }
+  </script>
+
+</body></html>

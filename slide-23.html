@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Recommended VS Code Extensions</title>
+<script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
+<style>@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+:root {
+    --ppt-bg: #0f172a;
+    --ppt-bg-soft: #1e293b;
+    --ppt-surface: #1e293b;
+    --ppt-surface-2: #334155;
+    --ppt-border: #334155;
+    --ppt-text-1: #f8fafc;
+    --ppt-text-2: #94a3b8;
+    --ppt-text-3: #64748b;
+    --ppt-accent: #22d3ee;
+    --ppt-accent-2: #3b82f6;
+    --ppt-chart-1: #22d3ee;
+    --ppt-chart-2: #3b82f6;
+    --ppt-chart-3: #818cf8;
+    --ppt-chart-4: #c084fc;
+    --ppt-good: #4ade80;
+    --ppt-warn: #fbbf24;
+    --ppt-bad: #f87171;
+    --ppt-radius-sm: 4px;
+    --ppt-radius-md: 8px;
+    --ppt-radius-lg: 16px;
+    --ppt-shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --ppt-shadow-strong: 0 12px 24px rgba(0, 0, 0, 0.5);
+    --ppt-font-display: "Space Grotesk", sans-serif;
+    --ppt-font-body: "Inter", sans-serif;
+    --ppt-font-mono: "JetBrains Mono", monospace
+    }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+    }
+body {width: 1280px; height: 720px; overflow: hidden; background-color: var(--ppt-bg);
+    color: var(--ppt-text-1);
+    font-family: var(--ppt-font-body);
+    display: flex;
+    flex-direction: column}
+.vscode-extensions-page-root {
+    width: 1280px;
+    height: 720px;
+    padding-bottom: 40px;
+    display: flex;
+    flex-direction: column
+    }
+/* Title Region from DESIGN */
+.title-region-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 40px 60px 20px 60px
+    }
+.title-breadcrumb-container {
+    display: flex;
+    align-items: center;
+    gap: 12px
+    }
+.title-accent-bar {
+    width: 4px;
+    height: 32px;
+    background: var(--ppt-accent);
+    border-radius: 2px
+    }
+.title-breadcrumb-text {
+    font-family: var(--ppt-font-mono);
+    font-size: 14px;
+    color: var(--ppt-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em
+    }
+.title-main-heading {
+    margin: 0;
+    font-family: var(--ppt-font-display);
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--ppt-text-1);
+    line-height: 1.2
+    }
+/* Content Layout */
+.extensions-main-content {
+    flex: 1;
+    margin: 0 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    justify-content: center
+    }
+.extensions-grid-container {
+    display: flex;
+    align-items: stretch;
+    gap: 24px;
+    width: 100%
+    }
+.extension-card-item {
+    flex: 1;
+    background: var(--ppt-surface);
+    border: 1px solid var(--ppt-border);
+    border-radius: var(--ppt-radius-lg);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    box-shadow: var(--ppt-shadow-soft)
+    }
+.extension-card-header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px
+    }
+.extension-icon-box {
+    width: 64px;
+    height: 64px;
+    border-radius: var(--ppt-radius-md);
+    background: rgba(34, 211, 238, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: var(--ppt-accent)
+    }
+.extension-icon-box.blue {
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--ppt-accent-2)
+    }
+.extension-icon-box.purple {
+    background: rgba(129, 140, 248, 0.1);
+    color: var(--ppt-chart-3)
+    }
+.extension-name {
+    font-family: var(--ppt-font-mono);
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--ppt-text-1)
+    }
+.extension-tag {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: var(--ppt-surface-2);
+    color: var(--ppt-accent);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    width: fit-content
+    }
+.extension-description {
+    font-size: 18px;
+    color: var(--ppt-text-2);
+    line-height: 1.6
+    }
+.extension-benefit-list {
+    margin-top: auto;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px
+    }
+.extension-benefit-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 16px;
+    color: var(--ppt-text-1)
+    }
+.extension-benefit-row i {
+    color: var(--ppt-good);
+    font-size: 14px
+    }
+.extensions-footer-note {
+    text-align: center;
+    padding: 16px;
+    background: rgba(34, 211, 238, 0.05);
+    border-radius: var(--ppt-radius-md);
+    border: 1px dashed var(--ppt-border)
+    }
+.extensions-footer-text {
+    font-size: 16px;
+    color: var(--ppt-text-2);
+    font-family: var(--ppt-font-mono)
+    }
+.extensions-footer-text span {
+    color: var(--ppt-accent)
+    }
+html { overflow: hidden; }
+</style>
+<meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize"></head>
+<body>
+<div class="vscode-extensions-page-root" style="overflow: hidden;">
+<!-- Title Region -->
+<div class="title-region-wrapper">
+<div class="title-breadcrumb-container">
+<div class="title-accent-bar"></div>
+<span class="title-breadcrumb-text">Lesson 01 // Introduction</span>
+</div>
+<h1 class="title-main-heading">Recommended VS Code Extensions</h1>
+</div>
+<!-- Main Content -->
+<div class="extensions-main-content">
+<div class="extensions-grid-container" data-animation-id="extensions-grid">
+<!-- Live Server -->
+<div class="extension-card-item">
+<div class="extension-card-header">
+<div class="extension-icon-box">
+<i class="fas fa-bolt"></i>
+</div>
+<span class="extension-tag">Productivity</span>
+<h2 class="extension-name">Live Server</h2>
+</div>
+<p class="extension-description">
+            Launches a local development server with a live reload feature for static pages.
+          </p>
+<div class="extension-benefit-list">
+<div class="extension-benefit-row">
+<i class="fa-solid fa-circle-check"></i>
+<span>Instant browser updates</span>
+</div>
+<div class="extension-benefit-row">
+<i class="fa-solid fa-check"></i>
+<span>No manual refreshing</span>
+</div>
+</div>
+</div>
+<!-- Prettier -->
+<div class="extension-card-item">
+<div class="extension-card-header">
+<div class="extension-icon-box blue">
+<i class="fa-solid fa-wand-magic"></i>
+</div>
+<span class="extension-tag">Code Quality</span>
+<h2 class="extension-name">Prettier</h2>
+</div>
+<p class="extension-description">
+            An opinionated code formatter that enforces a consistent style across your files.
+          </p>
+<div class="extension-benefit-list">
+<div class="extension-benefit-row">
+<i class="fa-solid fa-heart-circle-check"></i>
+<span>Cleaner, readable code</span>
+</div>
+<div class="extension-benefit-row">
+<i class="fa-solid fa-house-circle-check"></i>
+<span>Auto-fixes indentations</span>
+</div>
+</div>
+</div>
+<!-- Material Icon Theme -->
+<div class="extension-card-item">
+<div class="extension-card-header">
+<div class="extension-icon-box purple">
+<i class="fas fa-folder-tree"></i>
+</div>
+<span class="extension-tag">Organization</span>
+<h2 class="extension-name">Material Icons</h2>
+</div>
+<p class="extension-description">
+            Provides thousands of beautiful icons to help you identify file types at a glance.
+          </p>
+<div class="extension-benefit-list">
+<div class="extension-benefit-row">
+<i class="fa-solid fa-anchor-circle-check"></i>
+<span>Visual file navigation</span>
+</div>
+<div class="extension-benefit-row">
+<i class="fa-solid fa-school-circle-check"></i>
+<span>Industry-standard look</span>
+</div>
+</div>
+</div>
+</div>
+<div class="extensions-footer-note">
+<p class="extensions-footer-text">
+<i class="fa-solid fa-circle-info" style="margin-right: 8px;"></i>
+          Pro Tip: Use <span>Ctrl + Shift + X</span> (Windows) or <span>Cmd + Shift + X</span> (Mac) to open the Extensions marketplace.
+        </p>
+</div>
+</div>
+</div>
+<script data-slide-animation="" type="application/json">
+  {
+    "timeline": [
+      {
+        "animation_id": "extensions-grid",
+        "effect": "fade"
+      }
+    ]
+  }
+  </script>
+<!-- Presenter Notes -->
+<!-- 
+  Presenter Notes:
+  - Explain that VS Code is powerful out of the box, but "Extensions" are like apps for your editor that give you superpowers.
+  - Live Server is the most important for today. It creates a bridge between VS Code and Chrome. When you save your HTML, the browser updates instantly.
+  - Prettier takes the stress out of "messy code." Beginners often worry about spaces and tabs; Prettier fixes it for you automatically.
+  - Material Icon Theme is a visual aid. It helps you quickly distinguish an .html file from a folder or a CSS file using recognizable icons.
+  - Transition: "Now that we know which tools to add, let's look at how to organize the files we'll be creating."
+  - Motion: The grid of extension cards will fade in together for a clean, professional reveal.
+  -->
+
+</body></html>

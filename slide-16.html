@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>JavaScript: The Muscles and Logic</title>
+<script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
+<style>@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+:root {
+    --ppt-bg: #0f172a;
+    --ppt-bg-soft: #1e293b;
+    --ppt-surface: #1e293b;
+    --ppt-surface-2: #334155;
+    --ppt-border: #334155;
+    --ppt-text-1: #f8fafc;
+    --ppt-text-2: #94a3b8;
+    --ppt-text-3: #64748b;
+    --ppt-accent: #22d3ee;
+    --ppt-accent-2: #3b82f6;
+    --ppt-chart-1: #22d3ee;
+    --ppt-chart-2: #3b82f6;
+    --ppt-chart-3: #818cf8;
+    --ppt-chart-4: #c084fc;
+    --ppt-good: #4ade80;
+    --ppt-warn: #fbbf24;
+    --ppt-bad: #f87171;
+    --ppt-radius-sm: 4px;
+    --ppt-radius-md: 8px;
+    --ppt-radius-lg: 16px;
+    --ppt-shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --ppt-shadow-strong: 0 12px 24px rgba(0, 0, 0, 0.5);
+    --ppt-font-display: "Space Grotesk", sans-serif;
+    --ppt-font-body: "Inter", sans-serif;
+    --ppt-font-mono: "JetBrains Mono", monospace
+    }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+    }
+body {width: 1280px; height: 720px; overflow: hidden; background-color: var(--ppt-bg);
+    color: var(--ppt-text-1);
+    font-family: var(--ppt-font-body);
+    position: relative}
+.js-intro-slide-root {
+    width: 1280px;
+    height: 720px;
+    display: flex;
+    flex-direction: column
+    }
+/* Non-Cover-Page Title Region */
+.title-region-outer-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 40px 60px 20px 60px
+    }
+.title-breadcrumb-flex-container {
+    display: flex;
+    align-items: center;
+    gap: 12px
+    }
+.title-accent-pillar-line {
+    width: 4px;
+    height: 32px;
+    background: var(--ppt-accent);
+    border-radius: 2px
+    }
+.title-breadcrumb-mono-label {
+    font-family: var(--ppt-font-mono);
+    font-size: 14px;
+    color: var(--ppt-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em
+    }
+.title-main-heading-text {
+    margin: 0;
+    font-family: var(--ppt-font-display);
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--ppt-text-1);
+    line-height: 1.2
+    }
+/* Special Open Layout: tech-pillar-anchor */
+.js-pillar-anchor-layout-container {
+    flex: 1;
+    display: flex;
+    align-items: stretch;
+    margin: 20px 60px 60px 60px;
+    gap: 60px
+    }
+.js-left-anchor-pillar-wrapper {
+    flex: 0 0 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative
+    }
+.js-huge-anchor-text {
+    font-family: var(--ppt-font-display);
+    font-size: 320px;
+    font-weight: 700;
+    color: var(--ppt-accent);
+    line-height: 1;
+    text-shadow: 0 0 40px rgba(34, 211, 238, 0.2)
+    }
+.js-anchor-sub-label {
+    font-family: var(--ppt-font-mono);
+    font-size: 18px;
+    color: var(--ppt-text-3);
+    margin-top: -20px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase
+    }
+.js-right-responsibilities-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 32px
+    }
+.js-responsibility-block-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 12px
+    }
+.js-responsibility-icon-container {
+    width: 56px;
+    height: 56px;
+    background: var(--ppt-surface);
+    border: 1px solid var(--ppt-border);
+    border-radius: var(--ppt-radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0
+    }
+.js-responsibility-icon-container i {
+    font-size: 24px;
+    color: var(--ppt-accent)
+    }
+.js-responsibility-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px
+    }
+.js-responsibility-title-heading {
+    font-family: var(--ppt-font-display);
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--ppt-text-1)
+    }
+.js-responsibility-description-body {
+    font-size: 18px;
+    color: var(--ppt-text-2);
+    line-height: 1.5;
+    max-width: 500px
+    }
+.js-bottom-annotation-rail {
+    position: absolute;
+    bottom: 40px;
+    right: 60px;
+    font-family: var(--ppt-font-mono);
+    font-size: 14px;
+    color: var(--ppt-text-3)
+    }
+html { overflow: hidden; }
+</style>
+<meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize"></head>
+<body>
+<div class="js-intro-slide-root" style="overflow: hidden;">
+<!-- Title Region -->
+<div class="title-region-outer-wrapper">
+<div class="title-breadcrumb-flex-container">
+<div class="title-accent-pillar-line"></div>
+<span class="title-breadcrumb-mono-label">Lesson 01 // Introduction</span>
+</div>
+<h1 class="title-main-heading-text">JavaScript: The Muscles and Logic</h1>
+</div>
+<!-- tech-pillar-anchor Layout -->
+<div class="js-pillar-anchor-layout-container">
+<div class="js-left-anchor-pillar-wrapper">
+<div class="js-huge-anchor-text" data-animation-id="js-huge-anchor">JS</div>
+<div class="js-anchor-sub-label">Scripting Language</div>
+</div>
+<div class="js-right-responsibilities-content">
+<!-- Responsibility 1 -->
+<div class="js-responsibility-block-item" data-animation-id="js-resp-interactivity">
+<div class="js-responsibility-icon-container">
+<i class="fa-solid fa-arrow-pointer"></i>
+</div>
+<div class="js-responsibility-text-wrapper">
+<h2 class="js-responsibility-title-heading">Interactivity</h2>
+<p class="js-responsibility-description-body">
+              Reacting to user actions like clicks, scrolls, and typing to make pages feel alive and responsive.
+            </p>
+</div>
+</div>
+<!-- Responsibility 2 -->
+<div class="js-responsibility-block-item" data-animation-id="js-resp-behavior">
+<div class="js-responsibility-icon-container">
+<i class="fas fa-brain"></i>
+</div>
+<div class="js-responsibility-text-wrapper">
+<h2 class="js-responsibility-title-heading">Behavior &amp; Logic</h2>
+<p class="js-responsibility-description-body">
+              Executing calculations, conditional rules, and data processing directly within the user's browser.
+            </p>
+</div>
+</div>
+<!-- Responsibility 3 -->
+<div class="js-responsibility-block-item" data-animation-id="js-resp-updates">
+<div class="js-responsibility-icon-container">
+<i class="fa-solid fa-bell"></i>
+</div>
+<div class="js-responsibility-text-wrapper">
+<h2 class="js-responsibility-title-heading">Dynamic Updates</h2>
+<p class="js-responsibility-description-body">
+              Updating content and fetching new data in real-time without requiring the user to refresh the page.
+            </p>
+</div>
+</div>
+</div>
+</div>
+<div class="js-bottom-annotation-rail">
+      ECMAScript Standard // v2026
+    </div>
+</div>
+<script data-slide-animation="" type="application/json">
+  {
+    "timeline": [
+      {
+        "animation_id": "js-huge-anchor",
+        "effect": "zoom"
+      },
+      {
+        "animation_id": "js-resp-interactivity",
+        "effect": "fade"
+      },
+      {
+        "animation_id": "js-resp-behavior",
+        "effect": "fade"
+      },
+      {
+        "animation_id": "js-resp-updates",
+        "effect": "fade"
+      }
+    ]
+  }
+  </script>
+
+</body></html>

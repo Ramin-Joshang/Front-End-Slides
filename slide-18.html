@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=1280, height=720" name="viewport">
+<title>Real-World Front-End Examples</title>
+<script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
+<style>@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+:root {
+    --ppt-bg: #0f172a;
+    --ppt-bg-soft: #1e293b;
+    --ppt-surface: #1e293b;
+    --ppt-surface-2: #334155;
+    --ppt-border: #334155;
+    --ppt-text-1: #f8fafc;
+    --ppt-text-2: #94a3b8;
+    --ppt-text-3: #64748b;
+    --ppt-accent: #22d3ee;
+    --ppt-accent-2: #3b82f6;
+    --ppt-chart-1: #22d3ee;
+    --ppt-chart-2: #3b82f6;
+    --ppt-chart-3: #818cf8;
+    --ppt-chart-4: #c084fc;
+    --ppt-good: #4ade80;
+    --ppt-warn: #fbbf24;
+    --ppt-bad: #f87171;
+    --ppt-radius-sm: 4px;
+    --ppt-radius-md: 8px;
+    --ppt-radius-lg: 16px;
+    --ppt-shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --ppt-shadow-strong: 0 12px 24px rgba(0, 0, 0, 0.5);
+    --ppt-font-display: "Space Grotesk", sans-serif;
+    --ppt-font-body: "Inter", sans-serif;
+    --ppt-font-mono: "JetBrains Mono", monospace
+    }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+    }
+body {width: 1280px; height: 720px; overflow: hidden; background-color: var(--ppt-bg);
+    color: var(--ppt-text-1);
+    font-family: var(--ppt-font-body)}
+.real-world-presentation-slide {
+    width: 1280px;
+    height: 720px;
+    display: flex;
+    flex-direction: column;
+    position: relative
+    }
+/* Title Region Design Enforcement */
+.title-region-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 40px 60px 20px 60px
+    }
+.title-breadcrumb-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px
+    }
+.title-breadcrumb-accent {
+    width: 4px;
+    height: 32px;
+    background: var(--ppt-accent);
+    border-radius: 2px
+    }
+.title-breadcrumb-text {
+    font-family: var(--ppt-font-mono);
+    font-size: 14px;
+    color: var(--ppt-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em
+    }
+.title-main-heading {
+    margin: 0;
+    font-family: var(--ppt-font-display);
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--ppt-text-1);
+    line-height: 1.2
+    }
+/* Main Content Layout */
+.real-world-content-wrapper {
+    flex: 1;
+    display: flex;
+    padding: 20px 60px 60px 60px;
+    gap: 32px;
+    align-items: stretch
+    }
+.real-world-column-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+    }
+.real-world-example-card {
+    flex: 1;
+    background: var(--ppt-surface);
+    border: 1px solid var(--ppt-border);
+    border-radius: var(--ppt-radius-lg);
+    padding: 32px;
+    box-shadow: var(--ppt-shadow-soft);
+    display: flex;
+    flex-direction: column;
+    gap: 20px
+    }
+.real-world-card-header {
+    display: flex;
+    align-items: center;
+    gap: 16px
+    }
+.real-world-card-icon {
+    font-size: 32px;
+    color: var(--ppt-accent)
+    }
+.real-world-card-title {
+    font-family: var(--ppt-font-display);
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--ppt-text-1)
+    }
+.real-world-stack-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px
+    }
+.real-world-stack-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    list-style: none
+    }
+.real-world-stack-label {
+    font-family: var(--ppt-font-mono);
+    font-size: 12px;
+    color: var(--ppt-accent-2);
+    text-transform: uppercase
+    }
+.real-world-stack-description {
+    font-size: 18px;
+    color: var(--ppt-text-2);
+    line-height: 1.4
+    }
+.real-world-card-tag {
+    margin-top: 12px;
+    padding: 6px 12px;
+    background: var(--ppt-surface-2);
+    border-radius: var(--ppt-radius-sm);
+    color: var(--ppt-text-1);
+    font-size: 14px;
+    font-family: var(--ppt-font-mono);
+    align-self: flex-start
+    }
+html { overflow: hidden; }
+</style>
+<meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize"></head>
+<body>
+<div class="real-world-presentation-slide" style="overflow: hidden;">
+<!-- Title Region -->
+<div class="title-region-container">
+<div class="title-breadcrumb-wrapper">
+<div class="title-breadcrumb-accent"></div>
+<span class="title-breadcrumb-text">Lesson 01 // Introduction</span>
+</div>
+<h1 class="title-main-heading">Real-World Front-End Examples</h1>
+</div>
+<!-- Multi-column Layout -->
+<div class="real-world-content-wrapper" data-animation-id="examples-grid-container">
+<!-- Column 1: E-Commerce -->
+<div class="real-world-column-container">
+<div class="real-world-example-card">
+<div class="real-world-card-header">
+<i class="fa-solid fa-bag-shopping real-world-card-icon"></i>
+<h2 class="real-world-card-title">E-Commerce</h2>
+</div>
+<div class="real-world-stack-group">
+<div class="real-world-stack-item">
+<span class="real-world-stack-label">HTML</span>
+<span class="real-world-stack-description">Product catalog and pricing data</span>
+</div>
+<div class="real-world-stack-item">
+<span class="real-world-stack-label">CSS</span>
+<span class="real-world-stack-description">High-end branding and image galleries</span>
+</div>
+<div class="real-world-stack-item">
+<span class="real-world-stack-label">JavaScript</span>
+<span class="real-world-stack-description">Dynamic cart updates and animations</span>
+</div>
+</div>
+<span class="real-world-card-tag">apple.com</span>
+</div>
+</div>
+<!-- Column 2: SaaS / Social -->
+<div class="real-world-column-container">
+<div class="real-world-example-card">
+<div class="real-world-card-header">
+<i class="fas fa-comments real-world-card-icon"></i>
+<h2 class="real-world-card-title">Productivity</h2>
+</div>
+<div class="real-world-stack-group">
+<div class="real-world-stack-item">
+<span class="real-world-stack-label">HTML</span>
+<span class="real-world-stack-description">Message structures and user profiles</span>
+</div>
+<div class="real-world-stack-item">
+<span class="real-world-stack-label">CSS</span>
+<span class="real-world-stack-description">Complex sidebar layouts and dark mode</span>
+</div>
+<div class="real-world-stack-item">
+<span class="real-world-stack-label">JavaScript</span>
+<span class="real-world-stack-description">Real-time chat sync without refreshing</span>
+</div>
+</div>
+<span class="real-world-card-tag">slack.com</span>
+</div>
+</div>
+<!-- Column 3: Media / Streaming -->
+<div class="real-world-column-container">
+<div class="real-world-example-card">
+<div class="real-world-card-header">
+<i class="fa-solid fa-circle-play real-world-card-icon"></i>
+<h2 class="real-world-card-title">Streaming</h2>
+</div>
+<div class="real-world-stack-group">
+<div class="real-world-stack-item">
+<span class="real-world-stack-label">HTML</span>
+<span class="real-world-stack-description">Movie metadata and category lists</span>
+</div>
+<div class="real-world-stack-item">
+<span class="real-world-stack-label">CSS</span>
+<span class="real-world-stack-description">Responsive posters and hover effects</span>
+</div>
+<div class="real-world-stack-item">
+<span class="real-world-stack-label">JavaScript</span>
+<span class="real-world-stack-description">Video player logic and search filtering</span>
+</div>
+</div>
+<span class="real-world-card-tag">netflix.com</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Animation Metadata -->
+<script data-slide-animation="" type="application/json">
+  {
+    "timeline": [
+      {
+        "animation_id": "examples-grid-container",
+        "effect": "fade"
+      }
+    ]
+  }
+  </script>
+<!-- Presenter Notes -->
+<!-- 
+  Presenter Notes:
+  - This slide grounds the abstract concepts of HTML, CSS, and JS in the real world using sites students already know.
+  - Explain that every professional site is a delicate balance of these three.
+  - E-commerce (Apple): HTML holds the 'what' (iPhone 15, $999), CSS handles the 'luxury feel', JS handles the 'scrolling magic'.
+  - SaaS (Slack): JavaScript is the hero here, enabling real-time communication without the page ever blinking or reloading.
+  - Streaming (Netflix): The UI is HTML/CSS, but the complex player and search are driven by JS.
+  - Transition: "To build premium experiences like these, we don't just need code—we need the right professional tools. Let's look at your developer toolbelt."
+  - Motion: The grid of cards fades in to reveal the examples.
+  -->
+
+</body></html>

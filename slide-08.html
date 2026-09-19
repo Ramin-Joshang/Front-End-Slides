@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en" style="--viewport-height: 9.57px;"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>The Internet: A Network of Networks</title>
+<script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
+<style>@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+:root {
+    --ppt-bg: #0f172a;
+    --ppt-bg-soft: #1e293b;
+    --ppt-surface: #1e293b;
+    --ppt-surface-2: #334155;
+    --ppt-border: #334155;
+    --ppt-text-1: #f8fafc;
+    --ppt-text-2: #94a3b8;
+    --ppt-text-3: #64748b;
+    --ppt-accent: #22d3ee;
+    --ppt-accent-2: #3b82f6;
+    --ppt-good: #4ade80;
+    --ppt-warn: #fbbf24;
+    --ppt-bad: #f87171;
+    --ppt-radius-sm: 4px;
+    --ppt-radius-md: 8px;
+    --ppt-radius-lg: 16px;
+    --ppt-shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --ppt-shadow-strong: 0 12px 24px rgba(0, 0, 0, 0.5);
+    --ppt-font-display: "Space Grotesk", sans-serif;
+    --ppt-font-body: "Inter", sans-serif;
+    --ppt-font-mono: "JetBrains Mono", monospace
+    }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+    }
+body {width: 1280px; height: 720px; overflow: hidden; background-color: var(--ppt-bg);
+    font-family: var(--ppt-font-body);
+    color: var(--ppt-text-1)}
+.slide-root-container {
+    width: 1280px;
+    height: 720px;
+    display: flex;
+    flex-direction: column;
+    position: relative
+    }
+/* Title Region */
+.title-section-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 40px 60px 20px 60px
+    }
+.title-breadcrumb-container {
+    display: flex;
+    align-items: center;
+    gap: 12px
+    }
+.title-accent-bar {
+    width: 4px;
+    height: 32px;
+    background: var(--ppt-accent);
+    border-radius: 2px
+    }
+.title-breadcrumb-text {
+    font-family: var(--ppt-font-mono);
+    font-size: 14px;
+    color: var(--ppt-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em
+    }
+.title-main-heading {
+    margin: 0;
+    font-family: var(--ppt-font-display);
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--ppt-text-1);
+    line-height: 1.2
+    }
+/* Main Content */
+.content-main-layout {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0 60px 40px 60px;
+    gap: 30px;
+    justify-content: center
+    }
+/* Network Diagram */
+.network-infrastructure-visualization {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 320px;
+    background: rgba(30, 41, 59, 0.3);
+    border: 1px solid var(--ppt-border);
+    border-radius: var(--ppt-radius-lg);
+    padding: 40px;
+    position: relative
+    }
+.network-node-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    z-index: 2;
+    width: 180px
+    }
+.network-icon-circle {
+    width: 80px;
+    height: 80px;
+    background: var(--ppt-surface);
+    border: 2px solid var(--ppt-border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: var(--ppt-accent);
+    transition: all 0.3s ease;
+    box-shadow: var(--ppt-shadow-soft)
+    }
+.network-node-group:hover .network-icon-circle {
+    border-color: var(--ppt-accent);
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+    transform: translatey(-5px)
+    }
+.network-node-label {
+    font-family: var(--ppt-font-display);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ppt-text-1);
+    text-align: center
+    }
+.network-node-subtext {
+    font-size: 14px;
+    color: var(--ppt-text-2);
+    text-align: center;
+    line-height: 1.4
+    }
+/* Connections */
+.network-connection-line-wrapper {
+    flex: 1;
+    height: 2px;
+    background: repeating-linear-gradient(90deg, var(--ppt-border), var(--ppt-border) 10px, transparent 10px, transparent 20px);
+    position: relative;
+    margin: 0 -10px
+    }
+.network-packet-indicator {
+    width: 12px;
+    height: 12px;
+    background: var(--ppt-accent);
+    border-radius: 50%;
+    position: absolute;
+    top: -5px;
+    left: 0;
+    box-shadow: 0 0 10px var(--ppt-accent);
+    animation: packet-move 4s infinite linear
+    }
+@keyframes packet-move {
+    0% {
+        left: 0;
+        opacity: 0;
+        } 10% {
+        opacity: 1;
+        } 90% {
+        opacity: 1;
+        } 100% {
+        left: 100%;
+        opacity: 0;
+        }
+    }
+/* Info Cards */
+.infrastructure-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    width: 100%
+    }
+.infrastructure-info-card {
+    background: var(--ppt-surface);
+    border: 1px solid var(--ppt-border);
+    border-radius: var(--ppt-radius-md);
+    padding: 20px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start
+    }
+.info-card-icon {
+    font-size: 24px;
+    color: var(--ppt-accent-2);
+    margin-top: 4px
+    }
+.info-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px
+    }
+.info-card-title {
+    font-family: var(--ppt-font-display);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ppt-text-1)
+    }
+.info-card-desc {
+    font-size: 15px;
+    color: var(--ppt-text-2);
+    line-height: 1.5
+    }
+/* Footer / Page Indicator */
+.page-footer-container {
+    padding: 0 60px 20px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+    }
+.footer-microcopy {
+    font-size: 12px;
+    color: var(--ppt-text-3);
+    font-family: var(--ppt-font-mono)
+    }
+html { overflow: hidden; }
+</style>
+<meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize"></head>
+<body class="">
+<div class="slide-root-container">
+<!-- Title Region -->
+<div class="title-section-wrapper">
+<div class="title-breadcrumb-container">
+<div class="title-accent-bar"></div>
+<span class="title-breadcrumb-text">Lesson 01 // Introduction</span>
+</div>
+<h1 class="title-main-heading">
+        The Internet: A Network of Networks
+      </h1>
+</div>
+<!-- Main Content -->
+<div class="content-main-layout">
+<!-- Network Map -->
+<div class="network-infrastructure-visualization" data-animation-id="network-map-group">
+<!-- Node 1: User -->
+<div class="network-node-group">
+<div class="network-icon-circle">
+<i class="fa-solid fa-laptop-code"></i>
+</div>
+<div class="network-node-label">Your Device</div>
+<div class="network-node-subtext">Client requesting<br>information</div>
+</div>
+<div class="network-connection-line-wrapper">
+<div class="network-packet-indicator"></div>
+</div>
+<!-- Node 2: Infrastructure -->
+<div class="network-node-group">
+<div class="network-icon-circle" style="color: var(--ppt-accent-2);">
+<i class="fa-solid fa-tower-broadcast"></i>
+</div>
+<div class="network-node-label">The Backbone</div>
+<div class="network-node-subtext">Routers, ISPs &amp;<br>Undersea Cables</div>
+</div>
+<div class="network-connection-line-wrapper">
+<div class="network-packet-indicator" style="animation-delay: 1.5s;"></div>
+</div>
+<!-- Node 3: Server -->
+<div class="network-node-group">
+<div class="network-icon-circle" style="color: var(--ppt-good);">
+<i class="fa-solid fa-server"></i>
+</div>
+<div class="network-node-label">Data Center</div>
+<div class="network-node-subtext">Servers storing<br>web resources</div>
+</div>
+</div>
+<!-- Detail Cards -->
+<div class="infrastructure-summary-grid" data-animation-id="info-cards-row">
+<div class="infrastructure-info-card">
+<i class="fa-solid fa-box-archive info-card-icon"></i>
+<div class="info-card-content">
+<div class="info-card-title">Data Packets</div>
+<div class="info-card-desc">Information is broken into small chunks that travel independently across the network.</div>
+</div>
+</div>
+<div class="infrastructure-info-card">
+<i class="fa-solid fa-route info-card-icon"></i>
+<div class="info-card-content">
+<div class="info-card-title">Smart Routing</div>
+<div class="info-card-desc">Routers act like traffic controllers, finding the fastest path for each packet.</div>
+</div>
+</div>
+<div class="infrastructure-info-card">
+<i class="fa-solid fa-earth-americas info-card-icon"></i>
+<div class="info-card-content">
+<div class="info-card-title">Global Web</div>
+<div class="info-card-desc">The Web is just one service (like an app) that runs on top of the Internet infrastructure.</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<div class="page-footer-container">
+<div class="footer-microcopy">© 2026 FRONT-END BOOTCAMP // MODULE 01</div>
+<div class="footer-microcopy">SLIDE 08</div>
+</div>
+</div>
+<script data-slide-animation="" type="application/json">
+  {
+    "timeline": [
+      {
+        "animation_id": "network-map-group",
+        "effect": "fade"
+      },
+      {
+        "animation_id": "info-cards-row",
+        "effect": "appear"
+      }
+    ]
+  }
+  </script>
+<!-- Presenter Notes -->
+<div style="display: none;">
+<h3>Presenter Notes</h3>
+<p>
+<strong>Teaching Intent:</strong> To demystify the "Cloud" by showing it as a physical network of connected hardware. We want students to understand that data travels a physical distance.
+    </p>
+<p>
+<strong>Speech Script:</strong> 
+      "When we talk about 'The Internet,' it’s easy to think of it as a magical cloud floating above us. But in reality, it’s a massive, physical network of networks. 
+      Think of it as the world's largest shipping system. On one end, you have your device—the 'Client.' When you ask for a website, your request is broken into tiny pieces called 'Data Packets.'
+      These packets don't just fly through the air; they travel through your home router, into fiber-optic cables buried in the ground, and sometimes even through massive undersea cables stretching across oceans.
+      Finally, they reach a Data Center—a giant building full of powerful computers called Servers. The Internet is the road system; the Web is just one of the many types of traffic that uses those roads."
+    </p>
+<p>
+<strong>Transition:</strong> "Now that we see the map, let’s introduce the three main characters you'll be working with every day as a developer."
+    </p>
+<p>
+<strong>Animation Cue:</strong> 
+      1. Fade in the Network Map group to show the physical flow.
+      2. Use 'Appear' for the three info cards at the bottom to define 'Packets', 'Routing', and the 'Global Web' distinction.
+    </p>
+</div>
+
+
+
+</body></html>

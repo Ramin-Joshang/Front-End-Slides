@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" style="--viewport-height: 9.57px;"><head>
+<meta charset="utf-8">
+<title>Introduction to Front-End Development - Lesson 01</title>
+<script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
+<style>@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+:root {
+    --ppt-bg: #0f172a;
+    --ppt-bg-soft: #1e293b;
+    --ppt-surface: #1e293b;
+    --ppt-surface-2: #334155;
+    --ppt-border: #334155;
+    --ppt-text-1: #f8fafc;
+    --ppt-text-2: #94a3b8;
+    --ppt-text-3: #64748b;
+    --ppt-accent: #22d3ee;
+    --ppt-accent-2: #3b82f6;
+    --ppt-chart-1: #22d3ee;
+    --ppt-chart-2: #3b82f6;
+    --ppt-chart-3: #818cf8;
+    --ppt-chart-4: #c084fc;
+    --ppt-good: #4ade80;
+    --ppt-warn: #fbbf24;
+    --ppt-bad: #f87171;
+    --ppt-radius-sm: 4px;
+    --ppt-radius-md: 8px;
+    --ppt-radius-lg: 16px;
+    --ppt-shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --ppt-shadow-strong: 0 12px 24px rgba(0, 0, 0, 0.5);
+    --ppt-font-display: "Space Grotesk", sans-serif;
+    --ppt-font-body: "Inter", sans-serif;
+    --ppt-font-mono: "JetBrains Mono", monospace
+    }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+    }
+body {width: 1280px; height: 720px; overflow: hidden; background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center}
+.welcome-slide-root {
+    width: 1280px;
+    height: 720px;
+    background-color: var(--ppt-bg);
+    color: var(--ppt-text-1);
+    font-family: var(--ppt-font-body);
+    position: relative;
+    display: flex;
+    flex-direction: column
+    }
+/* Title Region Implementation */
+.title-region-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 40px 60px 20px 60px
+    }
+.title-breadcrumb-container {
+    display: flex;
+    align-items: center;
+    gap: 12px
+    }
+.title-accent-bar {
+    width: 4px;
+    height: 32px;
+    background: var(--ppt-accent);
+    border-radius: 2px
+    }
+.title-breadcrumb-text {
+    font-family: var(--ppt-font-mono);
+    font-size: 14px;
+    color: var(--ppt-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em
+    }
+.title-main-heading {
+    margin: 0;
+    font-family: var(--ppt-font-display);
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--ppt-text-1);
+    line-height: 1.2
+    }
+/* Main Content Layout */
+.welcome-content-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 60px 40px 60px;
+    gap: 48px
+    }
+.welcome-journey-path-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 32px;
+    position: relative
+    }
+/* Visual path line behind cards */
+.welcome-journey-path-line {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--ppt-surface-2) 20%, var(--ppt-surface-2) 80%, transparent);
+    z-index: 0
+    }
+.welcome-step-card-module {
+    flex: 1;
+    background-color: var(--ppt-surface);
+    border: 1px solid var(--ppt-border);
+    border-radius: var(--ppt-radius-lg);
+    padding: 40px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    box-shadow: var(--ppt-shadow-soft);
+    z-index: 1;
+    transition: transform 0.3s ease
+    }
+.welcome-step-icon-wrapper {
+    width: 80px;
+    height: 80px;
+    background-color: rgba(34, 211, 238, 0.1);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 8px;
+    border: 1px solid rgba(34, 211, 238, 0.2)
+    }
+.welcome-step-icon-wrapper i {
+    font-size: 32px;
+    color: var(--ppt-accent)
+    }
+.welcome-step-header {
+    font-family: var(--ppt-font-display);
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--ppt-text-1)
+    }
+.welcome-step-number {
+    font-family: var(--ppt-font-mono);
+    font-size: 12px;
+    color: var(--ppt-accent);
+    background-color: rgba(34, 211, 238, 0.1);
+    padding: 4px 12px;
+    border-radius: 20px;
+    text-transform: uppercase
+    }
+.welcome-footer-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px
+    }
+.welcome-footer-badge {
+    font-family: var(--ppt-font-mono);
+    font-size: 14px;
+    color: var(--ppt-text-3);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    border: 1px dashed var(--ppt-border);
+    border-radius: var(--ppt-radius-md)
+    }
+.welcome-footer-badge i {
+    color: var(--ppt-good)
+    }
+html { overflow: hidden; }
+</style>
+<meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize"></head>
+<body class="">
+<div class="welcome-slide-root" style="overflow: hidden;">
+<!-- Title Region -->
+<div class="title-region-wrapper">
+<div class="title-breadcrumb-container">
+<div class="title-accent-bar"></div>
+<span class="title-breadcrumb-text">Lesson 01 // Introduction</span>
+</div>
+<h1 class="title-main-heading">
+        Welcome: Your First Step into the Web
+      </h1>
+</div>
+<!-- Main Content Area -->
+<div class="welcome-content-body">
+<div class="welcome-journey-path-container" data-animation-id="welcome-steps-group">
+<div class="welcome-journey-path-line"></div>
+<!-- Step 1 -->
+<div class="welcome-step-card-module">
+<span class="welcome-step-number">Phase 01</span>
+<div class="welcome-step-icon-wrapper">
+<i class="fas fa-network-wired"></i>
+</div>
+<h2 class="welcome-step-header">Understand<br>the Web</h2>
+</div>
+<!-- Step 2 -->
+<div class="welcome-step-card-module">
+<span class="welcome-step-number">Phase 02</span>
+<div class="welcome-step-icon-wrapper">
+<i class="fas fa-code"></i>
+</div>
+<h2 class="welcome-step-header">Meet the Core<br>Languages</h2>
+</div>
+<!-- Step 3 -->
+<div class="welcome-step-card-module">
+<span class="welcome-step-number">Phase 03</span>
+<div class="welcome-step-icon-wrapper">
+<i class="fas fa-rocket"></i>
+</div>
+<h2 class="welcome-step-header">Build Your<br>First Page</h2>
+</div>
+</div>
+<!-- Footer Microcopy -->
+<div class="welcome-footer-info">
+<div class="welcome-footer-badge">
+<i class="fa-solid fa-shield"></i>
+<span>PREREQUISITE: NO PRIOR EXPERIENCE REQUIRED</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Animation Metadata -->
+<script data-slide-animation="" type="application/json">
+  {
+    "timeline": [
+      {
+        "animation_id": "welcome-steps-group",
+        "effect": "fade"
+      }
+    ]
+  }
+  </script>
+<!-- Presenter Notes -->
+<aside class="presenter-notes" style="display:none;">
+<p><strong>Presenter Notes:</strong></p>
+<p>Welcome to the very first lesson of our Front-End Development journey! I want to start by reassuring everyone: you are in the right place. Even if you've never written a single line of code before, today is designed for you.</p>
+<p>Our journey today has three distinct milestones. First, we’re going to demystify "the web." Instead of seeing it as magic, we’ll look at the actual infrastructure—the conversation between your computer and servers. Second, we’ll meet the "Big Three": HTML, CSS, and JavaScript. These are the languages that make everything you see online possible. Finally, we’re going to get hands-on. By the end of this hour, you will have created a real project folder and launched your very first HTML page in a browser.</p>
+<p>Transition: Before we dive into the technical details, let me briefly introduce myself so you know who will be guiding you through this course.</p>
+<p><strong>Animation/Build Suggestion:</strong> The three cards fade in as a single group to maintain a clean entrance. The footer badge serves as a static anchor of reassurance.</p>
+</aside>
+
+
+
+</body></html>

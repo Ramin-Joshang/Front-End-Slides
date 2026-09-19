@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=1280, height=720" name="viewport">
+<title>Introduction to Front-End Development - Homework</title>
+<script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
+<style>@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+:root {
+    --ppt-bg: #0f172a;
+    --ppt-bg-soft: #1e293b;
+    --ppt-surface: #1e293b;
+    --ppt-surface-2: #334155;
+    --ppt-border: #334155;
+    --ppt-text-1: #f8fafc;
+    --ppt-text-2: #94a3b8;
+    --ppt-text-3: #64748b;
+    --ppt-accent: #22d3ee;
+    --ppt-accent-2: #3b82f6;
+    --ppt-chart-1: #22d3ee;
+    --ppt-chart-2: #3b82f6;
+    --ppt-chart-3: #818cf8;
+    --ppt-chart-4: #c084fc;
+    --ppt-good: #4ade80;
+    --ppt-warn: #fbbf24;
+    --ppt-bad: #f87171;
+    --ppt-radius-sm: 4px;
+    --ppt-radius-md: 8px;
+    --ppt-radius-lg: 16px;
+    --ppt-shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --ppt-shadow-strong: 0 12px 24px rgba(0, 0, 0, 0.5);
+    --ppt-font-display: "Space Grotesk", sans-serif;
+    --ppt-font-body: "Inter", sans-serif;
+    --ppt-font-mono: "JetBrains Mono", monospace
+    }
+* {
+    box-sizing: border-box;
+    margin: 0 0;
+    padding: 0 0
+    }
+body {width: 1280px; height: 720px; overflow: hidden; background-color: var(--ppt-bg);
+    color: var(--ppt-text-1);
+    font-family: var(--ppt-font-body)}
+.homework-slide-root {
+    width: 1280px;
+    height: 720px;
+    display: flex;
+    flex-direction: column;
+    position: relative
+    }
+/* Non-Cover-Page Title Region */
+.title-region-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 40px 60px 20px 60px
+    }
+.title-breadcrumb-row {
+    display: flex;
+    align-items: center;
+    gap: 12px
+    }
+.title-accent-line {
+    width: 4px;
+    height: 32px;
+    background: var(--ppt-accent);
+    border-radius: 2px
+    }
+.title-breadcrumb-text {
+    font-family: var(--ppt-font-mono);
+    font-size: 14px;
+    color: var(--ppt-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em
+    }
+.title-main-heading {
+    margin: 0;
+    font-family: var(--ppt-font-display);
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--ppt-text-1);
+    line-height: 1.2
+    }
+/* Content Area: Process Flow Numbered */
+.homework-content-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 16px 60px 32px 60px;
+    gap: 19px 24px
+    }
+.homework-flow-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 13px 16px;
+    flex: 1
+    }
+.homework-step-row {
+    display: flex;
+    align-items: center;
+    background: var(--ppt-bg-soft);
+    border: 1px solid var(--ppt-border);
+    border-radius: var(--ppt-radius-lg);
+    padding: 10px 24px;
+    gap: 26px 32px;
+    transition: border-color 0.3s ease;
+    flex: 1
+    }
+.homework-step-row:hover {
+    border-color: var(--ppt-accent)
+    }
+.homework-number-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 80px
+    }
+.homework-step-number {
+    font-family: var(--ppt-font-mono);
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--ppt-accent);
+    opacity: 0.8
+    }
+.homework-text-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px 6px
+    }
+.homework-step-headline {
+    font-family: var(--ppt-font-display);
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--ppt-text-1)
+    }
+.homework-step-caption {
+    font-size: 18px;
+    color: var(--ppt-text-2);
+    line-height: 1.4
+    }
+.homework-code-badge {
+    font-family: var(--ppt-font-mono);
+    background: var(--ppt-surface-2);
+    color: var(--ppt-accent);
+    padding: 2px 8px;
+    border-radius: var(--ppt-radius-sm);
+    font-size: 16px
+    }
+.homework-footer-note {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px 12px;
+    padding: 10px 20px;
+    background: rgba(34, 211, 238, 0.05);
+    border-left: 3px solid var(--ppt-accent);
+    border-radius: 0 var(--ppt-radius-md) var(--ppt-radius-md) 0
+    }
+.homework-footer-text {
+    font-size: 16px;
+    color: var(--ppt-text-2);
+    font-style: italic
+    }
+.homework-footer-icon {
+    color: var(--ppt-accent);
+    font-size: 18px
+    }
+html { overflow: hidden; }
+</style>
+<meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize"></head>
+<body>
+<div class="homework-slide-root" style="overflow: hidden;">
+<!-- Title Region -->
+<div class="title-region-wrapper">
+<div class="title-breadcrumb-row">
+<div class="title-accent-line"></div>
+<span class="title-breadcrumb-text">Lesson 01 // Introduction</span>
+</div>
+<h1 class="title-main-heading">Homework and Next Steps</h1>
+</div>
+<!-- Main Content: Numbered Argument Flow -->
+<div class="homework-content-area">
+<div class="homework-flow-stack" data-animation-id="homework-flow-container">
+<!-- Step 01 -->
+<div class="homework-step-row">
+<div class="homework-number-container">
+<span class="homework-step-number">01</span>
+</div>
+<div class="homework-text-container">
+<h2 class="homework-step-headline">Install Your Development Tools</h2>
+<p class="homework-step-caption">
+              Download and install <span class="homework-code-badge">Visual Studio Code</span> and <span class="homework-code-badge">Google Chrome</span>. Ensure they are pinned to your taskbar for quick access.
+            </p>
+</div>
+</div>
+<!-- Step 02 -->
+<div class="homework-step-row">
+<div class="homework-number-container">
+<span class="homework-step-number">02</span>
+</div>
+<div class="homework-text-container">
+<h2 class="homework-step-headline">Setup Your Project Workspace</h2>
+<p class="homework-step-caption">
+              Create a new folder on your computer named <span class="homework-code-badge">frontend-course</span>. Inside it, create a sub-folder called <span class="homework-code-badge">lesson-01</span>.
+            </p>
+</div>
+</div>
+<!-- Step 03 -->
+<div class="homework-step-row">
+<div class="homework-number-container">
+<span class="homework-step-number">03</span>
+</div>
+<div class="homework-text-container">
+<h2 class="homework-step-headline">Create Your First HTML File</h2>
+<p class="homework-step-caption">
+              Open your <span class="homework-code-badge">lesson-01</span> folder in VS Code. Create a new file named <span class="homework-code-badge">index.html</span> and type <span class="homework-code-badge">&lt;h1&gt;Hello World&lt;/h1&gt;</span>.
+            </p>
+</div>
+</div>
+<!-- Step 04 -->
+<div class="homework-step-row">
+<div class="homework-number-container">
+<span class="homework-step-number">04</span>
+</div>
+<div class="homework-text-container">
+<h2 class="homework-step-headline">Verify the Execution</h2>
+<p class="homework-step-caption">
+              Right-click your <span class="homework-code-badge">index.html</span> file and select "Open with Google Chrome." Confirm that you see "Hello World" displayed in the browser.
+            </p>
+</div>
+</div>
+</div>
+<!-- Footer Callout -->
+<div class="homework-footer-note" data-animation-id="homework-footer-callout">
+<i class="fas fa-circle-check homework-footer-icon"></i>
+<p class="homework-footer-text">
+          Successful completion of these steps is required before our next lesson on Semantic HTML structure.
+        </p>
+</div>
+</div>
+</div>
+<script data-slide-animation="" type="application/json">
+  {
+    "timeline": [
+      {
+        "animation_id": "homework-flow-container",
+        "effect": "fade"
+      },
+      {
+        "animation_id": "homework-footer-callout",
+        "effect": "appear"
+      }
+    ]
+  }
+  </script>
+
+</body></html>

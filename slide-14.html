@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en" style="--viewport-height: 9.57px;"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>HTML: The Skeleton of the Web</title>
+<script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
+<style>@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+:root {
+    --ppt-bg: #0f172a;
+    --ppt-bg-soft: #1e293b;
+    --ppt-surface: #1e293b;
+    --ppt-surface-2: #334155;
+    --ppt-border: #334155;
+    --ppt-text-1: #f8fafc;
+    --ppt-text-2: #94a3b8;
+    --ppt-text-3: #64748b;
+    --ppt-accent: #22d3ee;
+    --ppt-accent-2: #3b82f6;
+    --ppt-chart-1: #22d3ee;
+    --ppt-chart-2: #3b82f6;
+    --ppt-chart-3: #818cf8;
+    --ppt-chart-4: #c084fc;
+    --ppt-good: #4ade80;
+    --ppt-warn: #fbbf24;
+    --ppt-bad: #f87171;
+    --ppt-radius-sm: 4px;
+    --ppt-radius-md: 8px;
+    --ppt-radius-lg: 16px;
+    --ppt-shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --ppt-shadow-strong: 0 12px 24px rgba(0, 0, 0, 0.5);
+    --ppt-font-display: "Space Grotesk", sans-serif;
+    --ppt-font-body: "Inter", sans-serif;
+    --ppt-font-mono: "JetBrains Mono", monospace
+    }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+    }
+body {width: 1280px; height: 720px; overflow: hidden; background: #000;
+    display: block}
+.slide-root {
+    width: 1280px;
+    height: 720px;
+    background: var(--ppt-bg);
+    position: relative;
+    display: flex;
+    flex-direction: column
+    }
+/* Title Region */
+.title-region {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 36px 60px 16px 60px;
+    flex-shrink: 0
+    }
+.title-breadcrumb-row {
+    display: flex;
+    align-items: center;
+    gap: 12px
+    }
+.title-accent-bar {
+    width: 4px;
+    height: 32px;
+    background: var(--ppt-accent);
+    border-radius: 2px;
+    flex-shrink: 0
+    }
+.title-breadcrumb-label {
+    font-family: var(--ppt-font-mono);
+    font-size: 14px;
+    color: var(--ppt-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em
+    }
+.title-heading {
+    margin: 0;
+    font-family: var(--ppt-font-display);
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--ppt-text-1);
+    line-height: 1.2
+    }
+/* Main body layout */
+.slide-body {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    flex: 1;
+    margin: 0 60px 32px 60px;
+    gap: 40px;
+    min-height: 0
+    }
+/* LEFT: giant HTML anchor */
+.html-left-anchor-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    flex: 0 0 auto;
+    width: 22%
+    }
+.html-acronym-block {
+    display: flex;
+    flex-direction: column;
+    gap: 2px
+    }
+.html-acronym-main {
+    font-family: var(--ppt-font-display);
+    font-size: 112px;
+    font-weight: 700;
+    color: var(--ppt-accent);
+    line-height: 1;
+    letter-spacing: -4px;
+    text-shadow: 0 0 40px rgba(34, 211, 238, 0.35)
+    }
+.html-full-name-label {
+    font-family: var(--ppt-font-mono);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ppt-text-3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    line-height: 1.4;
+    margin-top: 6px
+    }
+.html-full-name-label span {
+    color: var(--ppt-accent)
+    }
+/* RIGHT: responsibilities */
+.html-right-responsibilities-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    gap: 18px
+    }
+.html-responsibility-item {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 16px 20px;
+    background: var(--ppt-surface);
+    border-radius: var(--ppt-radius-md);
+    border-left: 3px solid var(--ppt-accent)
+    }
+.html-responsibility-icon-wrap {
+    width: 38px;
+    height: 38px;
+    border-radius: var(--ppt-radius-sm);
+    background: rgba(34, 211, 238, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px
+    }
+.html-responsibility-icon-wrap i {
+    font-size: 18px;
+    color: var(--ppt-accent)
+    }
+.html-responsibility-text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 4px
+    }
+.html-responsibility-title {
+    font-family: var(--ppt-font-display);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--ppt-text-1);
+    line-height: 1.2
+    }
+.html-responsibility-desc {
+    font-family: var(--ppt-font-body);
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--ppt-text-2);
+    line-height: 1.45
+    }
+/* Code snippet strip at bottom */
+.html-code-strip {
+    flex-shrink: 0;
+    margin: 0 60px 24px 60px;
+    background: #0d1117;
+    border-radius: var(--ppt-radius-md);
+    border: 1px solid var(--ppt-border);
+    padding: 14px 22px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px
+    }
+.html-code-strip-label {
+    font-family: var(--ppt-font-mono);
+    font-size: 13px;
+    color: var(--ppt-text-3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    flex-shrink: 0
+    }
+.html-code-strip-content {
+    font-family: var(--ppt-font-mono);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ppt-text-1);
+    line-height: 1.5;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap
+    }
+.html-code-tag-open {
+    color: #f87171
+    }
+.html-code-tag-name {
+    color: var(--ppt-accent)
+    }
+.html-code-tag-close {
+    color: #f87171
+    }
+.html-code-text-content {
+    color: var(--ppt-text-1)
+    }
+.html-code-tag-slash {
+    color: var(--ppt-text-3)
+    }
+.html-code-attr-name {
+    color: var(--ppt-warn)
+    }
+.html-code-attr-val {
+    color: var(--ppt-good)
+    }
+html { overflow: hidden; }
+</style>
+<meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize"></head>
+<body>
+<div class="slide-root" style="overflow: hidden;">
+<!-- Title Region -->
+<div class="title-region">
+<div class="title-breadcrumb-row">
+<div class="title-accent-bar"></div>
+<span class="title-breadcrumb-label">Lesson 01 // Introduction</span>
+</div>
+<h1 class="title-heading">HTML: The Skeleton of the Web</h1>
+</div>
+<!-- Main Body -->
+<div class="slide-body">
+<!-- LEFT: Giant HTML Anchor -->
+<div class="html-left-anchor-col">
+<div class="html-acronym-block">
+<div class="html-acronym-main" data-animation-id="html-acronym-anchor">HTML</div>
+<div class="html-full-name-label">
+<span>H</span>yper<span>T</span>ext<br>
+<span>M</span>arkup <span>L</span>anguage
+          </div>
+</div>
+</div>
+<!-- RIGHT: Three Responsibilities -->
+<div class="html-right-responsibilities-col" data-animation-id="html-responsibilities-grid">
+<div class="html-responsibility-item">
+<div class="html-responsibility-icon-wrap">
+<i class="fa-solid fa-sitemap"></i>
+</div>
+<div class="html-responsibility-text-block">
+<div class="html-responsibility-title">Structure</div>
+<div class="html-responsibility-desc">Defines every element on the page — headings, paragraphs, images, links — using nested tags that form a logical document tree.</div>
+</div>
+</div>
+<div class="html-responsibility-item">
+<div class="html-responsibility-icon-wrap">
+<i class="fa-solid fa-code"></i>
+</div>
+<div class="html-responsibility-text-block">
+<div class="html-responsibility-title">Markup Language</div>
+<div class="html-responsibility-desc">Not a programming language — no logic or calculations. HTML <em>describes</em> content using opening and closing tags read top to bottom by the browser.</div>
+</div>
+</div>
+<div class="html-responsibility-item">
+<div class="html-responsibility-icon-wrap">
+<i class="fa-solid fa-layer-group"></i>
+</div>
+<div class="html-responsibility-text-block">
+<div class="html-responsibility-title">Foundation Layer</div>
+<div class="html-responsibility-desc">Every website starts here. CSS adds style; JavaScript adds behavior. Without HTML, there is nothing for them to act on.</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Code Strip -->
+<div class="html-code-strip">
+<span class="html-code-strip-label">Example</span>
+<div class="html-code-strip-content">
+<span class="html-code-tag-open">&lt;</span><span class="html-code-tag-name">h1</span><span class="html-code-tag-open">&gt;</span>
+<span class="html-code-text-content">Hello, World!</span>
+<span class="html-code-tag-open">&lt;</span><span class="html-code-tag-slash">/</span><span class="html-code-tag-name">h1</span><span class="html-code-tag-open">&gt;</span>
+        &nbsp;&nbsp;
+        <span class="html-code-tag-open">&lt;</span><span class="html-code-tag-name">p</span><span class="html-code-tag-open">&gt;</span>
+<span class="html-code-text-content">My first paragraph.</span>
+<span class="html-code-tag-open">&lt;</span><span class="html-code-tag-slash">/</span><span class="html-code-tag-name">p</span><span class="html-code-tag-open">&gt;</span>
+        &nbsp;&nbsp;
+        <span class="html-code-tag-open">&lt;</span><span class="html-code-tag-name">a</span>&nbsp;<span class="html-code-attr-name">href</span>=<span class="html-code-attr-val">"page.html"</span><span class="html-code-tag-open">&gt;</span>
+<span class="html-code-text-content">Click here</span>
+<span class="html-code-tag-open">&lt;</span><span class="html-code-tag-slash">/</span><span class="html-code-tag-name">a</span><span class="html-code-tag-open">&gt;</span>
+</div>
+</div>
+</div>
+<script data-slide-animation="" type="application/json">
+  {
+    "timeline": [
+      {
+        "animation_id": "html-acronym-anchor",
+        "effect": "fade"
+      },
+      {
+        "animation_id": "html-responsibilities-grid",
+        "effect": "fade"
+      }
+    ]
+  }
+  </script>
+
+
+
+</body></html>

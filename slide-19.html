@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=1280, height=720" name="viewport">
+<title>Your Developer Toolbelt</title>
+<script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
+<style>@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+:root {
+    --ppt-bg: #0f172a;
+    --ppt-bg-soft: #1e293b;
+    --ppt-surface: #1e293b;
+    --ppt-surface-2: #334155;
+    --ppt-border: #334155;
+    --ppt-text-1: #f8fafc;
+    --ppt-text-2: #94a3b8;
+    --ppt-text-3: #64748b;
+    --ppt-accent: #22d3ee;
+    --ppt-accent-2: #3b82f6;
+    --ppt-radius-sm: 4px;
+    --ppt-radius-md: 8px;
+    --ppt-radius-lg: 16px;
+    --ppt-shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --ppt-shadow-strong: 0 12px 24px rgba(0, 0, 0, 0.5);
+    --ppt-font-display: "Space Grotesk", sans-serif;
+    --ppt-font-body: "Inter", sans-serif;
+    --ppt-font-mono: "JetBrains Mono", monospace
+    }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+    }
+body {width: 1280px; height: 720px; overflow: hidden; background-color: var(--ppt-bg);
+    font-family: var(--ppt-font-body);
+    color: var(--ppt-text-1)}
+.toolbelt-slide-root {
+    width: 1280px;
+    height: 720px;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 40px
+    }
+/* Title Region */
+.title-region-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 40px 60px 20px 60px
+    }
+.title-breadcrumb-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px
+    }
+.title-accent-line {
+    width: 4px;
+    height: 32px;
+    background: var(--ppt-accent);
+    border-radius: 2px
+    }
+.title-breadcrumb-text {
+    font-family: var(--ppt-font-mono);
+    font-size: 14px;
+    color: var(--ppt-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em
+    }
+.title-main-heading {
+    margin: 0;
+    font-family: var(--ppt-font-display);
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--ppt-text-1);
+    line-height: 1.2
+    }
+/* Content Layout */
+.toolbelt-content-layout {
+    flex: 1;
+    display: flex;
+    align-items: stretch;
+    gap: 32px;
+    margin: 20px 60px 40px 60px
+    }
+.toolbelt-left-column-container, .toolbelt-right-column-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+    }
+/* Cards */
+.toolbelt-component-card {
+    flex: 1;
+    background-color: var(--ppt-surface);
+    border: 1px solid var(--ppt-border);
+    border-radius: var(--ppt-radius-lg);
+    padding: 32px;
+    box-shadow: var(--ppt-shadow-soft);
+    display: flex;
+    flex-direction: column;
+    gap: 20px
+    }
+.toolbelt-card-header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px
+    }
+.toolbelt-icon-wrapper {
+    width: 64px;
+    height: 64px;
+    background-color: var(--ppt-bg);
+    border-radius: var(--ppt-radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--ppt-accent)
+    }
+.toolbelt-icon-wrapper i {
+    font-size: 32px;
+    color: var(--ppt-accent)
+    }
+.toolbelt-card-title {
+    font-family: var(--ppt-font-display);
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--ppt-text-1)
+    }
+.toolbelt-card-subtitle {
+    font-family: var(--ppt-font-mono);
+    font-size: 16px;
+    color: var(--ppt-accent);
+    text-transform: uppercase
+    }
+.toolbelt-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px
+    }
+.toolbelt-description-text {
+    font-size: 20px;
+    line-height: 1.5;
+    color: var(--ppt-text-2)
+    }
+.toolbelt-feature-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px
+    }
+.toolbelt-list-item {
+    font-size: 18px;
+    color: var(--ppt-text-1);
+    padding-left: 28px;
+    position: relative
+    }
+.toolbelt-list-item::before {
+    content: "";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    color: var(--ppt-accent)
+    }
+/* Meta Info */
+.toolbelt-footer-meta {
+    margin: 0 60px;
+    padding-top: 16px;
+    border-top: 1px solid var(--ppt-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+    }
+.toolbelt-meta-text {
+    font-family: var(--ppt-font-mono);
+    font-size: 12px;
+    color: var(--ppt-text-3)
+    }
+html { overflow: hidden; }
+</style>
+<meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize"></head>
+<body>
+<div class="toolbelt-slide-root" style="overflow: hidden;">
+<!-- Title Region -->
+<div class="title-region-container">
+<div class="title-breadcrumb-wrapper">
+<div class="title-accent-line"></div>
+<span class="title-breadcrumb-text">Lesson 01 // Introduction</span>
+</div>
+<h1 class="title-main-heading">Your Developer Toolbelt</h1>
+</div>
+<!-- Main Content -->
+<div class="toolbelt-content-layout">
+<!-- Left Column: Code Editor -->
+<div class="toolbelt-left-column-container">
+<div class="toolbelt-component-card" data-animation-id="editor-card">
+<div class="toolbelt-card-header">
+<div class="toolbelt-icon-wrapper">
+<i class="fa-solid fa-code"></i>
+</div>
+<div class="toolbelt-card-title-group">
+<div class="toolbelt-card-subtitle">The Workshop</div>
+<h2 class="toolbelt-card-title">Visual Studio Code</h2>
+</div>
+</div>
+<div class="toolbelt-card-body">
+<p class="toolbelt-description-text">
+              The primary environment where you write, organize, and manage your source code files.
+            </p>
+<ul class="toolbelt-feature-list">
+<li class="toolbelt-list-item">Intelligent code completion</li>
+<li class="toolbelt-list-item">Extension ecosystem</li>
+<li class="toolbelt-list-item">Built-in terminal access</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Right Column: Browser -->
+<div class="toolbelt-right-column-container">
+<div class="toolbelt-component-card" data-animation-id="browser-card">
+<div class="toolbelt-card-header">
+<div class="toolbelt-icon-wrapper">
+<i class="fa-solid fa-globe"></i>
+</div>
+<div class="toolbelt-card-title-group">
+<div class="toolbelt-card-subtitle">The Workbench</div>
+<h2 class="toolbelt-card-title">Google Chrome</h2>
+</div>
+</div>
+<div class="toolbelt-card-body">
+<p class="toolbelt-description-text">
+              The platform where you preview your creation and use professional tools to debug code.
+            </p>
+<ul class="toolbelt-feature-list">
+<li class="toolbelt-list-item">Chrome Developer Tools</li>
+<li class="toolbelt-list-item">V8 JavaScript engine</li>
+<li class="toolbelt-list-item">Live rendering inspection</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Meta -->
+<div class="toolbelt-footer-meta">
+<span class="toolbelt-meta-text">COMPLETE FRONT-END DEVELOPMENT COURSE</span>
+<span class="toolbelt-meta-text">SLIDE 19</span>
+</div>
+</div>
+<script data-slide-animation="" type="application/json">
+  {
+    "timeline": [
+      {
+        "animation_id": "editor-card",
+        "effect": "fade"
+      },
+      {
+        "animation_id": "browser-card",
+        "effect": "fade"
+      }
+    ]
+  }
+  </script>
+<!-- Presenter Notes -->
+<!-- 
+  Presenter Notes:
+  - Welcome students to the "Toolbelt" phase. Explain that while there are hundreds of tools, absolute beginners only need two.
+  - Teaching Intent: Lower anxiety by simplifying the software requirements. Establish the "Workshop vs. Workbench" mental model.
+  - Clarification: Mention that while other editors and browsers exist, VS Code and Chrome are the industry standards for learning and professional work.
+  - Transition: "Let's take a closer look at our workbench, Google Chrome, and why it's more than just a way to browse the news."
+  - Transition Recommendation: Fade to the Chrome-specific slide.
+  - Animation: Reveal the Editor card first, then the Browser card to emphasize the two-step cycle of Write -> Preview.
+  -->
+
+</body></html>

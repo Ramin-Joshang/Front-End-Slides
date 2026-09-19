@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=1280, height=720" name="viewport">
+    <title>HTML & CSS Course Roadmap</title>
+    <script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+
+        :root {
+            --ppt-bg: #0f172a;
+            --ppt-bg-soft: #1e293b;
+            --ppt-surface: #1e293b;
+            --ppt-surface-2: #334155;
+            --ppt-border: #334155;
+            --ppt-text-1: #f8fafc;
+            --ppt-text-2: #94a3b8;
+            --ppt-text-3: #64748b;
+            --ppt-accent: #22d3ee;
+            --ppt-accent-2: #3b82f6;
+            --ppt-chart-1: #22d3ee;
+            --ppt-chart-2: #3b82f6;
+            --ppt-chart-3: #818cf8;
+            --ppt-chart-4: #c084fc;
+            --ppt-good: #4ade80;
+            --ppt-warn: #fbbf24;
+            --ppt-bad: #f87171;
+            --ppt-radius-sm: 4px;
+            --ppt-radius-md: 8px;
+            --ppt-radius-lg: 16px;
+            --ppt-shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.3);
+            --ppt-shadow-strong: 0 12px 24px rgba(0, 0, 0, 0.5);
+            --ppt-font-display: "Space Grotesk", sans-serif;
+            --ppt-font-body: "Inter", sans-serif;
+            --ppt-font-mono: "JetBrains Mono", monospace
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        body {
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+            background-color: var(--ppt-bg);
+            color: var(--ppt-text-1);
+            font-family: var(--ppt-font-body)
+        }
+
+        .roadmap-slide-root {
+            width: 1280px;
+            height: 720px;
+            display: flex;
+            flex-direction: column;
+            position: relative
+        }
+
+        /* Title Region */
+        .title-region-container {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin: 36px 60px 14px 60px
+        }
+
+        .title-breadcrumb-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px
+        }
+
+        .title-accent-line {
+            width: 4px;
+            height: 28px;
+            background: var(--ppt-accent);
+            border-radius: 2px
+        }
+
+        .title-breadcrumb-text {
+            font-family: var(--ppt-font-mono);
+            font-size: 13px;
+            color: var(--ppt-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em
+        }
+
+        .title-main-heading {
+            margin: 0;
+            font-family: var(--ppt-font-display);
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--ppt-text-1);
+            line-height: 1.2
+        }
+
+        /* Roadmap Layout */
+        .roadmap-main-content-layout {
+            display: flex;
+            flex: 1;
+            margin: 0 60px 32px 60px;
+            align-items: stretch;
+            gap: 30px
+        }
+
+        /* Left Anchor Column */
+        .roadmap-left-anchor-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center
+        }
+
+        .roadmap-massive-digit {
+            font-family: var(--ppt-font-display);
+            font-size: 280px;
+            font-weight: 700;
+            color: var(--ppt-surface-2);
+            line-height: 1;
+            opacity: 0.4;
+            user-select: none;
+            letter-spacing: -0.02em;
+        }
+
+        /* Right List Column */
+        .roadmap-right-list-column {
+            flex: 1.5;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-left: 2px solid var(--ppt-accent);
+            padding-left: 32px
+        }
+
+        .roadmap-stage-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px
+        }
+
+        .roadmap-stage-item-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 3px 0
+        }
+
+        .roadmap-stage-number-box {
+            font-family: var(--ppt-font-mono);
+            font-size: 14px;
+            color: var(--ppt-text-3);
+            width: 28px
+        }
+
+        .roadmap-stage-title-text {
+            font-family: var(--ppt-font-display);
+            font-size: 20px;
+            font-weight: 500;
+            color: var(--ppt-text-2)
+        }
+
+        /* Active Stage */
+        .roadmap-stage-item-row.is-active {
+            background: rgba(34, 211, 238, 0.05);
+            border-radius: var(--ppt-radius-md);
+            padding: 8px 12px;
+            margin-left: -12px;
+            box-shadow: 0 0 18px rgba(34, 211, 238, 0.1)
+        }
+
+        .roadmap-stage-item-row.is-active .roadmap-stage-number-box {
+            color: var(--ppt-accent)
+        }
+
+        .roadmap-stage-item-row.is-active .roadmap-stage-title-text {
+            color: var(--ppt-text-1);
+            font-weight: 700;
+            font-size: 23px
+        }
+
+        .roadmap-current-status-badge {
+            font-family: var(--ppt-font-mono);
+            font-size: 11px;
+            background: var(--ppt-accent);
+            color: var(--ppt-bg);
+            padding: 2px 7px;
+            border-radius: var(--ppt-radius-sm);
+            margin-left: 10px;
+            text-transform: uppercase;
+            font-weight: 700
+        }
+
+        .roadmap-stage-icon {
+            font-size: 16px;
+            color: var(--ppt-text-3);
+            width: 22px;
+            text-align: center
+        }
+
+        .roadmap-stage-item-row.is-active .roadmap-stage-icon {
+            color: var(--ppt-accent)
+        }
+
+        html {
+            overflow: hidden;
+        }
+    </style>
+    <meta content="16:9" name="PageAspectRatio">
+    <meta content="1280_720" name="PageSize">
+</head>
+
+<body>
+    <div class="roadmap-slide-root">
+        <!-- Title -->
+        <div class="title-region-container">
+            <div class="title-breadcrumb-wrapper">
+                <div class="title-accent-line"></div>
+                <span class="title-breadcrumb-text">Lesson 01 // Course Structure</span>
+            </div>
+            <h1 class="title-main-heading">HTML & CSS Course Roadmap</h1>
+        </div>
+
+        <!-- Main Content -->
+        <div class="roadmap-main-content-layout">
+            <!-- Left large number 11 -->
+            <div class="roadmap-left-anchor-column">
+                <div class="roadmap-massive-digit" data-animation-id="roadmap-background-11">11</div>
+            </div>
+
+            <!-- Right list of 11 stages -->
+            <div class="roadmap-right-list-column">
+                <ul class="roadmap-stage-list" data-animation-id="roadmap-stages-group">
+                    <li class="roadmap-stage-item-row is-active" data-animation-id="active-stage-highlight">
+                        <span class="roadmap-stage-number-box">01</span>
+                        <i class="fa-solid fa-route roadmap-stage-icon"></i>
+                        <span class="roadmap-stage-title-text">Front-End Start</span>
+                        <span class="roadmap-current-status-badge">START</span>
+                    </li>
+                    <li class="roadmap-stage-item-row">
+                        <span class="roadmap-stage-number-box">02</span>
+                        <i class="fa-brands fa-html5 roadmap-stage-icon"></i>
+                        <span class="roadmap-stage-title-text">HTML Basics</span>
+                    </li>
+                    <li class="roadmap-stage-item-row">
+                        <span class="roadmap-stage-number-box">03</span>
+                        <i class="fa-solid fa-code roadmap-stage-icon"></i>
+                        <span class="roadmap-stage-title-text">Advanced HTML</span>
+                    </li>
+                    <li class="roadmap-stage-item-row">
+                        <span class="roadmap-stage-number-box">04</span>
+                        <i class="fa-brands fa-css3-alt roadmap-stage-icon"></i>
+                        <span class="roadmap-stage-title-text">CSS Basics</span>
+                    </li>
+                    <li class="roadmap-stage-item-row">
+                        <span class="roadmap-stage-number-box">05</span>
+                        <i class="fa-solid fa-box roadmap-stage-icon"></i>
+                        <span class="roadmap-stage-title-text">Box Model</span>
+                    </li>
+                    <li class="roadmap-stage-item-row">
+                        <span class="roadmap-stage-number-box">06</span>
+                        <i class="fa-solid fa-layer-group roadmap-stage-icon"></i>
+                        <span class="roadmap-stage-title-text">Flexbox</span>
+                    </li>
+                    <li class="roadmap-stage-item-row">
+                        <span class="roadmap-stage-number-box">07</span>
+                        <i class="fa-solid fa-table-cells roadmap-stage-icon"></i>
+                        <span class="roadmap-stage-title-text">CSS Grid</span>
+                    </li>
+                    <li class="roadmap-stage-item-row">
+                        <span class="roadmap-stage-number-box">08</span>
+                        <i class="fa-solid fa-mobile-screen roadmap-stage-icon"></i>
+                        <span class="roadmap-stage-title-text">Responsive Design</span>
+                    </li>
+                    <li class="roadmap-stage-item-row">
+                        <span class="roadmap-stage-number-box">09</span>
+                        <i class="fa-solid fa-wand-magic-sparkles roadmap-stage-icon"></i>
+                        <span class="roadmap-stage-title-text">CSS Animation</span>
+                    </li>
+                    <li class="roadmap-stage-item-row">
+                        <span class="roadmap-stage-number-box">10</span>
+                        <i class="fa-solid fa-star roadmap-stage-icon"></i>
+                        <span class="roadmap-stage-title-text">Advanced CSS</span>
+                    </li>
+                    <li class="roadmap-stage-item-row">
+                        <span class="roadmap-stage-number-box">11</span>
+                        <i class="fa-solid fa-rocket roadmap-stage-icon"></i>
+                        <span class="roadmap-stage-title-text">Final Project</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Animations -->
+    <script data-slide-animation="" type="application/json">
+        {
+            "timeline": [
+                {
+                    "animation_id": "roadmap-background-11",
+                    "effect": "fade"
+                },
+                {
+                    "animation_id": "roadmap-stages-group",
+                    "effect": "fade"
+                },
+                {
+                    "animation_id": "active-stage-highlight",
+                    "effect": "zoom"
+                }
+            ]
+        }
+    </script>
+
+    <!-- Presenter Notes -->
+    <div style="display:none;">
+        This course takes you from zero to building professional, responsive websites.
+        The journey starts with understanding the web and tools, then HTML fundamentals, advanced HTML, CSS basics, box
+        model, Flexbox, Grid, responsive design, CSS animations, advanced CSS, and finally a complete final project.
+        By the end, you'll have a solid foundation to continue into Front-End development.
+    </div>
+</body>
+
+</html>

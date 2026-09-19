@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" style="--viewport-height: 9.57px;"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>How Websites Work: The Big Picture</title>
+<script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
+<style>@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+:root {
+    --ppt-bg: #0f172a;
+    --ppt-bg-soft: #1e293b;
+    --ppt-surface: #1e293b;
+    --ppt-surface-2: #334155;
+    --ppt-border: #334155;
+    --ppt-text-1: #f8fafc;
+    --ppt-text-2: #94a3b8;
+    --ppt-text-3: #64748b;
+    --ppt-accent: #22d3ee;
+    --ppt-accent-2: #3b82f6;
+    --ppt-good: #4ade80;
+    --ppt-warn: #fbbf24;
+    --ppt-bad: #f87171;
+    --ppt-radius-sm: 4px;
+    --ppt-radius-md: 8px;
+    --ppt-radius-lg: 16px;
+    --ppt-font-display: "Space Grotesk", sans-serif;
+    --ppt-font-body: "Inter", sans-serif;
+    --ppt-font-mono: "JetBrains Mono", monospace
+    }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+    }
+body {width: 1280px; height: 720px; overflow: hidden; background-color: var(--ppt-bg);
+    color: var(--ppt-text-1);
+    font-family: var(--ppt-font-body)}
+.slide-root-container {
+    width: 1280px;
+    height: 720px;
+    display: flex;
+    flex-direction: column;
+    position: relative
+    }
+/* Title Region Layout */
+.title-region-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 40px 60px 20px 60px
+    }
+.title-breadcrumb-container {
+    display: flex;
+    align-items: center;
+    gap: 12px
+    }
+.title-accent-line {
+    width: 4px;
+    height: 32px;
+    background: var(--ppt-accent);
+    border-radius: 2px
+    }
+.title-breadcrumb-text {
+    font-family: var(--ppt-font-mono);
+    font-size: 14px;
+    color: var(--ppt-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em
+    }
+.title-main-heading {
+    margin: 0;
+    font-family: var(--ppt-font-display);
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--ppt-text-1);
+    line-height: 1.2
+    }
+/* Content Layout */
+.web-architecture-main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 60px 40px 60px;
+    gap: 60px
+    }
+.web-flow-visual-module {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 24px;
+    background: rgba(30, 41, 59, 0.5);
+    border: 1px solid var(--ppt-border);
+    border-radius: var(--ppt-radius-lg)
+    }
+.web-flow-nodes-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 40px
+    }
+.web-flow-node-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: 180px
+    }
+.web-flow-icon-wrapper {
+    width: 80px;
+    height: 80px;
+    background: var(--ppt-surface);
+    border: 2px solid var(--ppt-border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: var(--ppt-accent);
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.1)
+    }
+.web-flow-node-label {
+    font-family: var(--ppt-font-display);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--ppt-text-1)
+    }
+.web-flow-connector-group {
+    flex: 1;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative
+    }
+.web-flow-arrow-path {
+    height: 2px;
+    width: 100%;
+    background: var(--ppt-border);
+    position: relative
+    }
+.web-flow-path-label {
+    font-family: var(--ppt-font-mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    position: absolute;
+    width: 100%;
+    text-align: center
+    }
+.web-flow-path-label.request {
+    bottom: 12px;
+    color: var(--ppt-accent)
+    }
+.web-flow-path-label.response {
+    top: 12px;
+    color: var(--ppt-accent-2)
+    }
+.web-flow-arrow-head {
+    position: absolute;
+    font-size: 12px
+    }
+.web-flow-arrow-head.request {
+    right: -2px;
+    top: -6px;
+    color: var(--ppt-accent)
+    }
+.web-flow-arrow-head.response {
+    left: -2px;
+    top: -6px;
+    color: var(--ppt-accent-2)
+    }
+.web-flow-summary-card {
+    background: linear-gradient(90deg, rgba(34, 211, 238, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+    border: 1px solid var(--ppt-accent);
+    border-radius: var(--ppt-radius-md);
+    padding: 20px 40px;
+    display: flex;
+    gap: 32px;
+    align-items: center
+    }
+.web-flow-summary-step {
+    display: flex;
+    align-items: center;
+    gap: 12px
+    }
+.web-flow-step-number {
+    font-family: var(--ppt-font-mono);
+    font-size: 14px;
+    color: var(--ppt-accent);
+    background: rgba(34, 211, 238, 0.1);
+    padding: 4px 8px;
+    border-radius: var(--ppt-radius-sm);
+    border: 1px solid rgba(34, 211, 238, 0.3)
+    }
+.web-flow-step-text {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--ppt-text-1)
+    }
+.web-flow-divider {
+    width: 1px;
+    height: 24px;
+    background: var(--ppt-border)
+    }
+html { overflow: hidden; }
+</style>
+<meta content="16:9" name="PageAspectRatio"><meta content="1280_720" name="PageSize"></head>
+<body class="">
+<div class="slide-root-container" style="overflow: hidden;">
+<!-- Title Region -->
+<div class="title-region-wrapper">
+<div class="title-breadcrumb-container">
+<div class="title-accent-line"></div>
+<span class="title-breadcrumb-text">Lesson 01 // Introduction</span>
+</div>
+<h1 class="title-main-heading">How Websites Work: The Big Picture</h1>
+</div>
+<!-- Main Content -->
+<div class="web-architecture-main-content">
+<!-- Flow Diagram Module -->
+<div class="web-flow-visual-module" data-animation-id="web-architecture-flow" data-interaction-trigger="true">
+<div class="web-flow-nodes-row">
+<!-- Node 1: User -->
+<div class="web-flow-node-item">
+<div class="web-flow-icon-wrapper">
+<i class="fa-solid fa-user"></i>
+</div>
+<span class="web-flow-node-label">You</span>
+</div>
+<!-- Connector 1 -->
+<div class="web-flow-connector-group">
+<div class="web-flow-path-label request">Ask</div>
+<div class="web-flow-arrow-path">
+<i class="fa-solid fa-caret-right web-flow-arrow-head request"></i>
+</div>
+<div class="web-flow-path-label response">See</div>
+</div>
+<!-- Node 2: Browser -->
+<div class="web-flow-node-item">
+<div class="web-flow-icon-wrapper">
+<i class="fa-brands fa-chrome"></i>
+</div>
+<span class="web-flow-node-label">Browser</span>
+</div>
+<!-- Connector 2 -->
+<div class="web-flow-connector-group">
+<div class="web-flow-path-label request">Request</div>
+<div class="web-flow-arrow-path">
+<i class="fa-solid fa-caret-right web-flow-arrow-head request"></i>
+</div>
+<div class="web-flow-path-label response">Response</div>
+</div>
+<!-- Node 3: Internet -->
+<div class="web-flow-node-item">
+<div class="web-flow-icon-wrapper">
+<i class="fa-solid fa-cloud"></i>
+</div>
+<span class="web-flow-node-label">Internet</span>
+</div>
+<!-- Connector 3 -->
+<div class="web-flow-connector-group">
+<div class="web-flow-path-label request">Route</div>
+<div class="web-flow-arrow-path">
+<i class="fa-solid fa-caret-right web-flow-arrow-head request"></i>
+</div>
+<div class="web-flow-path-label response">Route</div>
+</div>
+<!-- Node 4: Server -->
+<div class="web-flow-node-item">
+<div class="web-flow-icon-wrapper">
+<i class="fa-solid fa-server"></i>
+</div>
+<span class="web-flow-node-label">Server</span>
+</div>
+</div>
+</div>
+<!-- Summary Caption Block -->
+<div class="web-flow-summary-card" data-animation-id="web-flow-summary-caption">
+<div class="web-flow-summary-step">
+<span class="web-flow-step-number">01</span>
+<span class="web-flow-step-text">Ask for a resource</span>
+</div>
+<div class="web-flow-divider"></div>
+<div class="web-flow-summary-step">
+<span class="web-flow-step-number">02</span>
+<span class="web-flow-step-text">Receive a response</span>
+</div>
+<div class="web-flow-divider"></div>
+<div class="web-flow-summary-step">
+<span class="web-flow-step-number">03</span>
+<span class="web-flow-step-text">Render the result</span>
+</div>
+</div>
+</div>
+</div>
+<script data-slide-animation="" type="application/json">
+  {
+    "timeline": [
+      {
+        "animation_id": "web-architecture-flow",
+        "effect": "fade"
+      },
+      {
+        "animation_id": "web-flow-summary-caption",
+        "effect": "appear"
+      }
+    ]
+  }
+  </script>
+
+
+
+</body></html>
